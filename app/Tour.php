@@ -21,6 +21,6 @@ class Tour extends Model
         'tour_trangthai'   
     ];
 
-    protected $dates        = ['ngayvaocd','ngayvaonganh'];
-    protected $dateFormat   = 'Y-m-d';
+    protected $dates        = ['tour_handk','tour_ngaybd','tour_ngaykt'];
+    protected $dateFormat   = 'Y-m-d H:i:s';
 }
