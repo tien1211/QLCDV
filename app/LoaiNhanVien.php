@@ -13,4 +13,9 @@ class LoaiNhanVien extends Model
         'lnv_ten',
         'lnv_trangthai',
     ];
+
+    #một Loại nhân viên có nhìu công đoàn viên
+    public function CongDoanVien (){
+        return $this->hasMany('App\CongDoanVien','lnv_id','lnv_id');
+    }
 }

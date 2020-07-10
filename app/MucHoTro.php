@@ -14,4 +14,9 @@ class MucHoTro extends Model
         'mht_phihotro',
         'mht_trangthai'
     ];
+
+    #một mức hổ trợ có nhìu công đoàn viên
+    public function CongDoanVien (){
+        return $this->hasMany('App\CongDoanVien','mht_id','mht_id');
+    }
 }

@@ -15,4 +15,8 @@ class TaiKhoan extends Model
         'tk_matkhau',
         'tk_trangthai'
     ];
+    #một công đoàn viên có một tài khoản
+    public function CongDoanVien(){
+        return $this->belongsTo('App\CongDoanVien','cdv_id','cdv_id');
+    }
 }

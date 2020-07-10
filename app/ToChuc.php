@@ -13,4 +13,8 @@ class ToChuc extends Model
         'tc_trangthai',
         'tc_tructhuoc'
     ];
+    #một tổ chức có nhìu công đoàn viên
+    public function CongDoanVien (){
+        return $this->hasMany('App\CongDoanVien','tc_id','tc_id');
+    }
 }

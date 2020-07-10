@@ -13,4 +13,9 @@ class ChucVu extends Model
         'cv_ten',
         'cv_trangthai',
     ];
+
+    #một chức vụ có nhìu công đoàn viên
+    public function CongDoanVien (){
+        return $this->hasMany('App\CongDoanVien','cv_id','cv_id');
+    }
 }

@@ -13,4 +13,8 @@ class DaiLy extends Model
         'cv_ten',
         'cv_trangthai',
     ];
+    public function DL_Tour()
+    {
+        return $this->belongsTo('App\DL_Tour', 'dl_id', 'dl_id');
+    }
 }

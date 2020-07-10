@@ -13,4 +13,8 @@ class LichTrinh extends Model
         'lt_file',
         'cv_trangthai',
     ];
+    #một lịch trình có nhiều tour
+    public function Tour (){
+        return $this->hasMany('App\Tour','lt_id','lt_id');
+    }
 }
