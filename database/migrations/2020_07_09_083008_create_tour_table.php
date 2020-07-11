@@ -16,14 +16,15 @@ class CreateTourTable extends Migration
         Schema::create('Tour', function (Blueprint $table) {
             $table->increments('tour_id');
             $table->unsignedInteger('lt_id');
-            $table->date('tour_ngaybd');
-            $table->date('tour_ngaykt');
-            $table->float('tour_chiphi');
+            $table->dateTime('tour_handk');
+            $table->dateTime('tour_ngaybd');
+            $table->dateTime('tour_ngaykt');
+            $table->double('tour_chiphi', 15, 8);
             $table->integer('tour_soluong');
             $table->string('tour_phuongtien');
             $table->string('tour_diadiem');
             $table->integer('tour_trongnam');
-            $table->tinyInteger('tour_trangthai');
+            $table->tinyInteger('tour_trangthai')->comment('1 la hien thi 0 la an thong tin');
             $table->timestamps();
             $table->foreign('lt_id')->references('lt_id')->on('LichTrinh')->onDelete('CASCADE')->onUpdate('CASCADE');
         });

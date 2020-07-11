@@ -16,7 +16,7 @@ class CreateChucvuTable extends Migration
         Schema::create('ChucVu', function (Blueprint $table) {
             $table->increments('cv_id');
             $table->string('cv_ten');
-            $table->tinyInteger('cv_trangthai');
+            $table->tinyInteger('cv_trangthai')->comment('1 la hien thi 0 la an thong tin');
             $table->timestamps();
         });
     }

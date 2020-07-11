@@ -15,9 +15,9 @@ class CreateMuchotroTable extends Migration
     {
         Schema::create('MucHoTro', function (Blueprint $table) {
             $table->increments('mht_id');
-            $table->string('mht_ten');
-            $table->tinyInteger('mht_trangthai');
-            $table->float('mht_phihotro',8,2);
+            $table->string('mht_nam');
+            $table->tinyInteger('mht_trangthai')->comment('1 la hien thi 0 la an thong tin');
+            $table->double('mht_phihotro', 15, 8);
             $table->timestamps();
         });
     }

@@ -17,7 +17,8 @@ class CreateTaikhoanTable extends Migration
             $table->string('tk_tendangnhap');
             $table->unsignedMediumInteger('cdv_id');
             $table->string('tk_matkhau');
-            $table->tinyInteger('tk_trangthai');
+            $table->tinyInteger('tk_quyen')->comment('1 la admin 0 la nguoi dung bt');
+            $table->tinyInteger('tk_trangthai')->comment('1 la hien thi 0 la an thong tin');
             $table->timestamps();
             $table->primary('tk_tendangnhap');
             $table->foreign('cdv_id')->references('cdv_id')->on('CongDoanVien')->onDelete('CASCADE')->onUpdate('CASCADE');

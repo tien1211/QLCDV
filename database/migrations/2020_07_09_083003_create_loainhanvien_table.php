@@ -16,7 +16,7 @@ class CreateLoainhanvienTable extends Migration
         Schema::create('LoaiNhanVien', function (Blueprint $table) {
             $table->increments('lnv_id');
             $table->string('lnv_ten');
-            $table->tinyInteger('lnv_trangthai');
+            $table->tinyInteger('lnv_trangthai')->comment('1 la hien thi 0 la an thong tin');
             $table->timestamps();
         });
     }

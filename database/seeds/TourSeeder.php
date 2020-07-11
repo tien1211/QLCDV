@@ -13,115 +13,27 @@ class TourSeeder extends Seeder
     {
         $arr=[
             [
-                'lt_id' => '',
-                'tour_handk' => '',
-                'tour_ngaybd' => '',
-                'tour_ngaykt' => '',
-                'tour_chiphi' => '',
-                'tour_soluong' => '',
-                'tour_phuongtien' => '',
-                'tour_daily' => '',
-                'tour_trongnam' => '',
-                'tour_trangthai' => ''
+                'lt_id' => '1',
+                'tour_handk' => '2020-08-20 08:30:00',
+                'tour_ngaybd' => '2020-08-21 05:30:00',
+                'tour_ngaykt' => '2020-08-22 18:30:00',
+                'tour_chiphi' => '5000000',
+                'tour_soluong' => '20',
+                'tour_phuongtien' => 'Ô Tô',
+                'tour_diadiem' => 'Vũng Tàu',
+                'tour_trongnam' => 1,
+                'tour_trangthai' => 1
             ],[
-                'lt_id' => '',
-                'tour_handk' => '',
-                'tour_ngaybd' => '',
-                'tour_ngaykt' => '',
-                'tour_chiphi' => '',
-                'tour_soluong' => '',
-                'tour_phuongtien' => '',
-                'tour_daily' => '',
-                'tour_trongnam' => '',
-                'tour_trangthai' => ''
-            ],[
-                'lt_id' => '',
-                'tour_handk' => '',
-                'tour_ngaybd' => '',
-                'tour_ngaykt' => '',
-                'tour_chiphi' => '',
-                'tour_soluong' => '',
-                'tour_phuongtien' => '',
-                'tour_daily' => '',
-                'tour_trongnam' => '',
-                'tour_trangthai' => ''
-            ],[
-                'lt_id' => '',
-                'tour_handk' => '',
-                'tour_ngaybd' => '',
-                'tour_ngaykt' => '',
-                'tour_chiphi' => '',
-                'tour_soluong' => '',
-                'tour_phuongtien' => '',
-                'tour_daily' => '',
-                'tour_trongnam' => '',
-                'tour_trangthai' => ''
-            ],[
-                'lt_id' => '',
-                'tour_handk' => '',
-                'tour_ngaybd' => '',
-                'tour_ngaykt' => '',
-                'tour_chiphi' => '',
-                'tour_soluong' => '',
-                'tour_phuongtien' => '',
-                'tour_daily' => '',
-                'tour_trongnam' => '',
-                'tour_trangthai' => ''
-            ],[
-                'lt_id' => '',
-                'tour_handk' => '',
-                'tour_ngaybd' => '',
-                'tour_ngaykt' => '',
-                'tour_chiphi' => '',
-                'tour_soluong' => '',
-                'tour_phuongtien' => '',
-                'tour_daily' => '',
-                'tour_trongnam' => '',
-                'tour_trangthai' => ''
-            ],[
-                'lt_id' => '',
-                'tour_handk' => '',
-                'tour_ngaybd' => '',
-                'tour_ngaykt' => '',
-                'tour_chiphi' => '',
-                'tour_soluong' => '',
-                'tour_phuongtien' => '',
-                'tour_daily' => '',
-                'tour_trongnam' => '',
-                'tour_trangthai' => ''
-            ],[
-                'lt_id' => '',
-                'tour_handk' => '',
-                'tour_ngaybd' => '',
-                'tour_ngaykt' => '',
-                'tour_chiphi' => '',
-                'tour_soluong' => '',
-                'tour_phuongtien' => '',
-                'tour_daily' => '',
-                'tour_trongnam' => '',
-                'tour_trangthai' => ''
-            ],[
-                'lt_id' => '',
-                'tour_handk' => '',
-                'tour_ngaybd' => '',
-                'tour_ngaykt' => '',
-                'tour_chiphi' => '',
-                'tour_soluong' => '',
-                'tour_phuongtien' => '',
-                'tour_daily' => '',
-                'tour_trongnam' => '',
-                'tour_trangthai' => ''
-            ],[
-                'lt_id' => '',
-                'tour_handk' => '',
-                'tour_ngaybd' => '',
-                'tour_ngaykt' => '',
-                'tour_chiphi' => '',
-                'tour_soluong' => '',
-                'tour_phuongtien' => '',
-                'tour_daily' => '',
-                'tour_trongnam' => '',
-                'tour_trangthai' => ''
+                'lt_id' => '2',
+                'tour_handk' => '2020-08-21 08:30:00',
+                'tour_ngaybd' => '2020-08-22 05:30:00',
+                'tour_ngaykt' => '2020-08-23 18:30:00',
+                'tour_chiphi' => '2000000',
+                'tour_soluong' => '20',
+                'tour_phuongtien' => 'Ô Tô',
+                'tour_diadiem' => 'Cần Thơ',
+                'tour_trongnam' => 1,
+                'tour_trangthai' => 1
             ]
         ];
         DB::table('Tour')->insert($arr);

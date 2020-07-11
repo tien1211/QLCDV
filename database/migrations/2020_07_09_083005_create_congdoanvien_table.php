@@ -21,7 +21,7 @@ class CreateCongdoanvienTable extends Migration
             $table->unsignedInteger('mht_id');
             $table->string('cdv_ten');
             $table->date('cdv_ngaysinh');
-            $table->tinyInteger('cdv_gioitinh');
+            $table->tinyInteger('cdv_gioitinh')->comment('1 la Nam 0 la Nữ');
             $table->string('cdv_cmnd');
             $table->string('cdv_nguyenquan');
             $table->string('cdv_diachi');
@@ -32,7 +32,7 @@ class CreateCongdoanvienTable extends Migration
             $table->string('cdv_tongiao');
             $table->date('cdv_ngayvaocd');
             $table->date('cdv_ngayvaonganh');
-            $table->tinyInteger('cdv_trangthai');
+            $table->tinyInteger('cdv_trangthai')->comment('1 la hien thi 0 la an thong tin');
             $table->string('cdv_hinhanh');
             $table->timestamps();
 

@@ -13,7 +13,8 @@ class ThongTinNguoiDK extends Model
         'dkt_id',
         'ttndk_ten',
         'ttndk_gt',
-        'ttndk_sdt'
+        'ttndk_sdt',
+        'ttndk_trangthai'
     ];
 
      #một thông tin người đăng kí có thể đăng ký nhiều dk_tour

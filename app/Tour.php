@@ -16,7 +16,7 @@ class Tour extends Model
         'tour_chiphi',
         'tour_soluong',
         'tour_phuongtien',
-        'tour_daily',
+        'tour_diadiem',
         'tour_trongnam',
         'tour_trangthai'   
     ];

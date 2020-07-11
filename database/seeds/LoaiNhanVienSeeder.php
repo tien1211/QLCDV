@@ -13,35 +13,11 @@ class LoaiNhanVienSeeder extends Seeder
     {
         $arr=[
             [
-                'lnv_ten' => '',
-                'lnv_trangthai' => ''
+                'lnv_ten' => 'Nhân Viên Chính Thức',
+                'lnv_trangthai' => 1
             ],[
-                'lnv_ten' => '',
-                'lnv_trangthai' => ''
-            ],[
-                'lnv_ten' => '',
-                'lnv_trangthai' => ''
-            ],[
-                'lnv_ten' => '',
-                'lnv_trangthai' => ''
-            ],[
-                'lnv_ten' => '',
-                'lnv_trangthai' => ''
-            ],[
-                'lnv_ten' => '',
-                'lnv_trangthai' => ''
-            ],[
-                'lnv_ten' => '',
-                'lnv_trangthai' => ''
-            ],[
-                'lnv_ten' => '',
-                'lnv_trangthai' => ''
-            ],[
-                'lnv_ten' => '',
-                'lnv_trangthai' => ''
-            ],[
-                'lnv_ten' => '',
-                'lnv_trangthai' => ''
+                'lnv_ten' => 'Nhân Viên Thực Tập',
+                'lnv_trangthai' => 1
             ]
         ];
         DB::table('LoaiNhanVien')->insert($arr);

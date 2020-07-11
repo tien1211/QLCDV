@@ -13,23 +13,11 @@ class LichTrinhSeeder extends Seeder
     {
         $arr=[
             [
-                'lt_file' => '',
-                'cv_trangthai' => '',
+                'lt_file' => 'LichTrinhVungTau.xlsx',
+                'lt_trangthai' => 1
             ],[
-                'lt_file' => '',
-                'cv_trangthai' => '',
-            ],[
-                'lt_file' => '',
-                'cv_trangthai' => '',
-            ],[
-                'lt_file' => '',
-                'cv_trangthai' => '',
-            ],[
-                'lt_file' => '',
-                'cv_trangthai' => '',
-            ],[
-                'lt_file' => '',
-                'cv_trangthai' => '',
+                'lt_file' => 'LichTrinhCanTho.xlsx',
+                'lt_trangthai' => 1
             ]
         ];
         DB::table('LichTrinh')->insert($arr);

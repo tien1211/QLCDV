@@ -16,7 +16,7 @@ class CreateTochucTable extends Migration
         Schema::create('ToChuc', function (Blueprint $table) {
             $table->increments('tc_id');
             $table->string('tc_ten');
-            $table->tinyInteger('tc_trangthai');
+            $table->tinyInteger('tc_trangthai')->comment('1 la hien thi 0 la an thong tin');
             $table->string('tc_tructhuoc');
             $table->timestamps();
         });

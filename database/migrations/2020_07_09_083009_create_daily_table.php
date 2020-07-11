@@ -16,7 +16,7 @@ class CreateDailyTable extends Migration
         Schema::create('DaiLy', function (Blueprint $table) {
             $table->increments('dl_id');
             $table->string('dl_ten');
-            $table->tinyInteger('dl_trangthai');
+            $table->tinyInteger('dl_trangthai')->comment('1 la hien thi 0 la an thong tin');
             $table->timestamps();
         });
     }

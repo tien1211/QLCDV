@@ -16,7 +16,7 @@ class CreateLichtrinhTable extends Migration
         Schema::create('LichTrinh', function (Blueprint $table) {
             $table->increments('lt_id');
             $table->string('lt_file');
-            $table->tinyInteger('lt_trangthai');
+            $table->tinyInteger('lt_trangthai')->comment('1 la hien thi 0 la an thong tin');
             $table->timestamps();
         });
     }
