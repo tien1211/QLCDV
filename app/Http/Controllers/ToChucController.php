@@ -16,7 +16,7 @@ class ToChucController extends Controller
     {
         $tochuc = ToChuc::find(1)->get();
         //dd($tochuc);
-        return view('admin.to_chuc')->with('tochuc',$tochuc);
+        return view('admin.layout.master')->with('tochuc',$tochuc);
     }
 
     /**
