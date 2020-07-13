@@ -24,10 +24,10 @@
             <th>Loại Nhân Viên</th>
             <th>Mức Hổ Trợ</th>
             <th>Họ Tên</th>
-            <th>Trạng Thái</th>
-            <th data-breakpoints="xs">Job Title</th>
-           
-            <th data-breakpoints="xs sm md" data-title="DOB">Date of Birth</th>
+            <th>Ngày Sinh</th>
+            <th>Giới tính</th>
+            <th>Nguyên quán</th>
+            <th>Cập Nhật</th>
           </tr>
         </thead>
         <tbody>
@@ -40,10 +40,14 @@
                     <td>{{$cdv->LoaiNhanVien->lnv_ten}}</td>
                     <td>{{$cdv->MucHoTro->mht_nam}}</td>
                     <td>{{$cdv->cdv_ten}}</td>
-                    <td>{{$cdv->cdv_trangthai}}</td>
-                    <td>High School History Teacher</td>
-                    
-                    <td>July 25th 1960</td>
+                    <td>{{date('d/m/Y',strtotime($cdv->cdv_ngaysinh))}}</td>
+                    @if($cdv->cdv_gioitinh == 1)
+                    <td>Nam</td>
+                    @else
+                    <td>Nữ</td>
+                    @endif
+                <td>{{$cdv->cdv_nguyenquan}}</td>
+                <td></td>
             </tr>
              @endif
           @endforeach

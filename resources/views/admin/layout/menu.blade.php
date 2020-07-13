@@ -14,8 +14,8 @@
                         <span>Quản lý công đoàn viên</span>
                     </a>
                     <ul class="sub">
-						<li><a href="typography.html">Danh Sách Công Đoàn Viên</a></li>
-						<li><a href="glyphicon.html">Thêm Công Đoàn Viên</a></li>
+						<li><a href="{{route('CDV_DanhSach')}}">Danh Sách Công Đoàn Viên</a></li>
+                    <li><a href="{{route('CDV_Them')}}">Thêm Công Đoàn Viên</a></li>
                         <li><a href="grids.html">Grids</a></li>
                     </ul>
                 </li>
