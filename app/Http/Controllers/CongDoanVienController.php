@@ -8,7 +8,7 @@ class CongDoanVienController extends Controller
 {
     public function getDanhSach(){
         $CongDoanVien = CongDoanVien::all();
-        return view("admin.congdoanvien.danhsach")->with('cdv',$CongDoanVien);
+        return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien);
     }
 
 
