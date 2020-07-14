@@ -29,6 +29,7 @@
             <th>Phương tiện</th>
             <th>Địa điểm</th>
             <th>Trong năm</th>
+            <th>Chức năng</th>
           </tr>
         </thead>
 
@@ -45,6 +46,10 @@
                     <td>{{$t->tour_phuongtien}}</td>
                     <td>{{$t->tour_diadiem}}</td>
                     <td>{{$t->tour_trongnam}}</td>
+                    <td>
+                        <i class='fas fa-pencil-alt'></i><a href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}">Sửa</a>
+                        <i class='fas fa-trash-alt'></i><a href="">Xóa</a>
+                      </td>
 
 
           @endforeach
