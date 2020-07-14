@@ -32,6 +32,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/CDV_SuaCDV/{id}', 'CongDoanVienController@postSua')->name('CDV_XLSua');
         //Form Xóa Công Đoàn Viên
         Route::post('/CDV_XoaCDV/{id}', 'CongDoanVienController@postXoa')->name('CDV_XLXoa');
+        //Tìm kiếm
+        Route::post('/CDV_Timkiem', 'CongDoanVienController@postTimkiem')->name('CDV_Timkiem');
     });
     Route::group(['prefix' => 'ToChuc'], function () {
         // Thông tin tổ Chức

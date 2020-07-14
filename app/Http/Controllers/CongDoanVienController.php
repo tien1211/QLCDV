@@ -33,5 +33,11 @@ class CongDoanVienController extends Controller
     public function postThem(Request $request){
 
     }
+    public function postTimkiem(Request $request){
+        $tukhoa = $request->tukhoa;
+        $CongDoanVien = CongDoanVien::where('cdv_ten','like',"%$tukhoa%")->orwhere('cdv_nguyenquan','like',"%$tukhoa%")->orwhere('cdv_diachi','like',"%$tukhoa%")->get();
+        //dd($CongDoanVien);
+        return view('admin.CongDoanVien.timkiem')->with('CongDoanVien',$CongDoanVien);
+    }
 
 }

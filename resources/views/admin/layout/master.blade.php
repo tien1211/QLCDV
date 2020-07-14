@@ -42,18 +42,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--sidebar start-->
 <aside>
     <div id="sidebar" class="nav-collapse">
-        @include('admin.layout.menu')
+    @include('admin.layout.menu')
     </div>
 </aside>
 <!--sidebar end-->
 <!--main content start-->
 <section id="main-content">
 	<section class="wrapper">
-        @yield('admin_content')
+	@yield('admin_content')
     <section>
 </section>
 
-@yield('script')
+	@yield('script')
 <!--main content end-->
 </section>
 <script src="{{asset('backend/js/bootstrap.js')}}"></script>
