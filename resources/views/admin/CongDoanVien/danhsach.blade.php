@@ -54,7 +54,7 @@
                   <i class='fas fa-trash-alt'></i><a href="admin/CongDoanVien/CDV_XoaCDV/{{$cdv->cdv_id}}">Xóa</a>
                 </td>
             </tr>
-             @endif
+            @endif
           @endforeach
         </tbody>
       </table>

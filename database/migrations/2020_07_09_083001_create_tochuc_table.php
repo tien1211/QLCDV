@@ -18,8 +18,8 @@ class CreateTochucTable extends Migration
             $table->string('tc_ten');
             $table->tinyInteger('tc_trangthai')->comment('1 la hien thi 0 la an thong tin');
             $table->string('tc_tructhuoc');
-            $table->string('tc_gioithieu');
-            $table->string('tc_nhiemvu');
+            $table->text('tc_gioithieu');
+            $table->text('tc_nhiemvu');
             $table->timestamps();
         });
     }

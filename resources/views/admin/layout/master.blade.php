@@ -31,6 +31,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{asset('backend/js/jquery2.0.3.min.j')}}s"></script>
 <script src="{{asset('backend/js/raphael-min.js')}}"></script>
 <script src="{{asset('backend/js/morris.js')}}"></script>
+<script type="text/javascript" language="javascript" src="{{asset('ckeditor/ckeditor.js')}}"></script>
+<script type="text/javascript" language="javascript" src="{{asset('ckfinder/ckfinder.js')}}"></script>
 </head>
 <body>
 <section id="container">
