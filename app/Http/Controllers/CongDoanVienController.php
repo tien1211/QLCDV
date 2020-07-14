@@ -245,5 +245,12 @@ class CongDoanVienController extends Controller
             Session::flash('alert-info', 'Cập Nhật thành công!!!');
             return redirect()->route('CDV_Sua');  
     }
+    
+    public function postTimkiem(Request $request){
+        $tukhoa = $request->tukhoa;
+        $CongDoanVien = CongDoanVien::where('cdv_ten','like',"%$tukhoa%")->orwhere('cdv_nguyenquan','like',"%$tukhoa%")->orwhere('cdv_diachi','like',"%$tukhoa%")->get();
+        //dd($CongDoanVien);
+        return view('admin.CongDoanVien.timkiem')->with('CongDoanVien',$CongDoanVien);
+    }
 
 }

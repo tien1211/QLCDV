@@ -16,7 +16,7 @@
             </header>
             <div class="panel-body">
                 <div class="position-center">
-                    <form role="form"action="{{route('LCN_ToChuc')}}" method="post">
+                    <form role="form" action="{{route('LCN_ToChuc')}}" method="post">
                         {{ csrf_field() }}
                     <div class="form-group">
                         <label for="tc_ten">Tên tổ chức</label>

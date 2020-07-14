@@ -23,7 +23,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'CongDoanVien'], function () {
         //Danh Sách Công Đoàn Viên
         Route::get('/CDV_DS', 'CongDoanVienController@getDanhSach')->name('CDV_DanhSach');
-        
+
         //Form Thêm Công Đoàn Viên
         Route::get('/CDV_FormThem', 'CongDoanVienController@getThem')->name('CDV_Them');
         Route::post('/CDV_ThemCDV', 'CongDoanVienController@postThem')->name('CDV_XLThem');
@@ -32,8 +32,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/CDV_SuaCDV/{id}', 'CongDoanVienController@postSua')->name('CDV_XLSua');
         //Form Xóa Công Đoàn Viên
         Route::post('/CDV_XoaCDV/{id}', 'CongDoanVienController@postXoa')->name('CDV_XLXoa');
+        //Tìm kiếm
+        Route::post('/CDV_Timkiem', 'CongDoanVienController@postTimkiem')->name('CDV_Timkiem');
     });
     Route::group(['prefix' => 'ToChuc'], function () {
+<<<<<<< HEAD
+
+=======
         // Thông tin tổ Chức
         Route::get('/ToChuc', 'ToChucController@getToChuc')->name('TT_ToChuc');
         //Form cập nhật tổ chức
@@ -41,8 +46,24 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/LCN_ToChuc', 'ToChucController@postSua')->name('LCN_ToChuc');
         
         
+>>>>>>> 5ad122cd0e6638c1e345cfbeaa008aa0ce3c6c79
     });
     Route::group(['prefix' => 'Tour'], function () {
-        
+        //Danh sach tour
+        Route::get('TOUR_DS','TourController@getDanhSach')->name('TOUR_DanhSach');
+
+        //Form thêm tour
+        Route::get('/TOUR_ThemTour','TourController@getThem')->name('TOUR_Them');
+        Route::post('/TOUR_ThemTour','TourController@postThem')->name('TOUR_XLThem');
+
+        //Form sửa tour
+        Route::get('/TOUR_FormSua/{id}','TourController@getSua')->name('TOUR_Sua');
+        Route::post('/TOUR_SuaTour/{id}','TourController@postSua')->name('TOUR_XLSua');
+
+        //Form xóa tour
+        Route::post('/TOUR_XoaTour{id}','TourController@postXoa')->name('TOUR_XLXoa');
+
+
     });
+
 });

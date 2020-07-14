@@ -56,7 +56,7 @@
                 <td>{{$cdv->cdv_nguyenquan}}</td>
                 <td><a href=""><button type="button" class="btn btn-outline-info">Chi Tiết</button></a></td>
                 <td>
-                  <i class='fas fa-pencil-alt'></i><a href="{{route('CDV_Sua',['id'=>$cdv->cdv_id])}}">Sửa</a>
+                  <i class='fas fa-pencil-alt'></i><a href="admin/CongDoanVien/CDV_FormSua/{{$cdv->cdv_id}}">Sửa</a>
                   <i class='fas fa-trash-alt'></i><a href="admin/CongDoanVien/CDV_XoaCDV/{{$cdv->cdv_id}}">Xóa</a>
                 </td>
             </tr>
