@@ -29,7 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="backend/css/monthly.css">
 <!-- //calendar -->
 <!-- //font-awesome icons -->
-<script src="backend/js/jquery2.0.3.min.j"></script>
+<script src="backend/js/jquery2.0.3.min.js"></script>
 <script src="backend/js/raphael-min.js"></script>
 <script src="backend/js/morris.js"></script>
 <script type="text/javascript" language="javascript" src="ckeditor/ckeditor.js"></script>

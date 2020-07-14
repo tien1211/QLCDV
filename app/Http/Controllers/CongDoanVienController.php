@@ -139,8 +139,9 @@ class CongDoanVienController extends Controller
     public function getSua($id){
         
         $CongDoanVien =  CongDoanVien::find($id);
+        $TaiKhoan =  TaiKhoan::find($id);
         
-        return view('admin.CongDoanVien.sua')->with('CongDoanVien',$CongDoanVien);
+        return view('admin.CongDoanVien.sua')->with('CongDoanVien',$CongDoanVien)->with('TaiKhoan',$TaiKhoan);
         
     }
 

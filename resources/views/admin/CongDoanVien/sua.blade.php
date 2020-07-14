@@ -262,7 +262,7 @@
                   <div class="form-group ">
                     <label for="firstname" class="control-label col-lg-3">Ảnh Đại Diện</label>
                     <div class="col-lg-6">
-                      <img alt="" src="upload/cdv/{{$CongDoanVien->cdv_hinhanh}}">
+                      <img alt="" src="upload/cdv/{{$CongDoanVien->cdv_hinhanh}}" style="width: 15rem">
                       </div>
                   </div>
                   <div class="form-group ">
@@ -282,7 +282,7 @@
                       <div class="form-group ">
                           <label for="username" class="control-label col-lg-3">Username</label>
                           <div class="col-lg-6">
-                              <input class="form-control " id="username" name="tk_tendangnhap" type="text">
+                          <input class="form-control " id="username" value=""  name="tk_tendangnhap" type="text">
                           
                               @if($errors->has('tk_tendangnhap')) 
                               <div style="color:red">{{ $errors->first('tk_tendangnhap')}}</div>
@@ -293,10 +293,12 @@
                    {{-- Tên Đăng nhập    --}}
 
                    {{-- Mật khẩu --}}
+                   
                       <div class="form-group ">
                           <label for="password" class="control-label col-lg-3">Password</label>
                           <div class="col-lg-6">
-                              <input class="form-control " id="password" name="tk_matkhau" type="password">
+                            <h5><input type="checkbox" id="changepassword" name="changepassword"> Đổi mật khẩu:</h5>
+                              <input class="form-control password" id="password" name="tk_matkhau" type="password" disabled>
                               @if($errors->has('tk_matkhau')) 
                               <div style="color:red">{{ $errors->first('tk_matkhau')}}</div>
                               @endif  
@@ -308,7 +310,7 @@
                       <div class="form-group ">
                           <label for="confirm_password" class="control-label col-lg-3">Confirm Password</label>
                           <div class="col-lg-6">
-                              <input class="form-control " id="confirm_password" name="confirm_password" type="password">
+                              <input class="form-control" id="confirm_password" name="confirm_password" type="password" disabled>
                               @if($errors->has('confirm_password')) 
                               <div style="color:red">{{ $errors->first('confirm_password')}}</div>
                               @endif  
@@ -351,4 +353,19 @@
       </section>
   </div>
 </div>
+@endsection
+
+@section('script')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#changepassword").change(function(){
+            if($(this).is(":checked")){
+                $(".password").removeAttr('disabled');
+            }else{
+                $(".password").attr('disabled','');
+            }
+        });
+    });
+
+</script>
 @endsection
