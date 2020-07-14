@@ -11,7 +11,9 @@ class ToChuc extends Model
     protected $fillable = [
         'tc_ten',
         'tc_trangthai',
-        'tc_tructhuoc'
+        'tc_tructhuoc',
+        'tc_gioithieu',
+        'tc_nhiemvu'
     ];
     #một tổ chức có nhìu công đoàn viên
     public function CongDoanVien (){
