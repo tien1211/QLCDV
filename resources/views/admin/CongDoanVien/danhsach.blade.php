@@ -4,6 +4,16 @@
  <div class="panel panel-default">
     <div class="panel-heading">
       Danh Sách Công Đoàn Viên
+      <div class="col-4">
+        <div class="flash-message">
+          @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+            @if(Session::has('alert-' . $msg))
+            <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
+            ata-dismiss="alert" aria-label="close">&times;</a></p>
+            @endif
+          @endforeach
+      </div>
+      </div>
     </div>
     <form action="{{route('CDV_Timkiem')}}" method="post" role="form">
     <div class="panel-body" style="float: right">
@@ -24,6 +34,7 @@
           "enabled": true
         }}'>
         <thead>
+          
           <tr>
             <th data-breakpoints="xs">ID</th>
             <th>Chức vụ</th>
@@ -57,7 +68,7 @@
                 <td><a href=""><button type="button" class="btn btn-outline-info">Chi Tiết</button></a></td>
                 <td>
                   <i class='fas fa-pencil-alt'></i><a href="{{route('CDV_Sua',['id'=>$cdv->cdv_id])}}">Sửa</a>
-                  <i class='fas fa-trash-alt'></i><a href="admin/CongDoanVien/CDV_XoaCDV/{{$cdv->cdv_id}}">Xóa</a>
+                  <i class='fas fa-trash-alt'></i><a href="{{route('CDV_Xoa',['id'=>$cdv->cdv_id])}}">Xóa</a>
                 </td>
             </tr>
             @endif
