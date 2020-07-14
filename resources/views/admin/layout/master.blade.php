@@ -12,25 +12,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<base href="{{asset('')}}">
 <!-- bootstrap-css -->
-<link rel="stylesheet" href="{{asset('backend/css/bootstrap.min.css')}}" >
+<link rel="stylesheet" href="backend/css/bootstrap.min.css" >
 <!-- //bootstrap-css -->
 <!-- Custom CSS -->
-<link href="{{asset('backend/css/style.css')}}" rel='stylesheet' type='text/css' />
-<link href="{{asset('backend/css/style-responsive.css')}}" rel="stylesheet"/>
+<link href="backend/css/style.css" rel='stylesheet' type='text/css' />
+<link href="backend/css/style-responsive.css" rel="stylesheet"/>
 <!-- font CSS -->
 <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 <!-- font-awesome icons -->
-<link rel="stylesheet" href="{{asset('backend/css/font.css')}}" type="text/css"/>
-<link href="{{asset('backend/css/font-awesome.css')}}" rel="stylesheet"> 
-<link rel="stylesheet" href="{{asset('backend/css/morris.css')}}" type="text/css"/>
+<link rel="stylesheet" href="backend/css/font.css" type="text/css"/>
+<link href="backend/css/font-awesome.css" rel="stylesheet"> 
+<link rel="stylesheet" href="backend/css/morris.css" type="text/css"/>
 <!-- calendar -->
-<link rel="stylesheet" href="{{asset('backend/css/monthly.css')}}">
+<link rel="stylesheet" href="backend/css/monthly.css">
 <!-- //calendar -->
 <!-- //font-awesome icons -->
-<script src="{{asset('backend/js/jquery2.0.3.min.j')}}s"></script>
-<script src="{{asset('backend/js/raphael-min.js')}}"></script>
-<script src="{{asset('backend/js/morris.js')}}"></script>
+<script src="backend/js/jquery2.0.3.min.j"></script>
+<script src="backend/js/raphael-min.js"></script>
+<script src="backend/js/morris.js"></script>
+<script type="text/javascript" language="javascript" src="ckeditor/ckeditor.js"></script>
+<script type="text/javascript" language="javascript" src="ckfinder/ckfinder.js"></script>
 </head>
 <body>
 <section id="container">
@@ -54,13 +57,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 @yield('script')
 <!--main content end-->
 </section>
-<script src="{{asset('backend/js/bootstrap.js')}}"></script>
-<script src="{{asset('backend/js/jquery.dcjqaccordion.2.7.js')}}"></script>
-<script src="{{asset('backend/js/scripts.js')}}"></script>
-<script src="{{asset('backend/js/jquery.slimscroll.js')}}"></script>
-<script src="{{asset('backend/js/jquery.nicescroll.js')}}"></script>
+<script src="backend/js/bootstrap.js"></script>
+<script src="backend/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="backend/js/scripts.js"></script>
+<script src="backend/js/jquery.slimscroll.js"></script>
+<script src="backend/js/jquery.nicescroll.js"></script>
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
-<script src="{{asset('backend/js/jquery.scrollTo.js')}}"></script>
+<script src="backend/js/jquery.scrollTo.js"></script>
 <!-- morris JavaScript -->	
 <script>
 	$(document).ready(function() {
@@ -118,7 +121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	});
 	</script>
 <!-- calendar -->
-	<script type="text/javascript" src="{{asset('backend/js/monthly.js')}}"></script>
+	<script type="text/javascript" src="backend/js/monthly.js"></script>
 	<script type="text/javascript">
 		$(window).load( function() {
 

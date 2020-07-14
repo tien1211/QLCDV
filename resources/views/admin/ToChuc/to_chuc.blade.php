@@ -6,10 +6,12 @@
         foreach($tochuc as $key => $tc){
         $tc_ten = $tc->tc_ten;
         $tc_tructhuoc = $tc->tc_tructhuoc;
+        $tc_gioithieu = $tc->tc_gioithieu;
+        $tc_nhiemvu = $tc->tc_nhiemvu;
         }
         ?>
         <div class="panel-heading">
-            <h4 style="text-align: center; color: #fe980f ">Thông tin Tổ chức</h4>
+            <h4 style="text-align: center; color: #fe980f; display: inline-block">Thông tin Tổ chức</h4>
         </div>
         <div class="table-responsive">
         <?php 
@@ -19,20 +21,29 @@
             Session::put('message',null);
         }
         ?>
-        <table class="table table-striped b-t b-light">
-          <thead>
-            <tr>
-              <th>Tên tổ chức</th>
-              <th>Trực thuộc</th>
-            </tr>
-          </thead>
+        <!-- <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+              <a style="font-weight: bold; color: #777;">Tên tổ chức: </a>{{$tc_ten}}
+            </div>
+            <div class="col-sm-6">
+              <a style="font-weight: bold; color: #777;">Tên tổ chức: </a>{{$tc_ten}}
+            </div>
+          </div> -->
+        <table class="table">
           <tbody>
             <tr>
-            <td>{{$tc_ten}}</td>
-            <td>{{$tc_tructhuoc}}</td>
+            <td><a style="font-weight: bold; color: #777;">Tên tổ chức: </a>{!!$tc_ten!!}</td>
+            <td><a style="font-weight: bold; color: #777;">Trực thuộc: </a>{!!$tc_tructhuoc!!}</td>
+            <tr>
+            <td colspan="2"><a style="font-weight: bold; color: #777;">Giới Thiệu: </a>{!!$tc_gioithieu!!}</td>
+            </tr>
+            <tr>
+            <td colspan="2"><a style="font-weight: bold; color: #777;">Nhiệm vụ: </a>{!!$tc_nhiemvu!!}</td>
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
 	</div>
 </div>

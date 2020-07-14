@@ -4,84 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ToChuc;
+use Illuminate\Support\Facades\Redirect;
 
 class ToChucController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function getToChuc()
     {
         $tochuc = ToChuc::find(1)->get();
         //dd($tochuc);
-        return view('admin.layout.master')->with('tochuc',$tochuc);
+        return view('admin.ToChuc.to_chuc')->with('tochuc',$tochuc);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function getSua()
     {
-        //
+        $tochuc = ToChuc::find(1)->get();
+        return view('admin.ToChuc.capnhat')->with('tochuc',$tochuc);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function postSua(Request $request)
     {
-        //
-    }
+        $data = array();
+        $data['tc_ten'] = $request->tc_ten;
+        $data['tc_tructhuoc'] = $request->tc_tructhuoc;
+        $data['tc_gioithieu'] = $request->tc_gioithieu;
+        $data['tc_nhiemvu'] = $request->tc_nhiemvu;
+        $date['updated_at'] = date('Y-M-D');
+        ToChuc::where('tc_id',1)->update($data);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return Redirect::back();
     }
 }

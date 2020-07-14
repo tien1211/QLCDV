@@ -2,10 +2,15 @@
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="index.html">
+                    <a class="" href="index.html">
                         <i class="fa fa-dashboard"></i>
                         <span>Tổ Chức</span>
                     </a>
+                        <ul class="sub">
+                            <li><a href="{{route('TT_ToChuc')}}">Thông tin tổ chức</a></li>
+                        <li><a href="{{route('CN_ToChuc')}}">Cập nhật thông tin tổ chức</a></li>
+                            <li><a href="grids.html">Grids</a></li>
+                    </ul>
                 </li>
 
                 <li class="sub-menu">
