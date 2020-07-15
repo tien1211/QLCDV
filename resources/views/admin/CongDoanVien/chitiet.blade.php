@@ -108,13 +108,13 @@
                     <div class="form-group">
                       <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Giới tính</label>
                       <div class="col-lg-6">
-                          <label class="checkbox-inline">
-                              <input type="checkbox" id="inlineCheckbox1" name="cdv_gioitinh" value="1" @if($CongDoanVien->cdv_gioitinh == 1)
+                          <label class="radio-inline">
+                              <input type="radio" id="inlineCheckbox1" name="cdv_gioitinh" value="1" @if($CongDoanVien->cdv_gioitinh == 1)
                               checked
                              @endif disabled> Nam
                           </label>
-                          <label class="checkbox-inline">
-                              <input type="checkbox" id="inlineCheckbox2" name="cdv_gioitinh" value="0"  @if($CongDoanVien->cdv_gioitinh == 0)
+                          <label class="radio-inline">
+                              <input type="radio" id="inlineCheckbox2" name="cdv_gioitinh" value="0"  @if($CongDoanVien->cdv_gioitinh == 0)
                               checked
                              @endif disabled> Nữ
                           </label>
@@ -289,13 +289,13 @@
                     <div class="form-group">
                       <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Quyền</label>
                       <div class="col-lg-6">
-                          <label class="checkbox-inline">
-                              <input type="checkbox" id="inlineCheckbox1" name="cdv_quyen" value="1" @if($CongDoanVien->cdv_quyen == 1)
+                          <label class="radio-inline">
+                              <input type="radio" id="inlineCheckbox1" name="cdv_quyen" value="1" @if($CongDoanVien->cdv_quyen == 1)
                               checked
                              @endif> Admin
                           </label>
-                          <label class="checkbox-inline">
-                              <input type="checkbox" id="inlineCheckbox2" name="cdv_quyen" value="0" @if($CongDoanVien->cdv_quyen == 0)
+                          <label class="radio-inline">
+                              <input type="radio" id="inlineCheckbox2" name="cdv_quyen" value="0" @if($CongDoanVien->cdv_quyen == 0)
                               checked
                              @endif> Bình Thường
                           </label>
