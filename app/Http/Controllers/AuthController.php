@@ -19,17 +19,17 @@ class AuthController extends Controller
     public function postLogin(Request $request)
     {
         $arr = [
-            'cdv_username' => $request->Username,
-            'cdv_password' => $request->Password
+            'cdv_username' => $request->cdv_username,
+            'password' => $request->password
         ];
 
         if (Auth::attempt($arr)) {
-            //return redirect()->route("admin");#chuyển về trang chủ
-            echo "Thành Công Nè";
+            return redirect()->route("admin");#chuyển về trang chủ
+            
         } else {
-            echo "Thất bại nè";
-            //return redirect()->back()
-            //->withInput()->with("error", "Sai tài khoản hoặc mật khẩu");
+            
+            return redirect()->back()
+            ->withInput()->with("error", "Sai tài khoản hoặc mật khẩu");
         }
     }
 

@@ -41,13 +41,13 @@
 					</span>
 
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="Username" placeholder="Nhập tên đăng nhập.....">
+						<input class="input100" type="text" name="cdv_username" placeholder="Nhập tên đăng nhập.....">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
 					<div class="wrap-input100 rs1 validate-input">
-						<input class="input100" type="password" name="Password" placeholder="Nhập mật khẩu.....">
+						<input class="input100" type="password" name="password" placeholder="Nhập mật khẩu.....">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>

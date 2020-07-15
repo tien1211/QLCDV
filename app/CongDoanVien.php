@@ -32,19 +32,12 @@ class CongDoanVien extends Authenticatable
         'cdv_trangthai',
         'cdv_hinhanh',
         'cdv_username',
-        'cdv_password',
+        'password',
         'cdv_quyen' 
     ];
 
     protected $dates        = ['ngayvaocd','ngayvaonganh'];
     protected $dateFormat   = 'Y-m-d';
-
-
-    public function getAuthPassword()
-    {
-        return $this->cdv_password;
-    }
-
 
     #một công đoàn viên chỉ có 1 chức vụ
     public function ChucVu(){
@@ -66,7 +59,7 @@ class CongDoanVien extends Authenticatable
         return $this->belongsTo('App\MucHoTro','mht_id','mht_id');
     }
 
-    
+   
 
     
 
@@ -76,28 +69,12 @@ class CongDoanVien extends Authenticatable
         return $this->hasMany('App\DK_Tour','cdv_id','cdv_id');
     }
 
-
-
-
-
-    #nhìu
-    /*một phòng có nhiều commet
-    public function comment (){
-        return $this->hasMany('App\comment','p_id','p_id');// agurement 1: model, arg2: foreignkey of comments on comment, arg3 is primiryKey on users
-    }*/
-    #lấy 1
-    /*
-    một cmt chỉ ở 1 phòng
-    public function phong(){
-        return $this->belongsTo('App\phong','p_id','p_id');
-    }
-    */
-    
-    #một
-    /* 
-    
-    public function phone()
+    public function getAuthPassword()
     {
-        return $this->hasOne('App\Phone');
-    }*/
+        return $this->password;
+    }
+
+
+
+   
 }

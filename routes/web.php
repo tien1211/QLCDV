@@ -17,17 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/admin', function () {
-    return view('admin.layout.master')->name('admin');
-});
+    return view('admin.layout.master');
+})->name('admin');
 
 Route::get('/dangnhap','AuthController@getLogin')->name('formLogin');
 Route::post('/dangnhap-xl','AuthController@postLogin')->name('login');
 
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/admin', function () {
-        return view('admin.layout.master');
-    })->name('admin');
+    
     Route::group(['prefix' => 'CongDoanVien'], function () {
         //Danh Sách Công Đoàn Viên
         Route::get('/CDV_DS', 'CongDoanVienController@getDanhSach')->name('CDV_DanhSach');

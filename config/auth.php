@@ -104,6 +104,13 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
+
+        'CongDoanVien' => [
+            'provider' => 'CongDoanVien',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
     ],
 
     /*
