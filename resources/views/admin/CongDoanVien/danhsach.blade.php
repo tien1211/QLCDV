@@ -65,7 +65,7 @@
                     <td>Nữ</td>
                     @endif
                 <td>{{$cdv->cdv_nguyenquan}}</td>
-                <td><a href=""><button type="button" class="btn btn-outline-info">Chi Tiết</button></a></td>
+                <td><a href="{{route('CDV_ChiTiet',['id'=>$cdv->cdv_id])}}"><button type="button" class="btn btn-outline-info">Chi Tiết</button></a></td>
                 <td>
                   <i class='fas fa-pencil-alt'></i><a href="{{route('CDV_Sua',['id'=>$cdv->cdv_id])}}">Sửa</a>
                   <i class='fas fa-trash-alt'></i><a href="{{route('CDV_Xoa',['id'=>$cdv->cdv_id])}}">Xóa</a>

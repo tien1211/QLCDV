@@ -17,9 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/admin', function () {
-    return view('admin.layout.master');
+    return view('admin.layout.master')->name('admin');
 });
+
+Route::get('/dangnhap','AuthController@getLogin')->name('formLogin');
+Route::post('/dangnhap','AuthController@postLogin')->name('Login');
+
+
 Route::group(['prefix' => 'admin'], function () {
+    Route::get('/admin', function () {
+        return view('admin.layout.master');
+    })->name('admin');
     Route::group(['prefix' => 'CongDoanVien'], function () {
         //Danh Sách Công Đoàn Viên
         Route::get('/CDV_DS', 'CongDoanVienController@getDanhSach')->name('CDV_DanhSach');
@@ -32,6 +40,10 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/CDV_SuaCDV/{id}', 'CongDoanVienController@postSua')->name('CDV_XLSua');
         //Form Xóa Công Đoàn Viên
         Route::get('/CDV_XoaCDV/{id}', 'CongDoanVienController@getXoa')->name('CDV_Xoa');
+
+        //Form Chi tiết
+        Route::get('/CDV_ChiTietCDV/{id}', 'CongDoanVienController@getchitietCDV')->name('CDV_ChiTiet');
+        
         //Tìm kiếm
         Route::post('/CDV_Timkiem', 'CongDoanVienController@postTimkiem')->name('CDV_Timkiem');
     });
