@@ -549,6 +549,9 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     width:62%;
     margin: 0 auto;
 }
+.position-right {
+    float: right;
+}
 /*----*/
 .notify-arrow {
     background:url("../images/top-arrow.png") no-repeat;

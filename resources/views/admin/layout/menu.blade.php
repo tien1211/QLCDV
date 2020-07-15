@@ -29,15 +29,8 @@
                         <span>Quản lý Tour</span>
                     </a>
                     <ul class="sub">
-<<<<<<< HEAD
 						<li><a href="typography.html">Danh Sách Tour</a></li>
 						<li><a href="glyphicon.html">Thêm Tour</a></li>
-=======
-                    <li><a href="{{route('TOUR_DanhSach')}}">Danh Sách Tour</a></li>
-						<li><a href="{{route('TOUR_Them')}}">Thêm Tour</a></li>
-                        {{-- <li><a href="{{route('TOUR_Sua',$tour->id)}}">Sửa Tour</a></li>
-                        <li><a href="{{route('TOUR_Xoa',$tour->id)}}">Xóa Tour</a></li> --}}
->>>>>>> f499db3fd33c265e85f0d5443dc8317430d3875e
                     </ul>
                 </li>
             </ul>

@@ -44,6 +44,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/LCN_ToChuc', 'ToChucController@postSua')->name('LCN_ToChuc');
         
         
+
     });
     Route::group(['prefix' => 'Tour'], function () {
         //Danh sach tour
