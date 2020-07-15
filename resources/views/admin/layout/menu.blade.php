@@ -31,8 +31,8 @@
                     <ul class="sub">
                     <li><a href="{{route('TOUR_DanhSach')}}">Danh Sách Tour</a></li>
 						<li><a href="{{route('TOUR_Them')}}">Thêm Tour</a></li>
-                        {{-- <li><a href="{{route('TOUR_Sua',$tour->id)}}">Sửa Tour</a></li>
-                        <li><a href="{{route('TOUR_Xoa',$tour->id)}}">Xóa Tour</a></li> --}}
+                         {{-- <li><a href="{{route('TOUR_Sua',$Tour->id)}}">Sửa Tour</a></li>
+                        <li><a href="{{route('TOUR_Xoa',$Tour->id)}}">Xóa Tour</a></li> --}}
                     </ul>
                 </li>
             </ul>

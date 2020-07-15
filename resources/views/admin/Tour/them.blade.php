@@ -61,13 +61,13 @@
                             <div class="form-group ">
                                 <label for="username" class="control-label col-lg-3">Ngày bắt đầu</label>
                                 <div class="col-lg-6">
-                                    <input class="form-control "  name="tour_ngaybd" type="date">
+                                    <input class="form-control "  name="tour_ngaybd" type="datetime-local">
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label for="password" class="control-label col-lg-3">Ngày kết thúc</label>
                                 <div class="col-lg-6">
-                                    <input class="form-control "  name="tour_ngaykt" type="date">
+                                    <input class="form-control "  name="tour_ngaykt" type="datetime-local">
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -114,17 +114,6 @@
             </section>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
 
 
     </form>

@@ -15,13 +15,33 @@
       </div>
       </div>
     </div>
-    <form action="{{route('CDV_Timkiem')}}" method="post" role="form">
-    <div class="panel-body" style="float: right">
-    {{ csrf_field() }}
-      <input type="text"  name="tukhoa" class="form" placeholder=" Search">
-      <button type="submit" class="btn btn-outline-info">Tìm kiếm</button>
+    <div class="panel-body">
+        <div class="position-right">
+            <form class="form-inline" role="form" action="{{route('CDV_Timkiem')}}" method="post">
+            {{ csrf_field() }}
+            <div class="form-group">
+              <select class="form-control m-bot15" name="lnv_id">
+                <option value="">Chọn mức loại nhân viên...</option>
+                @foreach ($LoaiNhanVien as $lnv)
+                <option value='{{$lnv->lnv_id}}'>{{$lnv->lnv_ten}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group">
+              <select class="form-control m-bot15" name="cv_id">
+                <option value="">Chọn mức chức vụ...</option>
+                @foreach ($ChucVu as $cv)
+                <option value='{{$cv->cv_id}}'>{{$cv->cv_ten}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="tukhoa" placeholder="từ khóa tìm kiếm" name="tukhoa">
+            </div>
+              <button type="submit" class="btn btn-outline-info">Tìm kiếm</button>
+        </form>
+        </div>
     </div>
-    </form>
     <div>
       <table class="table" ui-jq="footable" ui-options='{
         "paging": {

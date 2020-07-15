@@ -53,8 +53,7 @@ Route::group(['prefix' => 'admin'], function () {
         //Form cập nhật tổ chức
         Route::get('/CN_ToChuc', 'ToChucController@getSua')->name('CN_ToChuc');
         Route::post('/LCN_ToChuc', 'ToChucController@postSua')->name('LCN_ToChuc');
-        
-        
+
     });
     Route::group(['prefix' => 'Tour'], function () {
         //Danh sach tour
@@ -65,11 +64,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/TOUR_ThemTour','TourController@postThem')->name('TOUR_XLThem');
 
         //Form sửa tour
-        Route::get('/TOUR_FormSua/{id}','TourController@getSua')->name('TOUR_Sua');
+        Route::get('/TOUR_SuaTour/{id}','TourController@getSua')->name('TOUR_Sua');
         Route::post('/TOUR_SuaTour/{id}','TourController@postSua')->name('TOUR_XLSua');
 
         //Form xóa tour
-        Route::post('/TOUR_XoaTour{id}','TourController@postXoa')->name('TOUR_XLXoa');
+        Route::get('/TOUR_XoaTour/{id}', 'TourController@getXoa')->name('TOUR_Xoa');
 
 
     });

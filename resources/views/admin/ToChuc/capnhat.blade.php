@@ -32,10 +32,10 @@
                         <script type="text/javascript">
                             var editor = CKEDITOR.replace('tc_gioithieu',{
                                 language:'vi',
-                                filebrowserImageBrowseUrl: '../../ckfinder/ckfinder.html?Type=Images',
-                                filebrowserFlashBrowseUrl: '../../ckfinder/ckfinder.html?Type=Flash',
-                                filebrowserImageUploadUrl: '../../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-                                filebrowserFlashUploadUrl: '../../public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+                                filebrowserImageBrowseUrl: '../public/ckfinder/ckfinder.html?Type=Images',
+                                filebrowserFlashBrowseUrl: '../public/ckfinder/ckfinder.html?Type=Flash',
+                                filebrowserImageUploadUrl: '../public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                                filebrowserFlashUploadUrl: '../public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
                             });
                         </script>
                     </div>

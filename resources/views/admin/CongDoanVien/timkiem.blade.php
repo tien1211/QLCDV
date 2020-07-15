@@ -5,13 +5,41 @@
     <div class="panel-heading">
       Danh Sách Công Đoàn Viên
     </div>
-    <form action="{{route('CDV_Timkiem')}}" method="post" role="form">
-    <div class="panel-body" style="float: right">
-    {{ csrf_field() }}
-      <input type="text"  name="tukhoa" class="form" placeholder=" Search">
-      <button type="submit" class="btn btn-outline-info">Tìm kiếm</button>
+    <div class="panel-body">
+        <div class="position-right">
+            <form class="form-inline" role="form" action="{{route('CDV_Timkiem')}}" method="post">
+            {{ csrf_field() }}
+            <div class="form-group">
+              <select class="form-control m-bot15" name="lnv_id">
+                <option value="">Chọn mức loại nhân viên...</option>
+                @foreach($LoaiNhanVien as $lnv)
+                @if($lnv->lnv_id == $lnv_id)
+                <option selected value='{{$lnv->lnv_id}}'>{{$lnv->lnv_ten}}</option>
+                @else
+                <option value='{{$lnv->lnv_id}}'>{{$lnv->lnv_ten}}</option>
+                @endif
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group">
+              <select class="form-control m-bot15" name="cv_id">
+                <option value="">Chọn mức chức vụ...</option>
+                @foreach ($ChucVu as $cv)
+                @if($cv->cv_id == $cv_id)
+                <option selected value='{{$cv->cv_id}}'>{{$cv->cv_ten}}</option>
+                @else
+                <option value='{{$cv->cv_id}}'>{{$cv->cv_ten}}</option>
+                @endif
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="tukhoa" placeholder="{{$tukhoa}}" name="tukhoa">
+            </div>
+              <button type="submit" class="btn btn-outline-info">Tìm kiếm</button>
+        </form>
+        </div>
     </div>
-    </form>
     <div>
       <table class="table" ui-jq="footable" ui-options='{
         "paging": {
@@ -56,7 +84,7 @@
                 <td>{{$cdv->cdv_nguyenquan}}</td>
                 <td><a href=""><button type="button" class="btn btn-outline-info">Chi Tiết</button></a></td>
                 <td>
-                  <i class='fas fa-pencil-alt'></i><a href="admin/CongDoanVien/CDV_FormSua/{{$cdv->cdv_id}}">Sửa</a>
+                  <i class='fas fa-pencil-alt'></i><a href="{{route('CDV_Sua',['id'=>$cdv->cdv_id])}}">Sửa</a>
                   <i class='fas fa-trash-alt'></i><a href="admin/CongDoanVien/CDV_XoaCDV/{{$cdv->cdv_id}}">Xóa</a>
                 </td>
             </tr>
