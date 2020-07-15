@@ -3,7 +3,7 @@
 @section('admin_content')
 
 
-@if(count($errors) > 0)
+{{-- @if(count($errors) > 0)
     <div class="alert alert-danger">
         @foreach ($errors->all() as $err)
             {{$err}}
@@ -11,14 +11,15 @@
 
     </div>
 
-@endif
+@endif --}}
 
-@if(session('thongbao'))
+{{-- @if(session('thongbao'))
     <div class="alert alert-success">
           {{session('thongbao')}}
     </div>
 
-@endif
+@endif --}}
+
 
 <form class="cmxform form-horizontal" enctype="multipart/form-data" method="post" action="{{route('TOUR_XLSua',['id'=> $Tour->tour_id])}}" novalidate="novalidate" >
 
@@ -35,6 +36,7 @@
                         <a class="fa fa-times" href="javascript:;"></a>
                      </span>
                 </header>
+
                 <div class="panel-body">
                     <div class="form">
 

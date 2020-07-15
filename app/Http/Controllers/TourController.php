@@ -128,8 +128,9 @@ class TourController extends Controller
         $Tour->tour_trongnam = $request->tour_trongnam;
         $Tour->tour_trangthai = 1;
         $Tour->save();
-
-        return redirect()->route('TOUR_DanhSach')->with('thongbao','Bạn đã sửa thành công');
+        Session::put('message','Sửa thành công!!!');
+                // Session::flash('alert-info', 'Sửa thành công!!!');
+        return redirect()->route('TOUR_DanhSach');
     }
 
 
