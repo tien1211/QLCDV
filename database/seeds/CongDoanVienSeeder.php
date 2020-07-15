@@ -31,7 +31,10 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_ngayvaocd' => '2016-05-20',
                 'cdv_ngayvaonganh' => '2016-09-03',
                 'cdv_trangthai' => 1,
-                'cdv_hinhanh' => 'hihi1.png'  
+                'cdv_hinhanh' => 'hihi1.png',
+                'cdv_username' => 'nhuttruong',
+                'cdv_password' => bcrypt('truong1234'),
+                'cdv_quyen' => 1
             ],[
                 'tc_id' => 1,
                 'cv_id' => 2,
@@ -51,7 +54,10 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_ngayvaocd' => '2016-05-06',
                 'cdv_ngayvaonganh' => '2016-06-07',
                 'cdv_trangthai' => 1,
-                'cdv_hinhanh' => 'hihi2.png'  
+                'cdv_hinhanh' => 'hihi2.png',  
+                'cdv_username' => 'phuchuynh',
+                'cdv_password' => bcrypt('phuc1234'),
+                'cdv_quyen' => 1,
             ],[
                 'tc_id' => 1,
                 'cv_id' => 3,
@@ -71,7 +77,10 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_ngayvaocd' => '2016-05-15',
                 'cdv_ngayvaonganh' => '2016-03-10',
                 'cdv_trangthai' => 1,
-                'cdv_hinhanh' => 'hihi3.png' 
+                'cdv_hinhanh' => 'hihi3.png', 
+                'cdv_username' => 'tienb1607034',
+                'cdv_password' => bcrypt('tien1211'),
+                'cdv_quyen' => 1,
             ],[
                 'tc_id' => 1,
                 'cv_id' => 5,
@@ -79,7 +88,7 @@ class CongDoanVienSeeder extends Seeder
                 'mht_id' => 1,
                 'cdv_ten' => 'Nguyễn Ngọc Linh',
                 'cdv_ngaysinh' => '1998-11-5',
-                'cdv_gioitinh' => '0',
+                'cdv_gioitinh' => 0,
                 'cdv_cmnd' => '326584125',
                 'cdv_nguyenquan' => 'Sóc Moon',
                 'cdv_diachi' => '456 American Xuyên',
@@ -91,7 +100,10 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_ngayvaocd' => '2017-02-03',
                 'cdv_ngayvaonganh' => '2018-06-03',
                 'cdv_trangthai' => 1,
-                'cdv_hinhanh' => 'hihi4.png'
+                'cdv_hinhanh' => 'hihi4.png',
+                'cdv_username' => 'hehehe1212',
+                'cdv_password' => bcrypt('hehehe1234'),
+                'cdv_quyen' => 0
             ],
 
 
@@ -115,7 +127,10 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_ngayvaocd' => '2008-05-05',
                 'cdv_ngayvaonganh' => '2007-03-09',
                 'cdv_trangthai' => 1,
-                'cdv_hinhanh' => 'hihi5.png'  
+                'cdv_hinhanh' => 'hihi5.png' ,
+                'cdv_username' => 'hihihi1212',
+                'cdv_password' => bcrypt('hihihi1234'),
+                'cdv_quyen' => 0
             ],[
                 'tc_id' => 1,
                 'cv_id' => 3,
@@ -135,7 +150,10 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_ngayvaocd' => '2016-01-06',
                 'cdv_ngayvaonganh' => '2016-03-10',
                 'cdv_trangthai' => 1,
-                'cdv_hinhanh' => 'hihi6.png'  
+                'cdv_hinhanh' => 'hihi6.png' ,
+                'cdv_username' => 'hahaha1212',
+                'cdv_password' => bcrypt('hahaha1234'),
+                'cdv_quyen' => 0
             ],[
                 'tc_id' => 1,
                 'cv_id' => 4,
@@ -155,7 +173,11 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_ngayvaocd' => '2016-02-05',
                 'cdv_ngayvaonganh' => '2016-03-10',
                 'cdv_trangthai' => 1,
-                'cdv_hinhanh' => 'hihi7.png' 
+                'cdv_hinhanh' => 'hihi7.png' ,
+                'cdv_username' => 'ngoclinh1212',
+                'cdv_password' => bcrypt('ngoclinh1234'),
+                'cdv_quyen' => 0
+
             ],[
                 'tc_id' => 1,
                 'cv_id' => 5,
@@ -163,7 +185,7 @@ class CongDoanVienSeeder extends Seeder
                 'mht_id' => 1,
                 'cdv_ten' => 'Sóc Kha',
                 'cdv_ngaysinh' => '1998-06-05',
-                'cdv_gioitinh' => '0',
+                'cdv_gioitinh' => 0,
                 'cdv_cmnd' => '326566125',
                 'cdv_nguyenquan' => 'Trà Vinh',
                 'cdv_diachi' => '456 American Xuyên',
@@ -175,7 +197,10 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_ngayvaocd' => '2016-06-03',
                 'cdv_ngayvaonganh' => '2018-02-03',
                 'cdv_trangthai' => 1,
-                'cdv_hinhanh' => 'hihi8.png'
+                'cdv_hinhanh' => 'hihi8.png',
+                'cdv_username' => 'sockha1212',
+                'cdv_password' => bcrypt('sockha1234'),
+                'cdv_quyen' => 0
             ],[
                 'tc_id' => 1,
                 'cv_id' => 5,
@@ -183,7 +208,7 @@ class CongDoanVienSeeder extends Seeder
                 'mht_id' => 1,
                 'cdv_ten' => 'Hải Sang',
                 'cdv_ngaysinh' => '1998-08-05',
-                'cdv_gioitinh' => '1',
+                'cdv_gioitinh' => 1,
                 'cdv_cmnd' => '326366125',
                 'cdv_nguyenquan' => 'Cần Thơ',
                 'cdv_diachi' => '6 Cần Thơ',
@@ -195,7 +220,10 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_ngayvaocd' => '2006-06-03',
                 'cdv_ngayvaonganh' => '2018-02-03',
                 'cdv_trangthai' => 1,
-                'cdv_hinhanh' => 'hihi9.png'
+                'cdv_hinhanh' => 'hihi9.png',
+                'cdv_username' => 'haisang1212',
+                'cdv_password' => bcrypt('haisang1234'),
+                'cdv_quyen' => 0
             ],[
                 'tc_id' => 1,
                 'cv_id' => 5,
@@ -203,7 +231,7 @@ class CongDoanVienSeeder extends Seeder
                 'mht_id' => 1,
                 'cdv_ten' => 'JohnSon',
                 'cdv_ngaysinh' => '1976-06-05',
-                'cdv_gioitinh' => '0',
+                'cdv_gioitinh' => 0,
                 'cdv_cmnd' => '326563625',
                 'cdv_nguyenquan' => 'Money Giang',
                 'cdv_diachi' => '45 Tiền Giang',
@@ -215,7 +243,10 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_ngayvaocd' => '2016-06-03',
                 'cdv_ngayvaonganh' => '2018-02-03',
                 'cdv_trangthai' => 1,
-                'cdv_hinhanh' => 'hihi10.png'
+                'cdv_hinhanh' => 'hihi10.png',
+                'cdv_username' => 'johnson1212',
+                'cdv_password' => bcrypt('johnson1234'),
+                'cdv_quyen' => 0
             ]
         ];
         DB::table('CongDoanVien')->insert($arr);

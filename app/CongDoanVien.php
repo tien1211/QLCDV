@@ -3,8 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class CongDoanVien extends Model
+class CongDoanVien extends Authenticatable
 {
     protected $table= 'CongDoanVien';
     protected $primaryKey = 'cdv_id';
@@ -28,14 +30,20 @@ class CongDoanVien extends Model
         'cdv_ngayvaocd',
         'cdv_ngayvaonganh',
         'cdv_trangthai',
-        'cdv_hinhanh'  
+        'cdv_hinhanh',
+        'cdv_username',
+        'cdv_password',
+        'cdv_quyen' 
     ];
 
     protected $dates        = ['ngayvaocd','ngayvaonganh'];
     protected $dateFormat   = 'Y-m-d';
 
 
-
+    public function getAuthPassword()
+    {
+        return $this->cdv_password;
+    }
 
 
     #một công đoàn viên chỉ có 1 chức vụ
@@ -58,11 +66,9 @@ class CongDoanVien extends Model
         return $this->belongsTo('App\MucHoTro','mht_id','mht_id');
     }
 
-    #một công đoàn viên có 1 tài khoản
-    public function TaiKhoan()
-    {
-        return $this->hasOne('App\TaiKhoan','cdv_id','cdv_id');
-    }
+    
+
+    
 
 
     #một Công đoàn viên có thể đăng ký nhiều tour

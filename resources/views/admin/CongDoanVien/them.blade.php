@@ -256,10 +256,10 @@
                       <div class="form-group ">
                           <label for="username" class="control-label col-lg-3">Username</label>
                           <div class="col-lg-6">
-                              <input class="form-control " id="username" name="tk_tendangnhap" type="text">
+                              <input class="form-control " id="username" name="cdv_username" type="text">
                           
-                              @if($errors->has('tk_tendangnhap')) 
-                              <div style="color:red">{{ $errors->first('tk_tendangnhap')}}</div>
+                              @if($errors->has('cdv_username')) 
+                              <div style="color:red">{{ $errors->first('cdv_username')}}</div>
                               @endif  
                             </div>
                       </div>
@@ -270,9 +270,9 @@
                       <div class="form-group ">
                           <label for="password" class="control-label col-lg-3">Password</label>
                           <div class="col-lg-6">
-                              <input class="form-control " id="password" name="tk_matkhau" type="password">
-                              @if($errors->has('tk_matkhau')) 
-                              <div style="color:red">{{ $errors->first('tk_matkhau')}}</div>
+                              <input class="form-control " id="password" name="cdv_password" type="password">
+                              @if($errors->has('cdv_password')) 
+                              <div style="color:red">{{ $errors->first('cdv_password')}}</div>
                               @endif  
                             </div>
                       </div>
@@ -297,13 +297,13 @@
                       <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Quyền</label>
                       <div class="col-lg-6">
                           <label class="checkbox-inline">
-                              <input type="checkbox" id="inlineCheckbox1" name="tk_quyen" value="1"> Admin
+                              <input type="checkbox" id="inlineCheckbox1" name="cdv_quyen" value="1"> Admin
                           </label>
                           <label class="checkbox-inline">
-                              <input type="checkbox" id="inlineCheckbox2" name="tk_quyen" value="0"> Bình Thường
+                              <input type="checkbox" id="inlineCheckbox2" name="cdv_quyen" value="0"> Bình Thường
                           </label>
-                          @if($errors->has('tk_quyen')) 
-                              <div style="color:red">{{ $errors->first('tk_quyen')}}</div>
+                          @if($errors->has('cdv_quyen')) 
+                              <div style="color:red">{{ $errors->first('cdv_quyen')}}</div>
                               @endif 
                         </div>
                     </div>
