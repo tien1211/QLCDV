@@ -251,6 +251,14 @@ class CongDoanVienController extends Controller
         Session::flash('alert-info', 'Xóa thành công!!!');
             return redirect()->route('CDV_DanhSach');
     }
+    
+
+    public function getchitietCDV($id){
+        $CongDoanVien = CongDoanVien::find($id);
+        return view('admin.CongDoanVien.chitiet')->with('CongDoanVien',$CongDoanVien);
+    }
+
+
 
     
     public function postTimkiem(Request $request){

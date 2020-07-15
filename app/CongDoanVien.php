@@ -3,8 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class CongDoanVien extends Model
+class CongDoanVien extends Authenticatable
 {
     protected $table= 'CongDoanVien';
     protected $primaryKey = 'cdv_id';
@@ -38,7 +40,10 @@ class CongDoanVien extends Model
     protected $dateFormat   = 'Y-m-d';
 
 
-
+    public function getAuthPassword()
+    {
+        return $this->cdv_password;
+    }
 
 
     #một công đoàn viên chỉ có 1 chức vụ
