@@ -28,7 +28,7 @@
         <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
-                  Thêm Tour Du Lịch
+                  Sửa Tour Du Lịch
                     <span class="tools pull-right">
                         <a class="fa fa-chevron-down" href="javascript:;"></a>
                         <a class="fa fa-cog" href="javascript:;"></a>
@@ -64,12 +64,11 @@
                                 <label for="lastname" class="control-label col-lg-3">Hạn đăng ký</label>
 
                                 <div class="col-lg-6">
-                                    {{-- @php
-                                        $dt = \Datetime::createFromFormat('d/m/Y H:i:s', $Tour->tour_handk);
-                                        $date = $dt->format('d/m/y\TH:i')
-                                    @endphp --}}
+                                    @php
+                                        $dt = $Tour->tour_handk->format('yy-m-d\Th:m');
+                                    @endphp
 
-                                <input  value="" class=" form-control"  name="tour_handk" type="datetime-local">
+                                    <input  value="{{$dt}}" class=" form-control"  name="tour_handk" type="datetime-local">
 
 
                                 </div>
@@ -80,7 +79,10 @@
                             <div class="form-group ">
                                 <label for="username" class="control-label col-lg-3">Ngày bắt đầu</label>
                                 <div class="col-lg-6">
-                                    <input   value="" class="form-control "  name="tour_ngaybd" type="datetime-local">
+                                    @php
+                                    $dt = $Tour->tour_ngaybd->format('yy-m-d\Th:m');
+                                @endphp
+                                    <input   value="{{$dt}}" class="form-control "  name="tour_ngaybd" type="datetime-local">
                                 </div>
                                 @if($errors->has('tour_ngaybd'))
                                 <div style="color:red">{{ $errors->first('tour_ngaybd')}}</div>
@@ -89,7 +91,10 @@
                             <div class="form-group ">
                                 <label for="password" class="control-label col-lg-3">Ngày kết thúc</label>
                                 <div class="col-lg-6">
-                                    <input value="" class="form-control "  name="tour_ngaykt" type="datetime-local">
+                                    @php
+                                    $dt = $Tour->tour_ngaykt->format('yy-m-d\Th:m');
+                                @endphp
+                                    <input value="{{$dt}}" class="form-control "  name="tour_ngaykt" type="datetime-local">
                                 </div>
                                 @if($errors->has('tour_ngaykt'))
                                 <div style="color:red">{{ $errors->first('tour_ngaykt')}}</div>
@@ -107,7 +112,7 @@
                             <div class="form-group ">
                                 <label for="email" class="control-label col-lg-3">Số lượng</label>
                                 <div class="col-lg-6">
-                                <input value="{{$Tour->tour_soluong}}" class="form-control "  name="tour_soluongtour_soluong" type="number">
+                                <input value="{{$Tour->tour_soluong}}" class="form-control "  name="tour_soluong" type="number">
                                 </div>
                                 @if($errors->has('tour_soluong'))
                                 <div style="color:red">{{ $errors->first('tour_soluong')}}</div>

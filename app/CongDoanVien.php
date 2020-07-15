@@ -28,7 +28,10 @@ class CongDoanVien extends Model
         'cdv_ngayvaocd',
         'cdv_ngayvaonganh',
         'cdv_trangthai',
-        'cdv_hinhanh'  
+        'cdv_hinhanh',
+        'cdv_username',
+        'cdv_password',
+        'cdv_quyen' 
     ];
 
     protected $dates        = ['ngayvaocd','ngayvaonganh'];
@@ -58,11 +61,9 @@ class CongDoanVien extends Model
         return $this->belongsTo('App\MucHoTro','mht_id','mht_id');
     }
 
-    #một công đoàn viên có 1 tài khoản
-    public function TaiKhoan()
-    {
-        return $this->hasOne('App\TaiKhoan','cdv_id','cdv_id');
-    }
+    
+
+    
 
 
     #một Công đoàn viên có thể đăng ký nhiều tour

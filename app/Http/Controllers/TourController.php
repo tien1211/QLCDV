@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use App\Tour;
 use App\LichTrinh;
-use App\Validate;
+use Validate;
+use Session;
 
 class TourController extends Controller
 {
@@ -42,7 +44,7 @@ class TourController extends Controller
             'tour_chiphi' => 'required | numeric',
             'tour_soluong' => 'required | numeric',
             'tour_phuongtien' => 'required',
-            'tour_diaiem' => 'required | min:5',
+            'tour_diadiem' => 'required',
             'tour_trongnam' => 'required',
 
         ]
@@ -55,23 +57,23 @@ class TourController extends Controller
             'tour_chiphi.required' => 'Bạn chưa nhập chi phí!',
             'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
             'tour_phuongtien.required' => 'Bạn chưa nhập phương tiện!',
-            'tour_diaiem.required' => 'Bạn chưa nhập địa điểm!',
+            'tour_diadiem.required' => 'Bạn chưa nhập địa điểm!',
             'tour_trongnam.required' => 'Bạn chưa nhập năm!',
 
         ])->validate();
 
-        $tour = new Tour();
-        $tour->lt_id = $request->lt_id;
-        $tour->tour_handk = $request->tour_handk;
-        $tour->tour_ngaybd = $request->tour_ngaybd;
-        $tour->tour_ngaykt = $request->tour_ngaykt;
-        $tour->tour_chiphi = $request->tour_chiphi;
-        $tour->tour_soluong = $request->tour_soluong;
-        $tour->tour_phuongtien = $request->tour_phuongtien;
-        $tour->tour_diadiem = $request->tour_diadiem;
-        $tour->tour_trongnam = $request->tour_trongnam;
-        $tour->tour_trangthai = 1;
-        $tour->save();
+        $Tour = new Tour();
+        $Tour->lt_id = $request->lt_id;
+        $Tour->tour_handk = $request->tour_handk;
+        $Tour->tour_ngaybd = $request->tour_ngaybd;
+        $Tour->tour_ngaykt = $request->tour_ngaykt;
+        $Tour->tour_chiphi = $request->tour_chiphi;
+        $Tour->tour_soluong = $request->tour_soluong;
+        $Tour->tour_phuongtien = $request->tour_phuongtien;
+        $Tour->tour_diadiem = $request->tour_diadiem;
+        $Tour->tour_trongnam = $request->tour_trongnam;
+        $Tour->tour_trangthai = 1;
+        $Tour->save();
 
         return redirect()->back()->with('thongbao','Thêm thành công');
     }
@@ -84,10 +86,10 @@ class TourController extends Controller
 
 // Sửa
 
-    public function postSua(Request $request,$id){
-        $Tour = Tour::find($id);
+    public function postSua(Request $request, $id){
+
         //Bắt các điều kiện nhập vào
-        Validator::make($request->$id,
+        $this->validate($request,
         [
             'lt_id' => 'required',
             'tour_handk' => 'required',
@@ -96,7 +98,7 @@ class TourController extends Controller
             'tour_chiphi' => 'required | numeric',
             'tour_soluong' => 'required | numeric',
             'tour_phuongtien' => 'required',
-            'tour_diaiem' => 'required | min:5',
+            'tour_diadiem' => 'required | min:5',
             'tour_trongnam' => 'required',
 
         ]
@@ -109,30 +111,33 @@ class TourController extends Controller
             'tour_chiphi.required' => 'Bạn chưa nhập chi phí!',
             'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
             'tour_phuongtien.required' => 'Bạn chưa nhập phương tiện!',
-            'tour_diaiem.required' => 'Bạn chưa nhập địa điểm!',
+            'tour_diadiem.required' => 'Bạn chưa nhập địa điểm!',
             'tour_trongnam.required' => 'Bạn chưa nhập năm!',
 
-        ])->validate();
+        ]);
 
+        $Tour = Tour::find($id);
+        $Tour->lt_id = $request->lt_id;
+        $Tour->tour_handk = $request->tour_handk;
+        $Tour->tour_ngaybd = $request->tour_ngaybd;
+        $Tour->tour_ngaykt = $request->tour_ngaykt;
+        $Tour->tour_chiphi = $request->tour_chiphi;
+        $Tour->tour_soluong = $request->tour_soluong;
+        $Tour->tour_phuongtien = $request->tour_phuongtien;
+        $Tour->tour_diadiem = $request->tour_diadiem;
+        $Tour->tour_trongnam = $request->tour_trongnam;
+        $Tour->tour_trangthai = 1;
+        $Tour->save();
 
-        $tour->lt_id = $request->lt_id;
-        $tour->tour_handk = $request->tour_handk;
-        $tour->tour_ngaybd = $request->tour_ngaybd;
-        $tour->tour_ngaykt = $request->tour_ngaykt;
-        $tour->tour_chiphi = $request->tour_chiphi;
-        $tour->tour_soluong = $request->tour_soluong;
-        $tour->tour_phuongtien = $request->tour_phuongtien;
-        $tour->tour_diadiem = $request->tour_diadiem;
-        $tour->tour_trongnam = $request->tour_trongnam;
-        $tour->tour_trangthai = 1;
-        $tour->save();
-
-        return view('admin.Tour.sua');
+        return redirect()->route('TOUR_DanhSach')->with('thongbao','Bạn đã sửa thành công');
     }
 
 
-    public function getXoa(){
-        $Tour = Tour::all();
-        return view('admin.Tour.xoa')->with('Tour',$Tour);
+    public function getXoa($id){
+        $Tour = Tour::find($id);
+        $Tour->tour_trangthai = 0;
+        $Tour->save();
+        Session::flash('alert-info', 'Xóa thành công!!!');
+        return Redirect::back();
     }
 }

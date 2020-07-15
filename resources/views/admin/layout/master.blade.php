@@ -29,7 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="backend/css/monthly.css">
 <!-- //calendar -->
 <!-- //font-awesome icons -->
-<script src="backend/js/jquery2.0.3.min.j"></script>
+<script src="backend/js/jquery2.0.3.min.js"></script>
 <script src="backend/js/raphael-min.js"></script>
 <script src="backend/js/morris.js"></script>
 <script type="text/javascript" language="javascript" src="ckeditor/ckeditor.js"></script>
@@ -43,18 +43,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--sidebar start-->
 <aside>
     <div id="sidebar" class="nav-collapse">
-        @include('admin.layout.menu')
+    @include('admin.layout.menu')
     </div>
 </aside>
 <!--sidebar end-->
 <!--main content start-->
 <section id="main-content">
 	<section class="wrapper">
-        @yield('admin_content')
+	@yield('admin_content')
     <section>
 </section>
 
-@yield('script')
+	@yield('script')
 <!--main content end-->
 </section>
 <script src="backend/js/bootstrap.js"></script>

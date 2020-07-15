@@ -8,9 +8,10 @@
               Cập Nhật Công Đoàn Viên
           </header>
           <div class="panel-body">
-            @extends('admin.layout.partials.complete-message')
+            
               <div class="form" >
               <form class="cmxform form-horizontal" enctype="multipart/form-data" id="signupForm" method="post" action="{{route('CDV_XLSua',['id'=> $CongDoanVien->cdv_id])}}" novalidate="novalidate">
+                @csrf
                 {{-- Chức vụ --}}
                 <div class="form-group">
                   <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Chức vụ</label>
@@ -262,7 +263,7 @@
                   <div class="form-group ">
                     <label for="firstname" class="control-label col-lg-3">Ảnh Đại Diện</label>
                     <div class="col-lg-6">
-                      <img alt="" src="upload/cdv/{{$CongDoanVien->cdv_hinhanh}}">
+                      <img alt="" src="upload/cdv/{{$CongDoanVien->cdv_hinhanh}}" style="width: 15rem">
                       </div>
                   </div>
                   <div class="form-group ">
@@ -282,24 +283,41 @@
                       <div class="form-group ">
                           <label for="username" class="control-label col-lg-3">Username</label>
                           <div class="col-lg-6">
+<<<<<<< HEAD
                               <input class="form-control " id="username" name="tk_tendangnhap" type="text">
 
                               @if($errors->has('tk_tendangnhap'))
                               <div style="color:red">{{ $errors->first('tk_tendangnhap')}}</div>
                               @endif
+=======
+                          <input class="form-control " id="username" value="{{$CongDoanVien->cdv_username}}"  name="tk_tendangnhap" type="text" disabled>
+                          
+                              @if($errors->has('cdv_username')) 
+                              <div style="color:red">{{ $errors->first('cdv_username')}}</div>
+                              @endif  
+>>>>>>> 971b28058b9b01896c5d96ab6667a7c25e18662a
                             </div>
                       </div>
 
                    {{-- Tên Đăng nhập    --}}
 
                    {{-- Mật khẩu --}}
+                   
                       <div class="form-group ">
                           <label for="password" class="control-label col-lg-3">Password</label>
                           <div class="col-lg-6">
+<<<<<<< HEAD
                               <input class="form-control " id="password" name="tk_matkhau" type="password">
                               @if($errors->has('tk_matkhau'))
                               <div style="color:red">{{ $errors->first('tk_matkhau')}}</div>
                               @endif
+=======
+                            <h5><input type="checkbox" id="changepassword" name="changepassword"> Đổi mật khẩu:</h5>
+                              <input class="form-control password" id="password" name="cdv_password" type="password" disabled="">
+                              @if($errors->has('cdv_password')) 
+                              <div style="color:red">{{ $errors->first('cdv_password')}}</div>
+                              @endif  
+>>>>>>> 971b28058b9b01896c5d96ab6667a7c25e18662a
                             </div>
                       </div>
                       {{-- Mật khẩu --}}
@@ -308,8 +326,13 @@
                       <div class="form-group ">
                           <label for="confirm_password" class="control-label col-lg-3">Confirm Password</label>
                           <div class="col-lg-6">
+<<<<<<< HEAD
                               <input class="form-control " id="confirm_password" name="confirm_password" type="password">
                               @if($errors->has('confirm_password'))
+=======
+                              <input class="form-control password" id="confirm_password" name="confirm_password" type="password" disabled="">
+                              @if($errors->has('confirm_password')) 
+>>>>>>> 971b28058b9b01896c5d96ab6667a7c25e18662a
                               <div style="color:red">{{ $errors->first('confirm_password')}}</div>
                               @endif
                           </div>
@@ -323,18 +346,24 @@
                       <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Quyền</label>
                       <div class="col-lg-6">
                           <label class="checkbox-inline">
-                              <input type="checkbox" id="inlineCheckbox1" name="tk_quyen" value="1"  @if($CongDoanVien->TaiKhoan->tk_quyen == 1)
+                              <input type="checkbox" id="inlineCheckbox1" name="cdv_quyen" value="1" @if($CongDoanVien->cdv_quyen == 1)
                               checked
                              @endif> Admin
                           </label>
                           <label class="checkbox-inline">
-                              <input type="checkbox" id="inlineCheckbox2" name="tk_quyen" value="0" @if($CongDoanVien->TaiKhoan->tk_quyen == 0)
+                              <input type="checkbox" id="inlineCheckbox2" name="cdv_quyen" value="0" @if($CongDoanVien->cdv_quyen == 0)
                               checked
                              @endif> Bình Thường
                           </label>
+<<<<<<< HEAD
                           @if($errors->has('tk_quyen'))
                               <div style="color:red">{{ $errors->first('tk_quyen')}}</div>
                               @endif
+=======
+                          @if($errors->has('cdv_quyen')) 
+                              <div style="color:red">{{ $errors->first('cdv_quyen')}}</div>
+                              @endif 
+>>>>>>> 971b28058b9b01896c5d96ab6667a7c25e18662a
                         </div>
                     </div>
                   {{-- Quyền --}}
@@ -352,3 +381,21 @@
   </div>
 </div>
 @endsection
+<<<<<<< HEAD
+=======
+
+@section('script')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#changepassword").change(function(){
+            if($(this).is(":checked")){
+                $(".password").removeAttr('disabled');
+            }else{
+                $(".password").attr('disabled','');
+            }
+        });
+    });
+
+</script>
+@endsection
+>>>>>>> 971b28058b9b01896c5d96ab6667a7c25e18662a

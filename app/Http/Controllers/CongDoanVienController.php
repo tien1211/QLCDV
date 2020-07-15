@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\ChucVu;
 use App\LoaiNhanVien;
 use App\MucHoTro;
-use App\TaiKhoan;
 use Validator;
 use Session;
 class CongDoanVienController extends Controller
@@ -16,11 +15,9 @@ class CongDoanVienController extends Controller
 		$ChucVu = ChucVu::all();
     	$LoaiNhanVien = LoaiNhanVien::all();
         $MucHoTro = MucHoTro::all();
-        $TaiKhoan = TaiKhoan::all();
     	view()->share('ChucVu',$ChucVu);
         view()->share('LoaiNhanVien',$LoaiNhanVien);
         view()->share('MucHoTro',$MucHoTro);
-        view()->share('TaiKhoan',$TaiKhoan);
 	}
 
 
@@ -53,9 +50,10 @@ class CongDoanVienController extends Controller
             'cdv_tongiao'=>'bail|required',
             'cdv_ngayvaocd'=>'required',
             'cdv_ngayvaonganh'=>'required',
-            'tk_tendangnhap'=>'bail|required|unique:TaiKhoan',
-            'tk_matkhau'=>'required|min:8|max:50',
-            'confirm_password'=>'required|same:tk_matkhau',
+            'cdv_username'=>'bail|required|unique:CongDoanVien',
+            'cdv_password'=>'required|min:8|max:50',
+            'confirm_password'=>'required|same:cdv_password',
+            'cdv_quyen' => 'required'
             ],[
                 'cv_id.required' => 'Vui lòng không được để trống chức vụ',
                 'lnv_id.required' => 'Vui lòng không được để trống loại nhân viên',
@@ -77,17 +75,15 @@ class CongDoanVienController extends Controller
                 'cdv_tongiao.required'=>'Vui lòng không được để trống tôn giáo',
                 'cdv_ngayvaocd.required'=>'Vui lòng không được để trống ngày vào công đoàn',
                 'cdv_ngayvaonganh.required'=>'Vui lòng không được để trống ngày vào ngành',
-                'tk_tendangnhap.required'=>'Vui lòng không được để trống tên đăng nhập',
-                'tk_tendangnhap.unique'=>'Tên đăng nhập đã tồn tại',
-                'tk_matkhau.required'=>'Vui lòng không được để trống mật khẩu',
-                'tk_matkhau.min'=>'Mật khẩu phải ít nhất 8 kí tự',
-                'tk_matkhau.max' => 'Mật khẩu không được quá 50 kí tự',
+                'cdv_username.required'=>'Vui lòng không được để trống tên đăng nhập',
+                'cdv_username.unique'=>'Tên đăng nhập đã tồn tại',
+                'cdv_password.required'=>'Vui lòng không được để trống mật khẩu',
+                'cdv_password.min'=>'Mật khẩu phải ít nhất 8 kí tự',
+                'cdv_password.max' => 'Mật khẩu không được quá 50 kí tự',
                 'confirm_password.required'=>'Vui lòng không được để trống xác nhận mật khẩu',
-                'confirm_password.same' => 'Mật khẩu không trùng khớp'
-
-               
+                'confirm_password.same' => 'Mật khẩu không trùng khớp',
+                'cdv_quyen.required' => 'Vui lòng chọn quyền cho công đoàn viên'
             ]);
-            $TaiKhoan = new TaiKhoan();
             $CongDoanVien = new CongDoanVien();
             $CongDoanVien->tc_id = 1;
             $CongDoanVien->cv_id = $request->cv_id;
@@ -123,13 +119,11 @@ class CongDoanVienController extends Controller
             }else{
                 $CongDoanVien->cdv_hinhanh=""; 
             }
+            
+            $CongDoanVien->cdv_username = $request->cdv_username;
+            $CongDoanVien->cdv_password =bcrypt($request->cdv_password);
+            $CongDoanVien->cdv_quyen = $request->cdv_quyen;
             $CongDoanVien->save();
-            $TaiKhoan->tk_tendangnhap = $request->tk_tendangnhap;
-            $TaiKhoan->cdv_id = $CongDoanVien->cdv_id;
-            $TaiKhoan->tk_matkhau =bcrypt($request->tk_matkhau);
-            $TaiKhoan->tk_quyen = $request->tk_quyen;
-            $TaiKhoan->tk_trangthai = 1;
-            $TaiKhoan->save();
 
             Session::flash('alert-info', 'Thêm thành công!!!');
             return redirect()->route('CDV_Them');    
@@ -163,9 +157,7 @@ class CongDoanVienController extends Controller
             'cdv_tongiao'=>'bail|required',
             'cdv_ngayvaocd'=>'required',
             'cdv_ngayvaonganh'=>'required',
-            'tk_tendangnhap'=>'bail|required|unique:TaiKhoan',
-            'tk_matkhau'=>'required|min:8|max:50',
-            'confirm_password'=>'required|same:tk_matkhau',
+            'cdv_quyen' => 'required'
             ],[
                 'cv_id.required' => 'Vui lòng không được để trống chức vụ',
                 'lnv_id.required' => 'Vui lòng không được để trống loại nhân viên',
@@ -179,25 +171,18 @@ class CongDoanVienController extends Controller
                 'cdv_nguyenquan.required'=>'Vui lòng không được để trống nguyên quán',
                 'cdv_diachi.required'=>'Vui lòng không được để trống địa chỉ',
                 'cdv_sdt.required'=>'Vui lòng không được để trống số điện thoại',
-                'cdv_cmnd.min' => 'Số điện thoại phải ít nhất 10 kí tự',
-                'cdv_cmnd.max' => 'Số điện thoại phải không quá 10 kí tự',
+                'cdv_sdt.min' => 'Số điện thoại phải ít nhất 10 kí tự',
+                'cdv_sdt.max' => 'Số điện thoại phải không quá 10 kí tự',
                 'cdv_email.required'=>'Vui lòng không được để trống email',
                 'cdv_dantoc.required'=>'Vui lòng không được để trống dân tộc',
                 'cdv_trinhdo.required'=>'Vui lòng không được để trống trình độ',
                 'cdv_tongiao.required'=>'Vui lòng không được để trống tôn giáo',
                 'cdv_ngayvaocd.required'=>'Vui lòng không được để trống ngày vào công đoàn',
                 'cdv_ngayvaonganh.required'=>'Vui lòng không được để trống ngày vào ngành',
-                'tk_tendangnhap.required'=>'Vui lòng không được để trống tên đăng nhập',
-                'tk_tendangnhap.unique'=>'Tên đăng nhập đã tồn tại',
-                'tk_matkhau.required'=>'Vui lòng không được để trống mật khẩu',
-                'tk_matkhau.min'=>'Mật khẩu phải ít nhất 8 kí tự',
-                'tk_matkhau.max' => 'Mật khẩu không được quá 50 kí tự',
-                'confirm_password.required'=>'Vui lòng không được để trống xác nhận mật khẩu',
-                'confirm_password.same' => 'Mật khẩu không trùng khớp'
+                'cdv_quyen.required' => 'Vui lòng chọn quyền cho công đoàn viên'
 
                
             ]);
-            $TaiKhoan = TaiKhoan::find($id);
             $CongDoanVien = CongDoanVien::find($id);
             $CongDoanVien->tc_id = 1;
             $CongDoanVien->cv_id = $request->cv_id;
@@ -223,7 +208,7 @@ class CongDoanVienController extends Controller
     
                 if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
                     Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
-                    return redirect()->route('CDV_Them');
+                    return redirect()->route('CDV_Sua');
                 }
     
                 $name = $file->getClientOriginalName();
@@ -233,16 +218,46 @@ class CongDoanVienController extends Controller
             }else{
                 $CongDoanVien->cdv_hinhanh=""; 
             }
+            
+            
+            $CongDoanVien->cdv_quyen = $request->cdv_quyen;
+            if($request->changepassword == "on"){
+                $this->validate($request, [
+                    
+                    'cdv_password'=>'required|min:8|max:50',
+                    'confirm_password'=>'required|same:cdv_password',
+                    ],[
+                        
+                        'cdv_password.required'=>'Vui lòng không được để trống mật khẩu',
+                        'cdv_password.min'=>'Mật khẩu phải ít nhất 8 kí tự',
+                        'cdv_password.max' => 'Mật khẩu không được quá 50 kí tự',
+                        'confirm_password.required'=>'Vui lòng không được để trống xác nhận mật khẩu',
+                        'confirm_password.same' => 'Mật khẩu không trùng khớp',
+                        
+                    ]);
+                $CongDoanVien->cdv_password =bcrypt($request->cdv_password);
+            }
+            
             $CongDoanVien->save();
-            $TaiKhoan->tk_tendangnhap = $request->tk_tendangnhap;
-            $TaiKhoan->cdv_id = $CongDoanVien->cdv_id;
-            $TaiKhoan->tk_matkhau =bcrypt($request->tk_matkhau);
-            $TaiKhoan->tk_quyen = $request->tk_quyen;
-            $TaiKhoan->tk_trangthai = 1;
-            $TaiKhoan->save();
 
-            Session::flash('alert-info', 'Cập Nhật thành công!!!');
-            return redirect()->route('CDV_Sua');  
+            Session::flash('alert-info', 'Cập nhật thành công!!!');
+            return redirect()->route('CDV_DanhSach');
+    }
+
+    public function getXoa($id){
+        $CongDoanVien = CongDoanVien::find($id);
+        $CongDoanVien->cdv_trangthai = 0;
+        $CongDoanVien->save();
+        Session::flash('alert-info', 'Xóa thành công!!!');
+            return redirect()->route('CDV_DanhSach');
+    }
+
+    
+    public function postTimkiem(Request $request){
+        $tukhoa = $request->tukhoa;
+        $CongDoanVien = CongDoanVien::where('cdv_ten','like',"%$tukhoa%")->orwhere('cdv_nguyenquan','like',"%$tukhoa%")->orwhere('cdv_diachi','like',"%$tukhoa%")->get();
+        //dd($CongDoanVien);
+        return view('admin.CongDoanVien.timkiem')->with('CongDoanVien',$CongDoanVien);
     }
 
 }

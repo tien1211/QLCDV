@@ -31,9 +31,10 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/CDV_FormSua/{id}', 'CongDoanVienController@getSua')->name('CDV_Sua');
         Route::post('/CDV_SuaCDV/{id}', 'CongDoanVienController@postSua')->name('CDV_XLSua');
         //Form Xóa Công Đoàn Viên
-        Route::post('/CDV_XoaCDV/{id}', 'CongDoanVienController@postXoa')->name('CDV_XLXoa');
+        Route::get('/CDV_XoaCDV/{id}', 'CongDoanVienController@getXoa')->name('CDV_Xoa');
+        //Tìm kiếm
+        Route::post('/CDV_Timkiem', 'CongDoanVienController@postTimkiem')->name('CDV_Timkiem');
     });
-
     Route::group(['prefix' => 'ToChuc'], function () {
         // Thông tin tổ Chức
         Route::get('/ToChuc', 'ToChucController@getToChuc')->name('TT_ToChuc');
@@ -56,7 +57,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/TOUR_SuaTour/{id}','TourController@postSua')->name('TOUR_XLSua');
 
         //Form xóa tour
-        Route::post('/TOUR_XoaTour{id}','TourController@postXoa')->name('TOUR_XLXoa');
+        Route::get('/TOUR_XoaTour/{id}', 'TourController@getXoa')->name('TOUR_Xoa');
 
 
     });

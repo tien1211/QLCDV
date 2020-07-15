@@ -5,6 +5,16 @@
  <div class="panel panel-default">
     <div class="panel-heading">
      Danh Sách Tour
+     <div class="col-4">
+        <div class="flash-message" style="position: absolute :10%;">
+          @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+            @if(Session::has('alert-' . $msg))
+            <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
+            ata-dismiss="alert" aria-label="close">&times;</a></p>
+            @endif
+          @endforeach
+      </div>
+      </div>
     </div>
     <div>
       <table class="table" ui-jq="footable" ui-options='{
@@ -34,10 +44,10 @@
         </thead>
 
             @foreach ($Tour as $t)
-
+            @if ($t->tour_trangthai == 1)
                 <tr data-expanded="true">
                     <td>{{$t->tour_id}}</td>
-                    <td>{{$t->LichTrinh->lt_id}}</td>
+                    <td>{{$t->LichTrinh->lt_file}}</td>
                     <td>{{date('d/m/Y H:i:s',strtotime($t->tour_handk))}}</td>
                     <td>{{date('d/m/Y H:i:s',strtotime($t->tour_ngaybd))}}</td>
                     <td>{{date('d/m/Y H:i:s',strtotime($t->tour_ngaykt))}}</td>
@@ -47,11 +57,11 @@
                     <td>{{$t->tour_diadiem}}</td>
                     <td>{{$t->tour_trongnam}}</td>
                     <td>
-                        <i class='fas fa-pencil-alt'></i><a href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}">Sửa</a>
-                        <i class='fas fa-trash-alt'></i><a href="">Xóa</a>
+                       <i class='fas fa-pencil-alt'></i><a href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}">Sửa</a>
+                        <i class='fas fa-trash-alt'></i><a href="{{route('TOUR_Xoa',['id'=>$t->tour_id])}}">Xóa</a>
                       </td>
-
-
+                </tr>
+            @endif
           @endforeach
         </tbody>
     </div>
