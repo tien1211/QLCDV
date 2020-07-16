@@ -62,29 +62,25 @@
                                 </div>
                             </div>
 
+
                             <div class="form-group ">
                                 <label for="lastname" class="control-label col-lg-3">Hạn đăng ký</label>
-
                                 <div class="col-lg-6">
-                                    @php
-                                        $dt = $Tour->tour_handk->format('yy-m-d\Th:m');
-                                    @endphp
-
-                                    <input  value="{{$dt}}" class=" form-control"  name="tour_handk" type="datetime-local">
-
-
+                                    <input  class=" form-control"  name="tour_handk" value="{{$Tour->tour_handk}}"  type="date">
                                 </div>
                                 @if($errors->has('tour_handk'))
                                 <div style="color:red">{{ $errors->first('tour_handk')}}</div>
                                 @endif
                             </div>
+
+
                             <div class="form-group ">
                                 <label for="username" class="control-label col-lg-3">Ngày bắt đầu</label>
                                 <div class="col-lg-6">
-                                    @php
+                                    {{-- @php
                                     $dt = $Tour->tour_ngaybd->format('yy-m-d\Th:m');
-                                @endphp
-                                    <input   value="{{$dt}}" class="form-control "  name="tour_ngaybd" type="datetime-local">
+                                @endphp --}}
+                                    <input   value="{{$Tour->tour_ngaybd}}" class="form-control "  name="tour_ngaybd" type="date">
                                 </div>
                                 @if($errors->has('tour_ngaybd'))
                                 <div style="color:red">{{ $errors->first('tour_ngaybd')}}</div>
@@ -93,10 +89,10 @@
                             <div class="form-group ">
                                 <label for="password" class="control-label col-lg-3">Ngày kết thúc</label>
                                 <div class="col-lg-6">
-                                    @php
+                                    {{-- @php
                                     $dt = $Tour->tour_ngaykt->format('yy-m-d\Th:m');
-                                @endphp
-                                    <input value="{{$dt}}" class="form-control "  name="tour_ngaykt" type="datetime-local">
+                                @endphp --}}
+                                    <input value="{{$Tour->ngaykt}}" class="form-control "  name="tour_ngaykt" type="date">
                                 </div>
                                 @if($errors->has('tour_ngaykt'))
                                 <div style="color:red">{{ $errors->first('tour_ngaykt')}}</div>
@@ -121,30 +117,30 @@
                                 @endif
                             </div>
                             <div class="form-group ">
-                                <label for="email" class="control-label col-lg-3">Phương tiện</label>
+                                <label for="email" class="control-label col-lg-3">Giai đoạn</label>
                                 <div class="col-lg-6">
-                                <input value="{{$Tour->tour_phuongtien}}" class="form-control "  name="tour_phuongtien" type="text">
+                                <input value="{{$Tour->GiaiDoan->giai_doan}}" class="form-control "  name="giai_doan" type="text">
                                 </div>
-                                @if($errors->has('tour_phuongtien'))
-                                <div style="color:red">{{ $errors->first('tour_phuongtien')}}</div>
+                                @if($errors->has('giai_doan'))
+                                <div style="color:red">{{ $errors->first('giai_doan')}}</div>
                                 @endif
                             </div>
                             <div class="form-group ">
-                                <label for="email" class="control-label col-lg-3">Địa điểm</label>
+                                <label for="email" class="control-label col-lg-3">Đại lý</label>
                                 <div class="col-lg-6">
-                                <input value="{{$Tour->tour_diadiem}}" class="form-control "  name="tour_diadiem" type="text">
+                                <input value="{{$Tour->tour_daily}}" class="form-control "  name="tour_daily" type="text">
                                 </div>
-                                @if($errors->has('tour_diadiem'))
-                                <div style="color:red">{{ $errors->first('tour_diadiem')}}</div>
+                                @if($errors->has('tour_daily'))
+                                <div style="color:red">{{ $errors->first('tour_daily')}}</div>
                                 @endif
                             </div>
                             <div class="form-group ">
-                                <label for="email" class="control-label col-lg-3">Trong năm</label>
+                                <label for="email" class="control-label col-lg-3">Mô tả</label>
                                 <div class="col-lg-6">
-                                <input value="{{$Tour->tour_trongnam}}" class="form-control "  name="tour_trongnam" type="number">
+                                <input value="{{$Tour->tour_mota}}" class="form-control "  name="tour_mota" type="text">
                                 </div>
-                                @if($errors->has('tour_trongnam'))
-                                <div style="color:red">{{ $errors->first('tour_trongnam')}}</div>
+                                @if($errors->has('tour_mota'))
+                                <div style="color:red">{{ $errors->first('tour_mota')}}</div>
                                 @endif
                             </div>
 

@@ -28,7 +28,11 @@
             </div>
             <div class="form-group">
               <select class="form-control m-bot15" name="cv_id">
+<<<<<<< HEAD
                 <option value="">Chọn chức vụ...</option>
+=======
+              <option value="">Chọn chức vụ...</option>
+>>>>>>> d1f9afd52fb8cc2229ac4322a01eee5972385fb7
                 @foreach ($ChucVu as $cv)
                 @if($cv->cv_id == $cv_id)
                 <option selected value='{{$cv->cv_id}}'>{{$cv->cv_ten}}</option>
@@ -109,7 +113,9 @@
             @endif
           @endforeach
         </tbody>
+        
       </table>
+      <center>{!! $CongDoanVien->links() !!}</center>
     </div>
   </div>
 </div>
