@@ -105,7 +105,9 @@
             @endif
           @endforeach
         </tbody>
+        
       </table>
+      <center>{!! $CongDoanVien->links() !!}</center>
     </div>
   </div>
 </div>

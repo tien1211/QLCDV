@@ -25,7 +25,8 @@ class CongDoanVienController extends Controller
     public function getDanhSach(){
         $lnv_id = "";
         $cv_id = "";
-        $CongDoanVien = CongDoanVien::all();
+        
+        $CongDoanVien = CongDoanVien::paginate(5);
         return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien)->with('lnv_id',$lnv_id)->with('cv_id',$cv_id);
     }
 

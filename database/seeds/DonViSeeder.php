@@ -17,7 +17,7 @@ class DonViSeeder extends Seeder
             'dv_ten' => "Trung Tâm CNTT Tiền Giang",
             'dv_trangthai' => 1,#1 la hien #0 la da xoa
             'dv_mota' => "Công Đoàn Cơ Sở Tiền Giang",
-            'dv_tructhuoc_id' => 0,
+            'dv_tructhuoc_id' => null,
         ],[
             'dv_ten' => "Viễn Thông Tiền Giang",
             'dv_trangthai' => 1,#1 la hien #0 la da xoa
