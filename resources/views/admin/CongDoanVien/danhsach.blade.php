@@ -4,11 +4,16 @@
  <div class="panel panel-default">
     <div class="panel-heading">
       Danh Sách Công Đoàn Viên
+      
+        
+      
     </div>
     <div class="panel-body">
         <div class="position-right">
+          
             <form class="form-inline" role="form" action="{{route('CDV_Timkiem')}}" method="post">
             {{ csrf_field() }}
+            
             <div class="form-group">
               <select class="form-control m-bot15" name="lnv_id">
                 <option value="">Chọn loại nhân viên...</option>
@@ -23,11 +28,7 @@
             </div>
             <div class="form-group">
               <select class="form-control m-bot15" name="cv_id">
-<<<<<<< HEAD
                 <option value="">Chọn chức vụ...</option>
-=======
-              <option value="">Chọn chức vụ...</option>
->>>>>>> 2eec405675fe08b7d9de28204f60d060df5bf164
                 @foreach ($ChucVu as $cv)
                 @if($cv->cv_id == $cv_id)
                 <option selected value='{{$cv->cv_id}}'>{{$cv->cv_ten}}</option>
@@ -41,6 +42,18 @@
                 <input type="text" class="form-control" id="tukhoa" name="tukhoa">
             </div>
               <button type="submit" class="btn btn-outline-info">Tìm kiếm</button>
+        </form>
+        <form action="" style="width: 100%; mt-6">
+          <div class="form-group" style="mt-6">
+            <div class="flash-message">
+              @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                @if(Session::has('alert-' . $msg))
+                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
+                ata-dismiss="alert" aria-label="close">&times;</a></p>
+                @endif
+              @endforeach
+          </div>
+          </div>
         </form>
         </div>
     </div>
@@ -56,21 +69,12 @@
           "enabled": true
         }}'>
         <thead>
-          <tr><div class="form-group" style="mt-3">
-            <div class="flash-message">
-              @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                @if(Session::has('alert-' . $msg))
-                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
-                ata-dismiss="alert" aria-label="close">&times;</a></p>
-                @endif
-              @endforeach
-          </div>
-          </div></tr>
+          
           <tr>
             <th data-breakpoints="xs">ID</th>
-            <th>Đơn vị</th>
             <th>Chức vụ</th>
             <th>Loại Nhân Viên</th>
+            <th>Mức Hổ Trợ</th>
             <th>Họ Tên</th>
             <th>Ngày Sinh</th>
             <th>Giới tính</th>
@@ -85,9 +89,9 @@
             @if ($cdv->cdv_trangthai == 1)
                 <tr data-expanded="true">
                     <td>{{$cdv->cdv_id}}</td>
-                    <td>{{$cdv->DonVi->dv_ten}}</td>
                     <td>{{$cdv->ChucVu->cv_ten}}</td>
                     <td>{{$cdv->LoaiNhanVien->lnv_ten}}</td>
+                    <td>{{$cdv->MucHoTro->mht_nam}}</td>
                     <td>{{$cdv->cdv_ten}}</td>
                     <td>{{date('d/m/Y',strtotime($cdv->cdv_ngaysinh))}}</td>
                     @if($cdv->cdv_gioitinh == 1)

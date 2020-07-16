@@ -46,11 +46,16 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/CDV_Timkiem', 'CongDoanVienController@postTimkiem')->name('CDV_Timkiem');
     });
     Route::group(['prefix' => 'DonVi'], function () {
-        // Thông tin tổ Chức
+        // Danh sách đơn vị
         Route::get('/DonVi', 'DonViController@getDonVi')->name('DV_DanhSach');
-        //Form cập nhật tổ chức
-        Route::get('/CN_ToChuc', 'ToChucController@getSua')->name('DV_Them');
-        Route::post('/LCN_ToChuc', 'ToChucController@postSua')->name('LCN_ToChuc');
+        // Form thêm đơn vị
+        Route::get('/DonVi_FormThem', 'DonViController@getThem')->name('DV_Them');
+        Route::post('/DonVi_ThemDV', 'DonViController@postThem')->name('DV_XLThem');
+        // Form sửa đơn vị
+        Route::get('/DV_FormSua/{id}', 'DonViController@getSua')->name('DV_Sua');
+        Route::post('/DV_SuaDV/{id}', 'DonViController@postSua')->name('DV_XLSua');
+        //Form Xóa đơn vị
+        Route::get('/DV_XoaDV/{id}', 'DonViController@getXoa')->name('DV_Xoa');
 
     });
     Route::group(['prefix' => 'Tour'], function () {
