@@ -17,17 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/admin', function () {
-    return view('admin.layout.master')->name('admin');
-});
+    return view('admin.layout.master');
+})->name('admin');
 
 Route::get('/dangnhap','AuthController@getLogin')->name('formLogin');
 Route::post('/dangnhap','AuthController@postLogin')->name('Login');
 
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/admin', function () {
-        return view('admin.layout.master');
-    })->name('admin');
+    
     Route::group(['prefix' => 'CongDoanVien'], function () {
         //Danh Sách Công Đoàn Viên
         Route::get('/CDV_DS', 'CongDoanVienController@getDanhSach')->name('CDV_DanhSach');
@@ -69,6 +67,9 @@ Route::group(['prefix' => 'admin'], function () {
 
         //Form xóa tour
         Route::get('/TOUR_XoaTour/{id}', 'TourController@getXoa')->name('TOUR_Xoa');
+
+        //Tìm kiếm
+        Route::post('/TOUR_Timkiem', 'TourController@postTimkiem')->name('TOUR_Timkiem');
 
 
     });

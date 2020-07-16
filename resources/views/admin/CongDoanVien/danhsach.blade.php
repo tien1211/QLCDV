@@ -21,22 +21,30 @@
             {{ csrf_field() }}
             <div class="form-group">
               <select class="form-control m-bot15" name="lnv_id">
-                <option value="">Chọn mức loại nhân viên...</option>
-                @foreach ($LoaiNhanVien as $lnv)
+                <option value="">Chọn loại nhân viên...</option>
+                @foreach($LoaiNhanVien as $lnv)
+                @if($lnv->lnv_id == $lnv_id)
+                <option selected value='{{$lnv->lnv_id}}'>{{$lnv->lnv_ten}}</option>
+                @else
                 <option value='{{$lnv->lnv_id}}'>{{$lnv->lnv_ten}}</option>
+                @endif
                 @endforeach
               </select>
             </div>
             <div class="form-group">
               <select class="form-control m-bot15" name="cv_id">
-                <option value="">Chọn mức chức vụ...</option>
+              <option value="">Chọn mức chức vụ...</option>
                 @foreach ($ChucVu as $cv)
+                @if($cv->cv_id == $cv_id)
+                <option selected value='{{$cv->cv_id}}'>{{$cv->cv_ten}}</option>
+                @else
                 <option value='{{$cv->cv_id}}'>{{$cv->cv_ten}}</option>
+                @endif
                 @endforeach
               </select>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="tukhoa" placeholder="từ khóa tìm kiếm" name="tukhoa">
+                <input type="text" class="form-control" id="tukhoa" name="tukhoa">
             </div>
               <button type="submit" class="btn btn-outline-info">Tìm kiếm</button>
         </form>

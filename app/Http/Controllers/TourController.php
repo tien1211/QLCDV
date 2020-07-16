@@ -21,8 +21,10 @@ class TourController extends Controller
 
 //Hiển thị danh sách
     public function getDanhSach(){
+        $ngaybd = "";
+        $ngaykt = "";
         $Tour = Tour::all();
-        return view('admin.Tour.danhsach')->with('Tour',$Tour);
+        return view('admin.Tour.danhsach')->with('Tour',$Tour)->with('ngaybd',$ngaybd)->with('ngaykt',$ngaykt);
     }
 
 // Thêm
@@ -140,5 +142,20 @@ class TourController extends Controller
         $Tour->save();
         Session::flash('alert-info', 'Xóa thành công!!!');
         return Redirect::back();
+    }
+
+    public function postTimkiem(Request $request){
+        $tukhoa = $request->tukhoa;
+        $ngaybd = $request->tour_ngaybd;
+        $ngaykt = $request->tour_ngaykt;
+        //dd($ngaybd);
+        if((!empty($tukhoa)) && (!empty($ngaybd)) && (!empty($ngaykt))){
+            $Tour = Tour::where([['tour_diadiem','like',"%$tukhoa%"],['tour_ngaybd','>=',$ngaybd],['tour_ngaykt','<=',date('Y-m-d',strtotime($ngaykt. ' + 1 days'))],])->get();
+        }else if((empty($tukhoa)) && (!empty($ngaybd)) && (!empty($ngaykt))){
+            $Tour = Tour::where([['tour_ngaybd','>=',$ngaybd],['tour_ngaykt','<=',date('Y-m-d',strtotime($ngaykt. ' + 1 days'))],])->get();
+        }else{
+        $Tour = Tour::where('tour_diadiem','like',"%$tukhoa%")->get();
+        }
+        return view('admin.Tour.danhsach')->with('Tour', $Tour)->with('ngaybd',$ngaybd)->with('ngaykt',$ngaykt);
     }
 }
