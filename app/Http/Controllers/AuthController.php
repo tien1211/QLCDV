@@ -20,12 +20,14 @@ class AuthController extends Controller
     {
         $arr = [
             'cdv_username' => $request->cdv_username,
-            'cdv_password' => $request->cdv_password,
+            'password' => $request->password
         ];
 
         if (Auth::attempt($arr)) {
             return redirect()->route("admin");#chuyển về trang chủ
+            
         } else {
+            
             return redirect()->back()
             ->withInput()->with("error", "Sai tài khoản hoặc mật khẩu");
         }

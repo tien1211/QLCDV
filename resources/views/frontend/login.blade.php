@@ -34,8 +34,9 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-			<form class="login100-form validate-form" method="post" action="{{route('Login')}}">
-					<span class="login100-form-title p-b-33">
+			<form class="login100-form validate-form" method="post" action="{{route('login')}}">
+				@csrf	
+				<span class="login100-form-title p-b-33">
 						ĐĂNG NHẬP
 					</span>
 
@@ -46,7 +47,7 @@
 					</div>
 
 					<div class="wrap-input100 rs1 validate-input">
-						<input class="input100" type="password" name="cdv_password" placeholder="Nhập mật khẩu.....">
+						<input class="input100" type="password" name="password" placeholder="Nhập mật khẩu.....">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>

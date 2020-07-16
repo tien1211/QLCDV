@@ -270,9 +270,9 @@
                       <div class="form-group ">
                           <label for="password" class="control-label col-lg-3">Password</label>
                           <div class="col-lg-6">
-                              <input class="form-control " id="password" name="cdv_password" type="password">
-                              @if($errors->has('cdv_password')) 
-                              <div style="color:red">{{ $errors->first('cdv_password')}}</div>
+                              <input class="form-control " id="password" name="password" type="password">
+                              @if($errors->has('password')) 
+                              <div style="color:red">{{ $errors->first('password')}}</div>
                               @endif  
                             </div>
                       </div>

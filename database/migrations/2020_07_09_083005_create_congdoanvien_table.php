@@ -35,7 +35,7 @@ class CreateCongdoanvienTable extends Migration
             $table->tinyInteger('cdv_trangthai')->comment('1 la hien thi 0 la an thong tin');
             $table->string('cdv_hinhanh');
             $table->string('cdv_username');
-            $table->string('cdv_password');
+            $table->string('password');
             $table->tinyInteger('cdv_quyen')->comment('1 la admin 0 la nguoi dung bt');
             $table->timestamps();
 

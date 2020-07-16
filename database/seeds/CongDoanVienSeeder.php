@@ -33,7 +33,7 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_trangthai' => 1,
                 'cdv_hinhanh' => 'hihi1.png',
                 'cdv_username' => 'nhuttruong',
-                'cdv_password' => bcrypt('truong1234'),
+                'password' => bcrypt('truong1234'),
                 'cdv_quyen' => 1
             ],[
                 'tc_id' => 1,
@@ -56,7 +56,7 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_trangthai' => 1,
                 'cdv_hinhanh' => 'hihi2.png',  
                 'cdv_username' => 'phuchuynh',
-                'cdv_password' => bcrypt('phuc1234'),
+                'password' => bcrypt('phuc1234'),
                 'cdv_quyen' => 1,
             ],[
                 'tc_id' => 1,
@@ -79,7 +79,7 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_trangthai' => 1,
                 'cdv_hinhanh' => 'hihi3.png', 
                 'cdv_username' => 'tienb1607034',
-                'cdv_password' => bcrypt('tien1211'),
+                'password' => bcrypt('tien1211'),
                 'cdv_quyen' => 1,
             ],[
                 'tc_id' => 1,
@@ -102,7 +102,7 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_trangthai' => 1,
                 'cdv_hinhanh' => 'hihi4.png',
                 'cdv_username' => 'hehehe1212',
-                'cdv_password' => bcrypt('hehehe1234'),
+                'password' => bcrypt('hehehe1234'),
                 'cdv_quyen' => 0
             ],
 
@@ -129,7 +129,7 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_trangthai' => 1,
                 'cdv_hinhanh' => 'hihi5.png' ,
                 'cdv_username' => 'hihihi1212',
-                'cdv_password' => bcrypt('hihihi1234'),
+                'password' => bcrypt('hihihi1234'),
                 'cdv_quyen' => 0
             ],[
                 'tc_id' => 1,
@@ -152,7 +152,7 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_trangthai' => 1,
                 'cdv_hinhanh' => 'hihi6.png' ,
                 'cdv_username' => 'hahaha1212',
-                'cdv_password' => bcrypt('hahaha1234'),
+                'password' => bcrypt('hahaha1234'),
                 'cdv_quyen' => 0
             ],[
                 'tc_id' => 1,
@@ -175,7 +175,7 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_trangthai' => 1,
                 'cdv_hinhanh' => 'hihi7.png' ,
                 'cdv_username' => 'ngoclinh1212',
-                'cdv_password' => bcrypt('ngoclinh1234'),
+                'password' => bcrypt('ngoclinh1234'),
                 'cdv_quyen' => 0
 
             ],[
@@ -199,7 +199,7 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_trangthai' => 1,
                 'cdv_hinhanh' => 'hihi8.png',
                 'cdv_username' => 'sockha1212',
-                'cdv_password' => bcrypt('sockha1234'),
+                'password' => bcrypt('sockha1234'),
                 'cdv_quyen' => 0
             ],[
                 'tc_id' => 1,
@@ -222,7 +222,7 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_trangthai' => 1,
                 'cdv_hinhanh' => 'hihi9.png',
                 'cdv_username' => 'haisang1212',
-                'cdv_password' => bcrypt('haisang1234'),
+                'password' => bcrypt('haisang1234'),
                 'cdv_quyen' => 0
             ],[
                 'tc_id' => 1,
@@ -245,7 +245,7 @@ class CongDoanVienSeeder extends Seeder
                 'cdv_trangthai' => 1,
                 'cdv_hinhanh' => 'hihi10.png',
                 'cdv_username' => 'johnson1212',
-                'cdv_password' => bcrypt('johnson1234'),
+                'password' => bcrypt('johnson1234'),
                 'cdv_quyen' => 0
             ]
         ];
