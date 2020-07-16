@@ -45,9 +45,9 @@ class TourController extends Controller
             'tour_ngaykt' => 'required',
             'tour_chiphi' => 'required | numeric',
             'tour_soluong' => 'required | numeric',
-            'tour_phuongtien' => 'required',
-            'tour_diadiem' => 'required',
-            'tour_trongnam' => 'required',
+            'tour_giaidoan' => 'required',
+            'tour_daily' => 'required',
+            'tour_mota' => 'required',
 
         ]
         ,
@@ -58,9 +58,9 @@ class TourController extends Controller
             'tour_ngaykt.required' => 'Bạn chưa nhập ngày kết thúc!',
             'tour_chiphi.required' => 'Bạn chưa nhập chi phí!',
             'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
-            'tour_phuongtien.required' => 'Bạn chưa nhập phương tiện!',
-            'tour_diadiem.required' => 'Bạn chưa nhập địa điểm!',
-            'tour_trongnam.required' => 'Bạn chưa nhập năm!',
+            'tour_giaidoan.required' => 'Bạn chưa nhập phương tiện!',
+            'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
+            'tour_mota.required' => 'Bạn chưa nhập năm!',
 
         ])->validate();
 
@@ -71,9 +71,9 @@ class TourController extends Controller
         $Tour->tour_ngaykt = $request->tour_ngaykt;
         $Tour->tour_chiphi = $request->tour_chiphi;
         $Tour->tour_soluong = $request->tour_soluong;
-        $Tour->tour_phuongtien = $request->tour_phuongtien;
-        $Tour->tour_diadiem = $request->tour_diadiem;
-        $Tour->tour_trongnam = $request->tour_trongnam;
+        $Tour->tour_giaidoan = $request->tour_giaidoan;
+        $Tour->tour_daily = $request->tour_daily;
+        $Tour->tour_mota = $request->tour_mota;
         $Tour->tour_trangthai = 1;
         $Tour->save();
 
@@ -99,9 +99,9 @@ class TourController extends Controller
             'tour_ngaykt' => 'required',
             'tour_chiphi' => 'required | numeric',
             'tour_soluong' => 'required | numeric',
-            'tour_phuongtien' => 'required',
-            'tour_diadiem' => 'required | min:5',
-            'tour_trongnam' => 'required',
+            'tour_giaidoan' => 'required',
+            'tour_daily' => 'required',
+            'tour_mota' => 'required',
 
         ]
         ,
@@ -112,9 +112,9 @@ class TourController extends Controller
             'tour_ngaykt.required' => 'Bạn chưa nhập ngày kết thúc!',
             'tour_chiphi.required' => 'Bạn chưa nhập chi phí!',
             'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
-            'tour_phuongtien.required' => 'Bạn chưa nhập phương tiện!',
-            'tour_diadiem.required' => 'Bạn chưa nhập địa điểm!',
-            'tour_trongnam.required' => 'Bạn chưa nhập năm!',
+            'tour_giaidoan.required' => 'Bạn chưa nhập phương tiện!',
+            'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
+            'tour_mota.required' => 'Bạn chưa nhập năm!',
 
         ]);
 
@@ -125,9 +125,9 @@ class TourController extends Controller
         $Tour->tour_ngaykt = $request->tour_ngaykt;
         $Tour->tour_chiphi = $request->tour_chiphi;
         $Tour->tour_soluong = $request->tour_soluong;
-        $Tour->tour_phuongtien = $request->tour_phuongtien;
-        $Tour->tour_diadiem = $request->tour_diadiem;
-        $Tour->tour_trongnam = $request->tour_trongnam;
+        $Tour->tour_giaidoan = $request->tour_giaidoan;
+        $Tour->tour_daily = $request->tour_daily;
+        $Tour->tour_mota = $request->tour_mota;
         $Tour->tour_trangthai = 1;
         $Tour->save();
         Session::put('message','Sửa thành công!!!');
@@ -143,6 +143,22 @@ class TourController extends Controller
         Session::flash('alert-info', 'Xóa thành công!!!');
         return Redirect::back();
     }
+
+
+    // public function getDat($id){
+    //     $Tour = Tour::find($id);
+
+    //    return view('',compact('Tour'));
+    // }
+
+    // public function postDat(){
+    //     $Tour = Tour::find($id);
+    //     $Tour->DK_Tour->dkt_id = $request->dkt_id;
+    //     $Tour->CongDoanVien->cdv_id = $request->cdv_id;
+    //     $Tour->save();
+    //     Session::put('message','Đăng ký tour thành công!!!');
+    //     return redirect()->route('TOUR_DanhSach');
+    // }
 
     public function postTimkiem(Request $request){
         $tukhoa = $request->tukhoa;
