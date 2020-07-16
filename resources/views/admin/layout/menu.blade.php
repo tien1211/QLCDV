@@ -31,8 +31,19 @@
                     <ul class="sub">
                     <li><a href="{{route('TOUR_DanhSach')}}">Danh Sách Tour</a></li>
 						<li><a href="{{route('TOUR_Them')}}">Thêm Tour</a></li>
-                         {{-- <li><a href="{{route('TOUR_Sua',$Tour->id)}}">Sửa Tour</a></li>
-                        <li><a href="{{route('TOUR_Xoa',$Tour->id)}}">Xóa Tour</a></li> --}}
+
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-th"></i>
+                        <span>Quản lý Lịch Trình</span>
+                    </a>
+                    <ul class="sub">
+                    <li><a href="{{route('LT_DanhSach')}}">Danh Sách Lịch Trình</a></li>
+						<li><a href="{{route('LT_Them')}}">Thêm Lịch Trình</a></li>
+                         {{-- <li><a href="{{route('LT_Sua',$LichTrinh->id)}}">Sửa Lịch Trình</a></li> --}}
+                        {{-- <li><a href="{{route('TOUR_Xoa',$Tour->id)}}">Xóa Tour</a></li> --}}
                     </ul>
                 </li>
             </ul>

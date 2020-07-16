@@ -55,19 +55,19 @@
                             <div class="form-group ">
                                 <label for="lastname" class="control-label col-lg-3">Hạn đăng ký</label>
                                 <div class="col-lg-6">
-                                    <input class=" form-control"  name="tour_handk" type="datetime-local">
+                                    <input class=" form-control"  name="tour_handk" type="date">
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label for="username" class="control-label col-lg-3">Ngày bắt đầu</label>
                                 <div class="col-lg-6">
-                                    <input class="form-control "  name="tour_ngaybd" type="datetime-local">
+                                    <input class="form-control "  name="tour_ngaybd" type="date">
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label for="password" class="control-label col-lg-3">Ngày kết thúc</label>
                                 <div class="col-lg-6">
-                                    <input class="form-control "  name="tour_ngaykt" type="datetime-local">
+                                    <input class="form-control "  name="tour_ngaykt" type="date">
                                 </div>
                             </div>
                             <div class="form-group ">
@@ -83,21 +83,21 @@
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label for="email" class="control-label col-lg-3">Phương tiện</label>
+                                <label for="email" class="control-label col-lg-3">Giai đoạn</label>
                                 <div class="col-lg-6">
-                                    <input class="form-control "  name="tour_phuongtien" type="text">
+                                    <input class="form-control "  name="tour_giaidoan" type="text">
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label for="email" class="control-label col-lg-3">Địa điểm</label>
+                                <label for="email" class="control-label col-lg-3">Đại lý</label>
                                 <div class="col-lg-6">
-                                    <input class="form-control "  name="tour_diadiem" type="text">
+                                    <input class="form-control "  name="tour_daily" type="text">
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label for="email" class="control-label col-lg-3">Trong năm</label>
+                                <label for="email" class="control-label col-lg-3">Mô tả</label>
                                 <div class="col-lg-6">
-                                    <input class="form-control "  name="tour_trongnam" type="number">
+                                    <input class="form-control "  name="tour_mota" type="text">
                                 </div>
                             </div>
 
