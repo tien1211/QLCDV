@@ -35,7 +35,7 @@ class CongDoanVien extends Authenticatable
         'cdv_quyen' 
     ];
 
-    protected $dates        = ['ngayvaocd','ngayvaonganh'];
+    protected $dates        = ['ngaythuviec','ngayvaonganh'];
     protected $dateFormat   = 'Y-m-d';
 
     #một công đoàn viên chỉ có 1 chức vụ

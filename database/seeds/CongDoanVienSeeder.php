@@ -16,7 +16,6 @@ class CongDoanVienSeeder extends Seeder
                 'dv_id' => 1,
                 'cv_id' => 1,
                 'lnv_id' => 1,
-                // // 'mht_id' => 4,
                 'cdv_ten' => 'Nguyễn Nhựt Trường',
                 'cdv_ngaysinh' => '1998-01-01',
                 'cdv_gioitinh' => 1,#1 là nam 0 là nữ
@@ -39,7 +38,6 @@ class CongDoanVienSeeder extends Seeder
                 'dv_id' => 1,
                 'cv_id' => 2,
                 'lnv_id' => 1,
-                // 'mht_id' => 4,
                 'cdv_ten' => 'Huỳnh Thanh Phúc',
                 'cdv_ngaysinh' => '1998-02-01',
                 'cdv_gioitinh' => 1,#1 là nam 0 là nữ
@@ -62,7 +60,6 @@ class CongDoanVienSeeder extends Seeder
                 'dv_id' => 1,
                 'cv_id' => 3,
                 'lnv_id' => 1,
-                // 'mht_id' => 4,
                 'cdv_ten' => 'Hồng Anh Tiến',
                 'cdv_ngaysinh' => '1998-12-11',
                 'cdv_gioitinh' => 1,#1 là nam 0 là nữ
@@ -85,7 +82,6 @@ class CongDoanVienSeeder extends Seeder
                 'dv_id' => 2,
                 'cv_id' => 5,
                 'lnv_id' => 2,
-                // 'mht_id' => 1,
                 'cdv_ten' => 'Nguyễn Ngọc Linh',
                 'cdv_ngaysinh' => '1998-11-5',
                 'cdv_gioitinh' => 0,
@@ -112,7 +108,6 @@ class CongDoanVienSeeder extends Seeder
                 'dv_id' => 2,
                 'cv_id' => 5,
                 'lnv_id' => 2,
-                // 'mht_id' => 1,
                 'cdv_ten' => 'Hello',
                 'cdv_ngaysinh' => '1978-01-01',
                 'cdv_gioitinh' => 1,#1 là nam 0 là nữ
@@ -135,7 +130,6 @@ class CongDoanVienSeeder extends Seeder
                 'dv_id' => 2,
                 'cv_id' => 3,
                 'lnv_id' => 1,
-                // 'mht_id' => 2,
                 'cdv_ten' => 'Huỳnh Thanh Thế',
                 'cdv_ngaysinh' => '1988-01-12',
                 'cdv_gioitinh' => 2,#1 là nam 0 là nữ
@@ -158,7 +152,6 @@ class CongDoanVienSeeder extends Seeder
                 'dv_id' => 2,
                 'cv_id' => 4,
                 'lnv_id' => 1,
-                // 'mht_id' => 2,
                 'cdv_ten' => 'Hồng Anh Đại',
                 'cdv_ngaysinh' => '1999-12-11',
                 'cdv_gioitinh' => 1,#1 là nam 0 là nữ
@@ -182,7 +175,6 @@ class CongDoanVienSeeder extends Seeder
                 'dv_id' => 1,
                 'cv_id' => 5,
                 'lnv_id' => 2,
-                // 'mht_id' => 1,
                 'cdv_ten' => 'Sóc Kha',
                 'cdv_ngaysinh' => '1998-06-05',
                 'cdv_gioitinh' => 0,
@@ -205,7 +197,6 @@ class CongDoanVienSeeder extends Seeder
                 'dv_id' => 1,
                 'cv_id' => 5,
                 'lnv_id' => 2,
-                // 'mht_id' => 1,
                 'cdv_ten' => 'Hải Sang',
                 'cdv_ngaysinh' => '1998-08-05',
                 'cdv_gioitinh' => 1,
@@ -228,7 +219,6 @@ class CongDoanVienSeeder extends Seeder
                 'dv_id' => 1,
                 'cv_id' => 5,
                 'lnv_id' => 2,
-                // 'mht_id' => 1,
                 'cdv_ten' => 'JohnSon',
                 'cdv_ngaysinh' => '1976-06-05',
                 'cdv_gioitinh' => 0,

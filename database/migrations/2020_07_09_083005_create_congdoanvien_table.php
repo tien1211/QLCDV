@@ -18,7 +18,6 @@ class CreateCongdoanvienTable extends Migration
             $table->unsignedInteger('dv_id');
             $table->unsignedInteger('cv_id');
             $table->unsignedInteger('lnv_id');
-            $table->unsignedInteger('mht_id');
             $table->string('cdv_ten');
             $table->date('cdv_ngaysinh');
             $table->tinyInteger('cdv_gioitinh')->comment('1 la Nam 0 la Nữ');
@@ -43,7 +42,6 @@ class CreateCongdoanvienTable extends Migration
             $table->foreign('dv_id')->references('dv_id')->on('DonVi')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreign('cv_id')->references('cv_id')->on('ChucVu')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreign('lnv_id')->references('lnv_id')->on('LoaiNhanVien')->onDelete('CASCADE')->onUpdate('CASCADE');
-            // $table->foreign('mht_id')->references('mht_id')->on('MucHoTro')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 

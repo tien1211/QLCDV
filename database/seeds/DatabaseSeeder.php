@@ -18,9 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ChucVuSeeder::class);
         $this->call(CongDoanVienSeeder::class);
         $this->call(LichTrinhSeeder::class);
+        $this->call(GiaiDoanSeeder::class);
         $this->call(TourSeeder::class);
-        $this->call(DaiLySeeder::class);
-        $this->call(DL_TourSeeder::class);
         $this->call(DK_TourSeeder::class);
         $this->call(ThongTinNguoiDKSeeder::class);
     }
