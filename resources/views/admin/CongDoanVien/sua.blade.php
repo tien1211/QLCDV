@@ -12,6 +12,29 @@
               <div class="form" >
               <form class="cmxform form-horizontal" enctype="multipart/form-data" id="signupForm" method="post" action="{{route('CDV_XLSua',['id'=> $CongDoanVien->cdv_id])}}" novalidate="novalidate">
                 @csrf
+
+                {{-- Mức Đơn vị --}}
+                <div class="form-group">
+                  <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Đơn Vị</label>
+                  <div class="col-lg-6">
+                    <select class="form-control m-bot15" name="dv_id">
+                      <option value="">Chọn Đơn Vị...</option>
+                    @foreach ($DonVi as $dv)
+                    <option
+                    @if ($CongDoanVien->dv_id  == $dv->dv_id)
+                        {{"selected"}}
+                      @endif
+                    value='{{$dv->dv_id}}'>{{$dv->dv_ten}}</option>
+                    @endforeach
+                  </select>
+                  @if($errors->has('dv_id'))
+                    <div style="color:red">{{ $errors->first('dv_id')}}</div>
+                    @endif
+                  </div>
+                </div>
+                {{-- Mức Đơn vị --}}
+
+
                 {{-- Chức vụ --}}
                 <div class="form-group">
                   <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Chức vụ</label>
@@ -54,26 +77,6 @@
                 </div>
                 {{-- Loại Nhân Viên --}}
 
-                {{-- Mức Hổ Trợ --}}
-                <div class="form-group">
-                  <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Mức Hổ trợ</label>
-                  <div class="col-lg-6">
-                    <select class="form-control m-bot15" name="mht_id">
-                      <option value="">Chọn mức hổ trợ...</option>
-                    @foreach ($MucHoTro as $mht)
-                    <option
-                    @if ($CongDoanVien->mht_id  == $mht->mht_id)
-                        {{"selected"}}
-                      @endif
-                    value='{{$mht->mht_id}}'>{{$mht->mht_nam}}</option>
-                    @endforeach
-                  </select>
-                  @if($errors->has('mht_id'))
-                    <div style="color:red">{{ $errors->first('mht_id')}}</div>
-                    @endif
-                  </div>
-                </div>
-                {{-- Mức Hổ Trợ --}}
 
                 {{-- Họ tên --}}
                   @csrf
@@ -232,17 +235,17 @@
                   </div>
                   {{-- Tôn Giáo --}}
 
-                  {{-- Ngày vào Công Đoàn --}}
+                  {{-- Ngày vào thử việc --}}
                   <div class="form-group ">
                     <label for="firstname" class="control-label col-lg-3">Ngày Vào Công Đoàn</label>
                     <div class="col-lg-6">
-                        <input class=" form-control" id="" value="{{$CongDoanVien->cdv_ngayvaocd}}" name="cdv_ngayvaocd" type="date">
-                        @if($errors->has('cdv_ngayvaocd'))
-                        <div style="color:red">{{ $errors->first('cdv_ngayvaocd')}}</div>
+                        <input class=" form-control" id="" value="{{$CongDoanVien->cdv_ngaythuviec}}" name="cdv_ngaythuviec" type="date">
+                        @if($errors->has('cdv_ngaythuviec'))
+                        <div style="color:red">{{ $errors->first('cdv_ngaythuviec')}}</div>
                         @endif
                       </div>
                   </div>
-                  {{-- Ngày vào Công Đoàn --}}
+                  {{-- Ngày vào thử việc --}}
 
                   {{-- Ngày vào ngành --}}
                   <div class="form-group ">
