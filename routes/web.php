@@ -45,11 +45,11 @@ Route::group(['prefix' => 'admin'], function () {
         //Tìm kiếm
         Route::post('/CDV_Timkiem', 'CongDoanVienController@postTimkiem')->name('CDV_Timkiem');
     });
-    Route::group(['prefix' => 'ToChuc'], function () {
+    Route::group(['prefix' => 'DonVi'], function () {
         // Thông tin tổ Chức
-        Route::get('/ToChuc', 'ToChucController@getToChuc')->name('TT_ToChuc');
+        Route::get('/DonVi', 'DonViController@getDonVi')->name('DV_DanhSach');
         //Form cập nhật tổ chức
-        Route::get('/CN_ToChuc', 'ToChucController@getSua')->name('CN_ToChuc');
+        Route::get('/CN_ToChuc', 'ToChucController@getSua')->name('DV_Them');
         Route::post('/LCN_ToChuc', 'ToChucController@postSua')->name('LCN_ToChuc');
 
     });

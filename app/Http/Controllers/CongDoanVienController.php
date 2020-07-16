@@ -5,7 +5,7 @@ use App\CongDoanVien;
 use Illuminate\Http\Request;
 use App\ChucVu;
 use App\LoaiNhanVien;
-use App\MucHoTro;
+use App\DonVi;
 use Validator;
 use Session;
 class CongDoanVienController extends Controller
@@ -13,11 +13,11 @@ class CongDoanVienController extends Controller
 
     function __construct(){
 		$ChucVu = ChucVu::all();
-    	$LoaiNhanVien = LoaiNhanVien::all();
-        $MucHoTro = MucHoTro::all();
+        $LoaiNhanVien = LoaiNhanVien::all();
+        $DonVi = DonVi::all();
     	view()->share('ChucVu',$ChucVu);
         view()->share('LoaiNhanVien',$LoaiNhanVien);
-        view()->share('MucHoTro',$MucHoTro);
+        view()->share('DonVi',$DonVi);
 	}
 
 
@@ -25,7 +25,8 @@ class CongDoanVienController extends Controller
     public function getDanhSach(){
         $lnv_id = "";
         $cv_id = "";
-        $CongDoanVien = CongDoanVien::all();
+        
+        $CongDoanVien = CongDoanVien::paginate(5);
         return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien)->with('lnv_id',$lnv_id)->with('cv_id',$cv_id);
     }
 
@@ -38,7 +39,7 @@ class CongDoanVienController extends Controller
         $this->validate($request, [
             'cv_id' => 'required',
             'lnv_id' => 'required',
-            'mht_id'=>'required',
+            'dv_id'=>'required',
             'cdv_ten'=>'bail|required',
             'cdv_ngaysinh'=>'required',
             'cdv_gioitinh'=>'required',
@@ -50,7 +51,7 @@ class CongDoanVienController extends Controller
             'cdv_dantoc'=>'required',
             'cdv_trinhdo'=>'required',
             'cdv_tongiao'=>'bail|required',
-            'cdv_ngayvaocd'=>'required',
+            'cdv_ngaythuviec'=>'required',
             'cdv_ngayvaonganh'=>'required',
             'cdv_username'=>'bail|required|unique:CongDoanVien',
             'cdv_password'=>'required|min:8|max:50',
@@ -59,7 +60,7 @@ class CongDoanVienController extends Controller
             ],[
                 'cv_id.required' => 'Vui lòng không được để trống chức vụ',
                 'lnv_id.required' => 'Vui lòng không được để trống loại nhân viên',
-                'mht_id.required'=>'Vui lòng không được để trống mức hổ trợ',
+                'dv_id.required'=>'Vui lòng không được để trống đơn vị',
                 'cdv_ten.required'=>'Vui lòng không được để trống tên công đoàn viên',
                 'cdv_ngaysinh.required'=>'Vui lòng không được để trống ngày sinh',
                 'cdv_gioitinh.required'=>'Vui lòng không được để trống giới tính',
@@ -75,7 +76,7 @@ class CongDoanVienController extends Controller
                 'cdv_dantoc.required'=>'Vui lòng không được để trống dân tộc',
                 'cdv_trinhdo.required'=>'Vui lòng không được để trống trình độ',
                 'cdv_tongiao.required'=>'Vui lòng không được để trống tôn giáo',
-                'cdv_ngayvaocd.required'=>'Vui lòng không được để trống ngày vào công đoàn',
+                'cdv_ngaythuviec.required'=>'Vui lòng không được để trống ngày vào công đoàn',
                 'cdv_ngayvaonganh.required'=>'Vui lòng không được để trống ngày vào ngành',
                 'cdv_username.required'=>'Vui lòng không được để trống tên đăng nhập',
                 'cdv_username.unique'=>'Tên đăng nhập đã tồn tại',
@@ -87,10 +88,9 @@ class CongDoanVienController extends Controller
                 'cdv_quyen.required' => 'Vui lòng chọn quyền cho công đoàn viên'
             ]);
             $CongDoanVien = new CongDoanVien();
-            $CongDoanVien->tc_id = 1;
+            $CongDoanVien->dv_id = $request->dv_id;
             $CongDoanVien->cv_id = $request->cv_id;
             $CongDoanVien->lnv_id = $request->lnv_id;
-            $CongDoanVien->mht_id = $request->mht_id;
             $CongDoanVien->cdv_ten = $request->cdv_ten;
             $CongDoanVien->cdv_ngaysinh = $request->cdv_ngaysinh;
             $CongDoanVien->cdv_gioitinh = $request->cdv_gioitinh;
@@ -102,7 +102,7 @@ class CongDoanVienController extends Controller
             $CongDoanVien->cdv_dantoc = $request->cdv_dantoc;
             $CongDoanVien->cdv_trinhdo = $request->cdv_trinhdo;
             $CongDoanVien->cdv_tongiao = $request->cdv_tongiao;
-            $CongDoanVien->cdv_ngayvaocd = $request->cdv_ngayvaocd;
+            $CongDoanVien->cdv_ngaythuviec = $request->cdv_ngaythuviec;
             $CongDoanVien->cdv_ngayvaonganh = $request->cdv_ngayvaonganh;
             $CongDoanVien->cdv_trangthai = 1;
             if($request->hasFile('cdv_hinhanh')){
@@ -123,7 +123,7 @@ class CongDoanVienController extends Controller
             }
             
             $CongDoanVien->cdv_username = $request->cdv_username;
-            $CongDoanVien->cdv_password =bcrypt($request->cdv_password);
+            $CongDoanVien->password =bcrypt($request->password);
             $CongDoanVien->cdv_quyen = $request->cdv_quyen;
             $CongDoanVien->save();
 
@@ -145,7 +145,7 @@ class CongDoanVienController extends Controller
         $this->validate($request, [
             'cv_id' => 'required',
             'lnv_id' => 'required',
-            'mht_id'=>'required',
+            'dv_id'=>'required',
             'cdv_ten'=>'bail|required',
             'cdv_ngaysinh'=>'required',
             'cdv_gioitinh'=>'required',
@@ -157,13 +157,13 @@ class CongDoanVienController extends Controller
             'cdv_dantoc'=>'required',
             'cdv_trinhdo'=>'required',
             'cdv_tongiao'=>'bail|required',
-            'cdv_ngayvaocd'=>'required',
+            'cdv_ngaythuviec'=>'required',
             'cdv_ngayvaonganh'=>'required',
             'cdv_quyen' => 'required'
             ],[
                 'cv_id.required' => 'Vui lòng không được để trống chức vụ',
                 'lnv_id.required' => 'Vui lòng không được để trống loại nhân viên',
-                'mht_id.required'=>'Vui lòng không được để trống mức hổ trợ',
+                'dv_id.required'=>'Vui lòng không được để trống đơn vị',
                 'cdv_ten.required'=>'Vui lòng không được để trống tên công đoàn viên',
                 'cdv_ngaysinh.required'=>'Vui lòng không được để trống ngày sinh',
                 'cdv_gioitinh.required'=>'Vui lòng không được để trống giới tính',
@@ -179,17 +179,15 @@ class CongDoanVienController extends Controller
                 'cdv_dantoc.required'=>'Vui lòng không được để trống dân tộc',
                 'cdv_trinhdo.required'=>'Vui lòng không được để trống trình độ',
                 'cdv_tongiao.required'=>'Vui lòng không được để trống tôn giáo',
-                'cdv_ngayvaocd.required'=>'Vui lòng không được để trống ngày vào công đoàn',
+                'cdv_ngaythuviec.required'=>'Vui lòng không được để trống ngày vào công đoàn',
                 'cdv_ngayvaonganh.required'=>'Vui lòng không được để trống ngày vào ngành',
                 'cdv_quyen.required' => 'Vui lòng chọn quyền cho công đoàn viên'
-
-               
             ]);
+
             $CongDoanVien = CongDoanVien::find($id);
-            $CongDoanVien->tc_id = 1;
+            $CongDoanVien->dv_id = $request->dv_id;
             $CongDoanVien->cv_id = $request->cv_id;
             $CongDoanVien->lnv_id = $request->lnv_id;
-            $CongDoanVien->mht_id = $request->mht_id;
             $CongDoanVien->cdv_ten = $request->cdv_ten;
             $CongDoanVien->cdv_ngaysinh = $request->cdv_ngaysinh;
             $CongDoanVien->cdv_gioitinh = $request->cdv_gioitinh;
@@ -201,7 +199,7 @@ class CongDoanVienController extends Controller
             $CongDoanVien->cdv_dantoc = $request->cdv_dantoc;
             $CongDoanVien->cdv_trinhdo = $request->cdv_trinhdo;
             $CongDoanVien->cdv_tongiao = $request->cdv_tongiao;
-            $CongDoanVien->cdv_ngayvaocd = $request->cdv_ngayvaocd;
+            $CongDoanVien->cdv_ngaythuviec = $request->cdv_ngaythuviec;
             $CongDoanVien->cdv_ngayvaonganh = $request->cdv_ngayvaonganh;
             $CongDoanVien->cdv_trangthai = 1;
             if($request->hasFile('cdv_hinhanh')){
@@ -226,18 +224,18 @@ class CongDoanVienController extends Controller
             if($request->changepassword == "on"){
                 $this->validate($request, [
                     
-                    'cdv_password'=>'required|min:8|max:50',
-                    'confirm_password'=>'required|same:cdv_password',
+                    'password'=>'required|min:8|max:50',
+                    'confirm_password'=>'required|same:password',
                     ],[
                         
-                        'cdv_password.required'=>'Vui lòng không được để trống mật khẩu',
-                        'cdv_password.min'=>'Mật khẩu phải ít nhất 8 kí tự',
-                        'cdv_password.max' => 'Mật khẩu không được quá 50 kí tự',
+                        'password.required'=>'Vui lòng không được để trống mật khẩu',
+                        'password.min'=>'Mật khẩu phải ít nhất 8 kí tự',
+                        'password.max' => 'Mật khẩu không được quá 50 kí tự',
                         'confirm_password.required'=>'Vui lòng không được để trống xác nhận mật khẩu',
                         'confirm_password.same' => 'Mật khẩu không trùng khớp',
                         
                     ]);
-                $CongDoanVien->cdv_password =bcrypt($request->cdv_password);
+                $CongDoanVien->password =bcrypt($request->password);
             }
             
             $CongDoanVien->save();
