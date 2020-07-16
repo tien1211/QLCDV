@@ -3,22 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\ToChuc;
+use App\DonVi;
 use Illuminate\Support\Facades\Redirect;
+use DB;
 
-class ToChucController extends Controller
+class DonViController extends Controller
 {
-    public function getToChuc()
-    {
-        $tochuc = ToChuc::find(1)->get();
-        //dd($tochuc);
-        return view('admin.ToChuc.to_chuc')->with('tochuc',$tochuc);
+    public function getDonVi()
+    {   
+        $DonVi = DB::table('DonVi')
+            ->leftjoin('DonVi as DonVitt','DonVitt.dv_id','=','DonVi.dv_tructhuoc_id')
+            ->select('DonVi.*','DonVitt.dv_ten as dv_tt')
+            ->get();
+        //dd($DonVi);
+        return view('admin.DonVi.danhsach')->with('DonVi',$DonVi);
     }
 
-    public function getSua()
+    public function getThem()
     {
-        $tochuc = ToChuc::find(1)->get();
-        return view('admin.ToChuc.capnhat')->with('tochuc',$tochuc);
+        $DonVi = DonVi::all();
+        return view('admin.DonVi.them')->with('DonVi',$DonVi);
     }
     public function postSua(Request $request)
     {

@@ -18,6 +18,7 @@ class CreateDonviTable extends Migration
             $table->string('dv_ten');
             $table->tinyInteger('dv_trangthai')->comment('1 la hien thi 0 la an thong tin');
             $table->text('dv_mota');
+            $table->unsignedInteger('dv_tructhuoc_id')->nullable();
             $table->timestamps();
         });
     }

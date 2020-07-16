@@ -7,8 +7,8 @@
                         <span>Tổ Chức</span>
                     </a>
                         <ul class="sub">
-                            <li><a href="{{route('TT_ToChuc')}}">Thông tin tổ chức</a></li>
-                        <li><a href="{{route('CN_ToChuc')}}">Cập nhật thông tin tổ chức</a></li>
+                            <li><a href="{{route('DV_DanhSach')}}">Danh sách đơn vị</a></li>
+                        <li><a href="{{route('DV_Them')}}">Thêm đơn vị</a></li>
                     </ul>
                 </li>
 
