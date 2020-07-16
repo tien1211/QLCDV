@@ -23,11 +23,7 @@
             </div>
             <div class="form-group">
               <select class="form-control m-bot15" name="cv_id">
-<<<<<<< HEAD
-                <option value="">Chọn chức vụ...</option>
-=======
               <option value="">Chọn chức vụ...</option>
->>>>>>> 2eec405675fe08b7d9de28204f60d060df5bf164
                 @foreach ($ChucVu as $cv)
                 @if($cv->cv_id == $cv_id)
                 <option selected value='{{$cv->cv_id}}'>{{$cv->cv_ten}}</option>

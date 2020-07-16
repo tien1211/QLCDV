@@ -20,16 +20,15 @@ class CongDoanVienController extends Controller
         view()->share('DonVi',$DonVi);
 	}
 
-
-
     public function getDanhSach(){
         $lnv_id = "";
         $cv_id = "";
         
         $CongDoanVien = CongDoanVien::paginate(5);
-        return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien)->with('lnv_id',$lnv_id)->with('cv_id',$cv_id);
+        return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien)->with('lnv_id',$lnv_id)
+        ->with('cv_id',$cv_id);
+        
     }
-
 
     public function getThem(){
         return view('admin.CongDoanVien.them');
@@ -131,7 +130,6 @@ class CongDoanVienController extends Controller
             return redirect()->route('CDV_Them');    
     }
 
-
     public function getSua($id){
         
         $CongDoanVien =  CongDoanVien::find($id);
@@ -139,7 +137,6 @@ class CongDoanVienController extends Controller
         return view('admin.CongDoanVien.sua')->with('CongDoanVien',$CongDoanVien);
         
     }
-
 
     public function postSua(Request $request, $id){
         $this->validate($request, [
@@ -252,14 +249,10 @@ class CongDoanVienController extends Controller
             return redirect()->route('CDV_DanhSach');
     }
     
-
     public function getchitietCDV($id){
         $CongDoanVien = CongDoanVien::find($id);
         return view('admin.CongDoanVien.chitiet')->with('CongDoanVien',$CongDoanVien);
     }
-
-
-
     
     public function postTimkiem(Request $request){
         $tukhoa = $request->tukhoa;
@@ -267,22 +260,22 @@ class CongDoanVienController extends Controller
         $lnv_id = $request->lnv_id;
         //dd($ChucVu);
         if((!empty($tukhoa)) && (!empty($cv_id)) && (!empty($lnv_id))){
-            $CongDoanVien = CongDoanVien::where([['lnv_id','=',$lnv_id],['cv_id','=',$cv_id],['cdv_ten','like',"%$tukhoa%"],])->get();
+            $CongDoanVien = CongDoanVien::where([['lnv_id','=',$lnv_id],['cv_id','=',$cv_id],['cdv_ten','like',"%$tukhoa%"],])->paginate(5);
         }
         else if ((empty($tukhoa)) && (empty($lnv_id)) && (!empty($cv_id))){
-            $CongDoanVien = CongDoanVien::where('cv_id',$cv_id)->get();
+            $CongDoanVien = CongDoanVien::where('cv_id',$cv_id)->paginate(5);
         }
         else if ((empty($tukhoa)) && (!empty($lnv_id)) && (empty($cv_id))){
-            $CongDoanVien = CongDoanVien::where('lnv_id',$lnv_id)->get();
+            $CongDoanVien = CongDoanVien::where('lnv_id',$lnv_id)->paginate(5);
         }
         else if ((!empty($lnv_id)) && (!empty($cv_id))){
-            $CongDoanVien = CongDoanVien::where([['lnv_id','=',$lnv_id],['cv_id','=',$cv_id],])->get();
+            $CongDoanVien = CongDoanVien::where([['lnv_id','=',$lnv_id],['cv_id','=',$cv_id],])->paginate(5);
         }
         else if ((!empty($tukhoa)) && (!empty($cv_id))){
-            $CongDoanVien = CongDoanVien::where('lnv_id',$lnv_id)->get();
+            $CongDoanVien = CongDoanVien::where('lnv_id',$lnv_id)->paginate(5);
         }
         else {
-            $CongDoanVien = CongDoanVien::where('cdv_ten','like',"%$tukhoa%")->get();
+            $CongDoanVien = CongDoanVien::where('cdv_ten','like',"%$tukhoa%")->paginate(5);
         }
         //dd($CongDoanVien);
         return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien)->with('lnv_id',$lnv_id)->with('cv_id',$cv_id)->with('tukhoa',$tukhoa);
