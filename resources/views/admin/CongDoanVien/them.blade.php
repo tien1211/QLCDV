@@ -9,9 +9,37 @@
               
           </header>
           <div class="panel-body">
-            @extends('admin.layout.partials.complete-message')
+            
               <div class="form" >
               <form class="cmxform form-horizontal" enctype="multipart/form-data" id="signupForm" method="post" action="{{route('CDV_XLThem')}}" novalidate="novalidate">
+                <div class="form-group" style="mt-3">
+                  <div class="flash-message">
+                    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                      @if(Session::has('alert-' . $msg))
+                      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
+                      ata-dismiss="alert" aria-label="close">&times;</a></p>
+                      @endif
+                    @endforeach
+                </div>
+                </div>
+                {{-- Đơn Vị --}}
+                <div class="form-group">
+                  <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Đơn Vị</label>
+                  <div class="col-lg-6">
+                    <select class="form-control m-bot15" name="dv_id">
+                      <option value="">Chọn đơn vị...</option>
+                      @foreach ($DonVi as $dv)
+                      <option value='{{$dv->dv_id}}'>{{$dv->dv_ten}}</option>
+                      @endforeach
+                    </select>
+                    @if($errors->has('dv_id')) 
+                    <div style="color:red">{{ $errors->first('dv_id')}}</div>
+                    @endif
+                  </div>
+                </div>
+                {{-- Đơn Vị --}}
+               
+               
                 {{-- Chức vụ --}}
                 <div class="form-group">
                   <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Chức vụ</label>
@@ -46,22 +74,7 @@
                 </div>
                 {{-- Loại Nhân Viên --}}
                 
-                {{-- Mức Hổ Trợ --}}
-                <div class="form-group">
-                  <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Mức Hổ trợ</label>
-                  <div class="col-lg-6">
-                    <select class="form-control m-bot15" name="mht_id">
-                      <option value="">Chọn mức hổ trợ...</option>
-                    @foreach ($MucHoTro as $mht)
-                    <option value='{{$mht->mht_id}}'>{{$mht->mht_nam}}</option>
-                    @endforeach
-                  </select>
-                  @if($errors->has('mht_id')) 
-                    <div style="color:red">{{ $errors->first('mht_id')}}</div>
-                    @endif
-                  </div>
-                </div>
-                {{-- Mức Hổ Trợ --}}
+                
                 
                 {{-- Họ tên --}}
                   @csrf
@@ -94,11 +107,11 @@
                     <div class="form-group">
                       <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Giới tính</label>
                       <div class="col-lg-6">
-                          <label class="checkbox-inline">
-                              <input type="checkbox" id="inlineCheckbox1" name="cdv_gioitinh" value="1"> Nam
+                          <label class="radio-inline">
+                              <input type="radio" id="inlineCheckbox1" name="cdv_gioitinh" value="1"> Nam
                           </label>
-                          <label class="checkbox-inline">
-                              <input type="checkbox" id="inlineCheckbox2" name="cdv_gioitinh" value="0"> Nữ
+                          <label class="radio-inline">
+                              <input type="radio" id="inlineCheckbox2" name="cdv_gioitinh" value="0"> Nữ
                           </label>
                           @if($errors->has('cdv_gioitinh')) 
                           <div style="color:red">{{ $errors->first('cdv_gioitinh')}}</div>
@@ -216,11 +229,11 @@
 
                   {{-- Ngày vào Công Đoàn --}}
                   <div class="form-group ">
-                    <label for="firstname" class="control-label col-lg-3">Ngày Vào Công Đoàn</label>
+                    <label for="firstname" class="control-label col-lg-3">Ngày Vào Thử Việc</label>
                     <div class="col-lg-6">
-                        <input class=" form-control" id="" name="cdv_ngayvaocd" type="date">
-                        @if($errors->has('cdv_ngayvaocd')) 
-                        <div style="color:red">{{ $errors->first('cdv_ngayvaocd')}}</div>
+                        <input class=" form-control" id="" name="cdv_ngaythuviec" type="date">
+                        @if($errors->has('cdv_ngaythuviec')) 
+                        <div style="color:red">{{ $errors->first('cdv_ngaythuviec')}}</div>
                         @endif
                       </div>
                   </div>
@@ -296,11 +309,11 @@
                     <div class="form-group">
                       <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Quyền</label>
                       <div class="col-lg-6">
-                          <label class="checkbox-inline">
-                              <input type="checkbox" id="inlineCheckbox1" name="cdv_quyen" value="1"> Admin
+                          <label class="radio-inline">
+                              <input type="radio" id="inlineCheckbox1" name="cdv_quyen" value="1"> Admin
                           </label>
-                          <label class="checkbox-inline">
-                              <input type="checkbox" id="inlineCheckbox2" name="cdv_quyen" value="0"> Bình Thường
+                          <label class="radio-inline">
+                              <input type="radio" id="inlineCheckbox2" name="cdv_quyen" value="0"> Bình Thường
                           </label>
                           @if($errors->has('cdv_quyen')) 
                               <div style="color:red">{{ $errors->first('cdv_quyen')}}</div>
