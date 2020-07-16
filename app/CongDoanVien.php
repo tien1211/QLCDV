@@ -15,7 +15,6 @@ class CongDoanVien extends Authenticatable
         'dv_id',
         'cv_id',
         'lnv_id',
-        'mht_id',
         'cdv_ten',
         'cdv_ngaysinh',
         'cdv_gioitinh',
@@ -27,8 +26,8 @@ class CongDoanVien extends Authenticatable
         'cdv_dantoc',
         'cdv_trinhdo',
         'cdv_tongiao',
-        'cdv_ngayvaocd',
         'cdv_ngaythuviec',
+        'cdv_ngayvaonganh',
         'cdv_trangthai',
         'cdv_hinhanh',
         'cdv_username',
@@ -45,8 +44,8 @@ class CongDoanVien extends Authenticatable
     }
 
     #một công đoàn viên chỉ có 1 tổ chức
-    public function ToChuc(){
-        return $this->belongsTo('App\ToChuc','tc_id','tc_id');
+    public function DonVi(){
+        return $this->belongsTo('App\DonVi','dv_id','dv_id');
     }
 
     #một công đoàn viên chỉ có 1 loại nhân viên
@@ -55,9 +54,9 @@ class CongDoanVien extends Authenticatable
     }
 
     #một công đoàn viên chỉ có 1 mức hổ trợ
-    public function MucHoTro(){
-        return $this->belongsTo('App\MucHoTro','mht_id','mht_id');
-    }
+    // public function MucHoTro(){
+    //     return $this->belongsTo('App\MucHoTro','mht_id','mht_id');
+    // }
 
 
     #một Công đoàn viên có thể đăng ký nhiều tour

@@ -68,6 +68,9 @@ Route::group(['prefix' => 'admin'], function () {
         //Form xóa tour
         Route::get('/TOUR_XoaTour/{id}', 'TourController@getXoa')->name('TOUR_Xoa');
 
+        //Tìm kiếm
+        Route::post('/TOUR_Timkiem', 'TourController@postTimkiem')->name('TOUR_Timkiem');
+
 
     });
 

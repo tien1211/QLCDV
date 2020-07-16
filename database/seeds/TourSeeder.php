@@ -14,14 +14,13 @@ class TourSeeder extends Seeder
         $arr=[
             [
                 'lt_id' => '1',
-                'tour_handk' => '2020-08-20 08:30:00',
-                'tour_ngaybd' => '2020-08-21 05:30:00',
-                'tour_ngaykt' => '2020-08-22 18:30:00',
+                'tour_handk' => '2020-08-20',
+                'tour_ngaybd' => '2020-08-21',
+                'tour_ngaykt' => '2020-08-22',
                 'tour_chiphi' => '5000000',
                 'tour_soluong' => '20',
-                'tour_phuongtien' => 'Ô Tô',
-                'tour_diadiem' => 'Vũng Tàu',
-                'tour_trongnam' => 1,
+
+                'tour_giaidoan' => '',
                 'tour_trangthai' => 1
             ],[
                 'lt_id' => '2',

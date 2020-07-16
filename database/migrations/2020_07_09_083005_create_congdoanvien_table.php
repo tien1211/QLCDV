@@ -15,7 +15,7 @@ class CreateCongdoanvienTable extends Migration
     {
         Schema::create('CongDoanVien', function (Blueprint $table) {
             $table->mediumIncrements('cdv_id');
-            $table->unsignedInteger('tc_id');
+            $table->unsignedInteger('dv_id');
             $table->unsignedInteger('cv_id');
             $table->unsignedInteger('lnv_id');
             $table->unsignedInteger('mht_id');
@@ -40,10 +40,10 @@ class CreateCongdoanvienTable extends Migration
             $table->timestamps();
 
 
-            $table->foreign('tc_id')->references('tc_id')->on('ToChuc')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('dv_id')->references('dv_id')->on('DonVi')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreign('cv_id')->references('cv_id')->on('ChucVu')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreign('lnv_id')->references('lnv_id')->on('LoaiNhanVien')->onDelete('CASCADE')->onUpdate('CASCADE');
-            $table->foreign('mht_id')->references('mht_id')->on('MucHoTro')->onDelete('CASCADE')->onUpdate('CASCADE');
+            // $table->foreign('mht_id')->references('mht_id')->on('MucHoTro')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 

@@ -10,8 +10,9 @@ class LichTrinh extends Model
     protected $primaryKey = 'lt_id';
     protected $guarded      = ['lt_id'];
     protected $fillable = [
+        'lt_ten',
         'lt_file',
-        'cv_trangthai',
+        'lt_trangthai',
     ];
     #một lịch trình có nhiều tour
     public function Tour (){

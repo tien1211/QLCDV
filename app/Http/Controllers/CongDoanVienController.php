@@ -23,8 +23,10 @@ class CongDoanVienController extends Controller
 
 
     public function getDanhSach(){
+        $lnv_id = "";
+        $cv_id = "";
         $CongDoanVien = CongDoanVien::all();
-        return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien);
+        return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien)->with('lnv_id',$lnv_id)->with('cv_id',$cv_id);
     }
 
 
@@ -285,7 +287,6 @@ class CongDoanVienController extends Controller
             $CongDoanVien = CongDoanVien::where('cdv_ten','like',"%$tukhoa%")->get();
         }
         //dd($CongDoanVien);
-        return view('admin.CongDoanVien.timkiem')->with('CongDoanVien',$CongDoanVien)->with('lnv_id',$lnv_id)->with('cv_id',$cv_id)->with('tukhoa',$tukhoa);
+        return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien)->with('lnv_id',$lnv_id)->with('cv_id',$cv_id)->with('tukhoa',$tukhoa);
     }
-
 }

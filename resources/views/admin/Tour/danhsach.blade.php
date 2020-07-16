@@ -4,16 +4,34 @@
 
  <div class="panel panel-default">
     <div class="panel-heading">
-     Danh Sách Tour
-
+    Danh Sách Tour
     </div>
     <?php
-     $message = Session::get('message');
-     if($message){
-               echo '<span class="text-alert">'.$message.'</span>';
-               Session::put('message',null);
-           }
-           ?>
+    $message = Session::get('message');
+    if($message){
+      echo '<span class="text-alert">'.$message.'</span>';
+      Session::put('message',null);
+    }
+    ?>
+    <div class="panel-body">
+        <div class="position-right">
+            <form class="form-inline" role="form" action="{{route('TOUR_Timkiem')}}" method="post">
+            {{ csrf_field() }}
+            <div class="form-group">
+              Từ ngày: 
+              <input class="form-control "  name="tour_ngaybd" type="date" value="{{$ngaybd}}">
+            </div>
+            <div class="form-group">
+              Đến:
+              <input class="form-control "  name="tour_ngaykt" type="date" value="{{$ngaykt}}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="tukhoa" placeholder="từ khóa tìm kiếm" name="tukhoa">
+            </div>
+              <button type="submit" class="btn btn-outline-info">Tìm kiếm</button>
+        </form>
+        </div>
+    </div>
     <div>
       <table class="table" ui-jq="footable" ui-options='{
         "paging": {

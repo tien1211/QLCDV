@@ -17,6 +17,7 @@ class Tour extends Model
         'tour_soluong',
         'tour_giaidoan',
         'tour_daily',
+        'tour_mota',
         'tour_trangthai'   
     ];
 

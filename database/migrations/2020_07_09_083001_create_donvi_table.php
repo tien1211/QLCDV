@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLichtrinhTable extends Migration
+class CreateDonviTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateLichtrinhTable extends Migration
      */
     public function up()
     {
-        Schema::create('LichTrinh', function (Blueprint $table) {
-            $table->increments('lt_id');
-            $table->string('lt_ten');
-            $table->string('lt_file');
-            $table->tinyInteger('lt_trangthai')->comment('1 la hien thi 0 la an thong tin');
+        Schema::create('DonVi', function (Blueprint $table) {
+            $table->increments('dv_id');
+            $table->string('dv_ten');
+            $table->tinyInteger('dv_trangthai')->comment('1 la hien thi 0 la an thong tin');
+            $table->text('dv_mota');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateLichtrinhTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('LichTrinh');
+        Schema::dropIfExists('DonVi');
     }
 }
