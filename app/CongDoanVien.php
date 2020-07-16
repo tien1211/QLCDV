@@ -12,7 +12,7 @@ class CongDoanVien extends Authenticatable
     protected $primaryKey = 'cdv_id';
     protected $guarded      = ['cdv_id'];
     protected $fillable = [
-        'tc_id',
+        'dv_id',
         'cv_id',
         'lnv_id',
         'mht_id',
@@ -28,7 +28,7 @@ class CongDoanVien extends Authenticatable
         'cdv_trinhdo',
         'cdv_tongiao',
         'cdv_ngayvaocd',
-        'cdv_ngayvaonganh',
+        'cdv_ngaythuviec',
         'cdv_trangthai',
         'cdv_hinhanh',
         'cdv_username',
@@ -58,10 +58,6 @@ class CongDoanVien extends Authenticatable
     public function MucHoTro(){
         return $this->belongsTo('App\MucHoTro','mht_id','mht_id');
     }
-
-   
-
-    
 
 
     #một Công đoàn viên có thể đăng ký nhiều tour

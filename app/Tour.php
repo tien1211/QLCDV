@@ -15,9 +15,8 @@ class Tour extends Model
         'tour_ngaykt',
         'tour_chiphi',
         'tour_soluong',
-        'tour_phuongtien',
-        'tour_diadiem',
-        'tour_trongnam',
+        'tour_giaidoan',
+        'tour_daily',
         'tour_trangthai'   
     ];
 
@@ -35,8 +34,5 @@ class Tour extends Model
         return $this->hasMany('App\DK_Tour', 'tour_id', 'tour_id');
     }
 
-    public function DL_Tour()
-    {
-        return $this->belongsTo('App\DK_Tour', 'tour_id', 'tour_id');
-    }
+   
 }

@@ -30,7 +30,7 @@ class CreateCongdoanvienTable extends Migration
             $table->string('cdv_dantoc');
             $table->string('cdv_trinhdo');
             $table->string('cdv_tongiao');
-            $table->date('cdv_ngayvaocd');
+            $table->date('cdv_ngaythuviec');
             $table->date('cdv_ngayvaonganh');
             $table->tinyInteger('cdv_trangthai')->comment('1 la hien thi 0 la an thong tin');
             $table->string('cdv_hinhanh');

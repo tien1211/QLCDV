@@ -4,21 +4,16 @@
  <div class="panel panel-default">
     <div class="panel-heading">
       Danh Sách Công Đoàn Viên
-      <div class="col-4">
-        <div class="flash-message">
-          @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-            @if(Session::has('alert-' . $msg))
-            <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
-            ata-dismiss="alert" aria-label="close">&times;</a></p>
-            @endif
-          @endforeach
-      </div>
-      </div>
+      
+        
+      
     </div>
     <div class="panel-body">
         <div class="position-right">
+          
             <form class="form-inline" role="form" action="{{route('CDV_Timkiem')}}" method="post">
             {{ csrf_field() }}
+            
             <div class="form-group">
               <select class="form-control m-bot15" name="lnv_id">
                 <option value="">Chọn mức loại nhân viên...</option>
@@ -29,7 +24,7 @@
             </div>
             <div class="form-group">
               <select class="form-control m-bot15" name="cv_id">
-                <option value="">Chọn mức chức vụ...</option>
+                <option value="">Chọn chức vụ...</option>
                 @foreach ($ChucVu as $cv)
                 <option value='{{$cv->cv_id}}'>{{$cv->cv_ten}}</option>
                 @endforeach
@@ -39,6 +34,18 @@
                 <input type="text" class="form-control" id="tukhoa" placeholder="từ khóa tìm kiếm" name="tukhoa">
             </div>
               <button type="submit" class="btn btn-outline-info">Tìm kiếm</button>
+        </form>
+        <form action="" style="width: 100%; mt-6">
+          <div class="form-group" style="mt-6">
+            <div class="flash-message">
+              @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                @if(Session::has('alert-' . $msg))
+                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
+                ata-dismiss="alert" aria-label="close">&times;</a></p>
+                @endif
+              @endforeach
+          </div>
+          </div>
         </form>
         </div>
     </div>
@@ -88,7 +95,7 @@
                 <td><a href="{{route('CDV_ChiTiet',['id'=>$cdv->cdv_id])}}"><button type="button" class="btn btn-outline-info">Chi Tiết</button></a></td>
                 <td>
                   <i class='fas fa-pencil-alt'></i><a href="{{route('CDV_Sua',['id'=>$cdv->cdv_id])}}">Sửa</a>
-                  <i class='fas fa-trash-alt'></i><a href="{{route('CDV_Xoa',['id'=>$cdv->cdv_id])}}">Xóa</a>
+                  <i class='fas fa-trash-alt'></i><a href="{{route('CDV_Xoa',['id'=>$cdv->cdv_id])}}" onclick="return confirm('Bạn có chắc muốn xóa không?');">Xóa</a>
                 </td>
             </tr>
             @endif

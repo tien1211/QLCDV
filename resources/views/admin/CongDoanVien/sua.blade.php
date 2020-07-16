@@ -108,13 +108,13 @@
                     <div class="form-group">
                       <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Giới tính</label>
                       <div class="col-lg-6">
-                          <label class="checkbox-inline">
-                              <input type="checkbox" id="inlineCheckbox1" name="cdv_gioitinh" value="1" @if($CongDoanVien->cdv_gioitinh == 1)
+                          <label class="radio-inline">
+                              <input type="radio" id="inlineCheckbox1" name="cdv_gioitinh" value="1" @if($CongDoanVien->cdv_gioitinh == 1)
                               checked
                              @endif> Nam
                           </label>
-                          <label class="checkbox-inline">
-                              <input type="checkbox" id="inlineCheckbox2" name="cdv_gioitinh" value="0"  @if($CongDoanVien->cdv_gioitinh == 0)
+                          <label class="radio-inline">
+                              <input type="radio" id="inlineCheckbox2" name="cdv_gioitinh" value="0"  @if($CongDoanVien->cdv_gioitinh == 0)
                               checked
                              @endif> Nữ
                           </label>
@@ -344,7 +344,7 @@
 
                       <div class="form-group">
                           <div class="col-lg-offset-3 col-lg-6">
-                              <button class="btn btn-primary" type="submit">Save</button>
+                              <button class="btn btn-primary" type="submit" onclick="return confirm('Bạn có chắc muốn cập nhật không?');">Update</button>
                           <a href="{{route('CDV_DanhSach')}}"><button class="btn btn-default" type="button">Cancel</button></a>
                           </div>
                       </div>
@@ -355,8 +355,6 @@
   </div>
 </div>
 @endsection
-<<<<<<< HEAD
-=======
 
 @section('script')
 <script type="text/javascript">
@@ -372,4 +370,3 @@
 
 </script>
 @endsection
->>>>>>> 971b28058b9b01896c5d96ab6667a7c25e18662a

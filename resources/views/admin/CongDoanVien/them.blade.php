@@ -17,7 +17,7 @@
                   <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Chức vụ</label>
                   <div class="col-lg-6">
                     <select class="form-control m-bot15" name="cv_id">
-                      <option value="">Chọn mức chức vụ...</option>
+                      <option value="">Chọn chức vụ...</option>
                       @foreach ($ChucVu as $cv)
                       <option value='{{$cv->cv_id}}'>{{$cv->cv_ten}}</option>
                       @endforeach
@@ -34,7 +34,7 @@
                   <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Loại Nhân Viên</label>
                   <div class="col-lg-6">
                     <select class="form-control m-bot15" name="lnv_id">
-                      <option value="">Chọn mức loại nhân viên...</option>
+                      <option value="">Chọn loại nhân viên...</option>
                       @foreach ($LoaiNhanVien as $lnv)
                       <option value='{{$lnv->lnv_id}}'>{{$lnv->lnv_ten}}</option>
                       @endforeach
