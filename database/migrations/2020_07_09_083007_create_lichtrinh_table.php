@@ -17,6 +17,7 @@ class CreateLichtrinhTable extends Migration
             $table->increments('lt_id');
             $table->string('lt_ten');
             $table->string('lt_file');
+            $table->text('lt_mota');
             $table->tinyInteger('lt_trangthai')->comment('1 la hien thi 0 la an thong tin');
             $table->timestamps();
         });

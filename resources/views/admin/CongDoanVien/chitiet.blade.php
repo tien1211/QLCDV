@@ -12,6 +12,28 @@
               <div class="form" >
               <form class="cmxform form-horizontal" enctype="multipart/form-data" id="signupForm" method="post" action="" novalidate="novalidate">
                 @csrf
+
+                {{-- Mức Đơn vị --}}
+                <div class="form-group">
+                  <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Đơn Vị</label>
+                  <div class="col-lg-6">
+                    <select class="form-control m-bot15" name="dv_id" disabled>
+                      <option value="">Chọn Đơn Vị...</option>
+                    @foreach ($DonVi as $dv)
+                    <option
+                    @if ($CongDoanVien->dv_id  == $dv->dv_id)
+                        {{"selected"}}
+                      @endif
+                    value='{{$dv->dv_id}}'>{{$dv->dv_ten}}</option>
+                    @endforeach
+                  </select>
+                  @if($errors->has('dv_id'))
+                    <div style="color:red">{{ $errors->first('dv_id')}}</div>
+                    @endif
+                  </div>
+                </div>
+                {{-- Mức Đơn vị --}}
+
                 {{-- Chức vụ --}}
                 <div class="form-group">
                   <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Chức vụ</label>
@@ -52,7 +74,14 @@
                     @endif
                   </div>
                 </div>
+<<<<<<< HEAD
+                {{-- Loại Nhân Viên --}}
+                
+                
+                
+=======
                 {{-- Loại Nhân Viên --}}  
+>>>>>>> 85b0fcfbda366454e9d44399581cf09962a67721
                 {{-- Họ tên --}}
                   @csrf
                     <div class="form-group ">

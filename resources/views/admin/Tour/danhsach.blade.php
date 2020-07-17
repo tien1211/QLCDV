@@ -55,10 +55,9 @@
             <th>Giai đoạn</th>
             <th>Đại lý</th>
             <th>Mô tả</th>
-
+            <th>Cập nhật</th>
           </tr>
         </thead>
-
             @foreach ($Tour as $t)
             @if ($t->tour_trangthai == 1)
                 <tr data-expanded="true">
@@ -67,11 +66,11 @@
                     <td>{{date('d/m/Y ',strtotime($t->tour_handk))}}</td>
                     <td>{{date('d/m/Y ',strtotime($t->tour_ngaybd))}}</td>
                     <td>{{date('d/m/Y ',strtotime($t->tour_ngaykt))}}</td>
-                    <td>{{number_format($t->tour_chiphi)}}</td>
+                <td>{{number_format($t->tour_chiphi)}}</td>
                     <td>{{$t->tour_soluong}}</td>
                     <td>{{$t->GiaiDoan->giai_doan}}</td>
                     <td>{{$t->tour_daily}}</td>
-                    <td>{{$t->tour_mota}}</td>
+                    <td>{{$t->LichTrinh->lt_mota}}</td>
                     <td>
                        <i class='fas fa-pencil-alt'></i><a  href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}">Sửa</a>
 
