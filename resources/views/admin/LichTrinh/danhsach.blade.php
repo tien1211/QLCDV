@@ -61,7 +61,7 @@
                     <td>
                         <i class='fas fa-pencil-alt'></i><a  href="{{route('LT_Sua',['id'=>$lt->lt_id])}}">Sửa</a>
 
-                        <i class='fas fa-trash-alt'></i><a href="{{route('LT_Xoa',['id'=>$lt->lt_id])}}">Xóa</a>
+                        <i class='fas fa-trash-alt'></i><a href="{{route('LT_Xoa',['id'=>$lt->lt_id])}} ">Xóa</a>
                     </td>
 
 
@@ -71,7 +71,7 @@
         </tbody>
     </div>
   </div>
-</div>
+ </div>
 
 
 
