@@ -67,7 +67,7 @@
                     <td>{{date('d/m/Y ',strtotime($t->tour_handk))}}</td>
                     <td>{{date('d/m/Y ',strtotime($t->tour_ngaybd))}}</td>
                     <td>{{date('d/m/Y ',strtotime($t->tour_ngaykt))}}</td>
-                    <td>{{number_format($t->tour_chiphi)}}</td>
+                <td>{{number_format($t->tour_chiphi)}}</td>
                     <td>{{$t->tour_soluong}}</td>
                     <td>{{$t->GiaiDoan->giai_doan}}</td>
                     <td>{{$t->tour_daily}}</td>

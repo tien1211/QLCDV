@@ -21,8 +21,8 @@ class TourSeeder extends Seeder
                 'tour_chiphi' => '5000000',
                 'tour_soluong' => '20',
                 'tour_trangthai' => 1,
-                'tour_daily' => 'abc',
-                'tour_mota' => 'abc',
+                'tour_daily' => 'abc'
+                
             ],[
                 'lt_id' => '2',
                 'gd_id' => '2',
@@ -32,8 +32,7 @@ class TourSeeder extends Seeder
                 'tour_chiphi' => '2000000',
                 'tour_soluong' => '20',
                 'tour_trangthai' => 1,
-                'tour_daily' => 'xyz',
-                'tour_mota' => 'xyz',
+                'tour_daily' => 'xyz'
             ]
         ];
         DB::table('Tour')->insert($arr);
