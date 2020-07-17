@@ -71,4 +71,9 @@ class DonViController extends Controller
         Session::put('message', 'Xóa thành công!!!');
         return redirect()->route('DV_DanhSach');
     }
+    public function getDSDV($id){
+        $CongDoanVien = DB::table('CongDoanVien')->where('dv_id',$id)->paginate(5);
+        //dd($CongDoanVien);
+        return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien);
+    }
 }

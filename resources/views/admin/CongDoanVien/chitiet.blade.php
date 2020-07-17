@@ -60,7 +60,7 @@
                   <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Loại Nhân Viên</label>
                   <div class="col-lg-6">
                     <select class="form-control m-bot15" name="lnv_id" disabled>
-                      <option value="">Chọn mức loại nhân viên...</option>
+                      <option value="">Chọn loại nhân viên...</option>
                       @foreach ($LoaiNhanVien as $lnv)
                       <option
                       @if ($CongDoanVien->lnv_id  == $lnv->lnv_id)
@@ -74,10 +74,14 @@
                     @endif
                   </div>
                 </div>
+<<<<<<< HEAD
                 {{-- Loại Nhân Viên --}}
                 
                 
                 
+=======
+                {{-- Loại Nhân Viên --}}  
+>>>>>>> 85b0fcfbda366454e9d44399581cf09962a67721
                 {{-- Họ tên --}}
                   @csrf
                     <div class="form-group ">

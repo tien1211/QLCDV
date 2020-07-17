@@ -4,16 +4,23 @@
  <div class="panel panel-default">
     <div class="panel-heading">
       Danh Sách Công Đoàn Viên
-      
-        
-      
     </div>
     <div class="panel-body">
         <div class="position-right">
-          
-            <form class="form-inline" role="form" action="{{route('CDV_Timkiem')}}" method="post">
+            <form class="form-inline" role="form" action="{{route('CDV_Timkiem')}}" method="get">
             {{ csrf_field() }}
-            
+            <div class="form-group">
+              <select class="form-control m-bot15" name="dv_id">
+                <option value="">Chọn đơn vị...</option>
+                @foreach($DonVi as $dv)
+                @if($dv->dv_id == $dv_id)
+                <option selected value='{{$dv->dv_id}}'>{{$dv->dv_ten}}</option>
+                @else
+                <option value='{{$dv->dv_id}}'>{{$dv->dv_ten}}</option>
+                @endif
+                @endforeach
+              </select>
+            </div>
             <div class="form-group">
               <select class="form-control m-bot15" name="lnv_id">
                 <option value="">Chọn loại nhân viên...</option>
@@ -28,11 +35,7 @@
             </div>
             <div class="form-group">
               <select class="form-control m-bot15" name="cv_id">
-<<<<<<< HEAD
                 <option value="">Chọn chức vụ...</option>
-=======
-              <option value="">Chọn chức vụ...</option>
->>>>>>> d1f9afd52fb8cc2229ac4322a01eee5972385fb7
                 @foreach ($ChucVu as $cv)
                 @if($cv->cv_id == $cv_id)
                 <option selected value='{{$cv->cv_id}}'>{{$cv->cv_ten}}</option>

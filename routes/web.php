@@ -38,12 +38,12 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/CDV_SuaCDV/{id}', 'CongDoanVienController@postSua')->name('CDV_XLSua');
         //Form Xóa Công Đoàn Viên
         Route::get('/CDV_XoaCDV/{id}', 'CongDoanVienController@getXoa')->name('CDV_Xoa');
-
         //Form Chi tiết
         Route::get('/CDV_ChiTietCDV/{id}', 'CongDoanVienController@getchitietCDV')->name('CDV_ChiTiet');
-
         //Tìm kiếm
-        Route::post('/CDV_Timkiem', 'CongDoanVienController@postTimkiem')->name('CDV_Timkiem');
+        Route::get('/CDV_Timkiem', 'CongDoanVienController@postTimkiem')->name('CDV_Timkiem');
+        // Danh sách công đoàn viên theo đơn vị
+        Route::get('/CDV_DSDV/{id}','CongDoanVienController@getDSDV')->name('CDV_DSDV');
     });
     Route::group(['prefix' => 'DonVi'], function () {
         // Danh sách đơn vị
