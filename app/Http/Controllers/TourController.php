@@ -14,8 +14,11 @@ class TourController extends Controller
 
     function __construct(){
 		$LichTrinh = LichTrinh::all();
-
-    	view()->share('LichTrinh',$LichTrinh);
+        $ngaybd = "";
+        $ngaykt = "";
+        view()->share('LichTrinh',$LichTrinh);
+        view()->share('ngaybd',$ngaybd);
+        view()->share('ngaykt',$ngaykt);
 
 	}
 
@@ -24,7 +27,7 @@ class TourController extends Controller
         $ngaybd = "";
         $ngaykt = "";
         $Tour = Tour::all();
-        return view('admin.Tour.danhsach')->with('Tour',$Tour)->with('ngaybd',$ngaybd)->with('ngaykt',$ngaykt);
+        return view('admin.Tour.danhsach')->with('Tour',$Tour);
     }
 
 // Thêm
@@ -165,13 +168,17 @@ class TourController extends Controller
         $ngaybd = $request->tour_ngaybd;
         $ngaykt = $request->tour_ngaykt;
         //dd($ngaybd);
-        if((!empty($tukhoa)) && (!empty($ngaybd)) && (!empty($ngaykt))){
-            $Tour = Tour::where([['tour_diadiem','like',"%$tukhoa%"],['tour_ngaybd','>=',$ngaybd],['tour_ngaykt','<=',date('Y-m-d',strtotime($ngaykt. ' + 1 days'))],])->get();
-        }else if((empty($tukhoa)) && (!empty($ngaybd)) && (!empty($ngaykt))){
-            $Tour = Tour::where([['tour_ngaybd','>=',$ngaybd],['tour_ngaykt','<=',date('Y-m-d',strtotime($ngaykt. ' + 1 days'))],])->get();
-        }else{
-        $Tour = Tour::where('tour_diadiem','like',"%$tukhoa%")->get();
-        }
+        // if((!empty($tukhoa)) && (!empty($ngaybd)) && (!empty($ngaykt))){
+        //     $Tour = Tour::where([['tour_diadiem','like',"%$tukhoa%"],['tour_ngaybd','>=',$ngaybd],['tour_ngaykt',$ngaykt],])->get();
+        // }
+        // else if((empty($tukhoa)) && (!empty($ngaybd)) && (!empty($ngaykt))){
+        //     $Tour = Tour::where([['tour_ngaybd','>=',$ngaybd],['tour_ngaykt','<=',$ngaykt],['tour_diadiem','like',"%$tukhoa%"],])->get();
+        // }
+        // else if((!empty($tukhoa)) && (empty($ngaybd)) && (!empty($ngaykt))){
+        //         $Tour = Tour::where([['tour_ngaykt','<=',$ngaykt],])->get();
+        // }else{
+        // $Tour = Tour::where('tour_diadiem','like',"%$tukhoa%")->get();
+        // }
         return view('admin.Tour.danhsach')->with('Tour', $Tour)->with('ngaybd',$ngaybd)->with('ngaykt',$ngaykt);
     }
 }

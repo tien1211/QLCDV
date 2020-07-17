@@ -60,7 +60,7 @@ class DonViController extends Controller
         $data['dv_mota'] = $request->dv_mota;
         $data['dv_tructhuoc_id'] = $request->dv_tructhuoc_id;
         DB::table('DonVi')->where('dv_id',$id)->update($data);
-    	Session::put('message','Sửa đơn vị thành công!!!');
+    	Session::flash('alert-info', 'Sửa đơn vị thành công!!!');
         return redirect()->route('DV_DanhSach');
     }
 
