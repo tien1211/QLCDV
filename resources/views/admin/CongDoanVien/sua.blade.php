@@ -5,7 +5,7 @@
 
       <section class="panel">
           <header class="panel-heading">
-              Cập Nhật Công Đoàn Viên
+              Thông Tin {{$CongDoanVien->ChucVu->cv_ten}}: {{$CongDoanVien->cdv_ten}}
           </header>
           <div class="panel-body">
             
@@ -96,6 +96,7 @@
                     <div class="form-group ">
                       <label for="firstname" class="control-label col-lg-3">Ngày Sinh</label>
                       <div class="col-lg-6">
+                       
                       <input class=" form-control" id="" value="{{$CongDoanVien->cdv_ngaysinh}}" name="cdv_ngaysinh" type="date">
 
 
