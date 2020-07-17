@@ -72,14 +72,9 @@
                                 <div style="color:red">{{ $errors->first('tour_handk')}}</div>
                                 @endif
                             </div>
-
-
                             <div class="form-group ">
                                 <label for="username" class="control-label col-lg-3">Ngày bắt đầu</label>
                                 <div class="col-lg-6">
-                                    {{-- @php
-                                    $dt = $Tour->tour_ngaybd->format('yy-m-d\Th:m');
-                                @endphp --}}
                                     <input   value="{{$Tour->tour_ngaybd}}" class="form-control "  name="tour_ngaybd" type="date">
                                 </div>
                                 @if($errors->has('tour_ngaybd'))

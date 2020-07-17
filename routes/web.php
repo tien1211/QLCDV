@@ -25,7 +25,7 @@ Route::post('/dangnhap-xl','AuthController@postLogin')->name('login');
 Route::get('/dangxuat','AuthController@logOut')->name('logout');
 
 Route::group(['prefix' => 'admin'], function () {
-
+    
     Route::group(['prefix' => 'CongDoanVien'], function () {
         //Danh Sách Công Đoàn Viên
         Route::get('/CDV_DS', 'CongDoanVienController@getDanhSach')->name('CDV_DanhSach');
@@ -77,10 +77,8 @@ Route::group(['prefix' => 'admin'], function () {
         // Route::get('/TOUR_DatTour/{id}','TourController@getDat')->name('TOUR_Dat');
         // Route::post('/TOUR_DatTour/{id}','TourController@postDat')->name('TOUR_XLDat');
 
-
-
         //Tìm kiếm
-        Route::post('/TOUR_Timkiem', 'TourController@postTimkiem')->name('TOUR_Timkiem');
+        Route::get('/TOUR_Timkiem', 'TourController@postTimkiem')->name('TOUR_Timkiem');
 
 
 

@@ -132,7 +132,7 @@ class CongDoanVienSeeder extends Seeder
                 'lnv_id' => 1,
                 'cdv_ten' => 'Huỳnh Thanh Thế',
                 'cdv_ngaysinh' => '1988-01-12',
-                'cdv_gioitinh' => 2,#1 là nam 0 là nữ
+                'cdv_gioitinh' => 1,#1 là nam 0 là nữ
                 'cdv_cmnd' => '365255875',
                 'cdv_nguyenquan' => 'Cần Thơ',
                 'cdv_diachi' => '21 Cần Thơ',

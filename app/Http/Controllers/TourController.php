@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Tour;
 use App\LichTrinh;
+use App\GiaiDoan;
 use Validate;
 use Session;
 
@@ -13,13 +14,16 @@ class TourController extends Controller
 {
 
     function __construct(){
-		$LichTrinh = LichTrinh::all();
+        $LichTrinh = LichTrinh::all();
+        $GiaiDoan = GiaiDoan::all();
         $ngaybd = "";
         $ngaykt = "";
+        $gd_id = "";
         view()->share('LichTrinh',$LichTrinh);
+        view()->share('GiaiDoan', $GiaiDoan);
         view()->share('ngaybd',$ngaybd);
         view()->share('ngaykt',$ngaykt);
-
+        view()->share('gd_id',$gd_id);
 	}
 
 //Hiển thị danh sách
@@ -34,38 +38,36 @@ class TourController extends Controller
 
     public function getThem(){
 
-         $LichTrinh = LichTrinh::all();
+        $LichTrinh = LichTrinh::all();
         return view('admin.Tour.them')->with('LichTrinh',$LichTrinh);
     }
 
     public function postThem(Request $request){
         //Bắt các điều kiện nhập vào
-        Validator::make($request->all(),
-        [
-            'lt_id' => 'required',
-            'tour_handk' => 'required',
-            'tour_ngaybd' => 'required',
-            'tour_ngaykt' => 'required',
-            'tour_chiphi' => 'required | numeric',
-            'tour_soluong' => 'required | numeric',
-            'tour_giaidoan' => 'required',
-            'tour_daily' => 'required',
-            'tour_mota' => 'required',
-
-        ]
-        ,
-        [
-            'lt_id.required' => 'Bạn chưa nhập lịch trình!',
-            'tour_handk.required' => 'Bạn chưa nhập hạn đăng ký!',
-            'tour_ngaybd.required' => 'Bạn chưa nhập ngày bắt đầu!',
-            'tour_ngaykt.required' => 'Bạn chưa nhập ngày kết thúc!',
-            'tour_chiphi.required' => 'Bạn chưa nhập chi phí!',
-            'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
-            'tour_giaidoan.required' => 'Bạn chưa nhập phương tiện!',
-            'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
-            'tour_mota.required' => 'Bạn chưa nhập năm!',
-
-        ])->validate();
+        // Validator::make($request->all(),
+        // [
+        //     'lt_id' => 'required',
+        //     'tour_handk' => 'required',
+        //     'tour_ngaybd' => 'required',
+        //     'tour_ngaykt' => 'required',
+        //     'tour_chiphi' => 'required | numeric',
+        //     'tour_soluong' => 'required | numeric',
+        //     'tour_giaidoan' => 'required',
+        //     'tour_daily' => 'required',
+            
+        // ]
+        // ,
+        // [
+        //     'lt_id.required' => 'Bạn chưa nhập lịch trình!',
+        //     'tour_handk.required' => 'Bạn chưa nhập hạn đăng ký!',
+        //     'tour_ngaybd.required' => 'Bạn chưa nhập ngày bắt đầu!',
+        //     'tour_ngaykt.required' => 'Bạn chưa nhập ngày kết thúc!',
+        //     'tour_chiphi.required' => 'Bạn chưa nhập chi phí!',
+        //     'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
+        //     'tour_giaidoan.required' => 'Bạn chưa nhập phương tiện!',
+        //     'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
+            
+        // ])->validate();
 
         $Tour = new Tour();
         $Tour->lt_id = $request->lt_id;
@@ -74,9 +76,8 @@ class TourController extends Controller
         $Tour->tour_ngaykt = $request->tour_ngaykt;
         $Tour->tour_chiphi = $request->tour_chiphi;
         $Tour->tour_soluong = $request->tour_soluong;
-        $Tour->tour_giaidoan = $request->tour_giaidoan;
+        $Tour->gd_id = $request->gd_id;
         $Tour->tour_daily = $request->tour_daily;
-        $Tour->tour_mota = $request->tour_mota;
         $Tour->tour_trangthai = 1;
         $Tour->save();
 
@@ -86,7 +87,7 @@ class TourController extends Controller
     public function getSua($id){
         $Tour = Tour::find($id);
         //dd($Tour);
-        return view('admin.Tour.sua',compact('Tour'));
+        return view('admin.Tour.sua')->with('Tour',$Tour);
    }
 
 // Sửa
@@ -104,8 +105,6 @@ class TourController extends Controller
             'tour_soluong' => 'required | numeric',
             'tour_giaidoan' => 'required',
             'tour_daily' => 'required',
-            'tour_mota' => 'required',
-
         ]
         ,
         [
@@ -117,8 +116,6 @@ class TourController extends Controller
             'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
             'tour_giaidoan.required' => 'Bạn chưa nhập phương tiện!',
             'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
-            'tour_mota.required' => 'Bạn chưa nhập năm!',
-
         ]);
 
         $Tour = Tour::find($id);
@@ -130,7 +127,6 @@ class TourController extends Controller
         $Tour->tour_soluong = $request->tour_soluong;
         $Tour->tour_giaidoan = $request->tour_giaidoan;
         $Tour->tour_daily = $request->tour_daily;
-        $Tour->tour_mota = $request->tour_mota;
         $Tour->tour_trangthai = 1;
         $Tour->save();
         Session::put('message','Sửa thành công!!!');
@@ -164,21 +160,31 @@ class TourController extends Controller
     // }
 
     public function postTimkiem(Request $request){
-        $tukhoa = $request->tukhoa;
+        $gd_id = $request->gd_id;
         $ngaybd = $request->tour_ngaybd;
         $ngaykt = $request->tour_ngaykt;
         //dd($ngaybd);
-        // if((!empty($tukhoa)) && (!empty($ngaybd)) && (!empty($ngaykt))){
-        //     $Tour = Tour::where([['tour_diadiem','like',"%$tukhoa%"],['tour_ngaybd','>=',$ngaybd],['tour_ngaykt',$ngaykt],])->get();
-        // }
-        // else if((empty($tukhoa)) && (!empty($ngaybd)) && (!empty($ngaykt))){
-        //     $Tour = Tour::where([['tour_ngaybd','>=',$ngaybd],['tour_ngaykt','<=',$ngaykt],['tour_diadiem','like',"%$tukhoa%"],])->get();
-        // }
-        // else if((!empty($tukhoa)) && (empty($ngaybd)) && (!empty($ngaykt))){
-        //         $Tour = Tour::where([['tour_ngaykt','<=',$ngaykt],])->get();
-        // }else{
-        // $Tour = Tour::where('tour_diadiem','like',"%$tukhoa%")->get();
-        // }
-        return view('admin.Tour.danhsach')->with('Tour', $Tour)->with('ngaybd',$ngaybd)->with('ngaykt',$ngaykt);
+        if((!empty($gd_id)) && (!empty($ngaybd)) && (!empty($ngaykt))){
+            $Tour = Tour::where([['gd_id','=', $gd_id],['tour_ngaybd','>',$ngaybd],['tour_ngaykt','<=',$ngaykt],])->get();
+        }
+        else if((empty($gd_id)) && (!empty($ngaybd)) && (!empty($ngaykt))){
+            $Tour = Tour::where([['tour_ngaybd','>=',$ngaybd],['tour_ngaykt','<=',$ngaykt],])->get();
+        }
+        else if((!empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt))){
+                $Tour = Tour::where([['gd_id','=', $gd_id],['tour_ngaykt','<=',$ngaykt],])->get();
+        }
+        else if((!empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt))){
+            $Tour = Tour::where([['gd_id','=', $gd_id],['tour_ngaybd','>',$ngaybd],])->get();
+        }
+        else if((!empty($gd_id)) && (empty($ngaybd)) && (empty($ngaykt))){
+            $Tour = Tour::where('gd_id','=', $gd_id)->get();
+        }
+        else if((empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt))){
+            $Tour = Tour::where('tour_ngaybd','>',$ngaybd)->get();
+        }
+        else if((empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt))){
+            $Tour = Tour::where('tour_ngaykt','<=',$ngaykt)->get();
+        }
+        return view('admin.Tour.danhsach')->with('Tour', $Tour)->with('ngaybd',$ngaybd)->with('ngaykt',$ngaykt)->with('gd_id',$gd_id);
     }
 }

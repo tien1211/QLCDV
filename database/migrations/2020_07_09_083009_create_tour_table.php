@@ -19,11 +19,10 @@ class CreateTourTable extends Migration
             $table->date('tour_handk');
             $table->date('tour_ngaybd');
             $table->date('tour_ngaykt');
-            $table->double('tour_chiphi', 15, 8);
+            $table->double('tour_chiphi', 15,2);
             $table->integer('tour_soluong');
             $table->unsignedInteger('gd_id');
             $table->string('tour_daily');
-            $table->text('tour_mota');
             $table->tinyInteger('tour_trangthai')->comment('1 la hien thi 0 la an thong tin');
             $table->timestamps();
             $table->foreign('lt_id')->references('lt_id')->on('LichTrinh')->onDelete('CASCADE')->onUpdate('CASCADE');

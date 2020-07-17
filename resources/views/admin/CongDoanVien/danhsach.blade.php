@@ -67,7 +67,6 @@
           "enabled": true
         }}'>
         <thead>
-          
           <tr>
             <th data-breakpoints="xs">STT</th>
             <th>Đơn Vị</th>
@@ -124,7 +123,5 @@
     </div>
   </div>
 </div>
-
-
 <!--main content end-->
 @endsection
