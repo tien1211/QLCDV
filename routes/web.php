@@ -22,7 +22,7 @@ Route::get('/admin', function () {
 
 Route::get('/dangnhap','AuthController@getLogin')->name('formLogin');
 Route::post('/dangnhap-xl','AuthController@postLogin')->name('login');
-
+Route::get('/dangxuat','AuthController@logOut')->name('logout');
 
 Route::group(['prefix' => 'admin'], function () {
 

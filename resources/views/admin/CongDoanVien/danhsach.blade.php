@@ -50,18 +50,9 @@
             </div>
               <button type="submit" class="btn btn-outline-info">Tìm kiếm</button>
         </form>
-        <form action="" style="width: 100%; mt-6">
-          <div class="form-group" style="mt-6">
-            <div class="flash-message">
-              @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                @if(Session::has('alert-' . $msg))
-                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
-                ata-dismiss="alert" aria-label="close">&times;</a></p>
-                @endif
-              @endforeach
-          </div>
-          </div>
-        </form>
+        
+          
+        
         </div>
     </div>
     <div>
@@ -78,7 +69,8 @@
         <thead>
           
           <tr>
-            <th data-breakpoints="xs">ID</th>
+            <th data-breakpoints="xs">STT</th>
+            <th>Đơn Vị</th>
             <th>Chức vụ</th>
             <th>Loại Nhân Viên</th>
             <th>Họ Tên</th>
@@ -89,12 +81,24 @@
             <th>Cập Nhật</th>
           </tr>
         </thead>
+        <div class="form-group" style="mt-6">
+          <div class="flash-message">
+            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+              @if(Session::has('alert-' . $msg))
+              <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
+              ata-dismiss="alert" aria-label="close">&times;</a></p>
+              @endif
+            @endforeach
+        </div>
+        </div>
         <tbody>
             @foreach ($CongDoanVien as $cdv)
                 
             @if ($cdv->cdv_trangthai == 1)
                 <tr data-expanded="true">
+                  
                     <td>{{$cdv->cdv_id}}</td>
+                    <td>{{$cdv->DonVi->dv_ten}}</td>
                     <td>{{$cdv->ChucVu->cv_ten}}</td>
                     <td>{{$cdv->LoaiNhanVien->lnv_ten}}</td>
                     <td>{{$cdv->cdv_ten}}</td>

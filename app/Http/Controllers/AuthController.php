@@ -33,9 +33,9 @@ class AuthController extends Controller
         }
     }
 
-    public function logout(){
+    public function logOut(){
         Auth::logout();
-        return redirect()->route("admin");#chuyển về trang chủ
+        return redirect()->route("formLogin");#chuyển về đăng nhập
     }
 
 }
