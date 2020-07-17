@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 use App\DonVi;
 use Illuminate\Support\Facades\Redirect;
 use DB;
+use Session;
 
 class DonViController extends Controller
 {
+    function __construct(){
+        $DonVi = DB::table('DonVi')->where('dv_trangthai',1)->get();
+        view()->share('DonVi',$DonVi);
+    }
+    
     public function getDonVi()
     {   
         $DonVi = DB::table('DonVi')
@@ -21,19 +27,53 @@ class DonViController extends Controller
 
     public function getThem()
     {
-        $DonVi = DonVi::all();
-        return view('admin.DonVi.them')->with('DonVi',$DonVi);
+        return view('admin.DonVi.them');
     }
-    public function postSua(Request $request)
+    public function postThem(Request $request)
     {
+        $this->validate($request, [
+            'dv_ten' => 'required',
+            'dv_mota' => 'required',
+            ],[
+                'dv_ten.required' => 'Vui lòng không được để trống tên đơn vị',
+                'dv_mota.required' => 'Vui lòng không được để trống mô tả đơn vị',
+            ]);
         $data = array();
-        $data['tc_ten'] = $request->tc_ten;
-        $data['tc_tructhuoc'] = $request->tc_tructhuoc;
-        $data['tc_gioithieu'] = $request->tc_gioithieu;
-        $data['tc_nhiemvu'] = $request->tc_nhiemvu;
-        $date['updated_at'] = date('Y-M-D');
-        ToChuc::where('tc_id',1)->update($data);
+        $data['dv_ten'] = $request->dv_ten;
+        $data['dv_mota'] = $request->dv_mota;
+        $data['dv_tructhuoc_id'] = $request->dv_tructhuoc_id;
+        $data['dv_trangthai'] = 1;
+        DB::table('DonVi')->insert($data);
+    	Session::put('message','Thêm đơn vị thành công!!!');
+        return redirect()->route('DV_DanhSach');
+    }
+    public function getSua($id)
+    {   
+        $DonVi = DonVi::find($id);
+        //dd($DonVi);
+        return view('admin.DonVi.sua')->with('DonVisua',$DonVi);
+    }
+    public function postSua(Request $request, $id)
+    {   
+        $data = array();
+        $data['dv_ten'] = $request->dv_ten;
+        $data['dv_mota'] = $request->dv_mota;
+        $data['dv_tructhuoc_id'] = $request->dv_tructhuoc_id;
+        DB::table('DonVi')->where('dv_id',$id)->update($data);
+    	Session::put('message','Sửa đơn vị thành công!!!');
+        return redirect()->route('DV_DanhSach');
+    }
 
-        return Redirect::back();
+    public function getXoa($id){
+        $DonVi = DonVi::find($id);
+        $DonVi->dv_trangthai = 0;
+        $DonVi->save();
+        Session::put('message', 'Xóa thành công!!!');
+        return redirect()->route('DV_DanhSach');
+    }
+    public function getDSDV($id){
+        $CongDoanVien = DB::table('CongDoanVien')->where('dv_id',$id)->paginate(5);
+        //dd($CongDoanVien);
+        return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien);
     }
 }

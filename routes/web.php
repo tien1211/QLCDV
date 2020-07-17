@@ -22,7 +22,7 @@ Route::get('/admin', function () {
 
 Route::get('/dangnhap','AuthController@getLogin')->name('formLogin');
 Route::post('/dangnhap-xl','AuthController@postLogin')->name('login');
-
+Route::get('/dangxuat','AuthController@logOut')->name('logout');
 
 Route::group(['prefix' => 'admin'], function () {
 
@@ -38,19 +38,24 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/CDV_SuaCDV/{id}', 'CongDoanVienController@postSua')->name('CDV_XLSua');
         //Form Xóa Công Đoàn Viên
         Route::get('/CDV_XoaCDV/{id}', 'CongDoanVienController@getXoa')->name('CDV_Xoa');
-
         //Form Chi tiết
         Route::get('/CDV_ChiTietCDV/{id}', 'CongDoanVienController@getchitietCDV')->name('CDV_ChiTiet');
-
         //Tìm kiếm
-        Route::post('/CDV_Timkiem', 'CongDoanVienController@postTimkiem')->name('CDV_Timkiem');
+        Route::get('/CDV_Timkiem', 'CongDoanVienController@postTimkiem')->name('CDV_Timkiem');
+        // Danh sách công đoàn viên theo đơn vị
+        Route::get('/CDV_DSDV/{id}','CongDoanVienController@getDSDV')->name('CDV_DSDV');
     });
     Route::group(['prefix' => 'DonVi'], function () {
-        // Thông tin tổ Chức
+        // Danh sách đơn vị
         Route::get('/DonVi', 'DonViController@getDonVi')->name('DV_DanhSach');
-        //Form cập nhật tổ chức
-        Route::get('/CN_ToChuc', 'ToChucController@getSua')->name('DV_Them');
-        Route::post('/LCN_ToChuc', 'ToChucController@postSua')->name('LCN_ToChuc');
+        // Form thêm đơn vị
+        Route::get('/DonVi_FormThem', 'DonViController@getThem')->name('DV_Them');
+        Route::post('/DonVi_ThemDV', 'DonViController@postThem')->name('DV_XLThem');
+        // Form sửa đơn vị
+        Route::get('/DV_FormSua/{id}', 'DonViController@getSua')->name('DV_Sua');
+        Route::post('/DV_SuaDV/{id}', 'DonViController@postSua')->name('DV_XLSua');
+        //Form Xóa đơn vị
+        Route::get('/DV_XoaDV/{id}', 'DonViController@getXoa')->name('DV_Xoa');
 
     });
     Route::group(['prefix' => 'Tour'], function () {
