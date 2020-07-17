@@ -46,7 +46,7 @@
         <thead>
           <tr>
             <th data-breakpoints="xs">ID</th>
-            <th>Lịch Trình</th>
+            <th>Tên Tour</th>
             <th>Hạn đăng ký</th>
             <th>Ngày bắt đầu</th>
             <th>Ngày kết thúc</th>
@@ -63,7 +63,7 @@
             @if ($t->tour_trangthai == 1)
                 <tr data-expanded="true">
                     <td>{{$t->tour_id}}</td>
-                    <td>{{$t->LichTrinh->lt_file}}</td>
+                    <td>{{$t->LichTrinh->lt_ten}}</td>
                     <td>{{date('d/m/Y ',strtotime($t->tour_handk))}}</td>
                     <td>{{date('d/m/Y ',strtotime($t->tour_ngaybd))}}</td>
                     <td>{{date('d/m/Y ',strtotime($t->tour_ngaykt))}}</td>
