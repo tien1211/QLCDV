@@ -40,18 +40,33 @@
                         <form class="cmxform form-horizontal " enctype="multipart/form-data" id="signupForm" method="get" action="" novalidate="novalidate">
                             <div class="form-group ">
                                 <label for="firstname" class="control-label col-lg-3">Lịch trình</label>
-                                <div class="col-lg-6">
+                                <div class="col-lg-3">
 
                                         <select class="form-control m-bot15" name="lt_id">
                                              <option value="">Chon Lich Trinh</option>
                                                  @foreach ($LichTrinh as $lt)
-                                             <option value="{{$lt->lt_id}}">{{$lt->lt_file}}</option>
+                                             <option value="{{$lt->lt_id}}">{{$lt->lt_ten}}</option>
+                                                  @endforeach
+
+
+                                        </select>
+                                </div>
+                                
+                                <div class="col-lg-3">
+
+                                        <select class="form-control m-bot15" name="gd_id">
+                                             <option value="">Giai Đoạn</option>
+                                                 @foreach ($GiaiDoan as $gd)
+                                             <option value="{{$gd->gd_id}}">{{$gd->giai_doan}}</option>
                                                   @endforeach
 
 
                                         </select>
                                 </div>
                             </div>
+                           
+
+
                             <div class="form-group ">
                                 <label for="lastname" class="control-label col-lg-3">Hạn đăng ký</label>
                                 <div class="col-lg-6">
@@ -82,25 +97,13 @@
                                     <input class="form-control "  name="tour_soluong" type="number">
                                 </div>
                             </div>
-                            <div class="form-group ">
-                                <label for="email" class="control-label col-lg-3">Giai đoạn</label>
-                                <div class="col-lg-6">
-                                    <input class="form-control "  name="tour_giaidoan" type="text">
-                                </div>
-                            </div>
+                            
                             <div class="form-group ">
                                 <label for="email" class="control-label col-lg-3">Đại lý</label>
                                 <div class="col-lg-6">
                                     <input class="form-control "  name="tour_daily" type="text">
                                 </div>
                             </div>
-                            <div class="form-group ">
-                                <label for="email" class="control-label col-lg-3">Mô tả</label>
-                                <div class="col-lg-6">
-                                    <input class="form-control "  name="tour_mota" type="text">
-                                </div>
-                            </div>
-
 
                             <div class="form-group">
                                 <div class="col-lg-offset-3 col-lg-6">

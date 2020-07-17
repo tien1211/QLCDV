@@ -12,6 +12,7 @@ class LichTrinh extends Model
     protected $fillable = [
         'lt_ten',
         'lt_file',
+        'lt_mota',
         'lt_trangthai',
     ];
     #một lịch trình có nhiều tour

@@ -13,12 +13,12 @@ class LichTrinhSeeder extends Seeder
     {
         $arr=[
             [
-                'lt_ten' => 'Tiền Giang - Vũng Tàu 2019-2020',
+                'lt_ten' => 'Tiền Giang - Vũng Tàu',
                 'lt_file' => 'LichTrinhVungTau.xlsx',
                 'lt_mota' => 'hihi',
                 'lt_trangthai' => 1
             ],[
-                'lt_ten' => 'Tiền Giang - Cần Thơ 2019-2020',
+                'lt_ten' => 'Tiền Giang - Cần Thơ',
                 'lt_file' => 'LichTrinhCanTho.xlsx',
                 'lt_mota' => 'hehe',
                 'lt_trangthai' => 1

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Tour;
 use App\LichTrinh;
+use App\GiaiDoan;
 use Validate;
 use Session;
 
@@ -14,8 +15,9 @@ class TourController extends Controller
 
     function __construct(){
 		$LichTrinh = LichTrinh::all();
-
-    	view()->share('LichTrinh',$LichTrinh);
+        $GiaiDoan = GiaiDoan::all();
+        view()->share('LichTrinh',$LichTrinh);
+        view()->share('GiaiDoan',$GiaiDoan);
 
 	}
 
@@ -37,32 +39,30 @@ class TourController extends Controller
 
     public function postThem(Request $request){
         //Bắt các điều kiện nhập vào
-        Validator::make($request->all(),
-        [
-            'lt_id' => 'required',
-            'tour_handk' => 'required',
-            'tour_ngaybd' => 'required',
-            'tour_ngaykt' => 'required',
-            'tour_chiphi' => 'required | numeric',
-            'tour_soluong' => 'required | numeric',
-            'tour_giaidoan' => 'required',
-            'tour_daily' => 'required',
-            'tour_mota' => 'required',
-
-        ]
-        ,
-        [
-            'lt_id.required' => 'Bạn chưa nhập lịch trình!',
-            'tour_handk.required' => 'Bạn chưa nhập hạn đăng ký!',
-            'tour_ngaybd.required' => 'Bạn chưa nhập ngày bắt đầu!',
-            'tour_ngaykt.required' => 'Bạn chưa nhập ngày kết thúc!',
-            'tour_chiphi.required' => 'Bạn chưa nhập chi phí!',
-            'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
-            'tour_giaidoan.required' => 'Bạn chưa nhập phương tiện!',
-            'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
-            'tour_mota.required' => 'Bạn chưa nhập năm!',
-
-        ])->validate();
+        // Validator::make($request->all(),
+        // [
+        //     'lt_id' => 'required',
+        //     'tour_handk' => 'required',
+        //     'tour_ngaybd' => 'required',
+        //     'tour_ngaykt' => 'required',
+        //     'tour_chiphi' => 'required | numeric',
+        //     'tour_soluong' => 'required | numeric',
+        //     'tour_giaidoan' => 'required',
+        //     'tour_daily' => 'required',
+            
+        // ]
+        // ,
+        // [
+        //     'lt_id.required' => 'Bạn chưa nhập lịch trình!',
+        //     'tour_handk.required' => 'Bạn chưa nhập hạn đăng ký!',
+        //     'tour_ngaybd.required' => 'Bạn chưa nhập ngày bắt đầu!',
+        //     'tour_ngaykt.required' => 'Bạn chưa nhập ngày kết thúc!',
+        //     'tour_chiphi.required' => 'Bạn chưa nhập chi phí!',
+        //     'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
+        //     'tour_giaidoan.required' => 'Bạn chưa nhập phương tiện!',
+        //     'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
+            
+        // ])->validate();
 
         $Tour = new Tour();
         $Tour->lt_id = $request->lt_id;
@@ -71,9 +71,8 @@ class TourController extends Controller
         $Tour->tour_ngaykt = $request->tour_ngaykt;
         $Tour->tour_chiphi = $request->tour_chiphi;
         $Tour->tour_soluong = $request->tour_soluong;
-        $Tour->tour_giaidoan = $request->tour_giaidoan;
+        $Tour->gd_id = $request->gd_id;
         $Tour->tour_daily = $request->tour_daily;
-        $Tour->tour_mota = $request->tour_mota;
         $Tour->tour_trangthai = 1;
         $Tour->save();
 
@@ -101,8 +100,6 @@ class TourController extends Controller
             'tour_soluong' => 'required | numeric',
             'tour_giaidoan' => 'required',
             'tour_daily' => 'required',
-            'tour_mota' => 'required',
-
         ]
         ,
         [
@@ -114,8 +111,6 @@ class TourController extends Controller
             'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
             'tour_giaidoan.required' => 'Bạn chưa nhập phương tiện!',
             'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
-            'tour_mota.required' => 'Bạn chưa nhập năm!',
-
         ]);
 
         $Tour = Tour::find($id);
@@ -127,7 +122,6 @@ class TourController extends Controller
         $Tour->tour_soluong = $request->tour_soluong;
         $Tour->tour_giaidoan = $request->tour_giaidoan;
         $Tour->tour_daily = $request->tour_daily;
-        $Tour->tour_mota = $request->tour_mota;
         $Tour->tour_trangthai = 1;
         $Tour->save();
         Session::put('message','Sửa thành công!!!');
