@@ -20,9 +20,14 @@ class Tour extends Model
         'tour_trangthai'   
     ];
 
+<<<<<<< HEAD
     protected $dates        = ['tour_handk','tour_ngaybd','tour_ngaykt'];
     protected $dateFormat   = 'Y-m-d';
 
+=======
+    protected $dates = ['tour_handk','tour_ngaybd','tour_ngaykt'];
+    protected $dateFormat   = 'Y-m-d';
+>>>>>>> 5978ebc5fbb2b23a581dce6fc3f10a6035c9d4df
     #một tour có một lịch trình
     public function LichTrinh()
     {
