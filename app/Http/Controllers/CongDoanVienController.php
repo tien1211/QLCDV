@@ -14,19 +14,21 @@ class CongDoanVienController extends Controller
     function __construct(){
 		$ChucVu = ChucVu::all();
         $LoaiNhanVien = LoaiNhanVien::all();
-        $DonVi = DonVi::all();
+        $DonVi = DonVi::where('dv_trangthai',1)->get();;
+        $lnv_id = "";
+        $cv_id = "";
+        $dv_id = "";
     	view()->share('ChucVu',$ChucVu);
         view()->share('LoaiNhanVien',$LoaiNhanVien);
         view()->share('DonVi',$DonVi);
+        view()->share('lnv_id',$lnv_id);
+        view()->share('cv_id',$cv_id);
+        view()->share('dv_id',$dv_id);
 	}
 
     public function getDanhSach(){
-        $lnv_id = "";
-        $cv_id = "";
-        
         $CongDoanVien = CongDoanVien::paginate(5);
-        return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien)->with('lnv_id',$lnv_id)
-        ->with('cv_id',$cv_id);
+        return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien);
         
     }
 
@@ -258,26 +260,77 @@ class CongDoanVienController extends Controller
         $tukhoa = $request->tukhoa;
         $cv_id = $request->cv_id;
         $lnv_id = $request->lnv_id;
+        $dv_id = $request->dv_id;
         //dd($ChucVu);
-        if((!empty($tukhoa)) && (!empty($cv_id)) && (!empty($lnv_id))){
+        // nhập đầy đủ
+        if((!empty($tukhoa)) && (!empty($cv_id)) && (!empty($lnv_id)) && (!empty($dv_id))){
+            $CongDoanVien = CongDoanVien::where([['lnv_id','=',$lnv_id],['cv_id','=',$cv_id],['dv_id','=',$dv_id],['cdv_ten','like',"%$tukhoa%"],])->paginate(5);
+        }
+        // không nhập từ khóa
+        else if ((!empty($lnv_id)) && (!empty($cv_id)) && (!empty($dv_id))){
+            $CongDoanVien = CongDoanVien::where([['lnv_id',$lnv_id],['cv_id','=',$cv_id],['dv_id','=',$dv_id]])->paginate(5);
+        }
+        // không chọn loại nhân viên
+        else if ((!empty($tukhoa)) && (!empty($cv_id)) && (!empty($dv_id))){
+            $CongDoanVien = CongDoanVien::where([['cv_id','=',$cv_id],['dv_id','=',$dv_id],['cdv_ten','like',"%$tukhoa%"]])->paginate(5);
+        }
+        // không chọn chức vụ
+        else if ((!empty($tukhoa)) && (!empty($lnv_id)) && (!empty($dv_id))){
+            $CongDoanVien = CongDoanVien::where([['lnv_id','=',$lnv_id],['dv_id','=',$dv_id],['cdv_ten','like',"%$tukhoa%"],])->paginate(5);
+        }
+        // không chọn đơn vị
+        else if ((!empty($tukhoa)) && (!empty($lnv_id)) && (!empty($cv_id))){
             $CongDoanVien = CongDoanVien::where([['lnv_id','=',$lnv_id],['cv_id','=',$cv_id],['cdv_ten','like',"%$tukhoa%"],])->paginate(5);
         }
-        else if ((empty($tukhoa)) && (empty($lnv_id)) && (!empty($cv_id))){
-            $CongDoanVien = CongDoanVien::where('cv_id',$cv_id)->paginate(5);
+        // Chọn đơn vị và chức vụ
+        else if ((!empty($cv_id)) && (!empty($dv_id))){
+            $CongDoanVien = CongDoanVien::where([['cv_id','=',$cv_id],['dv_id','=',$dv_id],])->paginate(5);
         }
-        else if ((empty($tukhoa)) && (!empty($lnv_id)) && (empty($cv_id))){
-            $CongDoanVien = CongDoanVien::where('lnv_id',$lnv_id)->paginate(5);
+        // Chọn đơn vị và loại nhân viên
+        else if ((!empty($lnv_id)) && (!empty($dv_id))){
+            $CongDoanVien = CongDoanVien::where([['lnv_id','=',$lnv_id],['dv_id','=',$dv_id],])->paginate(5);
         }
+        // Chọn đơn vị và nhân tên cdv
+        else if ((!empty($tukhoa)) && (!empty($dv_id))){
+            $CongDoanVien = CongDoanVien::where([['dv_id','=',$dv_id],['cdv_ten','like',"%$tukhoa%"],])->paginate(5);
+        }
+        // Chọn chức vụ và loại nhân viên
         else if ((!empty($lnv_id)) && (!empty($cv_id))){
             $CongDoanVien = CongDoanVien::where([['lnv_id','=',$lnv_id],['cv_id','=',$cv_id],])->paginate(5);
         }
+        // Chọn chức vụ và nhập tên cdv
         else if ((!empty($tukhoa)) && (!empty($cv_id))){
-            $CongDoanVien = CongDoanVien::where('lnv_id',$lnv_id)->paginate(5);
+            $CongDoanVien = CongDoanVien::where([['cv_id','=',$cv_id],['cdv_ten','like',"%$tukhoa%"],])->paginate(5);
         }
+        // Chọn loại nhân viên và nhập tên cdv
+        else if ((!empty($tukhoa)) && (!empty($lnv_id))){
+            $CongDoanVien = CongDoanVien::where([['lnv_id','=',$lnv_id],['cdv_ten','like',"%$tukhoa%"],])->paginate(5);
+        }
+        // Chọn đơn vị
+        else if ((!empty($dv_id))){
+            $CongDoanVien = CongDoanVien::where('dv_id','=',$dv_id)->paginate(5);
+        }
+        // Chọn chức vụ
+        else if ((!empty($cv_id))){
+            $CongDoanVien = CongDoanVien::where('cv_id','=',$cv_id)->paginate(5);
+        }
+        // Chọn loại nhân viên
+        else if ((!empty($lnv_id))){
+            $CongDoanVien = CongDoanVien::where('lnv_id','=',$lnv_id)->paginate(5);
+        }
+        // nhập tên cdv
         else {
             $CongDoanVien = CongDoanVien::where('cdv_ten','like',"%$tukhoa%")->paginate(5);
         }
+        //dd($dv_id);
         //dd($CongDoanVien);
-        return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien)->with('lnv_id',$lnv_id)->with('cv_id',$cv_id)->with('tukhoa',$tukhoa);
+        return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien)->with('lnv_id',$lnv_id)->with('cv_id',$cv_id)->with('tukhoa',$tukhoa)->with('dv_id',$dv_id);
+    }
+
+    public function getDSDV($id){
+        $CongDoanVien = CongDoanVien::where('dv_id',$id)->paginate(5);
+        $dv_id = $id;
+        //dd($CongDoanVien);
+        return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien)->with('dv_id',$dv_id);
     }
 }

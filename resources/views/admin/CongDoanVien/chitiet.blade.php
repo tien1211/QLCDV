@@ -38,7 +38,7 @@
                   <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Loại Nhân Viên</label>
                   <div class="col-lg-6">
                     <select class="form-control m-bot15" name="lnv_id" disabled>
-                      <option value="">Chọn mức loại nhân viên...</option>
+                      <option value="">Chọn loại nhân viên...</option>
                       @foreach ($LoaiNhanVien as $lnv)
                       <option
                       @if ($CongDoanVien->lnv_id  == $lnv->lnv_id)
@@ -52,29 +52,7 @@
                     @endif
                   </div>
                 </div>
-                {{-- Loại Nhân Viên --}}
-                
-                {{-- Mức Hổ Trợ --}}
-                <div class="form-group">
-                  <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Mức Hổ trợ</label>
-                  <div class="col-lg-6">
-                    <select class="form-control m-bot15" name="mht_id" disabled>
-                      <option value="">Chọn mức hổ trợ...</option>
-                    @foreach ($MucHoTro as $mht)
-                    <option
-                    @if ($CongDoanVien->mht_id  == $mht->mht_id)
-                        {{"selected"}}                          
-                      @endif
-                    value='{{$mht->mht_id}}'>{{$mht->mht_nam}}</option>
-                    @endforeach
-                  </select>
-                  @if($errors->has('mht_id')) 
-                    <div style="color:red">{{ $errors->first('mht_id')}}</div>
-                    @endif
-                  </div>
-                </div>
-                {{-- Mức Hổ Trợ --}}
-                
+                {{-- Loại Nhân Viên --}}  
                 {{-- Họ tên --}}
                   @csrf
                     <div class="form-group ">

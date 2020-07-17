@@ -41,7 +41,7 @@
                     <td>{{$dv->dv_ten}}</td>
                     <td>{{$dv->dv_mota}}</td>
                     <td>{{$dv->dv_tt}}</td>
-                <td><a href=""><button type="button" class="btn btn-outline-info">Dang sách công đoàn viên</button></a></td>
+                <td><a href="{{route('CDV_DSDV',['id'=>$dv->dv_id])}}"><button type="button" class="btn btn-outline-info">Dang sách công đoàn viên</button></a></td>
                 <td>
                   <i class='fas fa-pencil-alt'></i><a href="{{route('DV_Sua',['id'=>$dv->dv_id])}}">Sửa</a>
                   <i class='fas fa-trash-alt'></i><a href="{{route('DV_Xoa',['id'=>$dv->dv_id])}}" onclick="return confirm('Bạn có chắc muốn xóa không?');">Xóa</a>
