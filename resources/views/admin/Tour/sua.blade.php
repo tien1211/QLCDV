@@ -44,23 +44,32 @@
                         <form class="cmxform form-horizontal " enctype="multipart/form-data" id="signupForm" method="get" action="{{route('TOUR_XLSua',['id'=> $Tour->tour_id])}}" novalidate="novalidate">
                             <div class="form-group ">
                                 <label for="firstname" class="control-label col-lg-3">Lịch trình</label>
-                                <div class="col-lg-6">
+                                <div class="col-lg-3">
 
                                         <select class="form-control m-bot15" name="lt_id">
                                              <option value="">Chon Lich Trinh</option>
                                                  @foreach ($LichTrinh as $lt)
-                                             <option
-                                             @if ($Tour->lt_id == $lt->lt_id)
-                                                 {{"selected"}}
-                                             @endif
-                                             value="{{$lt->lt_id}}">{{$lt->lt_file}}</option>
+                                             <option value="{{$lt->lt_id}}">{{$lt->lt_ten}}</option>
                                                   @endforeach
+
+
                                         </select>
-                                        @if($errors->has('lt_id'))
-                                        <div style="color:red">{{ $errors->first('lt_id')}}</div>
-                                        @endif
+                                </div>
+
+                                <div class="col-lg-3">
+
+                                        <select class="form-control m-bot15" name="gd_id">
+                                             <option value="">Giai Đoạn</option>
+                                                 @foreach ($GiaiDoan as $gd)
+                                             <option value="{{$gd->gd_id}}">{{$gd->giai_doan}}</option>
+                                                  @endforeach
+
+
+                                        </select>
                                 </div>
                             </div>
+
+
 
 
                             <div class="form-group ">
@@ -116,15 +125,7 @@
                                 <div style="color:red">{{ $errors->first('tour_soluong')}}</div>
                                 @endif
                             </div>
-                            <div class="form-group ">
-                                <label for="email" class="control-label col-lg-3">Giai đoạn</label>
-                                <div class="col-lg-6">
-                                <input value="{{$Tour->GiaiDoan->giai_doan}}" class="form-control "  name="giai_doan" type="text">
-                                </div>
-                                @if($errors->has('giai_doan'))
-                                <div style="color:red">{{ $errors->first('giai_doan')}}</div>
-                                @endif
-                            </div>
+
                             <div class="form-group ">
                                 <label for="email" class="control-label col-lg-3">Đại lý</label>
                                 <div class="col-lg-6">
@@ -132,15 +133,6 @@
                                 </div>
                                 @if($errors->has('tour_daily'))
                                 <div style="color:red">{{ $errors->first('tour_daily')}}</div>
-                                @endif
-                            </div>
-                            <div class="form-group ">
-                                <label for="email" class="control-label col-lg-3">Mô tả</label>
-                                <div class="col-lg-6">
-                                <input value="{{$Tour->tour_mota}}" class="form-control "  name="tour_mota" type="text">
-                                </div>
-                                @if($errors->has('tour_mota'))
-                                <div style="color:red">{{ $errors->first('tour_mota')}}</div>
                                 @endif
                             </div>
 

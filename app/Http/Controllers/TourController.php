@@ -49,7 +49,7 @@ class TourController extends Controller
         //     'tour_soluong' => 'required | numeric',
         //     'tour_giaidoan' => 'required',
         //     'tour_daily' => 'required',
-            
+
         // ]
         // ,
         // [
@@ -61,7 +61,7 @@ class TourController extends Controller
         //     'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
         //     'tour_giaidoan.required' => 'Bạn chưa nhập phương tiện!',
         //     'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
-            
+
         // ])->validate();
 
         $Tour = new Tour();
