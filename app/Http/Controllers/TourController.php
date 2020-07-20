@@ -52,7 +52,7 @@ class TourController extends Controller
             'tour_ngaykt' => 'required',
             'tour_chiphi' => 'required | numeric',
             'tour_soluong' => 'required | numeric',
-            'tour_giaidoan' => 'required',
+            'gd_id' => 'required',
             'tour_daily' => 'required',
             
         ]
@@ -64,7 +64,7 @@ class TourController extends Controller
             'tour_ngaykt.required' => 'Bạn chưa nhập ngày kết thúc!',
             'tour_chiphi.required' => 'Bạn chưa nhập chi phí!',
             'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
-            'tour_giaidoan.required' => 'Bạn chưa nhập phương tiện!',
+            'gd_id.required' => 'Bạn chưa nhập giai đoạn!',
             'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
             
         ])->validate();
@@ -103,7 +103,7 @@ class TourController extends Controller
             'tour_ngaykt' => 'required',
             'tour_chiphi' => 'required | numeric',
             'tour_soluong' => 'required | numeric',
-            'tour_giaidoan' => 'required',
+            'gd_id' => 'required',
             'tour_daily' => 'required',
         ]
         ,
@@ -114,7 +114,7 @@ class TourController extends Controller
             'tour_ngaykt.required' => 'Bạn chưa nhập ngày kết thúc!',
             'tour_chiphi.required' => 'Bạn chưa nhập chi phí!',
             'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
-            'tour_giaidoan.required' => 'Bạn chưa nhập giai đoạn!',
+            'gd_id.required' => 'Bạn chưa nhập giai đoạn!',
             'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
         ]);
 

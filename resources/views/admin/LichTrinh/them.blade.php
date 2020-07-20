@@ -33,10 +33,21 @@
                                     @endif
                                 </div>
                             </div>
+                            {{-- Mô tả --}}
+                            <div class="form-group ">
+                                <label for="firstname" class="control-label col-lg-3">Mô tả</label>
+                                <div class="col-lg-6">
+                                    <textarea class="form-control" id="" name="lt_mota" type="text" style="resize: none" rows="8"></textarea>
+                                        @if($errors->has('lt_mota')) 
+                                            <div style="color:red">{{ $errors->first('lt_mota')}}</div>
+                                        @endif
+                                </div>
+                            </div>
+                            {{-- Mô tả--}}
                             <div class="form-group">
                                 <div class="col-lg-offset-3 col-lg-6">
                                     <button class="btn btn-primary" type="submit">Lưu</button>
-                                    <button class="btn btn-default" type="button">Thoát</button>
+                                    <a href="{{route('LT_DanhSach')}}"><button class="btn btn-default" type="button">Thoát</button></a>
                                 </div>
                             </div>
                         </form>

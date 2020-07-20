@@ -82,6 +82,7 @@
                             <div class="form-group ">
                                 <label  class="control-label col-lg-3">Ngày bắt đầu</label>
                                 <div class="col-lg-6">
+                                    
                                 <input class="form-control " value="{{$t_ngaybd}}" name="tour_ngaybd" type="date">
                                 </div>
                             </div>

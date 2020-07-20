@@ -41,6 +41,7 @@ class LichTrinhController extends Controller
         ])->validate();
         $LichTrinh = new LichTrinh();
         $LichTrinh->lt_ten = $request->lt_ten;
+        $LichTrinh->lt_mota= $request->lt_mota;
         if($request->hasFile('lt_file')){
             $dataTime = date('Ymd_His');
             $lt_file = $request->lt_file;
@@ -79,6 +80,7 @@ class LichTrinhController extends Controller
         ]);
         $LichTrinh = LichTrinh::find($id);
         $LichTrinh->lt_ten = $request->lt_ten;
+        $LichTrinh->lt_mota= $request->lt_mota;
         $LichTrinh->lt_trangthai = 1;
         if($request->hasFile('lt_file')){
             $dataTime = date('Ymd_His');
