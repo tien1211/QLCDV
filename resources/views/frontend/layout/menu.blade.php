@@ -1,7 +1,7 @@
 <div class="searchform">
     <form id="formsearch" name="formsearch" method="post" action="#">
         <span>
-        <input name="editbox_search" class="editbox_search" id="editbox_search" maxlength="80" value="Search our ste:" type="text" />
+        <input name="editbox_search" class="editbox_search" id="editbox_search" maxlength="80" placeholder="Tìm kiếm" type="text" />
         </span>
         <input name="button_search" src="frontend/images/search.gif" class="button_search" type="image" />
     </form>
