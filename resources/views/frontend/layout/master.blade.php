@@ -39,7 +39,7 @@
         </div>
          <p class="pages"><small>Page 1 of 2</small> <span>1</span> <a href="#">2</a> 
             <a href="#">&raquo;</a></p> --}}
-        @yield('frontend-content')
+        @yield('frontend_content')
        
       </div>
       
