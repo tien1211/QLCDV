@@ -52,7 +52,7 @@
                     <!-- phan slide la cac hieu ung chuyen dong su dung jquey -->
 
                     {{---------------------- SLIDE ---------------------}}
-					{{-- <div id="slider">
+					<div id="slider">
 						<div id="demo" class="carousel slide" data-ride="carousel">
 
 							<!-- Indicators -->
@@ -74,7 +74,7 @@
 									<img src="img/home/slide-3.png" alt="New York" >
 								</div>
 							</div>
-
+{{--
 							<!-- Left and right controls -->
 							<a class="carousel-control-prev" href="#demo" data-slide="prev">
 								<span class="carousel-control-prev-icon"></span>

@@ -23,6 +23,7 @@ class CreateTourTable extends Migration
             $table->integer('tour_soluong');
             $table->unsignedInteger('gd_id');
             $table->string('tour_daily');
+            $table->string('tour_hinhanh');
             $table->tinyInteger('tour_trangthai')->comment('1 la hien thi 0 la an thong tin');
             $table->timestamps();
             $table->foreign('lt_id')->references('lt_id')->on('LichTrinh')->onDelete('CASCADE')->onUpdate('CASCADE');

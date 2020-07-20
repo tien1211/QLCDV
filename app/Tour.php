@@ -17,6 +17,7 @@ class Tour extends Model
         'tour_soluong',
         'gd_id',
         'tour_daily',
+        'tour_hinhanh',
         'tour_trangthai'
     ];
 
