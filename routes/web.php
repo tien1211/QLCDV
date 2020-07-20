@@ -77,6 +77,8 @@ Route::group(['prefix' => 'admin'], function () {
         //Form xóa tour
         Route::get('/TOUR_XoaTour/{id}', 'TourController@getXoa')->name('TOUR_Xoa');
 
+        // Chi tiết tour
+        Route::get('/TOUR_ChiTiet/{id}','TourController@getchitietTour')->name('TOUR_ChiTiet');
         //Form đặt tour
         // Route::get('/TOUR_DatTour/{id}','TourController@getDat')->name('TOUR_Dat');
         // Route::post('/TOUR_DatTour/{id}','TourController@postDat')->name('TOUR_XLDat');
@@ -95,12 +97,12 @@ Route::group(['prefix' => 'admin'], function () {
     //Form thêm lịch trình
     Route::get('/LT_ThemLT','LichTrinhController@getThem')->name('LT_Them');
     Route::post('/LT_ThemLT','LichTrinhController@postThem')->name('LT_XLThem');
-    });
 
      //Form sửa lịch trình
-     Route::get('/LT_SuaLT/{id}','LichTrinhController@getSua')->name('LT_Sua');
-     Route::post('/LT_SuaLT/{id}','LichTrinhController@postSua')->name('LT_XLSua');
+    Route::get('/LT_SuaLT/{id}','LichTrinhController@getSua')->name('LT_Sua');
+    Route::post('/LT_SuaLT/{id}','LichTrinhController@postSua')->name('LT_XLSua');
 
      //Xóa lịch trình
-     Route::get('/LT_XoaLT/{id}', 'LichTrinhController@getXoa')->name('LT_Xoa');
+    Route::get('/LT_XoaLT/{id}', 'LichTrinhController@getXoa')->name('LT_Xoa');
+    });
 });

@@ -9,7 +9,7 @@ use App\LichTrinh;
 use App\GiaiDoan;
 use Validate;
 use Session;
-
+use DB;
 class TourController extends Controller
 {
 
@@ -186,5 +186,14 @@ class TourController extends Controller
             $Tour = Tour::where('tour_ngaykt','<=',$ngaykt)->get();
         }
         return view('admin.Tour.danhsach')->with('Tour', $Tour)->with('ngaybd',$ngaybd)->with('ngaykt',$ngaykt)->with('gd_id',$gd_id);
+    }
+
+    public function getchitietTour($id){
+        $chitietTour = DB::table('Tour')
+            ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
+            ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
+            ->where('tour_id',$id)->get();
+        //dd($chitietTour);
+        return view('admin.Tour.chitiet')->with('chitietTour',$chitietTour);
     }
 }
