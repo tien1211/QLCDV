@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Vietpro Shop - Home</title>
     <base href="{{asset('')}}">
@@ -32,9 +32,9 @@
 		});
 	</script>
 </head>
-<body>    
+<body>
 
-	
+
 	<!-- header -->
 	@include('frontend.layout.header')<!-- /header -->
 	<!-- endheader -->
@@ -50,7 +50,7 @@
 
 
                     <!-- phan slide la cac hieu ung chuyen dong su dung jquey -->
-                    
+
                     {{---------------------- SLIDE ---------------------}}
 					{{-- <div id="slider">
 						<div id="demo" class="carousel slide" data-ride="carousel">
@@ -93,76 +93,78 @@
 								<div class="product-item col-md-3 col-sm-6 col-xs-12">
 									<a href="#"><img src="img/home/product-1.png" class="img-thumbnail"></a>
 									<p><a href="#">iPhone 6S Plus 64G</a></p>
-									<p class="price">10.000.000</p>	  
+									<p class="price">10.000.000</p>
 									<div class="marsk">
 										<a href="#">Xem chi tiết</a>
-									</div>                                    
+									</div>
 								</div>
 								<div class="product-item col-md-3 col-sm-6 col-xs-12">
 									<a href="#"><img src="img/home/product-2.png" class="img-thumbnail"></a>
 									<p><a href="#">iPhone 6S Plus 64G</a></p>
-									<p class="price">10.000.000</p>	  
+									<p class="price">10.000.000</p>
 									<div class="marsk">
 										<a href="#">Xem chi tiết</a>
-									</div>                      	                        
+									</div>
 								</div>
 								<div class="product-item col-md-3 col-sm-6 col-xs-12">
 									<a href="#"><img src="img/home/product-3.png" class="img-thumbnail"></a>
 									<p><a href="#">iPhone 6S Plus 64G</a></p>
-									<p class="price">10.000.000</p>	  
+									<p class="price">10.000.000</p>
 									<div class="marsk">
 										<a href="#">Xem chi tiết</a>
-									</div>                      	                        
+									</div>
 								</div>
 								<div class="product-item col-md-3 col-sm-6 col-xs-12">
 									<a href="#"><img src="img/home/product-4.png" class="img-thumbnail"></a>
 									<p><a href="#">iPhone 6S Plus 64G</a></p>
-									<p class="price">10.000.000</p>	  
+									<p class="price">10.000.000</p>
 									<div class="marsk">
 										<a href="#">Xem chi tiết</a>
-									</div>                      	                        
+									</div>
 								</div>
 								<div class="product-item col-md-3 col-sm-6 col-xs-12">
 									<a href="#"><img src="img/home/product-1.png" class="img-thumbnail"></a>
 									<p><a href="#">iPhone 6S Plus 64G</a></p>
-									<p class="price">10.000.000</p>	  
+									<p class="price">10.000.000</p>
 									<div class="marsk">
 										<a href="#">Xem chi tiết</a>
-									</div>                      	                        
+									</div>
 								</div>
 								<div class="product-item col-md-3 col-sm-6 col-xs-12">
 									<a href="#"><img src="img/home/product-4.png" class="img-thumbnail"></a>
 									<p><a href="#">iPhone 6S Plus 64G</a></p>
-									<p class="price">10.000.000</p>	  
+									<p class="price">10.000.000</p>
 									<div class="marsk">
 										<a href="#">Xem chi tiết</a>
-									</div>                      	                        
+									</div>
 								</div>
 								<div class="product-item col-md-3 col-sm-6 col-xs-12">
 									<a href="#"><img src="img/home/product-3.png" class="img-thumbnail"></a>
 									<p><a href="#">iPhone 6S Plus 64G</a></p>
-									<p class="price">10.000.000</p>	  
+									<p class="price">10.000.000</p>
 									<div class="marsk">
 										<a href="#">Xem chi tiết</a>
-									</div>                      	                        
+									</div>
 								</div>
 								<div class="product-item col-md-3 col-sm-6 col-xs-12">
 									<a href="#"><img src="img/home/product-2.png" class="img-thumbnail"></a>
 									<p><a href="#">iPhone 6S Plus 64G</a></p>
-									<p class="price">10.000.000</p>	  
+									<p class="price">10.000.000</p>
 									<div class="marsk">
 										<a href="#">Xem chi tiết</a>
-									</div>                      	                        
-								</div> 
-							</div>                	                	
+									</div>
+								</div>
+							</div>
                         </div> --}}
-                        
+
+
+
                         @yield('frontend_content')
 					</div>
 
 
 
-					
+
 					<!-- end main -->
 				</div>
 			</div>
@@ -173,7 +175,7 @@
 
 
 	<!-- footer -->
-	<footer id="footer">			
+	<footer id="footer">
 		@include('frontend.layout.footer')
 	</footer>
 	<!-- endfooter -->
