@@ -1,65 +1,182 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<title>CÔNG ĐOÀN VIÊN</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="frontend/css/style.css" rel="stylesheet" type="text/css" />
-<base href="{{asset('')}}">
-<link rel="stylesheet" type="text/css" href="frontend/css/coin-slider.css" />
-<script type="text/javascript" src="frontend/js/cufon-yui.js"></script>
-<script type="text/javascript" src="frontend/js/droid_sans_400-droid_sans_700.font.js"></script>
-<script type="text/javascript" src="frontend/js/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="frontend/js/script.js"></script>
-<script type="text/javascript" src="frontend/js/coin-slider.min.js"></script>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Vietpro Shop - Home</title>
+    <base href="{{asset('')}}">
+	<link rel="stylesheet" href="frontend/css/bootstrap.min.css">
+	<link rel="stylesheet" href="frontend/css/home.css">
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+	<script type="text/javascript" src="frontend/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript">
+		$(function() {
+			var pull        = $('#pull');
+			menu        = $('nav ul');
+			menuHeight  = menu.height();
+
+			$(pull).on('click', function(e) {
+				e.preventDefault();
+				menu.slideToggle();
+			});
+		});
+
+		$(window).resize(function(){
+			var w = $(window).width();
+			if(w > 320 && menu.is(':hidden')) {
+				menu.removeAttr('style');
+			}
+		});
+	</script>
 </head>
-<body>
-<div class="main">
+<body>    
 
-<!-- HEADER -->
-  <div class="header">
-            @include('frontend.layout.header')
-  </div>
+	
+	<!-- header -->
+	@include('frontend.layout.header')<!-- /header -->
+	<!-- endheader -->
 
-<!-- HEADER --> 
+	<!-- main -->
+	<section id="body">
+		<div class="container">
+			<div class="row">
+				@include('frontend.layout.menu')
+
+				<div id="main" class="col-md-9">
+					<!-- main -->
 
 
-  <div class="content">
-    <div class="content_resize">
-      <div class="mainbar">
-        {{-- <div class="article">
-          <h2><span>Excellent Solution</span> For Your Business</h2>
-          <p class="infopost">Posted <span class="date">on 11 sep 2018</span> by <a href="#">Admin</a> &nbsp;&nbsp;|&nbsp;&nbsp; Filed under <a href="#">templates</a>, <a href="#">internet</a> <a href="#" class="com">Comments <span>11</span></a></p>
-          <div class="clr"></div>
-          <div class="img"><img src="frontend/images/img1.jpg" width="180" height="205" alt="" class="fl" /></div>
-          <div class="post_content">
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. <a href="#">Suspendisse bibendum. Cras id urna.</a> Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo. Donec mattis, purus nec placerat bibendum, dui pede condimentum odio, ac blandit ante orci ut diam. Cras fringilla magna. Phasellus suscipit, leo a pharetra condimentum, lorem tellus eleifend magna, eget fringilla velit magna id neque. Curabitur vel urna. In tristique orci porttitor ipsum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo.</p>
-            <p><strong>Aenean consequat porttitor adipiscing. Nam pellentesque justo ut tortor congue lobortis. Donec venenatis sagittis fringilla.</strong> Etiam nec libero magna, et dictum velit. Proin mauris mauris, mattis eu elementum eget, commodo in nulla. Mauris posuere venenatis pretium. Maecenas a dui sed lorem aliquam dictum. Nunc urna leo, imperdiet eu bibendum ac, pretium ac massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisi. Quisque condimentum luctus ullamcorper.</p>
-            <p class="spec"><a href="#" class="rm">Read more</a></p>
-          </div>
-          <div class="clr"></div>
-        </div>
-         <p class="pages"><small>Page 1 of 2</small> <span>1</span> <a href="#">2</a> 
-            <a href="#">&raquo;</a></p> --}}
-            @yield('frontend_content')
-       
-      </div>
-      
-      
-<!-- MENU 2 -->
-      <div class="sidebar">
-            @include('frontend.layout.menu');
-      </div>
-<!-- MENU 2 -->
+                    <!-- phan slide la cac hieu ung chuyen dong su dung jquey -->
+                    
+                    {{---------------------- SLIDE ---------------------}}
+					{{-- <div id="slider">
+						<div id="demo" class="carousel slide" data-ride="carousel">
 
-      <div class="clr"></div>
-    </div>
-  </div>
+							<!-- Indicators -->
+							<ul class="carousel-indicators">
+								<li data-target="#demo" data-slide-to="0" class="active"></li>
+								<li data-target="#demo" data-slide-to="1"></li>
+								<li data-target="#demo" data-slide-to="2"></li>
+							</ul>
 
-<!-- FOOTER -->
-            @include('frontend.layout.footer');
+							<!-- The slideshow -->
+							<div class="carousel-inner">
+								<div class="carousel-item active">
+									<img src="img/home/slide-1.png" alt="Los Angeles" >
+								</div>
+								<div class="carousel-item">
+									<img src="img/home/slide-2.png" alt="Chicago">
+								</div>
+								<div class="carousel-item">
+									<img src="img/home/slide-3.png" alt="New York" >
+								</div>
+							</div>
 
-<!-- FOOTER -->
+							<!-- Left and right controls -->
+							<a class="carousel-control-prev" href="#demo" data-slide="prev">
+								<span class="carousel-control-prev-icon"></span>
+							</a>
+							<a class="carousel-control-next" href="#demo" data-slide="next">
+								<span class="carousel-control-next-icon"></span>
+							</a>
+						</div>
+					</div> --}}
+                    {{---------------------- SLIDE ---------------------}}
 
-</div>
+					<div id="wrap-inner">
+						{{-- <div class="products">
+							<h3>sản phẩm nổi bật</h3>
+							<div class="product-list row">
+								<div class="product-item col-md-3 col-sm-6 col-xs-12">
+									<a href="#"><img src="img/home/product-1.png" class="img-thumbnail"></a>
+									<p><a href="#">iPhone 6S Plus 64G</a></p>
+									<p class="price">10.000.000</p>	  
+									<div class="marsk">
+										<a href="#">Xem chi tiết</a>
+									</div>                                    
+								</div>
+								<div class="product-item col-md-3 col-sm-6 col-xs-12">
+									<a href="#"><img src="img/home/product-2.png" class="img-thumbnail"></a>
+									<p><a href="#">iPhone 6S Plus 64G</a></p>
+									<p class="price">10.000.000</p>	  
+									<div class="marsk">
+										<a href="#">Xem chi tiết</a>
+									</div>                      	                        
+								</div>
+								<div class="product-item col-md-3 col-sm-6 col-xs-12">
+									<a href="#"><img src="img/home/product-3.png" class="img-thumbnail"></a>
+									<p><a href="#">iPhone 6S Plus 64G</a></p>
+									<p class="price">10.000.000</p>	  
+									<div class="marsk">
+										<a href="#">Xem chi tiết</a>
+									</div>                      	                        
+								</div>
+								<div class="product-item col-md-3 col-sm-6 col-xs-12">
+									<a href="#"><img src="img/home/product-4.png" class="img-thumbnail"></a>
+									<p><a href="#">iPhone 6S Plus 64G</a></p>
+									<p class="price">10.000.000</p>	  
+									<div class="marsk">
+										<a href="#">Xem chi tiết</a>
+									</div>                      	                        
+								</div>
+								<div class="product-item col-md-3 col-sm-6 col-xs-12">
+									<a href="#"><img src="img/home/product-1.png" class="img-thumbnail"></a>
+									<p><a href="#">iPhone 6S Plus 64G</a></p>
+									<p class="price">10.000.000</p>	  
+									<div class="marsk">
+										<a href="#">Xem chi tiết</a>
+									</div>                      	                        
+								</div>
+								<div class="product-item col-md-3 col-sm-6 col-xs-12">
+									<a href="#"><img src="img/home/product-4.png" class="img-thumbnail"></a>
+									<p><a href="#">iPhone 6S Plus 64G</a></p>
+									<p class="price">10.000.000</p>	  
+									<div class="marsk">
+										<a href="#">Xem chi tiết</a>
+									</div>                      	                        
+								</div>
+								<div class="product-item col-md-3 col-sm-6 col-xs-12">
+									<a href="#"><img src="img/home/product-3.png" class="img-thumbnail"></a>
+									<p><a href="#">iPhone 6S Plus 64G</a></p>
+									<p class="price">10.000.000</p>	  
+									<div class="marsk">
+										<a href="#">Xem chi tiết</a>
+									</div>                      	                        
+								</div>
+								<div class="product-item col-md-3 col-sm-6 col-xs-12">
+									<a href="#"><img src="img/home/product-2.png" class="img-thumbnail"></a>
+									<p><a href="#">iPhone 6S Plus 64G</a></p>
+									<p class="price">10.000.000</p>	  
+									<div class="marsk">
+										<a href="#">Xem chi tiết</a>
+									</div>                      	                        
+								</div> 
+							</div>                	                	
+                        </div> --}}
+                        
+                        @yield('frontend_content')
+					</div>
+
+
+
+					
+					<!-- end main -->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- endmain -->
+
+
+
+	<!-- footer -->
+	<footer id="footer">			
+		@include('frontend.layout.footer')
+	</footer>
+	<!-- endfooter -->
+
 </body>
 </html>

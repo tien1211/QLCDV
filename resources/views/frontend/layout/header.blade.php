@@ -1,27 +1,22 @@
-<div class="header_resize">
-    <div class="logo">
-      <h1><a href="index.html">Bubble<span>Bean</span> <small><span>Company Slogan Here</span></small></a></h1>
+<header id="header">
+    <div class="container">
+        <div class="row">
+            <div id="logo" class="col-md-3 col-sm-12 col-xs-12">
+                <h1>
+                    <a href="#"><img src="frontend/img/home/logo.png"></a>						
+                    <nav><a id="pull" class="btn btn-danger" href="#">
+                        <i class="fa fa-bars"></i>
+                    </a></nav>			
+                </h1>
+            </div>
+            <div id="search" class="col-md-7 col-sm-12 col-xs-12">
+                <input type="text" name="text" value="Nhập từ khóa ...">
+                <input type="submit" name="submit" value="Tìm Kiếm">
+            </div>
+            <div id="cart" class="col-md-2 col-sm-12 col-xs-12">
+                <a class="display" href="#">Giỏ hàng</a>
+                <a href="#">6</a>				    
+            </div>
+        </div>			
     </div>
-    <div class="clr"></div>
-    <div class="menu_nav">
-      <ul>
-        <li class="active"><a href="index.html"><span>HOME</span></a></li>
-        <li><a href="support.html"><span>Support</span></a></li>
-        <li><a href="about.html"><span>About Us</span></a></li>
-        <li><a href="blog.html"><span>Blog</span></a></li>
-        <li><a href="contact.html"><span>Contact Us</span></a></li>
-      </ul>
-    </div>
-    <div class="clr"></div>
-    <div class="slider">
-      <div id="coin-slider"> 
-          <a href="#"><img src="frontend/images/slide1.jpg" width="960" height="360" alt="" /><span><big>Sed condimentum justo sit amet urna ornare euismod.</big><br />
-        Tusce nec iaculis risus hasellus nec sem sed tellus malesuada porttitor. Mauris scelerisque feugiat ante in vulputate. Nam sit amet ullamcorper tortor. Phasellus posuere facilisis cursus. Nunc est lorem, dictum at scelerisque sit amet, faucibus et est. Proin mattis ipsum quis arcu aliquam molestie.</span></a> 
-          <a href="#"><img src="frontend/images/slide2.jpg" width="960" height="360" alt="" /><span><big>Amet urna ornare euismodSed condimentum.</big><br />
-        Tusce nec iaculis risus hasellus nec sem sed tellus malesuada porttitor. Mauris scelerisque feugiat ante in vulputate. Nam sit amet ullamcorper tortor. Phasellus posuere facilisis cursus. Nunc est lorem, dictum at scelerisque sit amet, faucibus et est. Proin mattis ipsum quis arcu aliquam molestie.</span></a> 
-          <a href="#"><img src="frontend/images/slide3.jpg" width="960" height="360" alt="" /><span><big>Sed condimentum justo sit amet urna ornare euismod.</big><br />
-        Tusce nec iaculis risus hasellus nec sem sed tellus malesuada porttitor. Mauris scelerisque feugiat ante in vulputate. Nam sit amet ullamcorper tortor. Phasellus posuere facilisis cursus. Nunc est lorem, dictum at scelerisque sit amet, faucibus et est. Proin mattis ipsum quis arcu aliquam molestie.</span></a> </div>
-      <div class="clr"></div>
-    </div>
-    <div class="clr"></div>
-  </div>
+</header>
