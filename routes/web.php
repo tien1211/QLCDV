@@ -20,6 +20,10 @@ Route::get('/admin', function () {
     return view('admin.layout.master');
 })->name('admin');
 
+Route::get('/front',function(){
+    return view('frontend.layout.master');
+})->name('trangchu');
+
 Route::get('/dangnhap','AuthController@getLogin')->name('formLogin');
 Route::post('/dangnhap-xl','AuthController@postLogin')->name('login');
 Route::get('/dangxuat','AuthController@logOut')->name('logout');

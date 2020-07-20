@@ -86,11 +86,7 @@ class TourController extends Controller
 
     public function getSua($id){
         $Tour = Tour::find($id);
-<<<<<<< HEAD
-        //dd($Tour);
-=======
         // dd($Tour);
->>>>>>> 5978ebc5fbb2b23a581dce6fc3f10a6035c9d4df
         return view('admin.Tour.sua')->with('Tour',$Tour);
    }
 
