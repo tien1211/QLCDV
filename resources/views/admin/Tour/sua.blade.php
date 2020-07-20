@@ -66,17 +66,16 @@
                                 </div>
                             </div>
 
-
+                                <?php
+                                    $t_handk = $Tour->tour_handk->format('yy-m-d');
+                                    $t_ngaybd = $Tour->tour_ngaybd->format('yy-m-d');
+                                    $t_ngaykt = $Tour->tour_ngaykt->format('yy-m-d');
+                                ?>
                             <div class="form-group ">
                                 <label for="lastname" class="control-label col-lg-3">Hạn đăng ký</label>
                                 <div class="col-lg-6">
-                                    <?php
-                                        $t_handk = $Tour->tour_handk->format('yy-m-d');
-                                        $t_ngaybd = $Tour->tour_ngaybd->format('yy-m-d');
-                                        $t_ngaykt = $Tour->tour_ngaykt->format('yy-m-d');
-                                    ?>
 
-                                <input class=" form-control" value="{{$t_handk}}" name="tour_handk" type="date">
+                                 <input class=" form-control" value="{{$t_handk}}" name="tour_handk" type="date">
                                 </div>
                             </div>
                             <div class="form-group ">

@@ -12,6 +12,7 @@ class DK_Tour extends Model
     protected $fillable = [
         'cdv_id',
         'tour_id',
+        'dkt_soluong'
     ];
     #nhận đăng kí tour từ 1 đoàn viên
     public function CongDoanVien(){

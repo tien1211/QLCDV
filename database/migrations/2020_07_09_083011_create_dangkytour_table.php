@@ -17,6 +17,7 @@ class CreateDangkytourTable extends Migration
             $table->increments('dkt_id');
             $table->unsignedMediumInteger('cdv_id');
             $table->unsignedInteger('tour_id');
+            $table->integer('dkt_soluong');
             $table->timestamps();
 
             $table->foreign('cdv_id')->references('cdv_id')->on('CongDoanVien')->onDelete('CASCADE')->onUpdate('CASCADE');
