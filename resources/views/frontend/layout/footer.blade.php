@@ -1,39 +1,38 @@
-<div class="fbg">
-    <div class="fbg_resize">
-        <div class="col c1">
-            <h2><span>Image</span> Gallery</h2>
-            <a href="#"><img src="frontend/images/gal1.jpg" width="75" height="75" alt="" class="gal" /></a>
-            <a href="#"><img src="frontend/images/gal2.jpg" width="75" height="75" alt="" class="gal" /></a> 
-            <a href="#"><img src="frontend/images/gal3.jpg" width="75" height="75" alt="" class="gal" /></a>
-            <a href="#"><img src="frontend/images/gal4.jpg" width="75" height="75" alt="" class="gal" /></a>
-            <a href="#"><img src="frontend/images/gal5.jpg" width="75" height="75" alt="" class="gal" /></a> 
-            <a href="#"><img src="frontend/images/gal6.jpg" width="75" height="75" alt="" class="gal" /></a> 
+<div id="footer-t">
+    <div class="container">
+        <div class="row">				
+            <div id="logo-f" class="col-md-3 col-sm-12 col-xs-12 text-center">						
+                <a href="#"><img src="frontend/img/home/logo.png"></a>		
+            </div>
+            <div id="about" class="col-md-3 col-sm-12 col-xs-12">
+                <h3>About us</h3>
+                <p class="text-justify">Vietpro Academy thành lập năm 2009. Chúng tôi đào tạo chuyên sâu trong 2 lĩnh vực là Lập trình Website & Mobile nhằm cung cấp cho thị trường CNTT Việt Nam những lập trình viên thực sự chất lượng, có khả năng làm việc độc lập, cũng như Team Work ở mọi môi trường đòi hỏi sự chuyên nghiệp cao.</p>
+            </div>
+            <div id="hotline" class="col-md-3 col-sm-12 col-xs-12">
+                <h3>Hotline</h3>
+                <p>Phone Sale: (+84) 0988 550 553</p>
+                <p>Email: sirtuanhoang@gmail.com</p>
+            </div>
+            <div id="contact" class="col-md-3 col-sm-12 col-xs-12">
+                <h3>Contact Us</h3>
+                <p>Address 1: B8A Võ Văn Dũng - Hoàng Cầu Đống Đa - Hà Nội</p>
+                <p>Address 2: Số 25 Ngõ 178/71 - Tây Sơn Đống Đa - Hà Nội</p>
+            </div>
+        </div>				
+    </div>
+    <div id="footer-b">				
+        <div class="container">
+            <div class="row">
+                <div id="footer-b-l" class="col-md-6 col-sm-12 col-xs-12 text-center">
+                    <p>Học viện Công nghệ Vietpro - www.vietpro.edu.vn</p>
+                </div>
+                <div id="footer-b-r" class="col-md-6 col-sm-12 col-xs-12 text-center">
+                    <p>© 2017 Vietpro Academy. All Rights Reserved</p>
+                </div>
+            </div>
         </div>
-      <div class="col c2">
-        <h2><span>Services</span> Overview</h2>
-        <p>Curabitur sed urna id nunc pulvinar semper. Nunc sit amet tortor sit amet lacus sagittis posuere cursus vitae nunc.Etiam venenatis, turpis at eleifend porta, nisl nulla bibendum justo.</p>
-        <ul class="fbg_ul">
-          <li><a href="#">Lorem ipsum dolor labore et dolore.</a></li>
-          <li><a href="#">Excepteur officia deserunt.</a></li>
-          <li><a href="#">Integer tellus ipsum tempor sed.</a></li>
-        </ul>
-      </div>
-      <div class="col c3">
-        <h2><span>Contact</span> Us</h2>
-        <p>Nullam quam lorem, tristique non vestibulum nec, consectetur in risus. Aliquam a quam vel leo gravida gravida eu porttitor dui.</p>
-        <p class="contact_info"> <span>Address:</span> 1458 TemplateAccess, USA<br />
-          <span>Telephone:</span> +123-1234-5678<br />
-          <span>FAX:</span> +458-4578<br />
-          <span>Others:</span> +301 - 0125 - 01258<br />
-          <span>E-mail:</span> <a href="#">mail@yoursitename.com</a> </p>
-      </div>
-      <div class="clr"></div>
+        <div id="scroll">
+            <a href="#"><img src="frontend/img/home/scroll.png"></a>
+        </div>	
     </div>
-  </div>
-  <div class="footer">
-    <div class="footer_resize">
-      <p class="lf">&copy; Project: WEBSITE QUẢN LÝ CÔNG ĐOÀN VIÊN.</p>
-      
-      <div style="clear:both;"></div>
-    </div>
-  </div>
+</div>
