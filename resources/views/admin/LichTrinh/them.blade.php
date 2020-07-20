@@ -1,75 +1,53 @@
 @extends('admin.layout.master')
-
 @section('admin_content')
-
-
-@if(count($errors) > 0)
-    <div class="alert alert-danger">
-        @foreach ($errors->all() as $err)
-            {{$err}}
-        @endforeach
-
-    </div>
-
-@endif
-
-@if(session('thongbao'))
-    <div class="alert alert-success">
-          {{session('thongbao')}}
-    </div>
-
-@endif
-
-<form class="cmxform form-horizontal" enctype="multipart/form-data" method="post" action="{{route('LT_XLThem')}}" novalidate="novalidate" >
-
-     @csrf
-
     <div class="row">
         <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
-                  Thêm Lịch Trình
+                Thêm Lịch Trình
                     <span class="tools pull-right">
                         <a class="fa fa-chevron-down" href="javascript:;"></a>
                         <a class="fa fa-cog" href="javascript:;"></a>
                         <a class="fa fa-times" href="javascript:;"></a>
-                     </span>
+                    </span>
                 </header>
                 <div class="panel-body">
                     <div class="form">
-                        <form class="cmxform form-horizontal " enctype="multipart/form-data" id="signupForm" method="get" action="" novalidate="novalidate">
-                            {{-- <div class="form-group ">
-                                <label for="firstname" class="control-label col-lg-3">Lịch trình</label>
-                                <div class="col-lg-6">
-
-                                        <select class="form-control m-bot15" name="lt_id">
-                                             <option value="">Chon Lich Trinh</option>
-                                                 @foreach ($LichTrinh as $lt)
-                                             <option value="{{$lt->lt_id}}">{{$lt->lt_file}}</option>
-                                                  @endforeach
-
-
-                                        </select>
-                                </div>
-                            </div> --}}
+                        <form class="cmxform form-horizontal " enctype="multipart/form-data" id="signupForm" method="post" action="{{route('LT_XLThem')}}" novalidate="novalidate">
+                            {{csrf_field()}}
                             <div class="form-group ">
                                 <label for="lastname" class="control-label col-lg-3"> Lịch Trình Tên</label>
                                 <div class="col-lg-6">
                                     <input class=" form-control"  name="lt_ten" type="text">
+                                    @if($errors->has('lt_ten')) 
+                                    <div style="color:red">{{ $errors->first('lt_ten')}}</div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label for="username" class="control-label col-lg-3">Lịch Trình File</label>
                                 <div class="col-lg-6">
-                                    <input class="form-control "  name="lt_file" type="text">
+                                    <input class="form-control "  name="lt_file" type="file">
+                                    @if($errors->has('lt_file')) 
+                                    <div style="color:red">{{ $errors->first('lt_file')}}</div>
+                                    @endif
                                 </div>
                             </div>
-
-
+                            {{-- Mô tả --}}
+                            <div class="form-group ">
+                                <label for="firstname" class="control-label col-lg-3">Mô tả</label>
+                                <div class="col-lg-6">
+                                    <textarea class="form-control" id="" name="lt_mota" type="text" style="resize: none" rows="8"></textarea>
+                                        @if($errors->has('lt_mota')) 
+                                            <div style="color:red">{{ $errors->first('lt_mota')}}</div>
+                                        @endif
+                                </div>
+                            </div>
+                            {{-- Mô tả--}}
                             <div class="form-group">
                                 <div class="col-lg-offset-3 col-lg-6">
                                     <button class="btn btn-primary" type="submit">Lưu</button>
-                                    <button class="btn btn-default" type="button">Thoát</button>
+                                    <a href="{{route('LT_DanhSach')}}"><button class="btn btn-default" type="button">Thoát</button></a>
                                 </div>
                             </div>
                         </form>

@@ -4,6 +4,7 @@
 <title>CÔNG ĐOÀN VIÊN</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="frontend/css/style.css" rel="stylesheet" type="text/css" />
+<base href="{{asset('')}}">
 <link rel="stylesheet" type="text/css" href="frontend/css/coin-slider.css" />
 <script type="text/javascript" src="frontend/js/cufon-yui.js"></script>
 <script type="text/javascript" src="frontend/js/droid_sans_400-droid_sans_700.font.js"></script>
@@ -16,7 +17,7 @@
 
 <!-- HEADER -->
   <div class="header">
-    @include('frontend.layout.header')
+            @include('frontend.layout.header')
   </div>
 
 <!-- HEADER --> 
@@ -39,7 +40,7 @@
         </div>
          <p class="pages"><small>Page 1 of 2</small> <span>1</span> <a href="#">2</a> 
             <a href="#">&raquo;</a></p> --}}
-        @yield('frontend_content')
+            @yield('frontend_content')
        
       </div>
       
@@ -55,7 +56,7 @@
   </div>
 
 <!-- FOOTER -->
-  @include('frontend.layout.footer');
+            @include('frontend.layout.footer');
 
 <!-- FOOTER -->
 

@@ -64,7 +64,8 @@
                 <tr data-expanded="true">
                     <td>{{$dk->dkt_id}}</td>
                     <td>{{$dk->CongDoanVien->cdv_ten}}</td>
-                    <td>{{$dk->Tour->LichTrinh->lt_ten}}</td>
+                    <td>{{$dk->Tour->LichTrinh->lt_ten}} {{date('Y ',strtotime($dk->Tour->tour_handk))}}</td>
+
                     <td>
                        {{-- <i class='fas fa-pencil-alt'></i><a  href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}">Sửa</a>
                         <i class='fas fa-trash-alt'></i><a href="{{route('TOUR_Xoa',['id'=>$t->tour_id])}}">Xóa</a> --}}

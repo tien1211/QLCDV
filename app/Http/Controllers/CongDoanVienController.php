@@ -215,7 +215,7 @@ class CongDoanVienController extends Controller
                 $CongDoanVien->cdv_hinhanh = $name;
     
             }else{
-                $CongDoanVien->cdv_hinhanh=""; 
+                $CongDoanVien->cdv_hinhanh= $CongDoanVien->cdv_hinhanh; 
             }
             
             

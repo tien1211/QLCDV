@@ -20,7 +20,6 @@
                     <ul class="sub">
 						<li><a href="{{route('CDV_DanhSach')}}">Danh Sách Công Đoàn Viên</a></li>
                     <li><a href="{{route('CDV_Them')}}">Thêm Công Đoàn Viên</a></li>
-                        <li><a href="grids.html">Grids</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
