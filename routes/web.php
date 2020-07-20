@@ -20,9 +20,11 @@ Route::get('/admin', function () {
     return view('admin.layout.master');
 })->name('admin');
 
-Route::get('/front',function(){
+Route::get('/frontend',function(){
     return view('frontend.layout.master');
 })->name('trangchu');
+
+
 
 Route::get('/dangnhap','AuthController@getLogin')->name('formLogin');
 Route::post('/dangnhap-xl','AuthController@postLogin')->name('login');
@@ -111,4 +113,10 @@ Route::group(['prefix' => 'admin'], function () {
 
 
      });
+});
+
+Route::group(['prefix' => 'frontend'], function () {
+    Route::group(['prefix' => 'DK_Tour'], function () {
+        Route::get('DK_Tour_DanhSach','DK_TourController@getDanhSach')->name('DK_Tour_DanhSach');
+    });
 });
