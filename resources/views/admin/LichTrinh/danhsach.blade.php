@@ -57,7 +57,7 @@
                 <tr data-expanded="true">
                     <td>{{$lt->lt_id}}</td>
                     <td>{{$lt->lt_ten}}</td>
-                    <td>{{$lt->lt_file}}</td>
+                    <td><a href="{{url('upload/lichtrinh/'.$lt->lt_file)}}">{{$lt->lt_file}}</a></td>
                     <td>
                         <i class='fas fa-pencil-alt'></i><a  href="{{route('LT_Sua',['id'=>$lt->lt_id])}}">Sửa</a>
 
