@@ -5,13 +5,6 @@
         <div class="panel-heading">
             <h4 style="text-align: center; color: #32323a; display: inline-block">Công Đoàn Bưu Chính Viễn Thông Việt Nam</h4>
         </div>
-        <?php 
-          $message = Session::get('message');
-          if($message){
-              echo '<span class="text-alert">'.$message.'</span>';
-              Session::put('message',null);
-          }
-          ?>
         <div>
       <table class="table" ui-jq="footable" ui-options='{
         "paging": {
@@ -33,6 +26,16 @@
             <th>Cập Nhật</th>
           </tr>
         </thead>
+        <div class="form-group" style="mt-6">
+          <div class="flash-message">
+            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+              @if(Session::has('alert-' . $msg))
+              <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
+              ata-dismiss="alert" aria-label="close">&times;</a></p>
+              @endif
+            @endforeach
+        </div>
+        </div>
         <tbody>
             @foreach ($DonVi as $dv)         
               @if ($dv->dv_trangthai == 1)

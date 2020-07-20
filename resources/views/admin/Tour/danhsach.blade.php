@@ -15,7 +15,7 @@
     ?>
     <div class="panel-body">
         <div class="position-right">
-            <form class="form-inline" role="form" action="{{route('TOUR_Timkiem')}}" method="post">
+            <form class="form-inline" role="form" action="{{route('TOUR_Timkiem')}}" method="get">
             {{ csrf_field() }}
             <div class="form-group">
               Từ ngày:
@@ -26,7 +26,16 @@
               <input class="form-control "  name="tour_ngaykt" type="date" value="{{$ngaykt}}">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="tukhoa" placeholder="từ khóa tìm kiếm" name="tukhoa">
+              <select class="form-control m-bot15" name="gd_id">
+                <option value="">Chọn giai đoạn ...</option>
+                @foreach ($GiaiDoan as $gd)
+                @if($gd->gd_id == $gd_id)
+                <option selected value='{{$gd->gd_id}}'>{{$gd->giai_doan}}</option>
+                @else
+                <option value='{{$gd->gd_id}}'>{{$gd->giai_doan}}</option>
+                @endif
+                @endforeach
+              </select>
             </div>
               <button type="submit" class="btn btn-outline-info">Tìm kiếm</button>
         </form>
@@ -52,8 +61,6 @@
             <th>Ngày kết thúc</th>
             <th>Chi phí</th>
             <th>Số lượng </th>
-            <th>Giai đoạn</th>
-            <th>Đại lý</th>
             <th>Cập nhật</th>
           </tr>
         </thead>
@@ -61,18 +68,15 @@
             @if ($t->tour_trangthai == 1)
                 <tr data-expanded="true">
                     <td>{{$t->tour_id}}</td>
-                    <td>{{$t->LichTrinh->lt_ten}}</td>
+                <td>{{$t->LichTrinh->lt_ten}} {{$t->GiaiDoan->giai_doan}}</td>
                     <td>{{date('d/m/Y ',strtotime($t->tour_handk))}}</td>
                     <td>{{date('d/m/Y ',strtotime($t->tour_ngaybd))}}</td>
                     <td>{{date('d/m/Y ',strtotime($t->tour_ngaykt))}}</td>
                 <td>{{number_format($t->tour_chiphi)}}</td>
                     <td>{{$t->tour_soluong}}</td>
-                    <td>{{$t->GiaiDoan->giai_doan}}</td>
-                    <td>{{$t->tour_daily}}</td>
 
                     <td>
                        <i class='fas fa-pencil-alt'></i><a  href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}">Sửa</a>
-
                         <i class='fas fa-trash-alt'></i><a href="{{route('TOUR_Xoa',['id'=>$t->tour_id])}}">Xóa</a>
                       </td>
                 </tr>

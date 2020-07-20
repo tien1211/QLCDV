@@ -51,7 +51,7 @@
 
                                         </select>
                                 </div>
-                                
+
                                 <div class="col-lg-3">
 
                                         <select class="form-control m-bot15" name="gd_id">
@@ -64,7 +64,7 @@
                                         </select>
                                 </div>
                             </div>
-                           
+
 
 
                             <div class="form-group ">
@@ -97,7 +97,7 @@
                                     <input class="form-control "  name="tour_soluong" type="number">
                                 </div>
                             </div>
-                            
+
                             <div class="form-group ">
                                 <label for="email" class="control-label col-lg-3">Đại lý</label>
                                 <div class="col-lg-6">

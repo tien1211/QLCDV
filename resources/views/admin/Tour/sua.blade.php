@@ -3,7 +3,7 @@
 @section('admin_content')
 
 
-{{-- @if(count($errors) > 0)
+@if(count($errors) > 0)
     <div class="alert alert-danger">
         @foreach ($errors->all() as $err)
             {{$err}}
@@ -11,15 +11,14 @@
 
     </div>
 
-@endif --}}
+@endif
 
-{{-- @if(session('thongbao'))
+@if(session('thongbao'))
     <div class="alert alert-success">
           {{session('thongbao')}}
     </div>
 
-@endif --}}
-
+@endif
 
 <form class="cmxform form-horizontal" enctype="multipart/form-data" method="post" action="{{route('TOUR_XLSua',['id'=> $Tour->tour_id])}}" novalidate="novalidate" >
 
@@ -29,113 +28,88 @@
         <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
-                  Sửa Tour Du Lịch
+                  Cập Nhật Tour Du Lịch
                     <span class="tools pull-right">
                         <a class="fa fa-chevron-down" href="javascript:;"></a>
                         <a class="fa fa-cog" href="javascript:;"></a>
                         <a class="fa fa-times" href="javascript:;"></a>
                      </span>
                 </header>
-
                 <div class="panel-body">
                     <div class="form">
-
-
-                        <form class="cmxform form-horizontal " enctype="multipart/form-data" id="signupForm" method="get" action="{{route('TOUR_XLSua',['id'=> $Tour->tour_id])}}" novalidate="novalidate">
+                        <form class="cmxform form-horizontal " enctype="multipart/form-data" id="signupForm" method="get" action="" novalidate="novalidate">
                             <div class="form-group ">
                                 <label for="firstname" class="control-label col-lg-3">Lịch trình</label>
                                 <div class="col-lg-3">
-
-                                        <select class="form-control m-bot15" name="lt_id">
-                                             <option value="">Chon Lich Trinh</option>
-                                                 @foreach ($LichTrinh as $lt)
-                                             <option value="{{$lt->lt_id}}">{{$lt->lt_ten}}</option>
-                                                  @endforeach
-
-
-                                        </select>
+                                    <select class="form-control m-bot15" name="lt_id">
+                                            <option value="">Chon Lich Trinh</option>
+                                                @foreach ($LichTrinh as $lt)
+                                            <option
+                                            @if ($Tour->lt_id == $lt->lt_id)
+                                                {{"selected"}}
+                                            @endif
+                                            value="{{$lt->lt_id}}">{{$lt->lt_ten}}</option>
+                                                @endforeach
+                                    </select>
                                 </div>
-
                                 <div class="col-lg-3">
-
-                                        <select class="form-control m-bot15" name="gd_id">
-                                             <option value="">Giai Đoạn</option>
-                                                 @foreach ($GiaiDoan as $gd)
-                                             <option value="{{$gd->gd_id}}">{{$gd->giai_doan}}</option>
-                                                  @endforeach
-
-
-                                        </select>
+                                    <select class="form-control m-bot15" name="gd_id">
+                                        <option value="">Giai Đoạn</option>
+                                            @foreach ($GiaiDoan as $gd)
+                                        <option
+                                        @if ($Tour->gd_id == $gd->gd_id)
+                                            {{"selected"}}
+                                        @endif
+                                        value="{{$gd->gd_id}}">{{$gd->giai_doan}}</option>
+                                            @endforeach
+                                    </select>
                                 </div>
                             </div>
-
-
 
 
                             <div class="form-group ">
                                 <label for="lastname" class="control-label col-lg-3">Hạn đăng ký</label>
                                 <div class="col-lg-6">
-                                    <input  class=" form-control"  name="tour_handk" value="{{$Tour->tour_handk}}"  type="date">
+                                    <?php
+                                        $t_handk = $Tour->tour_handk->format('yy-m-d');
+                                        $t_ngaybd = $Tour->tour_ngaybd->format('yy-m-d');
+                                        $t_ngaykt = $Tour->tour_ngaykt->format('yy-m-d');
+                                    ?>
+
+                                <input class=" form-control" value="{{$t_handk}}" name="tour_handk" type="date">
                                 </div>
-                                @if($errors->has('tour_handk'))
-                                <div style="color:red">{{ $errors->first('tour_handk')}}</div>
-                                @endif
                             </div>
-
-
                             <div class="form-group ">
-                                <label for="username" class="control-label col-lg-3">Ngày bắt đầu</label>
+                                <label  class="control-label col-lg-3">Ngày bắt đầu</label>
                                 <div class="col-lg-6">
-                                    {{-- @php
-                                    $dt = $Tour->tour_ngaybd->format('yy-m-d\Th:m');
-                                @endphp --}}
-                                    <input   value="{{$Tour->tour_ngaybd}}" class="form-control "  name="tour_ngaybd" type="date">
+                                <input class="form-control " value="{{$t_ngaybd}}" name="tour_ngaybd" type="date">
                                 </div>
-                                @if($errors->has('tour_ngaybd'))
-                                <div style="color:red">{{ $errors->first('tour_ngaybd')}}</div>
-                                @endif
                             </div>
                             <div class="form-group ">
                                 <label for="password" class="control-label col-lg-3">Ngày kết thúc</label>
                                 <div class="col-lg-6">
-                                    {{-- @php
-                                    $dt = $Tour->tour_ngaykt->format('yy-m-d\Th:m');
-                                @endphp --}}
-                                    <input value="{{$Tour->ngaykt}}" class="form-control "  name="tour_ngaykt" type="date">
+                                    <input class="form-control "  value="{{$t_ngaykt}}" name="tour_ngaykt" type="date">
                                 </div>
-                                @if($errors->has('tour_ngaykt'))
-                                <div style="color:red">{{ $errors->first('tour_ngaykt')}}</div>
-                                @endif
                             </div>
                             <div class="form-group ">
                                 <label for="confirm_password" class="control-label col-lg-3">Chi phí</label>
                                 <div class="col-lg-6">
-                                <input  value="{{$Tour->tour_chiphi}}" class="form-control "  name="tour_chiphi" type="number">
+                                <input class="form-control " value="{{$Tour->tour_chiphi}}"  name="tour_chiphi" type="number">
                                 </div>
-                                @if($errors->has('tour_chiphi'))
-                                <div style="color:red">{{ $errors->first('tour_chiphi')}}</div>
-                                @endif
                             </div>
                             <div class="form-group ">
                                 <label for="email" class="control-label col-lg-3">Số lượng</label>
                                 <div class="col-lg-6">
-                                <input value="{{$Tour->tour_soluong}}" class="form-control "  name="tour_soluong" type="number">
+                                <input class="form-control " value="{{$Tour->tour_soluong}}"  name="tour_soluong" type="number">
                                 </div>
-                                @if($errors->has('tour_soluong'))
-                                <div style="color:red">{{ $errors->first('tour_soluong')}}</div>
-                                @endif
                             </div>
 
                             <div class="form-group ">
                                 <label for="email" class="control-label col-lg-3">Đại lý</label>
                                 <div class="col-lg-6">
-                                <input value="{{$Tour->tour_daily}}" class="form-control "  name="tour_daily" type="text">
+                                <input class="form-control" value="{{$Tour->tour_daily}}"  name="tour_daily" type="text">
                                 </div>
-                                @if($errors->has('tour_daily'))
-                                <div style="color:red">{{ $errors->first('tour_daily')}}</div>
-                                @endif
                             </div>
-
 
                             <div class="form-group">
                                 <div class="col-lg-offset-3 col-lg-6">

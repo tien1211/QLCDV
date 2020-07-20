@@ -15,7 +15,7 @@ class TourSeeder extends Seeder
             [
                 'lt_id' => '1',
                 'gd_id' => '1',
-                'tour_handk' => '2020-08-20',
+                'tour_handk' => '2020-01-21',
                 'tour_ngaybd' => '2020-08-21',
                 'tour_ngaykt' => '2020-08-22',
                 'tour_chiphi' => '5000000',
