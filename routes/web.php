@@ -29,7 +29,7 @@ Route::post('/dangnhap-xl','AuthController@postLogin')->name('login');
 Route::get('/dangxuat','AuthController@logOut')->name('logout');
 
 Route::group(['prefix' => 'admin'], function () {
-    
+
     Route::group(['prefix' => 'CongDoanVien'], function () {
         //Danh Sách Công Đoàn Viên
         Route::get('/CDV_DS', 'CongDoanVienController@getDanhSach')->name('CDV_DanhSach');
@@ -103,4 +103,12 @@ Route::group(['prefix' => 'admin'], function () {
 
      //Xóa lịch trình
      Route::get('/LT_XoaLT/{id}', 'LichTrinhController@getXoa')->name('LT_Xoa');
+
+
+     Route::group(['prefix' => 'DK_Tour'],function(){
+            //Danh sach dang ky Tour
+        Route::get('DK_Tour_DanhSach','DK_TourController@getDanhSach')->name('DK_Tour_DanhSach');
+
+
+     });
 });
