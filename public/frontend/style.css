@@ -2166,7 +2166,9 @@ html .ui-button.ui-state-disabled:active {
     .single-blog-post .post-thumbnail a {
       display: block; }
     .single-blog-post .post-thumbnail img {
-      border-radius: 4px; }
+      border-radius: 4px;
+        height: 25rem;
+    }
   .single-blog-post .post-content {
     position: relative;
     z-index: 1;
