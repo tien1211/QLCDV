@@ -20,7 +20,7 @@ Route::get('/admin', function () {
     return view('admin.layout.master');
 })->name('admin');
 
-Route::get('/frontend',function(){
+Route::get('/home',function(){
     return view('frontend.layout.master');
 })->name('trangchu');
 
@@ -110,4 +110,14 @@ Route::group(['prefix' => 'admin'], function () {
     //Xóa lịch trình
     Route::get('/LT_XoaLT/{id}', 'LichTrinhController@getXoa')->name('LT_Xoa');
     });
+});
+
+
+/////
+
+
+Route::group(['prefix' => 'frontend'], function () {
+
+    Route::get('DK_Tour_DanhSach','DK_TourController@getDanhSach')->name('DK_Tour_DanhSach');
+
 });
