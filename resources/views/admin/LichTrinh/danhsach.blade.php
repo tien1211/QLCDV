@@ -48,7 +48,7 @@
             <th data-breakpoints="xs">ID</th>
             <th>Lịch Trình Tên</th>
             <th>Lịch Trình File</th>
-
+            <th>Cập Nhật</th>
           </tr>
         </thead>
 

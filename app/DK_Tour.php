@@ -28,4 +28,9 @@ class DK_Tour extends Model
     public function Tour(){
         return $this->belongsTo('App\Tour','tour_id','tour_id');
     }
+
+    #một đăng ký tour có 1 tình trang thu phí
+    public function TinhTrangThuPhi(){
+        return $this->belongsTo('App\TinhTrangThuPhi','tttp_id','tttp_id');
+    }
 }

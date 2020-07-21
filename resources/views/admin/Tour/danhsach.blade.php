@@ -62,6 +62,7 @@
             <th>Ngày kết thúc</th>
             <th>Chi phí</th>
             <th>Số lượng </th>
+            <th>Chi tiết </th>
             <th>Cập nhật</th>
           </tr>
         </thead>
@@ -76,9 +77,9 @@
                     <td>{{date('d/m/Y ',strtotime($t->tour_ngaykt))}}</td>
                 <td>{{number_format($t->tour_chiphi)}}</td>
                     <td>{{$t->tour_soluong}}</td>
-                    
+                    <td><a href="{{route('TOUR_ChiTiet',['id'=>$t->tour_id])}}"><button type="button" class="btn btn-outline-info">Chi Tiết</button></a></td>
                     <td>
-                       <i class='fas fa-pencil-alt'></i><a  href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}">Sửa</a>
+                      <i class='fas fa-pencil-alt'></i><a  href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}">Sửa</a>
                         <i class='fas fa-trash-alt'></i><a href="{{route('TOUR_Xoa',['id'=>$t->tour_id])}}">Xóa</a>
                       </td>
                 </tr>
