@@ -1,38 +1,71 @@
-<div id="footer-t">
-    <div class="container">
-        <div class="row">				
-            <div id="logo-f" class="col-md-3 col-sm-12 col-xs-12 text-center">						
-                <a href="#"><img src="frontend/img/home/logo.png"></a>		
-            </div>
-            <div id="about" class="col-md-3 col-sm-12 col-xs-12">
-                <h3>About us</h3>
-                <p class="text-justify">Vietpro Academy thành lập năm 2009. Chúng tôi đào tạo chuyên sâu trong 2 lĩnh vực là Lập trình Website & Mobile nhằm cung cấp cho thị trường CNTT Việt Nam những lập trình viên thực sự chất lượng, có khả năng làm việc độc lập, cũng như Team Work ở mọi môi trường đòi hỏi sự chuyên nghiệp cao.</p>
-            </div>
-            <div id="hotline" class="col-md-3 col-sm-12 col-xs-12">
-                <h3>Hotline</h3>
-                <p>Phone Sale: (+84) 0988 550 553</p>
-                <p>Email: sirtuanhoang@gmail.com</p>
-            </div>
-            <div id="contact" class="col-md-3 col-sm-12 col-xs-12">
-                <h3>Contact Us</h3>
-                <p>Address 1: B8A Võ Văn Dũng - Hoàng Cầu Đống Đa - Hà Nội</p>
-                <p>Address 2: Số 25 Ngõ 178/71 - Tây Sơn Đống Đa - Hà Nội</p>
-            </div>
-        </div>				
-    </div>
-    <div id="footer-b">				
+<footer class="footer-area section-padding-80-0">
+    <!-- Main Footer Area -->
+    <div class="main-footer-area">
         <div class="container">
-            <div class="row">
-                <div id="footer-b-l" class="col-md-6 col-sm-12 col-xs-12 text-center">
-                    <p>Học viện Công nghệ Vietpro - www.vietpro.edu.vn</p>
+            <div class="row align-items-baseline justify-content-between">
+                <!-- Single Footer Widget Area -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Footer Logo -->
+                        <a href="#" class="footer-logo"><img src="frontend/img/core-img/logo2.png" alt=""></a>
+
+                        <h4>+12 345-678-9999</h4>
+                        <span>Info.colorlib@gmail.com</span>
+                        <span>856 Cordia Extension Apt. 356, Lake Deangeloburgh, South Africa</span>
+                    </div>
                 </div>
-                <div id="footer-b-r" class="col-md-6 col-sm-12 col-xs-12 text-center">
-                    <p>© 2017 Vietpro Academy. All Rights Reserved</p>
+
+                <!-- Single Footer Widget Area -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Widget Title -->
+                        <h5 class="widget-title">Our Blog</h5>
+
+                        <!-- Single Blog Area -->
+                        <div class="latest-blog-area">
+                            <a href="#" class="post-title">Freelance Design Tricks How</a>
+                            <span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Jan 02, 2019</span>
+                        </div>
+
+                        <!-- Single Blog Area -->
+                        <div class="latest-blog-area">
+                            <a href="#" class="post-title">Free Advertising For Your Online</a>
+                            <span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Jan 02, 2019</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Footer Widget Area -->
+                <div class="col-12 col-sm-4 col-lg-2">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Widget Title -->
+                        <h5 class="widget-title">Links</h5>
+
+                        <!-- Footer Nav -->
+                        <ul class="footer-nav">
+                            <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> About Us</a></li>
+                            <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Our Room</a></li>
+                            <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Career</a></li>
+                            <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> FAQs</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Single Footer Widget Area -->
+                <div class="col-12 col-sm-8 col-lg-4">
+                    <div class="single-footer-widget mb-80">
+                        <!-- Widget Title -->
+                        <h5 class="widget-title">Subscribe Newsletter</h5>
+                        <span>Subscribe our newsletter gor get notification about new updates.</span>
+
+                        <!-- Newsletter Form -->
+                        <form action="index.html" class="nl-form">
+                            <input type="email" class="form-control" placeholder="Enter your email...">
+                            <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-        <div id="scroll">
-            <a href="#"><img src="frontend/img/home/scroll.png"></a>
-        </div>	
     </div>
-</div>
+</footer>

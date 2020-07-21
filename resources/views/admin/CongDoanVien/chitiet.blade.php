@@ -2,7 +2,6 @@
 @section('admin_content')
 <div class="row">
   <div class="col-lg-12">
-   
       <section class="panel">
           <header class="panel-heading">
               Thông Tin {{$CongDoanVien->ChucVu->cv_ten}}: {{$CongDoanVien->cdv_ten}}
@@ -74,14 +73,7 @@
                     @endif
                   </div>
                 </div>
-<<<<<<< HEAD
-                {{-- Loại Nhân Viên --}}
-                
-                
-                
-=======
                 {{-- Loại Nhân Viên --}}  
->>>>>>> 85b0fcfbda366454e9d44399581cf09962a67721
                 {{-- Họ tên --}}
                   @csrf
                     <div class="form-group ">

@@ -82,6 +82,8 @@ Route::group(['prefix' => 'admin'], function () {
         //Form xóa tour
         Route::get('/TOUR_XoaTour/{id}', 'TourController@getXoa')->name('TOUR_Xoa');
 
+        // Chi tiết tour
+        Route::get('/TOUR_ChiTiet/{id}','TourController@getchitietTour')->name('TOUR_ChiTiet');
         //Form đặt tour
         // Route::get('/TOUR_DatTour/{id}','TourController@getDat')->name('TOUR_Dat');
         // Route::post('/TOUR_DatTour/{id}','TourController@postDat')->name('TOUR_XLDat');
@@ -108,6 +110,4 @@ Route::group(['prefix' => 'admin'], function () {
     //Xóa lịch trình
     Route::get('/LT_XoaLT/{id}', 'LichTrinhController@getXoa')->name('LT_Xoa');
     });
-
-
 });
