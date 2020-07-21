@@ -118,6 +118,6 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::group(['prefix' => 'frontend'], function () {
 
-    Route::get('DK_Tour_DanhSach','DK_TourController@getDanhSach')->name('DK_Tour_DanhSach');
+
 
 });
