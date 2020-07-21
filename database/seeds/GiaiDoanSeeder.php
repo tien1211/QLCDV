@@ -16,7 +16,15 @@ class GiaiDoanSeeder extends Seeder
                 'giai_doan' => '2019 - 2020',
                 'gd_trangthai' => 1
             ],[
-                'giai_doan' => '2020 - 2021',
+                'giai_doan' => '2021 - 2022',
+                'gd_trangthai' => 1
+            ],
+            [
+                'giai_doan' => '2023 - 2024',
+                'gd_trangthai' => 1
+            ],
+            [
+                'giai_doan' => '2024 - 2025',
                 'gd_trangthai' => 1
             ]
         ];

@@ -23,11 +23,12 @@ class TourSeeder extends Seeder
                 'tour_daily' => 'abc',
                 'tour_hinhanh' => 'tour1.png',
                 'tour_trangthai' => 1,
-               
-                
-            ],[
+
+
+            ],
+            [
                 'lt_id' => '2',
-                
+
                 'tour_handk' => '2020-08-21',
                 'tour_ngaybd' => '2020-08-22',
                 'tour_ngaykt' => '2020-08-23',
@@ -37,8 +38,37 @@ class TourSeeder extends Seeder
                 'tour_daily' => 'xyz',
                 'tour_hinhanh' => 'tour2.png',
                 'tour_trangthai' => 1,
-                
+
+            ],
+            [
+                'lt_id' => '3',
+
+                'tour_handk' => '2020-08-25',
+                'tour_ngaybd' => '2020-08-10',
+                'tour_ngaykt' => '2020-08-27',
+                'tour_chiphi' => '4500000',
+                'tour_soluong' => '30',
+                'gd_id' => '3',
+                'tour_daily' => 'MyThoTravel',
+                'tour_hinhanh' => 'tour-dalat.jpg',
+                'tour_trangthai' => 1,
+
+            ],
+            [
+                'lt_id' => '4',
+
+                'tour_handk' => '2021-01-25',
+                'tour_ngaybd' => '2021-01-10',
+                'tour_ngaykt' => '2021-01-27',
+                'tour_chiphi' => '3500000',
+                'tour_soluong' => '25',
+                'gd_id' => '4',
+                'tour_daily' => 'MyThoTravel',
+                'tour_hinhanh' => 'tour-danang.jpg',
+                'tour_trangthai' => 1,
+
             ]
+
         ];
         DB::table('Tour')->insert($arr);
     }
