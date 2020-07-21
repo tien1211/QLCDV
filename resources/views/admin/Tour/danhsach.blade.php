@@ -77,6 +77,8 @@
                     <td>{{date('d/m/Y ',strtotime($t->tour_ngaykt))}}</td>
                 <td>{{number_format($t->tour_chiphi)}}</td>
                     <td>{{$t->tour_soluong}}</td>
+                    <td>{{$t->tour_daily}}</td>
+                    {{-- <td>{{$t->tour_hinhanh}}</td> --}}
                     <td><a href="{{route('TOUR_ChiTiet',['id'=>$t->tour_id])}}"><button type="button" class="btn btn-outline-info">Chi Tiết</button></a></td>
                     <td>
                       <i class='fas fa-pencil-alt'></i><a  href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}">Sửa</a>

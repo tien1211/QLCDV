@@ -105,6 +105,13 @@
                                 </div>
                             </div>
 
+                            <div class="form-group ">
+                                <label for="email" class="control-label col-lg-3">Hình ảnh</label>
+                                <div class="col-lg-6">
+                                    <input class="form-control "  name="tour_hinhanh" type="file">
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <div class="col-lg-offset-3 col-lg-6">
                                     <button class="btn btn-primary" type="submit">Lưu</button>
