@@ -14,7 +14,7 @@
                 <input type="submit" name="submit" value="Tìm Kiếm">
             </div>
             <div id="search" class="col-md-2 col-sm-12 col-xs-12 mt-4">
-                <a class="display" href="#"><button type="button" class="btn btn-primary">Đăng Nhập</button></a>	    
+                <a class="display" href="#"><button type="button" class="btn btn-">Đăng Nhập</button></a>	    
             </div>
         </div>			
     </div>
