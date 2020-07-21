@@ -20,11 +20,11 @@ Route::get('/admin', function () {
     return view('admin.layout.master');
 })->name('admin');
 
-Route::get('/home',function(){
-    return view('frontend.layout.master');
-})->name('trangchu');
+// Route::get('/home',function(){
+//     return view('frontend.layout.master');
+// })->name('trangchu');
 
-Route::get('/hehe','IndexController@getIndex')->name('Index');
+Route::get('/home','IndexController@getIndex')->name('trangchu');
 
 Route::get('/dangnhap','AuthController@getLogin')->name('formLogin');
 Route::post('/dangnhap-xl','AuthController@postLogin')->name('login');
@@ -34,6 +34,10 @@ Route::get('/dangxuat','AuthController@logOut')->name('logout');
 
 
 Route::group(['prefix' => 'admin'], function () {
+
+    Route::get('/admin', function () {
+        return view('admin.layout.master');
+    })->name('admin');
 
     Route::group(['prefix' => 'CongDoanVien'], function () {
         //Danh Sách Công Đoàn Viên

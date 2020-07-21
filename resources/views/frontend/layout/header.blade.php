@@ -72,25 +72,17 @@
                                     </ul>
                                 </li>
                                 <li><a href="./blog.html">News</a></li>
-                                <li><a href="#">Đăng Nhập</a>
+                                @if (!isset($auth))
+                            <li><a href="{{route('formLogin')}}">Đăng Nhập</a></li>
+                                @else
+                                <li><a href="#">{{$auth->cdv_username}}</a>
                                     <ul class="dropdown">
-                                        <li><a href="./index.html">- Home</a></li>
-                                        <li><a href="./room.html">- Rooms</a></li>
-                                        <li><a href="./single-room.html">- Single Rooms</a></li>
-                                        <li><a href="./about.html">- About Us</a></li>
-                                        <li><a href="./blog.html">- Blog</a></li>
-                                        <li><a href="./single-blog.html">- Single Blog</a></li>
-                                        <li><a href="./contact.html">- Contact</a></li>
-                                        <li><a href="#">- Dropdown</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">- Dropdown Item</a></li>
-                                                <li><a href="#">- Dropdown Item</a></li>
-                                                <li><a href="#">- Dropdown Item</a></li>
-                                                <li><a href="#">- Dropdown Item</a></li>
-                                            </ul>
-                                        </li>
+                                        <li><a href="./index.html">Thông tin cá nhân</a></li>
+                                        <li><a href="./room.html">Quản Lý Tour</a></li>
+                                        <li><a href="{{route('logout')}}">Đăng xuất</a></li>
                                     </ul>
                                 </li>
+                                @endif
                             </ul>
 
                             <!-- Search -->

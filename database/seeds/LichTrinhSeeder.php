@@ -15,7 +15,7 @@ class LichTrinhSeeder extends Seeder
             [
                 'lt_ten' => 'Tiền Giang - Vũng Tàu',
                 'lt_file' => 'LichTrinhVungTau.xlsx',
-                'lt_mota' => 'hihi',
+                'lt_mota' => 'cái gì vậy chèn',
                 'lt_trangthai' => 1
             ],[
                 'lt_ten' => 'Tiền Giang - Cần Thơ',
