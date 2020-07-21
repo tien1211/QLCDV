@@ -36,7 +36,7 @@ class TourSeeder extends Seeder
                 'tour_soluong' => '20',
                 'gd_id' => '2',
                 'tour_daily' => 'xyz',
-                'tour_hinhanh' => 'tour-cantho.png',
+                'tour_hinhanh' => 'tour-cantho.jpg',
                 'tour_trangthai' => 1,
 
             ],
