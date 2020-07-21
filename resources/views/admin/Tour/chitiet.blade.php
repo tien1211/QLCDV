@@ -46,10 +46,10 @@
         </thead>
                 <tr data-expanded="true">
                     <td>{{$tour_giaidoan}}</td>
-                    <td>{{$tour_handk}}</td>
-                    <td>{{$tour_ngaybd}}</td>
-                    <td>{{$tour_ngaykt}}</td>
-                    <td>{{$tour_chiphi}}</td>
+                    <td>{{date('d/m/Y ',strtotime($tour_handk))}}</td>
+                    <td>{{date('d/m/Y ',strtotime($tour_ngaybd))}}</td>
+                    <td>{{date('d/m/Y ',strtotime($tour_ngaykt))}}</td>
+                    <td>{{number_format($tour_chiphi)}} VNĐ</td>
                     <td>{{$tour_soluong}}</td>
                 </tr>
         </tbody>
@@ -73,22 +73,22 @@
         }}'>
         <thead>
         <tr>
-            <th>Giai Đoạn</th>
-            <th>Hạn đăng ký</th>
-            <th>Ngày bắt đầu</th>
-            <th>Ngày kết thúc</th>
-            <th>Chi phí</th>
-            <th>Số lượng </th>
+            <th>Họ và tên</th>
+            <th>Số lượng người tham gia</th>
+            <th>Chi phí phải trả</th>
+            <th>Tình trạng thu phí</th>
+            <th>Thông tin chi tiết</th>
         </tr>
         </thead>
+            @foreach ($cdv_dk as $cdv)
                 <tr data-expanded="true">
-                    <td>{{$tour_giaidoan}}</td>
-                    <td>{{$tour_handk}}</td>
-                    <td>{{$tour_ngaybd}}</td>
-                    <td>{{$tour_ngaykt}}</td>
-                    <td>{{$tour_chiphi}}</td>
-                    <td>{{$tour_soluong}}</td>
+                    <td>{{$cdv->cdv_ten}}</td>
+                    <td>{{$cdv->dkt_soluong}}</td>
+                    <td>{{number_format($cdv->dkt_soluong*$cdv->tour_chiphi)}} VNĐ</td>
+                    <td>{{$cdv->tinh_trang}}</td>
+                    <td><a href="{{route('CDV_ChiTiet',['id'=>$cdv->cdv_id])}}"><button type="button" class="btn btn-outline-info">Chi Tiết</button></a></td>
                 </tr>
+            @endforeach
         </tbody>
     </table>
     </div>

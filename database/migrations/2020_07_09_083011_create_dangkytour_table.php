@@ -17,10 +17,13 @@ class CreateDangkytourTable extends Migration
             $table->increments('dkt_id');
             $table->unsignedMediumInteger('cdv_id');
             $table->unsignedInteger('tour_id');
+            $table->unsignedInteger('tttp_id');
+            $table->integer('dkt_soluong');
             $table->timestamps();
 
             $table->foreign('cdv_id')->references('cdv_id')->on('CongDoanVien')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreign('tour_id')->references('tour_id')->on('Tour')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('tttp_id')->references('tttp_id')->on('TinhTrangThuPhi')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 

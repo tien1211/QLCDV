@@ -12,6 +12,7 @@ class DK_Tour extends Model
     protected $fillable = [
         'cdv_id',
         'tour_id',
+        'dkt_soluong'
     ];
     #nhận đăng kí tour từ 1 đoàn viên
     public function CongDoanVien(){
@@ -26,5 +27,10 @@ class DK_Tour extends Model
     #nhận đăng kí tour từ 1 tour
     public function Tour(){
         return $this->belongsTo('App\Tour','tour_id','tour_id');
+    }
+
+    #một đăng ký tour có 1 tình trang thu phí
+    public function TinhTrangThuPhi(){
+        return $this->belongsTo('App\TinhTrangThuPhi','tttp_id','tttp_id');
     }
 }
