@@ -33,7 +33,7 @@
                 <nav class="classy-navbar justify-content-between" id="robertoNav">
 
                     <!-- Logo -->
-                    <a class="nav-brand" href="index.html"><img src="frontend/img/core-img/logo.png" alt=""></a>
+                    <a class="nav-brand" href="index.html"><img src="upload/logo/logo.png" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -99,7 +99,7 @@
                             </div>
 
                             <!-- Book Now -->
-                            
+
                         </div>
                         <!-- Nav End -->
                     </div>
