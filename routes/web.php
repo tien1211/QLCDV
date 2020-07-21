@@ -24,7 +24,7 @@ Route::get('/home',function(){
     return view('frontend.layout.master');
 })->name('trangchu');
 
-
+Route::get('/Index','IndexController@getIndex')->name('Index');
 
 Route::get('/dangnhap','AuthController@getLogin')->name('formLogin');
 Route::post('/dangnhap-xl','AuthController@postLogin')->name('login');

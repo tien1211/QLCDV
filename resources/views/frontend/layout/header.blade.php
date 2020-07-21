@@ -72,7 +72,25 @@
                                     </ul>
                                 </li>
                                 <li><a href="./blog.html">News</a></li>
-                                <li><a href="./contact.html">Contact</a></li>
+                                <li><a href="#">Đăng Nhập</a>
+                                    <ul class="dropdown">
+                                        <li><a href="./index.html">- Home</a></li>
+                                        <li><a href="./room.html">- Rooms</a></li>
+                                        <li><a href="./single-room.html">- Single Rooms</a></li>
+                                        <li><a href="./about.html">- About Us</a></li>
+                                        <li><a href="./blog.html">- Blog</a></li>
+                                        <li><a href="./single-blog.html">- Single Blog</a></li>
+                                        <li><a href="./contact.html">- Contact</a></li>
+                                        <li><a href="#">- Dropdown</a>
+                                            <ul class="dropdown">
+                                                <li><a href="#">- Dropdown Item</a></li>
+                                                <li><a href="#">- Dropdown Item</a></li>
+                                                <li><a href="#">- Dropdown Item</a></li>
+                                                <li><a href="#">- Dropdown Item</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
                             </ul>
 
                             <!-- Search -->
@@ -81,9 +99,7 @@
                             </div>
 
                             <!-- Book Now -->
-                            <div class="book-now-btn ml-3 ml-lg-5">
-                                <a href="#">Book Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                            </div>
+                            
                         </div>
                         <!-- Nav End -->
                     </div>
