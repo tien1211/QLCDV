@@ -5,17 +5,10 @@
     <div class="roberto-rooms-area section-padding-100-0">
         <div class="col-12">
             <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
-<<<<<<< HEAD
-                @foreach ($b as $a)
-                <h2>{{$a->lt_ten}} {{date('Y ',strtotime($a->tour_handk))}}</h2>
-                @endforeach
 
-=======
-                
                 <h2>{{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</h2>
-                
-            
->>>>>>> 5e294a3adf35b6461fa16b23b427cf6a38b6aceb
+
+
             </div>
         </div>
         <div class="container">
@@ -27,23 +20,14 @@
                         <!-- Room Thumbnail Slides -->
                         <div class="room-thumbnail-slides mb-50">
                             <div id="room-thumbnail--slide" class="carousel slide" data-ride="carousel">
-<<<<<<< HEAD
-
-
-                        {{-- 2 cái quần què này giải quyết sau       --}}
 
 
 
-=======
-                                
-                                
-                        
->>>>>>> 5e294a3adf35b6461fa16b23b427cf6a38b6aceb
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                     <img src="upload/tour/{{$datail->tour_hinhanh}}" class="d-block w-100" alt="">
                                     </div>
-                                    
+
                                     @foreach ($a as $v)
                                     <div class="carousel-item">
                                         <img src="upload/tour/{{$v->at_hinhanh}}" class="d-block w-100" alt="">
@@ -64,7 +48,7 @@
                                     @php
                                         $i =$i+1;
                                     @endphp
-                                @endforeach 
+                                @endforeach
                                 </ol>
                             </div>
                         </div>
@@ -237,7 +221,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <button type="submit" class="btn roberto-btn w-100">Đăng Ký Tour</button>
                             </div>
