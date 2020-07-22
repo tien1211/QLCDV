@@ -54,9 +54,9 @@ class CongDoanVien extends Authenticatable
     }
 
     #một công đoàn viên chỉ có 1 mức hổ trợ
-    // public function MucHoTro(){
-    //     return $this->belongsTo('App\MucHoTro','mht_id','mht_id');
-    // }
+    public function MucHoTro(){
+        return $this->belongsTo('App\MucHoTro','mht_id','mht_id');
+    }
 
 
     #một Công đoàn viên có thể đăng ký nhiều tour
