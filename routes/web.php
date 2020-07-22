@@ -65,6 +65,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/CDV_Timkiem', 'CongDoanVienController@postTimkiem')->name('CDV_Timkiem');
         // Danh sách công đoàn viên theo đơn vị
         Route::get('/CDV_DSDV/{id}','CongDoanVienController@getDSDV')->name('CDV_DSDV');
+        //Công đoàn viên cập nhật mức hổ trợ
+        Route::get('/CDV_CNMHT','CongDoanVienController@updateCDV')->name('CDV_CNMHT');
     });
     Route::group(['prefix' => 'DonVi'], function () {
         // Danh sách đơn vị

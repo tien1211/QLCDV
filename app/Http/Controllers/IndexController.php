@@ -52,19 +52,16 @@ class IndexController extends Controller
 
 
     public function getChiTiet($id){
-        $a = DB::table('Tour')->join('LichTrinh','LichTrinh.lt_id','=','Tour.lt_id')
+        $datail=Tour::find($id);
+        $a = DB::table('LichTrinh')->join('Tour','LichTrinh.lt_id','=','Tour.lt_id')
         ->join('Anh_Tour','Anh_Tour.lt_id','=','LichTrinh.lt_id')
         ->where('Tour.tour_id','=',$id)
-        ->select('Anh_Tour.*')->get();
-        //  return $a;
-        
-        
-
+        ->select('*')->get();
         $b = DB::table('Tour')->join('LichTrinh','LichTrinh.lt_id','=','Tour.lt_id')
         ->where('Tour.tour_id','=',$id)
         ->select('*')->get();
         
-        //return $b;
-        return view('frontend.chitiet')->with('a',$a)->with('b',$b);
+        // return $a;
+        return view('frontend.chitiet')->with('a',$a)->with('b',$b)->with('datail',$datail);
     }
 }
