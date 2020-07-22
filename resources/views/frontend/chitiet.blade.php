@@ -5,10 +5,10 @@
     <div class="roberto-rooms-area section-padding-100-0">
         <div class="col-12">
             <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
-                @foreach ($b as $a)
-                <h2>{{$a->lt_ten}} {{date('Y ',strtotime($a->tour_handk))}}</h2>
-                @endforeach
-            
+
+                <h2>{{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</h2>
+
+
             </div>
         </div>
         <div class="container">
@@ -20,54 +20,43 @@
                         <!-- Room Thumbnail Slides -->
                         <div class="room-thumbnail-slides mb-50">
                             <div id="room-thumbnail--slide" class="carousel slide" data-ride="carousel">
-                                
-                                
-                        {{-- 2 cái quần què này giải quyết sau       --}}
+
+
+
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="frontend/img/bg-img/48.jpg" class="d-block w-100" alt="">
+                                    <img src="upload/tour/{{$datail->tour_hinhanh}}" class="d-block w-100" alt="">
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="frontend/img/bg-img/49.jpg" class="d-block w-100" alt="">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="frontend/img/bg-img/50.jpg" class="d-block w-100" alt="">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="frontend/img/bg-img/51.jpg" class="d-block w-100" alt="">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="frontend/img/bg-img/52.jpg" class="d-block w-100" alt="">
-                                    </div>
-                                </div>
 
+                                    @foreach ($a as $v)
+                                    <div class="carousel-item">
+                                        <img src="upload/tour/{{$v->at_hinhanh}}" class="d-block w-100" alt="">
+                                    </div>
+                                    @endforeach
+                                </div>
                                 <ol class="carousel-indicators">
                                     <li data-target="#room-thumbnail--slide" data-slide-to="0" class="active">
-                                        <img src="frontend/img/bg-img/48.jpg" class="d-block w-100" alt="">
+                                        <img src="upload/tour/{{$datail->tour_hinhanh}}" class="d-block w-100" alt="">
                                     </li>
-                                    <li data-target="#room-thumbnail--slide" data-slide-to="1">
-                                        <img src="frontend/img/bg-img/49.jpg" class="d-block w-100" alt="">
+                                    @php
+                                        $i =1;
+                                    @endphp
+                                @foreach ($a as $c)
+                                <li data-target="#room-thumbnail--slide" data-slide-to="{{$i}}">
+                                    <img src="upload/tour/{{$c->at_hinhanh}}" class="d-block w-100" alt="">
                                     </li>
-                                    <li data-target="#room-thumbnail--slide" data-slide-to="2">
-                                        <img src="frontend/img/bg-img/50.jpg" class="d-block w-100" alt="">
-                                    </li>
-                                    <li data-target="#room-thumbnail--slide" data-slide-to="3">
-                                        <img src="frontend/img/bg-img/51.jpg" class="d-block w-100" alt="">
-                                    </li>
-                                    <li data-target="#room-thumbnail--slide" data-slide-to="4">
-                                        <img src="frontend/img/bg-img/52.jpg" class="d-block w-100" alt="">
-                                    </li>
+                                    @php
+                                        $i =$i+1;
+                                    @endphp
+                                @endforeach
                                 </ol>
-                        {{-- 2 cái quần què này giảu quyết sau        --}}
-
-
                             </div>
                         </div>
 
                         <!-- Room Features -->
-                        
-                            
-                       
+
+
+
                         <div class="room-features-area d-flex flex-wrap mb-50">
                             @foreach ($b as $b)
                             <h6>Hạn Đăng Ký: <span>{{date('d-m-Y ',strtotime($b->tour_handk))}}</span></h6>
@@ -188,8 +177,8 @@
                     <div class="hotel-reservation--area mb-100">
                         <form action="#" method="post">
                             <div class="form-group mb-30">
-                                <label for="checkInDate">Date</label>
-                                <div class="input-daterange" id="datepicker">
+                                <label for="checkInDate">Người đăng ký:</label>
+                                {{-- <div class="input-daterange" id="datepicker">
                                     <div class="row no-gutters">
                                         <div class="col-6">
                                             <input type="text" class="input-small form-control" name="checkInDate" id="checkInDate" placeholder="Check In">
@@ -198,7 +187,12 @@
                                             <input type="text" class="input-small form-control" name="checkOutDate" placeholder="Check Out">
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
+                                    <div class="row no-gutters">
+                                        <div class="col-12">
+                                            <input type="text" class="input-small form-control"  placeholder="Check Out">
+                                        </div>
+                                    </div>
                             </div>
                             <div class="form-group mb-30">
                                 <label for="guests">Guests</label>
@@ -227,18 +221,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group mb-50">
-                                <div class="slider-range">
-                                    <div class="range-price">Max Price: $0 - $3000</div>
-                                    <div data-min="0" data-max="3000" data-unit="$" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="0" data-value-max="3000" data-label-result="Max Price: ">
-                                        <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="form-group">
-                                <button type="submit" class="btn roberto-btn w-100">Check Available</button>
+                                <button type="submit" class="btn roberto-btn w-100">Đăng Ký Tour</button>
                             </div>
                         </form>
                     </div>
