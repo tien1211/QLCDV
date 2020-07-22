@@ -14,6 +14,11 @@ class AnhTour extends Model
         'at_hinhanh',
         'at_trangthai'
     ];
-    #một tình trạng thu phí có nhiều đăng ký tour
+
+    public function LichTrinh()
+    {
+        return $this->belongsTo('App\LichTrinh', 'lt_id', 'lt_id');
+    }
+   
     
 }

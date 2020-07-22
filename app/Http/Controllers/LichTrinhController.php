@@ -111,4 +111,5 @@ class LichTrinhController extends Controller
         Session::put('message','Xóa thành công!!!');
         return Redirect::back();
     }
+
 }

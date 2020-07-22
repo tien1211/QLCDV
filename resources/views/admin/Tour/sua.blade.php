@@ -65,7 +65,7 @@
                                     </select>
                                 </div>
                             </div>
-                            
+
                                 <?php
                                     $t_handk = $Tour->tour_handk->format('yy-m-d');
                                     $t_ngaybd = $Tour->tour_ngaybd->format('yy-m-d');
@@ -74,14 +74,14 @@
                             <div class="form-group ">
                                 <label for="lastname" class="control-label col-lg-3">Hạn đăng ký</label>
                                 <div class="col-lg-6">
-                                    
+
                                  <input class=" form-control" value="{{$t_handk}}" name="tour_handk" type="date">
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label  class="control-label col-lg-3">Ngày bắt đầu</label>
                                 <div class="col-lg-6">
-                                    
+
                                 <input class="form-control " value="{{$t_ngaybd}}" name="tour_ngaybd" type="date">
                                 </div>
                             </div>
@@ -103,11 +103,17 @@
                                 <input class="form-control " value="{{$Tour->tour_soluong}}"  name="tour_soluong" type="number">
                                 </div>
                             </div>
-                            
+
                             <div class="form-group ">
                                 <label for="email" class="control-label col-lg-3">Đại lý</label>
                                 <div class="col-lg-6">
                                 <input class="form-control" value="{{$Tour->tour_daily}}"  name="tour_daily" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="email" class="control-label col-lg-3">Hình ảnh</label>
+                                <div class="col-lg-6">
+                                <input class="form-control" value="{{$Tour->tour_hinhanh}}"  name="tour_hinhanh" type="file">
                                 </div>
                             </div>
 

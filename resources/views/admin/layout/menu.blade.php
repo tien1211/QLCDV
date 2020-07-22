@@ -45,6 +45,19 @@
                         {{-- <li><a href="{{route('TOUR_Xoa',$Tour->id)}}">Xóa Tour</a></li> --}}
                     </ul>
                 </li>
+
+                {{-- <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-th"></i>
+                        <span>Quản lý Đăng Ký Tour</span>
+                    </a>
+                    <ul class="sub">
+                    <li><a href="{{route('DK_Tour_DanhSach')}}">Danh Sách Đăng ký Tour</a></li> --}}
+						{{-- <li><a href="{{route('LT_Them')}}">Thêm Lịch Trình</a></li> --}}
+                         {{-- <li><a href="{{route('LT_Sua',$LichTrinh->id)}}">Sửa Lịch Trình</a></li> --}}
+                        {{-- <li><a href="{{route('TOUR_Xoa',$Tour->id)}}">Xóa Tour</a></li> --}}
+                    {{-- </ul> --}}
+                </li>
             </ul>
         </div>
         <!-- sidebar menu end-->

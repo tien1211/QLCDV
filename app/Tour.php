@@ -18,7 +18,7 @@ class Tour extends Model
         'gd_id',
         'tour_daily',
         'tour_hinhanh',
-        'tour_trangthai'   
+        'tour_trangthai'
     ];
 
     protected $dates = ['tour_handk','tour_ngaybd','tour_ngaykt'];

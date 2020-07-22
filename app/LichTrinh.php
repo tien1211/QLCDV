@@ -19,4 +19,10 @@ class LichTrinh extends Model
     public function Tour (){
         return $this->hasMany('App\Tour','lt_id','lt_id');
     }
+
+    public function AnhTour(){
+        {
+            return $this->hasMany('App\Anh_Tour', 'lt_id', 'lt_id');
+        }
+    }
 }

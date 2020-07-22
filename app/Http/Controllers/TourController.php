@@ -54,7 +54,9 @@ class TourController extends Controller
             'tour_soluong' => 'required | numeric',
             'gd_id' => 'required',
             'tour_daily' => 'required',
-            
+            'tour_hinhanh' =>   'required',
+
+
         ]
         ,
         [
@@ -66,7 +68,8 @@ class TourController extends Controller
             'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
             'gd_id.required' => 'Bạn chưa nhập giai đoạn!',
             'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
-            
+            'tour_hinhanh.required' => 'Bạn chưa chọn hình ảnh!',
+
         ])->validate();
 
         $Tour = new Tour();
@@ -78,6 +81,23 @@ class TourController extends Controller
         $Tour->tour_soluong = $request->tour_soluong;
         $Tour->gd_id = $request->gd_id;
         $Tour->tour_daily = $request->tour_daily;
+
+        if($request->hasFile('tour_hinhanh')){
+            $file = $request->file('tour_hinhanh');
+            $duoi = $file->getClientOriginalExtension();
+
+            if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
+                Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
+                return redirect()->route('Tour_Them');
+            }
+
+            $name = $file->getClientOriginalName();
+            $file->move("upload/tour",$name);
+            $Tour->tour_hinhanh = $name;
+
+        }else{
+            $Tour->tour_hinhanh="";
+        }
         $Tour->tour_trangthai = 1;
         $Tour->save();
 
@@ -105,6 +125,7 @@ class TourController extends Controller
             'tour_soluong' => 'required | numeric',
             'gd_id' => 'required',
             'tour_daily' => 'required',
+            'tour_hinhanh' =>   'required',
         ]
         ,
         [
@@ -116,6 +137,7 @@ class TourController extends Controller
             'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
             'gd_id.required' => 'Bạn chưa nhập giai đoạn!',
             'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
+            'tour_hinhanh.required' => 'Bạn chưa chọn hình ảnh!',
         ]);
 
         $Tour = Tour::find($id);
@@ -127,11 +149,28 @@ class TourController extends Controller
         $Tour->tour_soluong = $request->tour_soluong;
         $Tour->gd_id = $request->gd_id;
         $Tour->tour_daily = $request->tour_daily;
+
+        if($request->hasFile('tour_hinhanh')){
+            $file = $request->file('tour_hinhanh');
+            $duoi = $file->getClientOriginalExtension();
+
+            if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
+                Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
+                return redirect()->route('Tour_Them');
+            }
+
+            $name = $file->getClientOriginalName();
+            $file->move("upload/tour",$name);
+            $Tour->tour_hinhanh = $name;
+
+        }else{
+            $Tour->tour_hinhanh= $Tour->tour_hinhanh;
+        }
         $Tour->tour_trangthai = 1;
         $Tour->save();
         Session::put('message','Sửa thành công!!!');
                 // Session::flash('alert-info', 'Sửa thành công!!!');
-        return redirect()->route('TOUR_DanhSach');
+        return redirect()->route('TOUR_Sua');
     }
 
 
@@ -203,4 +242,5 @@ class TourController extends Controller
         //dd($cdv_dk);
         return view('admin.Tour.chitiet')->with('chitietTour',$chitietTour)->with('cdv_dk',$cdv_dk);
     }
+
 }

@@ -26,7 +26,7 @@
     <!-- /Preloader -->
 
     <!-- Header Area Start -->
-    
+
 
     @include('frontend.layout.header')
     <!-- Header Area End -->
@@ -37,7 +37,7 @@
     <!-- Breadcrumb Area End -->
 
 
-    
+
     <!-- Blog Area Start -->
     <div class="roberto-news-area section-padding-100-0">
         <div class="container">
@@ -161,7 +161,7 @@
 <!-- CONTENT -->
 
 <!-- MENU -->
-                
+
 
                 @include('frontend.layout.menu')
 <!-- MENU -->

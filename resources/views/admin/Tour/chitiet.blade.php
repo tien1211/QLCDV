@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 @section('admin_content')
 <!--main content start-->
-<?php 
+<?php
     foreach($chitietTour as $ctt){
         $tour_ten = $ctt->lt_ten;
         $tour_handk = $ctt->tour_handk;
@@ -10,6 +10,7 @@
         $tour_ngaykt = $ctt->tour_ngaykt;
         $tour_chiphi = $ctt->tour_chiphi;
         $tour_soluong = $ctt->tour_soluong;
+        $tour_hinhanh = $ctt->tour_hinhanh;
     }
 ?>
 <div class="panel panel-default">
@@ -42,6 +43,7 @@
             <th>Ngày kết thúc</th>
             <th>Chi phí</th>
             <th>Số lượng </th>
+            <th>Hình ảnh </th>
         </tr>
         </thead>
                 <tr data-expanded="true">
@@ -51,6 +53,7 @@
                     <td>{{date('d/m/Y ',strtotime($tour_ngaykt))}}</td>
                     <td>{{number_format($tour_chiphi)}} VNĐ</td>
                     <td>{{$tour_soluong}}</td>
+                    <td><img src="upload/tour/{{$tour_hinhanh}}" alt="" style="width:10rem; height:5rem"></td>
                 </tr>
         </tbody>
     </table>

@@ -20,11 +20,19 @@ Route::get('/admin', function () {
     return view('admin.layout.master');
 })->name('admin');
 
+Route::get('/home1', function () {
+    return view('frontend.layout.master1');
+})->name('admin1');
+
 // Route::get('/home',function(){
 //     return view('frontend.layout.master');
 // })->name('trangchu');
 
 Route::get('/home','IndexController@getIndex')->name('trangchu');
+Route::get('/chitiet/{id}','IndexController@getChiTiet')->name('chitiettour');
+
+
+
 
 Route::get('/dangnhap','AuthController@getLogin')->name('formLogin');
 Route::post('/dangnhap-xl','AuthController@postLogin')->name('login');
@@ -106,7 +114,7 @@ Route::group(['prefix' => 'admin'], function () {
     //Form thêm lịch trình
     Route::get('/LT_ThemLT','LichTrinhController@getThem')->name('LT_Them');
     Route::post('/LT_ThemLT','LichTrinhController@postThem')->name('LT_XLThem');
-    
+
     //Form sửa lịch trình
     Route::get('/LT_SuaLT/{id}','LichTrinhController@getSua')->name('LT_Sua');
     Route::post('/LT_SuaLT/{id}','LichTrinhController@postSua')->name('LT_XLSua');
@@ -114,4 +122,14 @@ Route::group(['prefix' => 'admin'], function () {
     //Xóa lịch trình
     Route::get('/LT_XoaLT/{id}', 'LichTrinhController@getXoa')->name('LT_Xoa');
     });
+});
+
+
+/////
+
+
+Route::group(['prefix' => 'frontend'], function () {
+
+
+
 });

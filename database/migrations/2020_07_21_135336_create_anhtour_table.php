@@ -19,7 +19,6 @@ class CreateAnhtourTable extends Migration
             $table->string('at_hinhanh');
             $table->tinyInteger('at_trangthai');
             $table->timestamps();
-
             $table->foreign('lt_id')->references('lt_id')->on('LichTrinh')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
