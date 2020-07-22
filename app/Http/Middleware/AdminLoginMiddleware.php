@@ -19,8 +19,7 @@ class AdminLoginMiddleware
         if(Auth::check()){
             $cdv = Auth::user();
             if($cdv->cdv_quyen == 1){
-                return $next($request);    
-            
+                return $next($request); 
             }else{
                 return redirect()->route('trangchu');
             }
