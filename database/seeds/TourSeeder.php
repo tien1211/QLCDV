@@ -21,7 +21,7 @@ class TourSeeder extends Seeder
                 'tour_soluong' => '20',
                 'gd_id' => '1',
                 'tour_daily' => 'abc',
-                'tour_hinhanh' => 'tour-vungtau.jpg',
+                'tour_hinhanh' => 'tour-vungtau.png',
                 'tour_trangthai' => 1,
 
 
@@ -36,7 +36,7 @@ class TourSeeder extends Seeder
                 'tour_soluong' => '20',
                 'gd_id' => '2',
                 'tour_daily' => 'xyz',
-                'tour_hinhanh' => 'tour-cantho.jpg',
+                'tour_hinhanh' => 'tour-cantho.png',
                 'tour_trangthai' => 1,
 
             ],
@@ -50,7 +50,7 @@ class TourSeeder extends Seeder
                 'tour_soluong' => '30',
                 'gd_id' => '3',
                 'tour_daily' => 'MyThoTravel',
-                'tour_hinhanh' => 'tour-dalat.jpg',
+                'tour_hinhanh' => 'tour-dalat.png',
                 'tour_trangthai' => 1,
 
             ],
@@ -64,7 +64,7 @@ class TourSeeder extends Seeder
                 'tour_soluong' => '25',
                 'gd_id' => '4',
                 'tour_daily' => 'MyThoTravel',
-                'tour_hinhanh' => 'tour-danang.jpg',
+                'tour_hinhanh' => 'tour-danang.png',
                 'tour_trangthai' => 1,
 
             ]
