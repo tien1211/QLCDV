@@ -7,6 +7,9 @@
     </div>
     <div class="panel-body">
         <div class="position-right">
+          <div class="form-group">
+            <a href="{{route('CDV_CNMHT')}}"><button type="button" class="btn btn-outline-info">Cập nhật mức hổ trợ</button></a>
+          </div>
             <form class="form-inline" role="form" action="{{route('CDV_Timkiem')}}" method="get">
             {{ csrf_field() }}
             <div class="form-group">

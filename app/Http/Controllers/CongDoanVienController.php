@@ -8,6 +8,7 @@ use App\LoaiNhanVien;
 use App\DonVi;
 use Validator;
 use Session;
+use DB;
 class CongDoanVienController extends Controller
 {
 
@@ -106,6 +107,7 @@ class CongDoanVienController extends Controller
             $CongDoanVien->cdv_ngaythuviec = $request->cdv_ngaythuviec;
             $CongDoanVien->cdv_ngayvaonganh = $request->cdv_ngayvaonganh;
             $CongDoanVien->cdv_trangthai = 1;
+            $CongDoanVien->mht_id = 1;
             if($request->hasFile('cdv_hinhanh')){
                 $file = $request->file('cdv_hinhanh');
                 $duoi = $file->getClientOriginalExtension();
@@ -201,6 +203,7 @@ class CongDoanVienController extends Controller
             $CongDoanVien->cdv_ngaythuviec = $request->cdv_ngaythuviec;
             $CongDoanVien->cdv_ngayvaonganh = $request->cdv_ngayvaonganh;
             $CongDoanVien->cdv_trangthai = 1;
+            $CongDoanVien->mht_id = $CongDoanVien->mht_id;
             if($request->hasFile('cdv_hinhanh')){
                 $file = $request->file('cdv_hinhanh');
                 $duoi = $file->getClientOriginalExtension();
@@ -332,5 +335,14 @@ class CongDoanVienController extends Controller
         $dv_id = $id;
         //dd($CongDoanVien);
         return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien)->with('dv_id',$dv_id);
+    }
+
+    public function updateCDV(){
+        DB::table('CongDoanVien')->whereRaw('YEAR(NOW()) - YEAR(cdv_ngayvaonganh) < 1')->update(['mht_id' => 1]);
+        DB::table('CongDoanVien')->whereRaw('YEAR(NOW()) - YEAR(cdv_ngayvaonganh) > 1 and YEAR(NOW()) - YEAR(cdv_ngayvaonganh) < 3')->update(['mht_id' => 2]);
+        DB::table('CongDoanVien')->whereRaw('YEAR(NOW()) - YEAR(cdv_ngayvaonganh) > 3 and YEAR(NOW()) - YEAR(cdv_ngayvaonganh) < 5')->update(['mht_id' => 3]);
+        DB::table('CongDoanVien')->whereRaw('YEAR(NOW()) - YEAR(cdv_ngayvaonganh) > 5')->update(['mht_id' => 4]);
+        //dd($CongDoanVien);
+        return redirect()->route('CDV_DanhSach');
     }
 }
