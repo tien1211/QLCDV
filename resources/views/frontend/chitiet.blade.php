@@ -8,7 +8,7 @@
                 @foreach ($b as $a)
                 <h2>{{$a->lt_ten}} {{date('Y ',strtotime($a->tour_handk))}}</h2>
                 @endforeach
-            
+
             </div>
         </div>
         <div class="container">
@@ -20,9 +20,12 @@
                         <!-- Room Thumbnail Slides -->
                         <div class="room-thumbnail-slides mb-50">
                             <div id="room-thumbnail--slide" class="carousel slide" data-ride="carousel">
-                                
-                                
+
+
                         {{-- 2 cái quần què này giải quyết sau       --}}
+
+
+
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <img src="frontend/img/bg-img/48.jpg" class="d-block w-100" alt="">
@@ -65,9 +68,9 @@
                         </div>
 
                         <!-- Room Features -->
-                        
-                            
-                       
+
+
+
                         <div class="room-features-area d-flex flex-wrap mb-50">
                             @foreach ($b as $b)
                             <h6>Hạn Đăng Ký: <span>{{date('d-m-Y ',strtotime($b->tour_handk))}}</span></h6>
