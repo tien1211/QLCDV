@@ -35,27 +35,17 @@
         "sorting": {
         "enabled": true
         }}'>
-        <thead>
         <tr>
-            <th>Giai Đoạn</th>
-            <th>Hạn đăng ký</th>
-            <th>Ngày bắt đầu</th>
-            <th>Ngày kết thúc</th>
-            <th>Chi phí</th>
-            <th>Số lượng </th>
-            <th>Hình ảnh </th>
+            <td><a style="color: #777; font-weight: bolder;">Giai đoạn: </a>{{$tour_giaidoan}}</td>
+            <td><a style="color: #777; font-weight: bolder;">Hạn đăng ký: </a>{{date('d/m/Y ',strtotime($tour_handk))}}</td>
+            <td><a style="color: #777; font-weight: bolder;">Ngày bắt đầu: </a>{{date('d/m/Y ',strtotime($tour_ngaybd))}}</td>
+            <td><a style="color: #777; font-weight: bolder;">Ngày kết thúc: </a>{{date('d/m/Y ',strtotime($tour_ngaykt))}}</td>
+            <td><a style="color: #777; font-weight: bolder;">Chi phí: </a>{{number_format($tour_chiphi)}} VNĐ</td>
+            <td><a style="color: #777; font-weight: bolder;">Số lượng: </a>{{$tour_soluong}}</td>
         </tr>
-        </thead>
-                <tr data-expanded="true">
-                    <td>{{$tour_giaidoan}}</td>
-                    <td>{{date('d/m/Y ',strtotime($tour_handk))}}</td>
-                    <td>{{date('d/m/Y ',strtotime($tour_ngaybd))}}</td>
-                    <td>{{date('d/m/Y ',strtotime($tour_ngaykt))}}</td>
-                    <td>{{number_format($tour_chiphi)}} VNĐ</td>
-                    <td>{{$tour_soluong}}</td>
-                    <td><img src="upload/tour/{{$tour_hinhanh}}" alt="" style="width:10rem; height:5rem"></td>
-                </tr>
-        </tbody>
+        <tr>
+            <td colspan="6"><img src="upload/tour/{{$tour_hinhanh}}" width="100%" height="500px"></td>
+        </tr>
     </table>
     </div>
 </div>
@@ -76,6 +66,7 @@
         }}'>
         <thead>
         <tr>
+            <th>STT</th>
             <th>Họ và tên</th>
             <th>Số lượng người tham gia</th>
             <th>Chi phí phải trả</th>
@@ -83,8 +74,9 @@
             <th>Thông tin chi tiết</th>
         </tr>
         </thead>
-            @foreach ($cdv_dk as $cdv)
+            @foreach ($cdv_dk as $key => $cdv)
                 <tr data-expanded="true">
+                    <td>{{$key + 1}}</td>
                     <td>{{$cdv->cdv_ten}}</td>
                     <td>{{$cdv->dkt_soluong}}</td>
                     <td>{{number_format($cdv->dkt_soluong*$cdv->tour_chiphi)}} VNĐ</td>

@@ -123,6 +123,15 @@ Route::group(['prefix' => 'admin'], function () {
 
     //Xóa lịch trình
     Route::get('/LT_XoaLT/{id}', 'LichTrinhController@getXoa')->name('LT_Xoa');
+
+    //Tìm kiếm lịch trình
+    Route::get('/LT_Timkiem', 'LichTrinhController@getTimkiem')->name('LT_Timkiem');
+
+    //Hình ảnh liên quan
+    Route::get('/LT_HinhAnh/{id}','LichTrinhController@getHinh')->name('LT_HinhAnh');
+    //Thêm hình liên quan
+    Route::post('/LT_ThemHinhAnh/{id}','LichTrinhController@postHinh')->name('LT_ThemHinh');
+
     });
 });
 
