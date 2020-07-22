@@ -64,6 +64,8 @@ class CongDoanVien extends Authenticatable
         return $this->hasMany('App\DK_Tour','cdv_id','cdv_id');
     }
 
+    
+
     public function getAuthPassword()
     {
         return $this->password;

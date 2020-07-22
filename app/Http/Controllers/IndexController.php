@@ -12,6 +12,7 @@ use App\MucHoTro;
 use App\ThongTinNguoiDK;
 use App\TinhTrangThuPhi;
 use App\DK_Tour;
+use DB;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -47,5 +48,23 @@ class IndexController extends Controller
     public function getIndex()
     {
         return view('frontend.index');
+    }
+
+
+    public function getChiTiet($id){
+        $a = DB::table('Tour')->join('LichTrinh','LichTrinh.lt_id','=','Tour.lt_id')
+        ->join('Anh_Tour','Anh_Tour.lt_id','=','LichTrinh.lt_id')
+        ->where('Tour.tour_id','=',$id)
+        ->select('Anh_Tour.*')->get();
+        //  return $a;
+        
+        
+
+        $b = DB::table('Tour')->join('LichTrinh','LichTrinh.lt_id','=','Tour.lt_id')
+        ->where('Tour.tour_id','=',$id)
+        ->select('*')->get();
+        
+        //return $b;
+        return view('frontend.chitiet')->with('a',$a)->with('b',$b);
     }
 }

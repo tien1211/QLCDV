@@ -35,7 +35,7 @@ class AuthController extends Controller
 
     public function logOut(){
         Auth::logout();
-        return redirect()->route("formLogin");#chuyển về đăng nhập
+        return redirect()->route("trangchu");#chuyển về đăng nhập
     }
 
 }
