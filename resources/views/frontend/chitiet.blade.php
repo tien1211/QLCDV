@@ -142,9 +142,7 @@
                                 
                                     <div class="row no-gutters">
                                         <div class="col-12">
-                                        <input type="text"  class="input-small form-control"  id="payment"  placeholder="Thành tiền" disabled>
-                                        
-                                            
+                                        <input type="text"  class="input-small form-control"  id="payment"  placeholder="Thành tiền" disabled>          
                                         </div>
                                     </div>
                             </div>
@@ -167,7 +165,7 @@
         function load(){
             var x = {{$datail->tour_chiphi}};
             var y = document.getElementById("amount").value;
-            document.getElementById("payment").value =  parseInt(x) * parseInt(y);
+            document.getElementById("payment").value = parseInt(x) * parseInt(y);
         }
 
 
