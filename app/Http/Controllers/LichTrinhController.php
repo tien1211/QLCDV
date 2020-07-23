@@ -9,6 +9,7 @@ use App\LichTrinh;
 use Validate;
 use Session;
 use DB;
+use Image;
 class LichTrinhController extends Controller
 {
 
@@ -137,8 +138,14 @@ class LichTrinhController extends Controller
                 return redirect()->route('CDV_Them');
             }
             $fileName = $dataTime . '-' . $file->getClientOriginalName();
-            $savePath = public_path('upload/tour');
-            $file->move($savePath,$fileName);
+            //resize ảnh
+            $destinationPath = public_path('upload/tour');
+            $resize_image = Image::make($file->getRealPath());
+            $resize_image->resize(1200, 780, function($constraint)
+            {
+                $constraint->aspectRatio();
+            })->save($destinationPath . '/' . $fileName);
+            //
             $data['at_hinhanh'] = $fileName;
             $data['lt_id'] = $id;
             $data['at_trangthai'] = 1;
