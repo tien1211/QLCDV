@@ -54,27 +54,18 @@
                                 </ol>
                             </div>
                         </div>
-
                         <!-- Room Features -->
-                        <div class="room-features-area d-flex flex-wrap mb-50">
-                            
+                        <div class="room-features-area d-flex flex-wrap mb-50">     
                             <h6>Hạn Đăng Ký: <span>{{date('d-m-Y ',strtotime($datail->tour_handk))}}</span></h6>
                             <h6>Ngày Bắt Đầu: <span>{{date('d-m-Y ',strtotime($datail->tour_ngaybd))}}</span></h6>
                             <h6>Ngày Kết Thúc: <span>{{date('d-m-Y ',strtotime($datail->tour_ngaykt))}}</span></h6>
-                            <h6>Số lượng: <span>{{$datail->tour_soluong}}</span></h6>
-                            
+                            <h6>Số lượng: <span>{{$datail->tour_soluong}}</span></h6>           
                         </div>
-
                     <p>{{$datail->LichTrinh->lt_mota}}</p>
-
                         <ul>
-                            <li><i class="fa fa-check"></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}"> DownLoad Lịch Trình:  {{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</a></li>
-                            
-                        </ul>
-
-                        
+                            <li><i class="fa fa-check"></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}"> DownLoad Lịch Trình:  {{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</a></li>          
+                        </ul>          
                     </div>
-
                     <!-- Room Service -->
                     <div class="room-service mb-50">
                         <h4>Danh Sách Công Đoàn Viên Tham Gia</h4>
