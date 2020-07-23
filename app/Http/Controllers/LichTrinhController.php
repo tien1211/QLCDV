@@ -9,6 +9,7 @@ use App\LichTrinh;
 use Validate;
 use Session;
 use DB;
+use Image;
 class LichTrinhController extends Controller
 {
 
@@ -137,8 +138,14 @@ class LichTrinhController extends Controller
                 return redirect()->route('CDV_Them');
             }
             $fileName = $dataTime . '-' . $file->getClientOriginalName();
-            $savePath = public_path('upload/tour');
-            $file->move($savePath,$fileName);
+            //resize ảnh
+            $destinationPath = public_path('upload/tour');
+            $resize_image = Image::make($file->getRealPath());
+            $resize_image->resize(1200, 780, function($constraint)
+            {
+                $constraint->aspectRatio();
+            })->save($destinationPath . '/' . $fileName);
+            //
             $data['at_hinhanh'] = $fileName;
             $data['lt_id'] = $id;
             $data['at_trangthai'] = 1;
@@ -149,5 +156,40 @@ class LichTrinhController extends Controller
             Session::flash('message', 'Chưa chọn file!!!');
             return redirect()->back();
         }
+    }
+
+    public function postSuaHinh(Request $request, $id){
+        if($request->hasFile('hinh')){
+            $dataTime = date('Ymd_His');
+            $file = $request->file('hinh');
+            $duoi = $file->getClientOriginalExtension();
+            if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
+                Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
+                return redirect()->route('CDV_Them');
+            }
+            $fileName = $dataTime . '-' . $file->getClientOriginalName();
+            //resize ảnh
+            $destinationPath = public_path('upload/tour');
+            $resize_image = Image::make($file->getRealPath());
+            $resize_image->resize(1200, 780, function($constraint)
+            {
+                $constraint->aspectRatio();
+            })->save($destinationPath . '/' . $fileName);
+            //
+            $data['at_hinhanh'] = $fileName;
+            DB::table('anh_tour')->where('at_id',$id)->update(['at_hinhanh'=>$fileName]);
+            Session::flash('message', 'Thêm thành công!!!');
+            return redirect()->back();
+        }else{
+            Session::flash('message', 'Chưa chọn file!!!');
+            return redirect()->back();
+        }
+    }
+
+
+    public function getXoaHinh($id){
+        DB::table('anh_tour')->where('at_id',$id)->update(['at_trangthai'=>0]);
+        Session::put('message','Xóa thành công!!!');
+        return Redirect::back();
     }
 }

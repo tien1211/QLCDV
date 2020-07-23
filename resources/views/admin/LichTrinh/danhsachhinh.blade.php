@@ -28,7 +28,7 @@
                 <input type="file" class="form-control" id="hinh" name="hinh">
             </div>
                 <button type="submit" class="btn btn-outline-info">Thêm</button>
-        </form>
+            </form>
         </div>
     </div>
     <div>
@@ -46,6 +46,7 @@
           <tr>
             <th data-breakpoints="xs">STT</th>
             <th>Hình ảnh liên quan</th>
+            <th>Thay đổi</th>
             <th>Cập Nhật</th>
           </tr>
         </thead>
@@ -55,8 +56,16 @@
                     <td>{{$key + 1}}</td>
                     <td><img src="upload/tour/{{$hinh->at_hinhanh}}" width="200px" height="100px"></td>
                     <td>
-                        <i class='fas fa-pencil-alt'></i><a  href="{{route('LT_Sua',['id'=>$hinh->at_id])}}">Sửa</a>
-                        <i class='fas fa-trash-alt'></i><a href="{{route('LT_Xoa',['id'=>$hinh->at_id])}} ">Xóa</a>
+                    <form class="form-inline" role="form" enctype="multipart/form-data" action="{{route('LT_SuaHinh',['id'=>$hinh->at_id])}}" method="post" >
+                      {{ csrf_field() }}
+                      <div class="form-group">
+                          <input type="file" class="form-control" id="hinh" name="hinh">
+                      </div>
+                          <button type="submit" class="btn btn-outline-info">Thay đổi</button>
+                      </form>
+                    </td>
+                    <td>
+                        <i class='fas fa-trash-alt'></i><a href="{{route('LT_XoaHinh',['id'=>$hinh->at_id])}} ">Xóa</a>
                     </td>
                 </tr>
             @endif

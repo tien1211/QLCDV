@@ -131,7 +131,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/LT_HinhAnh/{id}','LichTrinhController@getHinh')->name('LT_HinhAnh');
     //Thêm hình liên quan
     Route::post('/LT_ThemHinhAnh/{id}','LichTrinhController@postHinh')->name('LT_ThemHinh');
-
+    //Sua hình ảnh
+    Route::post('/LT_SuaHinhAnh/{id}','LichTrinhController@postSuaHinh')->name('LT_SuaHinh');
+    //Xoa hình ảnh
+    Route::get('/LT_XoaHinhAnh/{id}','LichTrinhController@getXoaHinh')->name('LT_XoaHinh');
     });
 });
 
