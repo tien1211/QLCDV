@@ -5,17 +5,10 @@
     <div class="roberto-rooms-area section-padding-100-0">
         <div class="col-12">
             <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
-<<<<<<< HEAD
                 
                 <h2>{{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</h2>
                 
             
-=======
-
-                <h2>{{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</h2>
-
-
->>>>>>> c4d0d28aff9f33ed8a0decea6f48cca2fa37759b
             </div>
         </div>
         <div class="container">
@@ -26,25 +19,12 @@
                     <div class="single-room-details-area mb-50">
                         <!-- Room Thumbnail Slides -->
                         <div class="room-thumbnail-slides mb-50">
-                            <div id="room-thumbnail--slide" class="carousel slide" data-ride="carousel">
-<<<<<<< HEAD
-                                
-=======
-
-
-
->>>>>>> c4d0d28aff9f33ed8a0decea6f48cca2fa37759b
+                            <div id="room-thumbnail--slide" class="carousel slide" data-ride="carousel">                               
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                     <img src="upload/tour/{{$datail->tour_hinhanh}}" class="d-block w-100" alt="">
                                     </div>
-<<<<<<< HEAD
-                                    
                                     @foreach ($a as $img)
-=======
-
-                                    @foreach ($a as $v)
->>>>>>> c4d0d28aff9f33ed8a0decea6f48cca2fa37759b
                                     <div class="carousel-item">
                                         <img src="upload/tour/{{$img->at_hinhanh}}" class="d-block w-100" alt="">
                                     </div>
@@ -98,32 +78,32 @@
                         <h4>Danh Sách Công Đoàn Viên Tham Gia</h4>
                         <table class="table">
                             <thead class="thead-light">
-                              <tr>
-                                <th>STT</th>
-                                <th>Người đăng ký</th>
-                                <th>Tour</th>
-                                <th>Tình Trạng</th>
-                                <th>Số lượng đăng ký</th>
-                              </tr>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Người đăng ký</th>
+                                    <th>Tour</th>
+                                    <th>Tình Trạng</th>
+                                    <th>Số lượng đăng ký</th>
+                                </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>john@example.com</td>
-                              </tr>
-                              <tr>
-                                <td>Mary</td>
-                                <td>Moe</td>
-                                <td>mary@example.com</td>
-                              </tr>
-                              <tr>
-                                <td>July</td>
-                                <td>Dooley</td>
-                                <td>july@example.com</td>
-                              </tr>
+                                <tr>
+                                    <td>John</td>
+                                    <td>Doe</td>
+                                    <td>john@example.com</td>
+                                </tr>
+                                <tr>
+                                    <td>Mary</td>
+                                    <td>Moe</td>
+                                    <td>mary@example.com</td>
+                                </tr>
+                                <tr>
+                                    <td>July</td>
+                                    <td>Dooley</td>
+                                    <td>july@example.com</td>
+                                </tr>
                             </tbody>
-                          </table>
+                        </table>
                         
                     </div>
 
@@ -138,14 +118,14 @@
                     <div class="hotel-reservation--area mb-100">
                         <div class="form-group" style="mt-6">
                             <div class="flash-message">
-                              @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                                 @if(Session::has('alert-' . $msg))
                                 <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="" class="close" d
                                 ata-dismiss="alert" aria-label="close">&times;</a></p>
                                 @endif
-                              @endforeach
-                          </div>
-                          </div>
+                            @endforeach
+                        </div>
+                        </div>
                     <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
                         @csrf
                             <div class="form-group mb-30">
@@ -156,40 +136,7 @@
                                         </div>
                                     </div>
                                     
-                            </div>
-<<<<<<< HEAD
-                            
-                            
-=======
-                            <div class="form-group mb-30">
-                                <label for="guests">Guests</label>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <select name="adults" id="guests" class="form-control">
-                                            <option value="adults">Adults</option>
-                                            <option value="01">01</option>
-                                            <option value="02">02</option>
-                                            <option value="03">03</option>
-                                            <option value="04">04</option>
-                                            <option value="05">05</option>
-                                            <option value="06">06</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-6">
-                                        <select name="children" id="children" class="form-control">
-                                            <option value="children">Children</option>
-                                            <option value="01">01</option>
-                                            <option value="02">02</option>
-                                            <option value="03">03</option>
-                                            <option value="04">04</option>
-                                            <option value="05">05</option>
-                                            <option value="06">06</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
->>>>>>> c4d0d28aff9f33ed8a0decea6f48cca2fa37759b
+                            </div>    
                             <div class="form-group">
                                 <button type="submit" class="btn roberto-btn w-100">Đăng Ký Tour</button>
                             </div>
