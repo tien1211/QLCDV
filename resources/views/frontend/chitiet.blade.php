@@ -68,7 +68,7 @@
                     <p>{{$datail->LichTrinh->lt_mota}}</p>
 
                         <ul>
-                            <li><i class="fa fa-check"></i> Mauris molestie lectus in irdiet auctor.</li>
+                            <li><i class="fa fa-check"></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}"> DownLoad Lịch Trình:  {{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</a></li>
                             
                         </ul>
 
