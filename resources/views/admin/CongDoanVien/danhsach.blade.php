@@ -7,9 +7,6 @@
     </div>
     <div class="panel-body">
         <div class="position-right">
-          <div class="form-group">
-            <a href="{{route('CDV_CNMHT')}}"><button type="button" class="btn btn-outline-info">Cập nhật mức hổ trợ</button></a>
-          </div>
             <form class="form-inline" role="form" action="{{route('CDV_Timkiem')}}" method="get">
             {{ csrf_field() }}
             <div class="form-group">
@@ -53,9 +50,6 @@
             </div>
               <button type="submit" class="btn btn-outline-info">Tìm kiếm</button>
         </form>
-        
-          
-        
         </div>
     </div>
     <div>
@@ -79,6 +73,7 @@
             <th>Ngày Sinh</th>
             <th>Giới tính</th>
             <th>Nguyên quán</th>
+            <th>Mức hổ trợ</th>
             <th>Chi Tiết</th>
             <th>Cập Nhật</th>
           </tr>
@@ -94,12 +89,12 @@
         </div>
         </div>
         <tbody>
-            @foreach ($CongDoanVien as $cdv)
+            @foreach ($CongDoanVien as $key => $cdv)
                 
             @if ($cdv->cdv_trangthai == 1)
                 <tr data-expanded="true">
                   
-                    <td>{{$cdv->cdv_id}}</td>
+                    <td>{{$key + 1}}</td>
                     <td>{{$cdv->DonVi->dv_ten}}</td>
                     <td>{{$cdv->ChucVu->cv_ten}}</td>
                     <td>{{$cdv->LoaiNhanVien->lnv_ten}}</td>
@@ -111,6 +106,7 @@
                     <td>Nữ</td>
                     @endif
                 <td>{{$cdv->cdv_nguyenquan}}</td>
+                <td>{{number_format($cdv->MucHoTro->mht_phihotro)}} VNĐ</td>
                 <td><a href="{{route('CDV_ChiTiet',['id'=>$cdv->cdv_id])}}"><button type="button" class="btn btn-outline-info">Chi Tiết</button></a></td>
                 <td>
                   <i class='fas fa-pencil-alt'></i><a href="{{route('CDV_Sua',['id'=>$cdv->cdv_id])}}">Sửa</a>
@@ -120,9 +116,15 @@
             @endif
           @endforeach
         </tbody>
-        
       </table>
-      <center>{!! $CongDoanVien->links() !!}</center>
+      <div class="panel-body">
+        <div class="position-right">
+          <div class="form-group">
+            <center>{!! $CongDoanVien->links() !!}</center>
+          </div>
+            <a href="{{route('CDV_CNMHT')}}"><button type="button" class="btn btn-outline-info">Cập nhật mức hổ trợ</button></a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

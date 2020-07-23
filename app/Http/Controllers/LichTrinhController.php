@@ -8,6 +8,7 @@ use App\Tour;
 use App\LichTrinh;
 use Validate;
 use Session;
+use DB;
 class LichTrinhController extends Controller
 {
 
@@ -112,4 +113,41 @@ class LichTrinhController extends Controller
         return Redirect::back();
     }
 
+    public function getTimKiem(Request $request){
+        $tukhoa = $request->tukhoa;
+        $LichTrinh = LichTrinh::where('lt_ten','like',"%$tukhoa%")->get();
+        return view('admin.LichTrinh.danhsach')->with('LichTrinh',$LichTrinh)->with('tukhoa',$tukhoa);
+    }
+
+    public function getHinh($id){
+        $hinh = DB::table('anh_tour')
+            ->join('lichtrinh','lichtrinh.lt_id','=','anh_tour.lt_id')
+            ->where('anh_tour.lt_id',$id)->get();
+        //dd($hinh);
+        return view('admin.LichTrinh.danhsachhinh')->with('hinh',$hinh);
+    }
+
+    public function postHinh(Request $request, $id){
+        if($request->hasFile('hinh')){
+            $dataTime = date('Ymd_His');
+            $file = $request->file('hinh');
+            $duoi = $file->getClientOriginalExtension();
+            if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
+                Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
+                return redirect()->route('CDV_Them');
+            }
+            $fileName = $dataTime . '-' . $file->getClientOriginalName();
+            $savePath = public_path('upload/tour');
+            $file->move($savePath,$fileName);
+            $data['at_hinhanh'] = $fileName;
+            $data['lt_id'] = $id;
+            $data['at_trangthai'] = 1;
+            DB::table('anh_tour')->insert($data);
+            Session::flash('message', 'Thêm thành công!!!');
+            return redirect()->back();
+        }else{
+            Session::flash('message', 'Chưa chọn file!!!');
+            return redirect()->back();
+        }
+    }
 }
