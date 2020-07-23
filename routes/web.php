@@ -30,7 +30,7 @@ Route::get('/home1', function () {
 
 Route::get('/home','IndexController@getIndex')->name('trangchu');
 Route::get('/chitiet/{id}','IndexController@getChiTiet')->name('chitiettour');
-
+Route::post('/dangkytour/{id}','IndexController@postBook')->name('dktour');
 
 
 

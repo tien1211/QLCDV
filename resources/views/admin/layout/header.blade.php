@@ -3,7 +3,7 @@
     <!--logo start-->
     <div class="brand">
     <a href="{{route('admin')}}" class="logo">
-            VISITORS
+            QLCDV
         </a>
         <div class="sidebar-toggle-box">
             <div class="fa fa-bars"></div>
@@ -31,26 +31,13 @@
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu extended logout">
-                    <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                <li><a href="{{route('trangchu')}}"><i class=" fa fa-suitcase"></i>Trở về trang chủ</a></li>
                     <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                 <li><a href="{{route('logout')}}"><i class="fa fa-key"></i> Log Out</a></li>
                 </ul>
                 @else
-                {{-- <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <img alt="" src="backend/images/2.png">
-                <span class="username">{{$auth->cdv_username}}</span>
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu extended logout">
-                    <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                    <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                    <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
-                </ul> --}}
-
                 Không có cho vào nha!!
                 @endif
-                
-
             </li>
             <!-- user login dropdown end -->
         </ul>

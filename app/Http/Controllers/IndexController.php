@@ -12,8 +12,13 @@ use App\MucHoTro;
 use App\ThongTinNguoiDK;
 use App\TinhTrangThuPhi;
 use App\DK_Tour;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use Illuminate\Http\Request;
+use Session;
+use Illuminate\Support\Facades\Redirect;
+use Validate;
+
 
 class IndexController extends Controller
 {
@@ -60,8 +65,24 @@ class IndexController extends Controller
         $b = DB::table('Tour')->join('LichTrinh','LichTrinh.lt_id','=','Tour.lt_id')
         ->where('Tour.tour_id','=',$id)
         ->select('*')->get();
+        $c = DB::table('DK_Tour');
         
         // return $a;
         return view('frontend.chitiet')->with('a',$a)->with('b',$b)->with('datail',$datail);
+    }
+
+
+    public function postBook(Request $request, $id)
+    {
+        $travel = Tour::find($id);
+        $dkt = new DK_Tour();
+        $dkt->cdv_id = Auth::user()->cdv_id;
+        $dkt->tour_id = $id;
+        $dkt->tttp_id  = 1;
+        $dkt->dkt_soluong = $request->dkt_soluong;
+        $dkt->save();
+        Session::flash('alert-info', 'Đăng ký thành công!!!');
+        return Redirect::back(); 
+        
     }
 }
