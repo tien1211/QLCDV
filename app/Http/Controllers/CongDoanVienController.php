@@ -9,6 +9,7 @@ use App\DonVi;
 use Validator;
 use Session;
 use DB;
+use Image;
 class CongDoanVienController extends Controller
 {
 
@@ -109,29 +110,32 @@ class CongDoanVienController extends Controller
             $CongDoanVien->cdv_trangthai = 1;
             $CongDoanVien->mht_id = 1;
             if($request->hasFile('cdv_hinhanh')){
+                $dataTime = date('Ymd_His');
                 $file = $request->file('cdv_hinhanh');
                 $duoi = $file->getClientOriginalExtension();
-    
                 if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
                     Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
                     return redirect()->route('CDV_Them');
                 }
-    
-                $name = $file->getClientOriginalName();
-                $file->move("upload/cdv",$name);
-                $CongDoanVien->cdv_hinhanh = $name;
-    
+                $fileName = $dataTime . '-' . $file->getClientOriginalName();
+                //resize ảnh
+                $destinationPath = public_path('upload/cdv');
+                $resize_image = Image::make($file->getRealPath());
+                $resize_image->resize(300, 300, function($constraint)
+                {
+                    $constraint->aspectRatio();
+                })->save($destinationPath . '/' . $fileName);
+                //
+                $CongDoanVien->cdv_hinhanh = $fileName;
             }else{
                 $CongDoanVien->cdv_hinhanh=""; 
             }
-            
             $CongDoanVien->cdv_username = $request->cdv_username;
             $CongDoanVien->password =bcrypt($request->password);
             $CongDoanVien->cdv_quyen = $request->cdv_quyen;
             $CongDoanVien->save();
-
             Session::flash('alert-info', 'Thêm thành công!!!');
-            return redirect()->route('CDV_Them');    
+            return redirect()->route('CDV_DanhSach');    
     }
 
     public function getSua($id){
@@ -205,23 +209,26 @@ class CongDoanVienController extends Controller
             $CongDoanVien->cdv_trangthai = 1;
             $CongDoanVien->mht_id = $CongDoanVien->mht_id;
             if($request->hasFile('cdv_hinhanh')){
+                $dataTime = date('Ymd_His');
                 $file = $request->file('cdv_hinhanh');
                 $duoi = $file->getClientOriginalExtension();
-    
                 if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
                     Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
-                    return redirect()->route('CDV_Sua');
+                    return redirect()->route('CDV_Them');
                 }
-    
-                $name = $file->getClientOriginalName();
-                $file->move("upload/cdv",$name);
-                $CongDoanVien->cdv_hinhanh = $name;
-    
+                $fileName = $dataTime . '-' . $file->getClientOriginalName();
+                //resize ảnh
+                $destinationPath = public_path('upload/cdv');
+                $resize_image = Image::make($file->getRealPath());
+                $resize_image->resize(300, 300, function($constraint)
+                {
+                    $constraint->aspectRatio();
+                })->save($destinationPath . '/' . $fileName);
+                //
+                $CongDoanVien->cdv_hinhanh = $fileName;
             }else{
                 $CongDoanVien->cdv_hinhanh= $CongDoanVien->cdv_hinhanh; 
             }
-            
-            
             $CongDoanVien->cdv_quyen = $request->cdv_quyen;
             if($request->changepassword == "on"){
                 $this->validate($request, [
