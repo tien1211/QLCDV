@@ -5,10 +5,17 @@
     <div class="roberto-rooms-area section-padding-100-0">
         <div class="col-12">
             <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
+<<<<<<< HEAD
                 
                 <h2>{{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</h2>
                 
             
+=======
+
+                <h2>{{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</h2>
+
+
+>>>>>>> c4d0d28aff9f33ed8a0decea6f48cca2fa37759b
             </div>
         </div>
         <div class="container">
@@ -20,13 +27,24 @@
                         <!-- Room Thumbnail Slides -->
                         <div class="room-thumbnail-slides mb-50">
                             <div id="room-thumbnail--slide" class="carousel slide" data-ride="carousel">
+<<<<<<< HEAD
                                 
+=======
+
+
+
+>>>>>>> c4d0d28aff9f33ed8a0decea6f48cca2fa37759b
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                     <img src="upload/tour/{{$datail->tour_hinhanh}}" class="d-block w-100" alt="">
                                     </div>
+<<<<<<< HEAD
                                     
                                     @foreach ($a as $img)
+=======
+
+                                    @foreach ($a as $v)
+>>>>>>> c4d0d28aff9f33ed8a0decea6f48cca2fa37759b
                                     <div class="carousel-item">
                                         <img src="upload/tour/{{$img->at_hinhanh}}" class="d-block w-100" alt="">
                                     </div>
@@ -46,7 +64,7 @@
                                     @php
                                         $i =$i+1;
                                     @endphp
-                                @endforeach 
+                                @endforeach
                                 </ol>
                             </div>
                         </div>
@@ -139,8 +157,39 @@
                                     </div>
                                     
                             </div>
+<<<<<<< HEAD
                             
                             
+=======
+                            <div class="form-group mb-30">
+                                <label for="guests">Guests</label>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <select name="adults" id="guests" class="form-control">
+                                            <option value="adults">Adults</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6">
+                                        <select name="children" id="children" class="form-control">
+                                            <option value="children">Children</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+>>>>>>> c4d0d28aff9f33ed8a0decea6f48cca2fa37759b
                             <div class="form-group">
                                 <button type="submit" class="btn roberto-btn w-100">Đăng Ký Tour</button>
                             </div>

@@ -54,7 +54,7 @@
         }}'>
         <thead>
           <tr>
-            <th data-breakpoints="xs">ID</th>
+            <th data-breakpoints="xs">STT</th>
             <th>Tour</th>
             <th>Giai Đoạn</th>
             <th>Hạn đăng ký</th>
@@ -66,10 +66,10 @@
             <th>Cập nhật</th>
           </tr>
         </thead>
-            @foreach ($Tour as $t)
+            @foreach ($Tour as $key => $t)
             @if ($t->tour_trangthai == 1)
                 <tr data-expanded="true">
-                    <td>{{$t->tour_id}}</td>
+                    <td>{{$key + 1}}</td>
                 <td>{{$t->LichTrinh->lt_ten}}  {{date('Y ',strtotime($t->tour_handk))}}</td>
                 <td>{{$t->GiaiDoan->giai_doan}}</td>
                     <td>{{date('d/m/Y ',strtotime($t->tour_handk))}}</td>
