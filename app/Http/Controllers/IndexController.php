@@ -65,10 +65,15 @@ class IndexController extends Controller
         $b = DB::table('Tour')->join('LichTrinh','LichTrinh.lt_id','=','Tour.lt_id')
         ->where('Tour.tour_id','=',$id)
         ->select('*')->get();
-        $c = DB::table('DK_Tour');
+        $dk_t = DB::table('Tour')->join('LichTrinh','LichTrinh.lt_id','=','Tour.lt_id')
+        ->join('DK_Tour','DK_Tour.tour_id','=','Tour.tour_id')
+        ->join('CongDoanVien','CongDoanVien.cdv_id','=','DK_Tour.cdv_id')
+        ->where('Tour.tour_id',$id)->select('*')->get();
         
-        // return $a;
-        return view('frontend.chitiet')->with('a',$a)->with('b',$b)->with('datail',$datail);
+        // return $dk_t;
+        return view('frontend.chitiet')->with('a',$a)->with('b',$b)
+        ->with('datail',$datail)
+        ->with('dk_t',$dk_t);
     }
 
 
