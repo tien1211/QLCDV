@@ -62,6 +62,7 @@
             <th>Ngày kết thúc</th>
             <th>Chi phí</th>
             <th>Số lượng </th>
+            <th>Đại lý</th>
             <th>Chi tiết </th>
             <th>Cập nhật</th>
           </tr>

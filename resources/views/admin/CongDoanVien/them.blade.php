@@ -11,7 +11,9 @@
           <div class="panel-body">
             
               <div class="form" >
+
               <form class="cmxform form-horizontal" enctype="multipart/form-data" id="signupForm" method="post" action="{{route('CDV_XLThem')}}" novalidate="novalidate">
+                @csrf
                 <div class="form-group" style="mt-3">
                   <div class="flash-message">
                     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
@@ -77,7 +79,7 @@
                 
                 
                 {{-- Họ tên --}}
-                  @csrf
+                  
                     <div class="form-group ">
                       <label for="firstname" class="control-label col-lg-3">Họ Tên</label>
                       <div class="col-lg-6">
@@ -159,7 +161,6 @@
                           @endif
                         </div>
                     </div>
-
                   {{-- Địa Chỉ --}}
 
                   {{-- Số điện thoại --}}
@@ -185,7 +186,6 @@
                         @endif
                     </div>
                   </div>
-
                 {{-- Email --}}
 
 
@@ -200,6 +200,7 @@
                       </div>
                   </div>
                   {{-- Dân Tộc --}}
+
 
                   {{-- Trình Độ --}}
                   <div class="form-group ">

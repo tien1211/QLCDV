@@ -52,6 +52,7 @@ class IndexController extends Controller
 
     public function getIndex()
     {
+
         return view('frontend.index');
     }
 
@@ -79,8 +80,26 @@ class IndexController extends Controller
 
     public function postBook(Request $request, $id)
     {
+
+        $this->validate($request, [
+                    
+            'dkt_soluong'=>'required'
+            ],[
+                'dkt_soluong.required'=>'Vui lòng nhập số lượng cần đăng ký'
+            ]);
+
+
         $travel = Tour::find($id);
+        $dkttt = DK_Tour::where('tour_id',$id)->get();
+        $temp = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->get();
+        return $temp;
+        
+            if (isset($temp)) {
+                Session::flash('alert-warning', 'Đăng ký tour đã tồn tại!!');
+                return Redirect::back();
+            }
         $dkt = new DK_Tour();
+        
         $dkt->cdv_id = Auth::user()->cdv_id;
         $dkt->tour_id = $id;
         $dkt->tttp_id  = 1;
