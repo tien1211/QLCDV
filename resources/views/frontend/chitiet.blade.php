@@ -84,7 +84,6 @@
                                     <th>STT</th>
                                     <th>Người đăng ký</th>
                                     <th>Tour</th>
-                                    <th>Tình Trạng</th>
                                     <th>Số lượng đăng ký</th>
                                 </tr>
                             </thead>
@@ -97,14 +96,7 @@
                               <td>{{$i}}</td>
                               <td>{{$dk->cdv_ten}}</td>
                               <td>{{$dk->lt_ten}} {{date('Y ',strtotime($dk->tour_handk))}}</td>
-                              @if ($dk->tttp_id == 1)
-                              <td>Đã đóng</td>
-                              @else
-                              <td>Chưa đóng</td>
-                              @endif  
-                              
-                              <td>{{$dk->tour_soluong}}</td>
-                                
+                              <td>{{$dk->dkt_soluong}}</td>
                               </tr>
                               @php
                                   $i = $i+1;
@@ -112,7 +104,6 @@
                               @endforeach
                             </tbody>
                         </table>
-                        
                     </div>
 
                     <!-- Room Review -->
@@ -137,18 +128,39 @@
                     <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
                         @csrf
                             <div class="form-group mb-30">
+                                <label for="checkInDate">Chi phí:</label>
+                                    <div class="row no-gutters">
+                                        <div class="col-12">
+                                        <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}}" name="tour_chiphi" disabled>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="form-group mb-30">
                                 <label for="checkInDate">Số Lượng Đăng Ký:</label>
                                     <div class="row no-gutters">
                                         <div class="col-12">
-                                            <input type="number" min="1" max="20" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
+                                            <input type="number" min="1" max="20" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
+                                            @if($errors->has('dkt_soluong')) 
+                                            <div style="color:red">{{ $errors->first('dkt_soluong')}}</div>
+                                            @endif
                                         </div>
                                     </div>
-                                    
+                            </div>
+                            <div class="form-group mb-30">
+                                <label for="checkInDate">Thành Tiền: </label>
+                                
+                                    <div class="row no-gutters">
+                                        <div class="col-12">
+                                        <input type="text"  class="input-small form-control"  id="payment"  placeholder="Thành tiền" disabled>
+                                        
+                                            
+                                        </div>
+                                    </div>
                             </div>
                             
                             
                             <div class="form-group">
-                                <button type="submit" class="btn roberto-btn w-100">Đăng Ký Tour</button>
+                                <button type="submit" onclick="return confirm('Bạn có chắc muốn đăng ký không?');" class="btn roberto-btn w-100">Đăng Ký Tour</button>
                             </div>
                         </form>
                     </div>
@@ -158,4 +170,15 @@
         </div>
     </div>
     <!-- Rooms Area End -->
+@endsection
+@section('script')
+    <script>
+        function load(){
+            var x = {{$datail->tour_chiphi}};
+            var y = document.getElementById("amount").value;
+            document.getElementById("payment").value =  parseInt(x) * parseInt(y);
+        }
+
+
+    </script>
 @endsection
