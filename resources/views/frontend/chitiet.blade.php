@@ -25,14 +25,12 @@
                                     <div class="carousel-item active">
                                     <img src="upload/tour/{{$datail->tour_hinhanh}}" class="d-block w-100" alt="">
                                     </div>
-                                    
                                     @foreach ($a as $img)
-                                        @if ($img->at_trangthai == 1)
+                                        @if ($img->at_trangthai == 1  )
                                         <div class="carousel-item">
                                             <img src="upload/tour/{{$img->at_hinhanh}}" class="d-block w-100" alt="">
                                         </div>
                                         @endif
-                                   
                                     @endforeach
                                 </div>
                                 <ol class="carousel-indicators">
@@ -42,17 +40,17 @@
                                     @php
                                         $i =1;
                                     @endphp
-                                @foreach ($a as $img1)
-                                    @if ($img1->at_trangthai == 1)
-                                    <li data-target="#room-thumbnail--slide" data-slide-to="{{$i}}">
-                                        <img src="upload/tour/{{$img1->at_hinhanh}}" class="d-block w-100" alt="">
-                                        </li>
-                                    @endif
-                                
-                                    @php
-                                        $i =$i+1;
-                                    @endphp
-                                @endforeach 
+                                    @foreach ($a as $img1)
+                                        @if ($img1->at_trangthai == 1)
+                                        <li data-target="#room-thumbnail--slide" data-slide-to="{{$i}}">
+                                            <img src="upload/tour/{{$img1->at_hinhanh}}" class="d-block w-100" alt="">
+                                            </li>
+                                        @endif
+                                    
+                                        @php
+                                            $i =$i+1;
+                                        @endphp
+                                    @endforeach 
                                 </ol>
                             </div>
                         </div>
@@ -82,13 +80,13 @@
                         <h4>Danh Sách Công Đoàn Viên Tham Gia</h4>
                         <table class="table">
                             <thead class="thead-light">
-                              <tr>
-                                <th>STT</th>
-                                <th>Người đăng ký</th>
-                                <th>Tour</th>
-                                <th>Tình Trạng</th>
-                                <th>Số lượng đăng ký</th>
-                              </tr>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Người đăng ký</th>
+                                    <th>Tour</th>
+                                    <th>Tình Trạng</th>
+                                    <th>Số lượng đăng ký</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 @php
@@ -113,7 +111,7 @@
                               @endphp
                               @endforeach
                             </tbody>
-                          </table>
+                        </table>
                         
                     </div>
 
@@ -128,14 +126,14 @@
                     <div class="hotel-reservation--area mb-100">
                         <div class="form-group" style="mt-6">
                             <div class="flash-message">
-                              @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                                 @if(Session::has('alert-' . $msg))
                                 <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="" class="close" d
                                 ata-dismiss="alert" aria-label="close">&times;</a></p>
                                 @endif
-                              @endforeach
-                          </div>
-                          </div>
+                            @endforeach
+                        </div>
+                        </div>
                     <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
                         @csrf
                             <div class="form-group mb-30">
