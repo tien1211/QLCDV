@@ -9,6 +9,7 @@ use App\DonVi;
 use Validator;
 use Session;
 use DB;
+use Image;
 class CongDoanVienController extends Controller
 {
 
@@ -56,8 +57,8 @@ class CongDoanVienController extends Controller
             'cdv_ngaythuviec'=>'required',
             'cdv_ngayvaonganh'=>'required',
             'cdv_username'=>'bail|required|unique:CongDoanVien',
-            'cdv_password'=>'required|min:8|max:50',
-            //'confirm_password'=>'required|same:cdv_password',
+            'password'=>'required|min:8|max:50',
+            'confirm_password'=>'required|same:password',
             'cdv_quyen' => 'required'
             ],[
                 'cv_id.required' => 'Vui lòng không được để trống chức vụ',
@@ -82,9 +83,9 @@ class CongDoanVienController extends Controller
                 'cdv_ngayvaonganh.required'=>'Vui lòng không được để trống ngày vào ngành',
                 'cdv_username.required'=>'Vui lòng không được để trống tên đăng nhập',
                 'cdv_username.unique'=>'Tên đăng nhập đã tồn tại',
-                'cdv_password.required'=>'Vui lòng không được để trống mật khẩu',
-                'cdv_password.min'=>'Mật khẩu phải ít nhất 8 kí tự',
-                'cdv_password.max' => 'Mật khẩu không được quá 50 kí tự',
+                'password.required'=>'Vui lòng không được để trống mật khẩu',
+                'password.min'=>'Mật khẩu phải ít nhất 8 kí tự',
+                'password.max' => 'Mật khẩu không được quá 50 kí tự',
                 'confirm_password.required'=>'Vui lòng không được để trống xác nhận mật khẩu',
                 'confirm_password.same' => 'Mật khẩu không trùng khớp',
                 'cdv_quyen.required' => 'Vui lòng chọn quyền cho công đoàn viên'
@@ -120,7 +121,7 @@ class CongDoanVienController extends Controller
                 //resize ảnh
                 $destinationPath = public_path('upload/cdv');
                 $resize_image = Image::make($file->getRealPath());
-                $resize_image->resize(150, 150, function($constraint)
+                $resize_image->resize(300, 300, function($constraint)
                 {
                     $constraint->aspectRatio();
                 })->save($destinationPath . '/' . $fileName);
@@ -219,7 +220,7 @@ class CongDoanVienController extends Controller
                 //resize ảnh
                 $destinationPath = public_path('upload/cdv');
                 $resize_image = Image::make($file->getRealPath());
-                $resize_image->resize(150, 150, function($constraint)
+                $resize_image->resize(300, 300, function($constraint)
                 {
                     $constraint->aspectRatio();
                 })->save($destinationPath . '/' . $fileName);

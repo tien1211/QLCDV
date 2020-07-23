@@ -19,15 +19,18 @@
                     <div class="single-room-details-area mb-50">
                         <!-- Room Thumbnail Slides -->
                         <div class="room-thumbnail-slides mb-50">
-                            <div id="room-thumbnail--slide" class="carousel slide" data-ride="carousel">                               
+                            <div id="room-thumbnail--slide" class="carousel slide" data-ride="carousel">
+                                
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                     <img src="upload/tour/{{$datail->tour_hinhanh}}" class="d-block w-100" alt="">
                                     </div>
                                     @foreach ($a as $img)
-                                    <div class="carousel-item">
-                                        <img src="upload/tour/{{$img->at_hinhanh}}" class="d-block w-100" alt="">
-                                    </div>
+                                        @if ($img->at_trangthai == 1  )
+                                        <div class="carousel-item">
+                                            <img src="upload/tour/{{$img->at_hinhanh}}" class="d-block w-100" alt="">
+                                        </div>
+                                        @endif
                                     @endforeach
                                 </div>
                                 <ol class="carousel-indicators">
@@ -37,14 +40,17 @@
                                     @php
                                         $i =1;
                                     @endphp
-                                @foreach ($a as $img1)
-                                <li data-target="#room-thumbnail--slide" data-slide-to="{{$i}}">
-                                    <img src="upload/tour/{{$img1->at_hinhanh}}" class="d-block w-100" alt="">
-                                    </li>
-                                    @php
-                                        $i =$i+1;
-                                    @endphp
-                                @endforeach
+                                    @foreach ($a as $img1)
+                                        @if ($img1->at_trangthai == 1)
+                                        <li data-target="#room-thumbnail--slide" data-slide-to="{{$i}}">
+                                            <img src="upload/tour/{{$img1->at_hinhanh}}" class="d-block w-100" alt="">
+                                            </li>
+                                        @endif
+                                    
+                                        @php
+                                            $i =$i+1;
+                                        @endphp
+                                    @endforeach 
                                 </ol>
                             </div>
                         </div>
@@ -62,15 +68,11 @@
                     <p>{{$datail->LichTrinh->lt_mota}}</p>
 
                         <ul>
-                            <li><i class="fa fa-check"></i> Mauris molestie lectus in irdiet auctor.</li>
-                            <li><i class="fa fa-check"></i> Dictum purus at blandit molestie.</li>
-                            <li><i class="fa fa-check"></i> Neque non fermentum suscipit.</li>
-                            <li><i class="fa fa-check"></i> Donec id dui ac massa malesuada.</li>
-                            <li><i class="fa fa-check"></i> In sit amet sapien quis orci maximus.</li>
-                            <li><i class="fa fa-check"></i> Vestibulum rutrum diam vel eros tristique.</li>
+                            <li><i class="fa fa-check"></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}"> DownLoad Lịch Trình:  {{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</a></li>
+                            
                         </ul>
 
-                        <p>Every time I hail a cab in New York City or wait for one at the airports, I hope I’ll be lucky enough to get one that’s halfway decent and that the driver actually speaks English. I have spent many anxious moments wondering if I ever get to my destination. Or whether I’d get ripped off. Even if all goes well, I can’t say I can remember many rides in New York cabs that were very pleasant. And given how much they cost by now, going with a limo makes ever more sense.</p>
+                        
                     </div>
 
                     <!-- Room Service -->
@@ -87,21 +89,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td>john@example.com</td>
-                                </tr>
-                                <tr>
-                                    <td>Mary</td>
-                                    <td>Moe</td>
-                                    <td>mary@example.com</td>
-                                </tr>
-                                <tr>
-                                    <td>July</td>
-                                    <td>Dooley</td>
-                                    <td>july@example.com</td>
-                                </tr>
+                                @php
+                                    $i = 1;
+                                @endphp
+                                @foreach ($dk_t as $dk)
+                              <tr>
+                              <td>{{$i}}</td>
+                              <td>{{$dk->cdv_ten}}</td>
+                              <td>{{$dk->lt_ten}} {{date('Y ',strtotime($dk->tour_handk))}}</td>
+                              @if ($dk->tttp_id == 1)
+                              <td>Đã đóng</td>
+                              @else
+                              <td>Chưa đóng</td>
+                              @endif  
+                              
+                              <td>{{$dk->tour_soluong}}</td>
+                                
+                              </tr>
+                              @php
+                                  $i = $i+1;
+                              @endphp
+                              @endforeach
                             </tbody>
                         </table>
                         
@@ -136,7 +144,9 @@
                                         </div>
                                     </div>
                                     
-                            </div>    
+                            </div>
+                            
+                            
                             <div class="form-group">
                                 <button type="submit" class="btn roberto-btn w-100">Đăng Ký Tour</button>
                             </div>
