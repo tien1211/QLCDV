@@ -92,21 +92,22 @@ class IndexController extends Controller
         $travel = Tour::find($id);
         $dkttt = DK_Tour::where('tour_id',$id)->get();
         $temp = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->get();
-        return $temp;
+        //  return $temp;
         
-            if (isset($temp)) {
-                Session::flash('alert-warning', 'Đăng ký tour đã tồn tại!!');
+            if (sizeof($temp) == 0) {
+                $dkt = new DK_Tour();
+                $dkt->cdv_id = Auth::user()->cdv_id;
+                $dkt->tour_id = $id;
+                $dkt->tttp_id  = 1;
+                $dkt->dkt_soluong = $request->dkt_soluong;
+                $dkt->save();
+                Session::flash('alert-info', 'Đăng ký thành công!!!');
+                return Redirect::back();
+            }else{
+                Session::flash('alert-danger', 'Đăng ký tour đã tồn tại!!');
                 return Redirect::back();
             }
-        $dkt = new DK_Tour();
-        
-        $dkt->cdv_id = Auth::user()->cdv_id;
-        $dkt->tour_id = $id;
-        $dkt->tttp_id  = 1;
-        $dkt->dkt_soluong = $request->dkt_soluong;
-        $dkt->save();
-        Session::flash('alert-info', 'Đăng ký thành công!!!');
-        return Redirect::back(); 
+         
         
     }
 }
