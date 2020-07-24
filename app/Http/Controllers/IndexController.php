@@ -91,8 +91,6 @@ class IndexController extends Controller
                 ],[
                     'dkt_soluong.required'=>'Vui lòng nhập số lượng cần đăng ký'
                 ]);
-
-
             $travel = Tour::find($id);
             $dkttt = DK_Tour::where('tour_id',$id)->get();
             $temp = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->get();
