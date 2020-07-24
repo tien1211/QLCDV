@@ -98,6 +98,8 @@ Route::group(['prefix' => 'admin'], function () {
 
         // Chi tiết tour
         Route::get('/TOUR_ChiTiet/{id}','TourController@getchitietTour')->name('TOUR_ChiTiet');
+        // Cập nhật thu phí
+        Route::post('/TOUR_XLThuPhi/{id}','TourController@postThuPhi')->name('TOUR_XLThuPhi');
         //Form đặt tour
         // Route::get('/TOUR_DatTour/{id}','TourController@getDat')->name('TOUR_Dat');
         // Route::post('/TOUR_DatTour/{id}','TourController@postDat')->name('TOUR_XLDat');
