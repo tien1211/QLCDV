@@ -34,8 +34,9 @@ class IndexController extends Controller
         $MucHoTro = MucHoTro::all();
         $ThongTinNguoiDK = ThongTinNguoiDK::all();
         $TinhTrangThuPhi = TinhTrangThuPhi::all();
+        $now=  Carbon::now('Asia/Ho_Chi_Minh');
 
-
+        view() ->share('now',$now);
         view()->share('Tour',$Tour);
         view()->share('ChucVu',$ChucVu);
         view()->share('CongDoanVien',$CongDoanVien);
@@ -52,8 +53,6 @@ class IndexController extends Controller
 
     public function getIndex()
     {
-        // $now = Carbon::now();
-        // return $now;
         return view('frontend.index');
     }
 
