@@ -5,16 +5,21 @@
             <section class="panel">
                 <header class="panel-heading">
                 Thêm Lịch Trình
-                    <span class="tools pull-right">
-                        <a class="fa fa-chevron-down" href="javascript:;"></a>
-                        <a class="fa fa-cog" href="javascript:;"></a>
-                        <a class="fa fa-times" href="javascript:;"></a>
-                    </span>
                 </header>
                 <div class="panel-body">
                     <div class="form">
                         <form class="cmxform form-horizontal " enctype="multipart/form-data" id="signupForm" method="post" action="{{route('LT_XLThem')}}" novalidate="novalidate">
-                            {{csrf_field()}}
+                            {{csrf_field()}} 
+                            <div class="form-group" style="mt-3">
+                                <div class="flash-message">
+                                    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                                    @if(Session::has('alert-' . $msg))
+                                    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
+                                    ata-dismiss="alert" aria-label="close">&times;</a></p>
+                                    @endif
+                                    @endforeach
+                                </div>
+                            </div>
                             <div class="form-group ">
                                 <label for="lastname" class="control-label col-lg-3"> Lịch Trình Tên</label>
                                 <div class="col-lg-6">

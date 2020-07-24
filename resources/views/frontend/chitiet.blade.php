@@ -1,5 +1,4 @@
 @extends('frontend.layout.master1')
-
 @section('frontend_content')
     <!-- Rooms Area Start -->
     <div class="roberto-rooms-area section-padding-100-0">
@@ -51,11 +50,7 @@
                             </div>
                         </div>
                         <!-- Room Features -->
-<<<<<<< HEAD
                         <div class="room-features-area d-flex flex-wrap mb-50">     
-=======
-                        <div class="room-features-area d-flex flex-wrap mb-50">
->>>>>>> c883ad5834538de0e86169d485d7462159533881
                             <h6>Hạn Đăng Ký: <span>{{date('d-m-Y ',strtotime($datail->tour_handk))}}</span></h6>
                             <h6>Ngày Bắt Đầu: <span>{{date('d-m-Y ',strtotime($datail->tour_ngaybd))}}</span></h6>
                             <h6>Ngày Kết Thúc: <span>{{date('d-m-Y ',strtotime($datail->tour_ngaykt))}}</span></h6>
@@ -63,14 +58,8 @@
                         </div>
                     <p>{{$datail->LichTrinh->lt_mota}}</p>
                         <ul>
-<<<<<<< HEAD
                             <li><i class="fa fa-check"></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}"> DownLoad Lịch Trình:  {{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</a></li>          
                         </ul>          
-=======
-                            <li><i class="fa fa-check"></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}"> DownLoad Lịch Trình:  {{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</a></li>
-                            
-                        </ul>
->>>>>>> c883ad5834538de0e86169d485d7462159533881
                     </div>
                     <!-- Room Service -->
                     <div class="room-service mb-50">
@@ -144,16 +133,6 @@
                                                     </div>
                                                 </div>
                                         </div>
-<<<<<<< HEAD
-                                    </div>
-                            </div>
-                            <div class="form-group mb-30">
-                                <label for="checkInDate">Thành Tiền: </label>
-                                
-                                    <div class="row no-gutters">
-                                        <div class="col-12">
-                                        <input type="text"  class="input-small form-control"  id="payment"  placeholder="Thành tiền" disabled>          
-=======
                                         <div class="form-group mb-30">
                                             <label for="checkInDate">Thành Tiền: </label>
                                                 <div class="row no-gutters">
@@ -161,7 +140,6 @@
                                                     <input type="text"  class="input-small form-control"  id='payment'  placeholder="Thành tiền" disabled>
                                                     </div>
                                                 </div>
->>>>>>> c883ad5834538de0e86169d485d7462159533881
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" onclick="return confirm('Bạn có chắc muốn đăng ký không?');" class="btn roberto-btn w-100">Đăng Ký Tour</button>
@@ -205,13 +183,6 @@
                                     </div>
                                 </form>
                             </div>
-<<<<<<< HEAD
-                            <div class="form-group">
-                                <button type="submit" onclick="return confirm('Bạn có chắc muốn đăng ký không?');" class="btn roberto-btn w-100">Đăng Ký Tour</button>
-                            </div>
-                        </form>
-                    </div>
-=======
                                
                             {{-- disabled --}}
                             @endif
@@ -251,7 +222,6 @@
                                 </form>
                             </div> 
                         @endif
->>>>>>> c883ad5834538de0e86169d485d7462159533881
                 </div>
  <!-- FORM BOOK -->
             </div>

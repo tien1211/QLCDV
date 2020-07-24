@@ -6,13 +6,6 @@
     <div class="panel-heading">
     Danh Sách Tour
     </div>
-    <?php
-    $message = Session::get('message');
-    if($message){
-      echo '<span class="text-alert">'.$message.'</span>';
-      Session::put('message',null);
-    }
-    ?>
     <div class="panel-body">
         <div class="position-right">
             <form class="form-inline" role="form" action="{{route('LT_Timkiem')}}" method="get">
@@ -44,7 +37,16 @@
             <th>Cập Nhật</th>
           </tr>
         </thead>
-
+        <div class="form-group" style="mt-3">
+            <div class="flash-message">
+                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                @if(Session::has('alert-' . $msg))
+                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
+                ata-dismiss="alert" aria-label="close">&times;</a></p>
+                @endif
+                @endforeach
+            </div>
+        </div>
             @foreach ($LichTrinh as $key => $lt)
             @if ($lt->lt_trangthai == 1)
                 <tr data-expanded="true">

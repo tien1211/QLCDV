@@ -101,7 +101,7 @@ class IndexController extends Controller
                 $dkt = new DK_Tour();
                 $dkt->cdv_id = Auth::user()->cdv_id;
                 $dkt->tour_id = $id;
-                $dkt->tttp_id  = 0;
+                $dkt->tttp_id  = 2;
                 $dkt->dkt_soluong = $request->dkt_soluong;
                 $dkt->save();
                 Session::flash('alert-info', 'Đăng ký thành công!!!');
