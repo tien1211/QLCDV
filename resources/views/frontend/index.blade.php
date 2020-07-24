@@ -23,7 +23,13 @@
         <!-- Post Title -->
     <a href="#" class="post-title">{{$t->LichTrinh->lt_ten}} {{date('Y ',strtotime($t->tour_handk))}}</a>
     <p>{{$t->LichTrinh->lt_mota}}</p>
+
+
+       
         <a href="{{route('chitiettour',['id'=>$t->tour_id])}}"class="btn continue-btn">Đăng Ký Tour</a>
+    
+    
+    
     </div>
 </div>
     @endforeach

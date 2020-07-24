@@ -131,7 +131,7 @@
                                 <label for="checkInDate">Chi phí:</label>
                                     <div class="row no-gutters">
                                         <div class="col-12">
-                                        <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}}" name="tour_chiphi" disabled>
+                                        <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}} VND"  name="tour_chiphi" disabled>
                                         </div>
                                     </div>
                             </div>
@@ -151,7 +151,7 @@
 
                                     <div class="row no-gutters">
                                         <div class="col-12">
-                                        <input type="text"  class="input-small form-control"  id="payment"  placeholder="Thành tiền" disabled>
+                                        <input type="text"  class="input-small form-control"  id='payment'  placeholder="Thành tiền" disabled>
 
 
                                         </div>
@@ -173,12 +173,29 @@
 @endsection
 @section('script')
     <script>
+        // function load(){
+        //     var x = document.getElementById('cost').value;
+        //     var y = document.getElementById("amount").value;
+        //     console.log(x)
+
+        //     document.getElementById("payment").value = x * parseInt(y);
+        // }
+
         function load(){
-            var x = {{$datail->tour_chiphi}};
+            const formatter = new Intl.NumberFormat('vi-VN', {
+            //style: 'currency',
+            currency: 'VND',
+            minimumFractionDigits: 0
+            })
             var y = document.getElementById("amount").value;
-            document.getElementById("payment").value =  parseInt(x) * parseInt(y);
+            var x = {{$datail->tour_chiphi}};
+            formatter.format(x);
+
+            formatter.format(10);
+
+            // "$1,234,567,890.00"
+            document.getElementById("payment").value = formatter.format(parseInt(x) * parseInt(y)) + " VND";
+
         }
-
-
     </script>
 @endsection
