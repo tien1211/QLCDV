@@ -61,14 +61,6 @@
                                         <li><a href="./blog.html">- Blog</a></li>
                                         <li><a href="./single-blog.html">- Single Blog</a></li>
                                         <li><a href="./contact.html">- Contact</a></li>
-                                        <li><a href="#">- Dropdown</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">- Dropdown Item</a></li>
-                                                <li><a href="#">- Dropdown Item</a></li>
-                                                <li><a href="#">- Dropdown Item</a></li>
-                                                <li><a href="#">- Dropdown Item</a></li>
-                                            </ul>
-                                        </li>
                                     </ul>
                                 </li>
                                 <li><a href="./blog.html">News</a></li>
