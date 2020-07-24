@@ -5,10 +5,7 @@
     <div class="roberto-rooms-area section-padding-100-0">
         <div class="col-12">
             <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
-                
                 <h2>{{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</h2>
-                
-            
             </div>
         </div>
         <div class="container">
@@ -20,7 +17,6 @@
                         <!-- Room Thumbnail Slides -->
                         <div class="room-thumbnail-slides mb-50">
                             <div id="room-thumbnail--slide" class="carousel slide" data-ride="carousel">
-                                
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                     <img src="upload/tour/{{$datail->tour_hinhanh}}" class="d-block w-100" alt="">
@@ -54,10 +50,8 @@
                                 </ol>
                             </div>
                         </div>
-
                         <!-- Room Features -->
                         <div class="room-features-area d-flex flex-wrap mb-50">
-                            
                             <h6>Hạn Đăng Ký: <span>{{date('d-m-Y ',strtotime($datail->tour_handk))}}</span></h6>
                             <h6>Ngày Bắt Đầu: <span>{{date('d-m-Y ',strtotime($datail->tour_ngaybd))}}</span></h6>
                             <h6>Ngày Kết Thúc: <span>{{date('d-m-Y ',strtotime($datail->tour_ngaykt))}}</span></h6>
@@ -71,8 +65,6 @@
                             <li><i class="fa fa-check"></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}"> DownLoad Lịch Trình:  {{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</a></li>
                             
                         </ul>
-
-                        
                     </div>
 
                     <!-- Room Service -->
@@ -119,8 +111,7 @@
                             <div class="flash-message">
                             @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                                 @if(Session::has('alert-' . $msg))
-                                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="" class="close" d
-                                ata-dismiss="alert" aria-label="close">&times;</a></p>
+                                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} </p>
                                 @endif
                             @endforeach
                         </div>
@@ -148,17 +139,12 @@
                             </div>
                             <div class="form-group mb-30">
                                 <label for="checkInDate">Thành Tiền: </label>
-                                
                                     <div class="row no-gutters">
                                         <div class="col-12">
                                         <input type="text"  class="input-small form-control"  id='payment'  placeholder="Thành tiền" disabled>
-                                        
-                                            
                                         </div>
                                     </div>
                             </div>
-                            
-                            
                             <div class="form-group">
                                 <button type="submit" onclick="return confirm('Bạn có chắc muốn đăng ký không?');" class="btn roberto-btn w-100">Đăng Ký Tour</button>
                             </div>
@@ -173,14 +159,6 @@
 @endsection
 @section('script')
     <script>
-        // function load(){
-        //     var x = document.getElementById('cost').value;
-        //     var y = document.getElementById("amount").value;
-        //     console.log(x)
-
-        //     document.getElementById("payment").value = x * parseInt(y);
-        // }
-
         function load(){
             const formatter = new Intl.NumberFormat('vi-VN', {
             //style: 'currency',

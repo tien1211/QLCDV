@@ -16,6 +16,12 @@
     <!-- Post Content -->
     <div class="post-content">
         <!-- Post Meta -->
+        @php
+            $current = 
+        @endphp
+        @if ()
+            
+        @endif
         <div class="post-meta">
             <a href="#" class="post-author">Hạn đăng kí: {{date('d-m-Y ',strtotime($t->tour_handk))}}</a>
         <a href="#" class="post-tutorial">Giá: {{number_format($t->tour_chiphi)}} VND</a>
