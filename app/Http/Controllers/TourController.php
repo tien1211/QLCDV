@@ -241,6 +241,7 @@ class TourController extends Controller
             ->join('congdoanvien','congdoanvien.cdv_id','=','dk_tour.cdv_id')
             ->join('tinhtrangthuphi','tinhtrangthuphi.tttp_id','=','dk_tour.tttp_id')
             ->where('dk_tour.tour_id',$id)
+            ->orderBy('dk_tour.dkt_id','desc')
             ->get();
         //dd($cdv_dk);
         return view('admin.Tour.chitiet')->with('chitietTour',$chitietTour)->with('cdv_dk',$cdv_dk);
