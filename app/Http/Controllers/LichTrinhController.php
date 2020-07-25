@@ -48,8 +48,8 @@ class LichTrinhController extends Controller
             $dataTime = date('Ymd_His');
             $lt_file = $request->lt_file;
             $duoi = $lt_file->getClientOriginalExtension();
-            if($duoi != 'xlsx' && $duoi != 'xls' && $duoi != 'csv'){
-                Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi xlsx, xls, csv!!!');
+            if($duoi != 'doc' && $duoi != 'docx'){
+                Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi doc, docx!!!');
                 return redirect()->route('LT_Them');
             }
             $fileName = $dataTime . '-' . $lt_file->getClientOriginalName();
@@ -58,10 +58,11 @@ class LichTrinhController extends Controller
             $LichTrinh->lt_file = $fileName;
             $LichTrinh->lt_trangthai = 1;
             $LichTrinh->save();
-            return redirect()->route('LT_DanhSach')->with('thongbao','Thêm thành công');
+            Session::flash('alert-info', 'Thêm thành công!!!');
+            return redirect()->route('LT_DanhSach');
         }else{
             Session::flash('alert-warning', 'Bạn chưa chọn file');
-                return redirect()->route('LT_Them');
+            return redirect()->back();
         }
         
     }
@@ -88,29 +89,29 @@ class LichTrinhController extends Controller
             $dataTime = date('Ymd_His');
             $lt_file = $request->lt_file;
             $duoi = $lt_file->getClientOriginalExtension();
-            if($duoi != 'xlsx' && $duoi != 'xls' && $duoi != 'csv'){
-                Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi xlsx, xls, csv!!!');
-                return redirect()->route('LT_Them');
+            if($duoi != 'doc' && $duoi != 'docx'){
+                Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi doc, docx!!!');
+                return redirect()->route('LT_Sua');
             }
             $fileName = $dataTime . '-' . $lt_file->getClientOriginalName();
             $savePath = public_path('upload/lichtrinh');
             $lt_file->move($savePath,$fileName);
             $LichTrinh->lt_file = $fileName;
             $LichTrinh->save();
-            return redirect()->route('LT_DanhSach')->with('thongbao','Sửa thành công');
+            Session::flash('alert-info', 'Sửa thành công!!!');
+            return redirect()->route('LT_DanhSach');
         }else{
             $LichTrinh->lt_file = $LichTrinh->lt_file;
             $LichTrinh->save();
-            //Session::put('message','Sửa thành công!!!');
-            // Session::flash('alert-info', 'Sửa thành công!!!');
-            return redirect()->route('LT_DanhSach')->with('thongbao','Sửa thành công');
+            Session::flash('alert-info', 'Sửa thành công!!!');
+            return redirect()->route('LT_DanhSach');
         }
     }
     public function getXoa($id){
         $LichTrinh = LichTrinh::find($id);
         $LichTrinh->lt_trangthai = 0;
         $LichTrinh->save();
-        Session::put('message','Xóa thành công!!!');
+        Session::flash('alert-info', 'Xóa thành công!!!');
         return Redirect::back();
     }
 

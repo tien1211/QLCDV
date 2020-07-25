@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Tour;
 use App\LichTrinh;
 use App\GiaiDoan;
+use App\TinhTrangThuPhi;
 use Validate;
 use Session;
 use DB;
@@ -16,11 +17,13 @@ class TourController extends Controller
     function __construct(){
         $LichTrinh = LichTrinh::all();
         $GiaiDoan = GiaiDoan::all();
+        $TinhTrangThuPhi = DB::table('tinhtrangthuphi')->get();
         $ngaybd = "";
         $ngaykt = "";
         $gd_id = "";
         view()->share('LichTrinh',$LichTrinh);
         view()->share('GiaiDoan', $GiaiDoan);
+        view()->share('TinhTrangThuPhi',$TinhTrangThuPhi);
         view()->share('ngaybd',$ngaybd);
         view()->share('ngaykt',$ngaykt);
         view()->share('gd_id',$gd_id);
@@ -241,6 +244,25 @@ class TourController extends Controller
             ->get();
         //dd($cdv_dk);
         return view('admin.Tour.chitiet')->with('chitietTour',$chitietTour)->with('cdv_dk',$cdv_dk);
+    }
+
+    public function getThuPhi($id){
+        $cdv_dk = DB::table('dk_tour')
+            ->join('Tour','Tour.tour_id','=','dk_tour.tour_id')
+            ->join('congdoanvien','congdoanvien.cdv_id','=','dk_tour.cdv_id')
+            ->join('tinhtrangthuphi','tinhtrangthuphi.tttp_id','=','dk_tour.tttp_id')
+            ->where('dk_tour.tour_id',$id)
+            ->get();
+        //dd($cdv_dk);
+        return view('admin.Tour.thuphi')->with('cdv_dk',$cdv_dk)->with('tour_id',$id);
+    }
+
+    public function postThuPhi(Request $request ,$id){
+        $cdv_dk = DB::table('dk_tour')
+            ->where([['tour_id',$id],['cdv_id',$request->cdv_id],])
+            ->update(['tttp_id'=> $request->tttp_id]);
+        //dd($cdv_dk);
+        return redirect()->back();
     }
 
 }

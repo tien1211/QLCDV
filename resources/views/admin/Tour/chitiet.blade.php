@@ -3,6 +3,7 @@
 <!--main content start-->
 <?php
     foreach($chitietTour as $ctt){
+        $tour_id = $ctt->tour_id;
         $tour_ten = $ctt->lt_ten;
         $tour_handk = $ctt->tour_handk;
         $tour_giaidoan = $ctt->giai_doan;
@@ -71,18 +72,32 @@
             <th>Số lượng người tham gia</th>
             <th>Chi phí phải trả</th>
             <th>Tình trạng thu phí</th>
-            <th>Thông tin chi tiết</th>
+            <th>Cập nhật thu phí</th>
         </tr>
-        </thead>
+        </thead> 
             @foreach ($cdv_dk as $key => $cdv)
+                <form class="form-inline" role="form" action="{{route('TOUR_XLThuPhi',['id'=>$tour_id])}}" method="post">
+                    {{ csrf_field() }}
                 <tr data-expanded="true">
                     <td>{{$key + 1}}</td>
                     <td>{{$cdv->cdv_ten}}</td>
                     <td>{{$cdv->dkt_soluong}}</td>
                     <td>{{number_format($cdv->dkt_soluong*$cdv->tour_chiphi)}} VNĐ</td>
-                    <td>{{$cdv->tinh_trang}}</td>
-                    <td><a href="{{route('CDV_ChiTiet',['id'=>$cdv->cdv_id])}}"><button type="button" class="btn btn-outline-info">Chi Tiết</button></a></td>
+                    <td>
+                    <input type="hidden" value="{{$cdv->cdv_id}}" name="cdv_id">
+                    <select class="form-control m-bot15" name="tttp_id">
+                        @foreach($TinhTrangThuPhi as $tp)
+                        @if($cdv->tttp_id == $tp->tttp_id)
+                        <option selected value='{{$tp->tttp_id}}'>{{$tp->tinh_trang}}</option>
+                        @else
+                        <option value='{{$tp->tttp_id}}'>{{$tp->tinh_trang}}</option>
+                        @endif
+                        @endforeach
+                    </select>
+                    </td>
+                    <td><a><button type="submit" class="btn btn-outline-info">Cập nhật</button></a></td>
                 </tr>
+                </form>
             @endforeach
         </tbody>
     </table>
