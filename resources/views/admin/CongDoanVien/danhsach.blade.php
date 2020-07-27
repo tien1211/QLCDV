@@ -68,8 +68,6 @@
 
 
 <!-- Button to Open the Modal -->
-
-
 <!-- The Modal -->
 <div class="modal" id="myModal">
   <div class="modal-dialog">
@@ -77,8 +75,7 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <center><h4 class="modal-title">Thêm Công Đoàn Viên</h4></center>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <center><h4 class="modal-title">Thêm Công Đoàn Viên</h4></center>>
       </div>
 
       <!-- Modal body -->
