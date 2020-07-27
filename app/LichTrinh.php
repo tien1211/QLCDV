@@ -20,9 +20,9 @@ class LichTrinh extends Model
         return $this->hasMany('App\Tour','lt_id','lt_id');
     }
 
-    public function AnhTour(){
+    public function AnhLichTrinh(){
         {
-            return $this->hasMany('App\Anh_Tour', 'lt_id', 'lt_id');
+            return $this->hasMany('App\AnhLichTrinh', 'lt_id', 'lt_id');
         }
     }
 }

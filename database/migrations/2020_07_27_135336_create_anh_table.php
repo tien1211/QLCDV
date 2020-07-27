@@ -13,13 +13,11 @@ class CreateAnhtourTable extends Migration
      */
     public function up()
     {
-        Schema::create('Anh_Tour', function (Blueprint $table) {
-            $table->increments('at_id');
-            $table->unsignedInteger('lt_id');
-            $table->string('at_hinhanh');
-            $table->tinyInteger('at_trangthai');
+        Schema::create('Anh', function (Blueprint $table) {
+            $table->increments('anh_id');
+            $table->string('hinhanh');
+            $table->tinyInteger('anh_trangthai');
             $table->timestamps();
-            $table->foreign('lt_id')->references('lt_id')->on('LichTrinh')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 
@@ -30,6 +28,6 @@ class CreateAnhtourTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Anh_Tour');
+        Schema::dropIfExists('Anh');
     }
 }
