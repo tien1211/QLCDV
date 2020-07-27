@@ -23,7 +23,7 @@
                             <div class="form-group ">
                                 <label for="lastname" class="control-label col-lg-3"> Lịch Trình Tên</label>
                                 <div class="col-lg-6">
-                                    <input class=" form-control"  name="lt_ten" type="text">
+                                <input class=" form-control" value="{{old('lt_ten')}}"  name="lt_ten" type="text">
                                     @if($errors->has('lt_ten')) 
                                     <div style="color:red">{{ $errors->first('lt_ten')}}</div>
                                     @endif
