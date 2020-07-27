@@ -21,12 +21,14 @@ class TourController extends Controller
         $ngaybd = "";
         $ngaykt = "";
         $gd_id = "";
+        $lt_id = "";
         view()->share('LichTrinh',$LichTrinh);
         view()->share('GiaiDoan', $GiaiDoan);
         view()->share('TinhTrangThuPhi',$TinhTrangThuPhi);
         view()->share('ngaybd',$ngaybd);
         view()->share('ngaykt',$ngaykt);
         view()->share('gd_id',$gd_id);
+        view()->share('lt_id',$lt_id);
 	}
 
 //Hiển thị danh sách
@@ -205,29 +207,53 @@ class TourController extends Controller
         $gd_id = $request->gd_id;
         $ngaybd = $request->tour_ngaybd;
         $ngaykt = $request->tour_ngaykt;
+        $lt_id = $request->lt_id;
         //dd($ngaybd);
-        if((!empty($gd_id)) && (!empty($ngaybd)) && (!empty($ngaykt))){
-            $Tour = Tour::where([['gd_id','=', $gd_id],['tour_ngaybd','>',$ngaybd],['tour_ngaykt','<=',$ngaykt],])->get();
+        if((!empty($gd_id)) && (!empty($ngaybd)) && (!empty($ngaykt)) && (!empty($lt_id))){
+            $Tour = Tour::where([['lt_id','=',$lt_id],['gd_id','=', $gd_id],['tour_ngaybd','>',$ngaybd],['tour_ngaykt','<=',$ngaykt],])->get();
         }
-        else if((empty($gd_id)) && (!empty($ngaybd)) && (!empty($ngaykt))){
+        else if((empty($gd_id)) && (!empty($ngaybd)) && (!empty($ngaykt)) && (!empty($lt_id))){
+            $Tour = Tour::where([['lt_id','=',$lt_id],['tour_ngaybd','>',$ngaybd],['tour_ngaykt','<=',$ngaykt],])->get();
+        }
+        else if((!empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt)) && (!empty($lt_id))){
+            $Tour = Tour::where([['lt_id','=',$lt_id],['gd_id','=', $gd_id],['tour_ngaykt','<=',$ngaykt],])->get();
+        }
+        else if((!empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt)) && (!empty($lt_id))){
+            $Tour = Tour::where([['lt_id','=',$lt_id],['gd_id','=', $gd_id],['tour_ngaybd','>',$ngaybd],])->get();
+        }
+        else if((!empty($gd_id)) && (empty($ngaybd)) && (empty($ngaykt)) && (!empty($lt_id))){
+            $Tour = Tour::where([['lt_id','=',$lt_id],['gd_id','=', $gd_id],])->get();
+        }
+        else if((empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt)) && (!empty($lt_id))){
+            $Tour = Tour::where([['lt_id','=',$lt_id],['tour_ngaybd','>',$ngaybd],])->get();
+        }
+        else if((empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt)) && (!empty($lt_id))){
+            $Tour = Tour::where([['lt_id','=',$lt_id],['tour_ngaykt','<=',$ngaykt],])->get();
+        }
+        else if((empty($gd_id)) && (empty($ngaybd)) && (empty($ngaykt)) && (!empty($lt_id))){
+            $Tour = Tour::where('lt_id','=',$lt_id)->get();
+        }
+        else if((empty($gd_id)) && (!empty($ngaybd)) && (!empty($ngaykt)) && (empty($lt_id))){
             $Tour = Tour::where([['tour_ngaybd','>=',$ngaybd],['tour_ngaykt','<=',$ngaykt],])->get();
         }
-        else if((!empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt))){
+        else if((!empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt)) && (empty($lt_id))){
                 $Tour = Tour::where([['gd_id','=', $gd_id],['tour_ngaykt','<=',$ngaykt],])->get();
         }
-        else if((!empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt))){
+        else if((!empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt)) && (empty($lt_id))){
             $Tour = Tour::where([['gd_id','=', $gd_id],['tour_ngaybd','>',$ngaybd],])->get();
         }
-        else if((!empty($gd_id)) && (empty($ngaybd)) && (empty($ngaykt))){
+        else if((!empty($gd_id)) && (empty($ngaybd)) && (empty($ngaykt)) && (empty($lt_id))){
             $Tour = Tour::where('gd_id','=', $gd_id)->get();
         }
-        else if((empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt))){
+        else if((empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt)) && (empty($lt_id))){
             $Tour = Tour::where('tour_ngaybd','>',$ngaybd)->get();
         }
-        else if((empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt))){
+        else if((empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt)) && (empty($lt_id))){
             $Tour = Tour::where('tour_ngaykt','<=',$ngaykt)->get();
+        }else{
+            $Tour = Tour::all();
         }
-        return view('admin.Tour.danhsach')->with('Tour', $Tour)->with('ngaybd',$ngaybd)->with('ngaykt',$ngaykt)->with('gd_id',$gd_id);
+        return view('admin.Tour.danhsach')->with('Tour', $Tour)->with('ngaybd',$ngaybd)->with('ngaykt',$ngaykt)->with('gd_id',$gd_id)->with('lt_id',$lt_id);
     }
 
     public function getchitietTour($id){

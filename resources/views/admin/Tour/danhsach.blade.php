@@ -14,20 +14,24 @@
     }
     ?>
     <div class="panel-body">
-        <div class="position-right">
+        <div class="position-left">
             <form class="form-inline" role="form" action="{{route('TOUR_Timkiem')}}" method="get">
             {{ csrf_field() }}
             <div class="form-group">
-              Từ ngày:
-              <input class="form-control "  name="tour_ngaybd" type="date" value="{{$ngaybd}}">
+              <select onchange="timkiem()" class="form-control m-bot15" name="lt_id">
+                <option value="">Chọn lịch trình...</option>
+                @foreach ($LichTrinh as $lt)
+                @if($lt->lt_id == $lt_id)
+                <option selected value='{{$lt->lt_id}}'>{{$lt->lt_ten}}</option>
+                @else
+                <option value='{{$lt->lt_id}}'>{{$lt->lt_ten}}</option>
+                @endif
+                @endforeach
+              </select>
             </div>
             <div class="form-group">
-              Đến:
-              <input class="form-control "  name="tour_ngaykt" type="date" value="{{$ngaykt}}">
-            </div>
-            <div class="form-group">
-              <select class="form-control m-bot15" name="gd_id">
-                <option value="">Chọn giai đoạn ...</option>
+              <select onchange="timkiem()" class="form-control m-bot15" name="gd_id">
+                <option value="">Chọn giai đoạn...</option>
                 @foreach ($GiaiDoan as $gd)
                 @if($gd->gd_id == $gd_id)
                 <option selected value='{{$gd->gd_id}}'>{{$gd->giai_doan}}</option>
@@ -37,7 +41,15 @@
                 @endforeach
               </select>
             </div>
-              <button type="submit" class="btn btn-outline-info">Tìm kiếm</button>
+            <div class="form-group">
+              Từ ngày:
+              <input onchange="timkiem()" class="form-control "  name="tour_ngaybd" type="date" value="{{$ngaybd}}">
+            </div>
+            <div class="form-group">
+              Đến:
+              <input onchange="timkiem()" class="form-control "  name="tour_ngaykt" type="date" value="{{$ngaykt}}">
+            </div>
+              <button type="submit" class="btn btn-outline-info" id="search">Tìm kiếm</button>
         </form>
         </div>
     </div>
@@ -92,7 +104,22 @@
     </div>
   </div>
 </div>
-
-
-
+@endsection
+@section('script')
+    <script>  
+        function timkiem(){
+          document.getElementById('search').click();
+        }
+  function loadAdd() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("demo").innerHTML =
+        this.responseText;
+      }
+    };
+    xhttp.open("GET", "{{route('CDV_Them')}}", true);
+    xhttp.send();
+  }
+  </script>
 @endsection

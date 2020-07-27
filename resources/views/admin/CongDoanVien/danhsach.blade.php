@@ -47,20 +47,11 @@
                 @endforeach
               </select>
             </div>
-
-
-
             <div class="form-group">
                 <input type="text" class="form-control" id="tukhoa" name="tukhoa">
             </div>
-              
-              
-                
                   <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
                   <button type="button" onclick="loadAdd()" class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button>
-                
-                
-              
         </form>
       </div>
         </div>
