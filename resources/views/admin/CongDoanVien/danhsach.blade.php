@@ -3,7 +3,7 @@
 <!--main content start-->
 
  <div class="panel panel-default">
-  <div id = demo>
+  {{-- <div id = demo> --}}
     <div class="panel-heading">
       Danh Sách Công Đoàn Viên
     </div>
@@ -51,10 +51,11 @@
                 <input type="text" class="form-control" id="tukhoa" name="tukhoa">
             </div>
                   <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
-                  <button type="button" onclick="loadAdd()" class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button>
+                  <a href="{{route('CDV_Them')}}"><button type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
         </form>
       </div>
         </div>
+
     <div>
       <table class="table" ui-jq="footable" ui-options='{
         "paging": {
@@ -75,10 +76,9 @@
             <th>Họ Tên</th>
             <th>Ngày Sinh</th>
             <th>Giới tính</th>
-            <th>Nguyên quán</th>
             <th>Mức hổ trợ</th>
             <th>Chi Tiết</th>
-            <th>Cập Nhật</th>
+            <th>Thao tác</th>
           </tr>
         </thead>
         <div class="form-group" style="mt-6">
@@ -108,12 +108,11 @@
                     @else
                     <td>Nữ</td>
                     @endif
-                <td>{{$cdv->cdv_nguyenquan}}</td>
                 <td>{{number_format($cdv->MucHoTro->mht_phihotro)}} VNĐ</td>
-                <td><a href="{{route('CDV_ChiTiet',['id'=>$cdv->cdv_id])}}"><button type="button" class="btn btn-outline-info">Chi Tiết</button></a></td>
+                <td><a class="glyphicon glyphicon-eye-open" href="{{route('CDV_ChiTiet',['id'=>$cdv->cdv_id])}}"></a></td>
                 <td>
-                  <i class='fas fa-pencil-alt'></i><a href="{{route('CDV_Sua',['id'=>$cdv->cdv_id])}}">Sửa</a>
-                  <i class='fas fa-trash-alt'></i><a href="{{route('CDV_Xoa',['id'=>$cdv->cdv_id])}}" onclick="return confirm('Bạn có chắc muốn xóa không?');">Xóa</a>
+                  <i class='fas fa-pencil-alt'></i><a class="glyphicon glyphicon-edit" href="{{route('CDV_Sua',['id'=>$cdv->cdv_id])}}"></a>
+                  <i class='fas fa-trash-alt'></i><a class="glyphicon glyphicon-trash" href="{{route('CDV_Xoa',['id'=>$cdv->cdv_id])}}" onclick="return confirm('Bạn có chắc muốn xóa không?');"></a>
                 </td>
             </tr>
             @endif
@@ -129,7 +128,7 @@
         </div>
       </div>
     </div>
-  </div>
+  {{-- </div> --}}
 </div>
 <!--main content end-->
 </div>
@@ -140,16 +139,18 @@
         function timkiem(){
           document.getElementById('search').click();
         }
-  function loadAdd() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("demo").innerHTML =
-        this.responseText;
-      }
-    };
-    xhttp.open("GET", "{{route('CDV_Them')}}", true);
-    xhttp.send();
-  }
+
+  // function loadAdd() {
+  //   var xhttp = new XMLHttpRequest();
+  //   xhttp.onreadystatechange = function() {
+  //     if (this.readyState == 4 && this.status == 200) {
+  //       document.getElementById("demo").innerHTML =
+  //       this.responseText;
+  //     }
+  //   };
+  //   xhttp.open("GET", "{{route('CDV_Them')}}", true);
+  //   xhttp.send();
+  // }
+
   </script>
 @endsection

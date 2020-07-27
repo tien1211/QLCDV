@@ -49,7 +49,8 @@
               Đến:
               <input onchange="timkiem()" class="form-control "  name="tour_ngaykt" type="date" value="{{$ngaykt}}">
             </div>
-              <button type="submit" class="btn btn-outline-info" id="search">Tìm kiếm</button>
+            <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
+            <a href="{{route('TOUR_Them')}}"><button type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
         </form>
         </div>
     </div>
@@ -76,7 +77,7 @@
             <th>Số lượng </th>
             <th>Đại lý</th>
             <th>Chi tiết </th>
-            <th>Cập nhật</th>
+            <th>Thao tác</th>
           </tr>
         </thead>
             @foreach ($Tour as $key => $t)
@@ -92,10 +93,10 @@
                     <td>{{$t->tour_soluong}}</td>
                     <td>{{$t->tour_daily}}</td>
                     {{-- <td>{{$t->tour_hinhanh}}</td> --}}
-                    <td><a href="{{route('TOUR_ChiTiet',['id'=>$t->tour_id])}}"><button type="button" class="btn btn-outline-info">Chi Tiết</button></a></td>
+                    <td><a class="glyphicon glyphicon-eye-open" href="{{route('TOUR_ChiTiet',['id'=>$t->tour_id])}}"></a></td>
                     <td>
-                      <i class='fas fa-pencil-alt'></i><a  href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}">Sửa</a>
-                        <i class='fas fa-trash-alt'></i><a href="{{route('TOUR_Xoa',['id'=>$t->tour_id])}}">Xóa</a>
+                      <a class="glyphicon glyphicon-edit"  href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}"></a>
+                      <a class="glyphicon glyphicon-trash" href="{{route('TOUR_Xoa',['id'=>$t->tour_id])}}"></a>
                       </td>
                 </tr>
             @endif
@@ -110,16 +111,5 @@
         function timkiem(){
           document.getElementById('search').click();
         }
-  function loadAdd() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("demo").innerHTML =
-        this.responseText;
-      }
-    };
-    xhttp.open("GET", "{{route('CDV_Them')}}", true);
-    xhttp.send();
-  }
-  </script>
+    </script>
 @endsection
