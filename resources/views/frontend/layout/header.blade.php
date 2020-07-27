@@ -49,21 +49,7 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul id="nav">
-                                <li class="active"><a href="./index.html">Home</a></li>
-                                <li><a href="./room.html">Rooms</a></li>
-                                <li><a href="./about.html">About Us</a></li>
-                                <li><a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./index.html">- Home</a></li>
-                                        <li><a href="./room.html">- Rooms</a></li>
-                                        <li><a href="./single-room.html">- Single Rooms</a></li>
-                                        <li><a href="./about.html">- About Us</a></li>
-                                        <li><a href="./blog.html">- Blog</a></li>
-                                        <li><a href="./single-blog.html">- Single Blog</a></li>
-                                        <li><a href="./contact.html">- Contact</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="./blog.html">News</a></li>
+                                <li class="active"><a href="{{route('trangchu')}}">Trang chủ</a></li>
                                 @if (!isset($auth))
                             <li><a href="{{route('formLogin')}}">Đăng Nhập</a></li>
                                 @else
