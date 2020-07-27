@@ -55,8 +55,8 @@
                     <td><a href="{{url('upload/lichtrinh/'.$lt->lt_file)}}">{{$lt->lt_file}}</a></td>
                     <td><a href="{{route('LT_HinhAnh',['id'=>$lt->lt_id])}}"><button type="button" class="btn btn-outline-info">danh sách hình</button></a></td>
                     <td>
-                        <i class='fas fa-pencil-alt'></i><a  href="{{route('LT_Sua',['id'=>$lt->lt_id])}}">Sửa</a>
-                        <i class='fas fa-trash-alt'></i><a href="{{route('LT_Xoa',['id'=>$lt->lt_id])}} ">Xóa</a>
+                        <a class="glyphicon glyphicon-edit" href="{{route('LT_Sua',['id'=>$lt->lt_id])}}"></a>
+                        <a class="glyphicon glyphicon-trash" href="{{route('LT_Xoa',['id'=>$lt->lt_id])}} "></a>
                     </td>
                 </tr>
             @endif
