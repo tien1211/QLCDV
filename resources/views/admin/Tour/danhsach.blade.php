@@ -38,7 +38,8 @@
               </select>
             </div>
             <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
-            <button id="js" type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button>
+
+            <a href="{{route('TOUR_Them')}}"><button type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
         </form>
         </div>
     </div>
