@@ -70,7 +70,7 @@ class IndexController extends Controller
             ->join('DK_Tour','DK_Tour.tour_id','=','Tour.tour_id')
             ->join('CongDoanVien','CongDoanVien.cdv_id','=','DK_Tour.cdv_id')
             ->where('Tour.tour_id',$id)->select('*')->get();
-        
+
         // return $dk_t;
         return view('frontend.chitiet')->with('a',$a)->with('b',$b)
         ->with('datail',$datail)
@@ -87,14 +87,14 @@ class IndexController extends Controller
             $this->validate($request, [
 
                 'dkt_soluong'=>'required'
-                
+
                 ],[
                     'dkt_soluong.required'=>'Vui lòng nhập số lượng cần đăng ký'
                 ]);
             $travel = Tour::find($id);
             $dkttt = DK_Tour::where('tour_id',$id)->get();
             $temp = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->get();
-           
+
             if (sizeof($temp) == 0) {
                 $dkt = new DK_Tour();
                 $dkt->cdv_id = Auth::user()->cdv_id;

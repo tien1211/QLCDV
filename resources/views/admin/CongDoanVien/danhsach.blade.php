@@ -9,10 +9,10 @@
     </div>
     <div class="panel-body">
         <div class="position-left">
-            <form class="form-inline" role="form" action="{{route('CDV_Timkiem')}}" method="get">
+            <form  class="form-inline" role="form" action="{{route('CDV_Timkiem')}}" method="get">
             {{ csrf_field() }}
             <div class="form-group">
-              <select onchange="timkiem()" class="form-control m-bot15" name="dv_id">
+              <select id="dv" onchange="timkiem()" class="form-control m-bot15" name="dv_id">
                 <option  value="">Chọn đơn vị...</option>
                 @foreach($DonVi as $dv)
                 @if($dv->dv_id == $dv_id)
@@ -50,11 +50,34 @@
             <div class="form-group">
                 <input type="text" class="form-control" id="tukhoa" name="tukhoa">
             </div>
+<<<<<<< HEAD
+
+
+
+                  <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
+                  <button id="js" type="button" onclick="loadAdd()" class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button>
+
+
+
+        </form>
+      </div>
+        </div>
+
+
+
+
+
+
+
+
+
+=======
                   <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
                   <a href="{{route('CDV_Them')}}"><button type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
         </form>
       </div>
         </div>
+>>>>>>> 8348a228aa4df71f57828403d108b64c640a8ce2
 
     <div>
       <table class="table" ui-jq="footable" ui-options='{
@@ -93,10 +116,10 @@
         </div>
         <tbody>
             @foreach ($CongDoanVien as $key => $cdv)
-                
+
             @if ($cdv->cdv_trangthai == 1)
                 <tr data-expanded="true">
-                  
+
                     <td>{{$key + 1}}</td>
                     <td>{{$cdv->DonVi->dv_ten}}</td>
                     <td>{{$cdv->ChucVu->cv_ten}}</td>
@@ -135,10 +158,62 @@
 @endsection
 
 @section('script')
-    <script>  
+    <script>
+
+        $(document).ready(function(){
+            $('#js').click(function(event){
+          event.preventDefault();
+          //alert('hihi');
+    	//   let $this = $(this);
+		   let url = "{{route('CDV_Them')}}";
+		//   let number = $('.id1').val();
+		  // $(".js_money").text($this.attr('data-price'));
+		    console.log(url);
+    	    $.ajax({
+				url : url,
+				data: {
+
+						//url:url,
+						 _token: '{!! csrf_token() !!}',
+					}
+			}).done(function(data) {
+				//if (data) {
+					//$("#product").html('').append(data);
+					//$("#product").html(data);
+				//}
+			});
+
+
+    });
+        });
+
         function timkiem(){
           document.getElementById('search').click();
         }
+<<<<<<< HEAD
+
+
+
+
+  function loadAdd() {
+      //window.location = "{{route('CDV_Them')}}";
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+
+        // document.getElementById("demo").innerHTML =
+        // this.responseText;
+      }
+        xhttp.open("GET", "{{route('CDV_Them')}}", true);
+    xhttp.send()
+    };
+
+  ;
+  }
+
+
+=======
+>>>>>>> 8348a228aa4df71f57828403d108b64c640a8ce2
 
   // function loadAdd() {
   //   var xhttp = new XMLHttpRequest();
@@ -152,5 +227,9 @@
   //   xhttp.send();
   // }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 8348a228aa4df71f57828403d108b64c640a8ce2
   </script>
 @endsection

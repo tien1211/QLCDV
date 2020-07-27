@@ -35,7 +35,7 @@
             <th>Lịch Trình Tên</th>
             <th>Lịch Trình File</th>
             <th>Hình ảnh liên quan</th>
-            <th>Cập Nhật</th>
+            <th>Thao tác</th>
           </tr>
         </thead>
         <div class="form-group" style="mt-3">
