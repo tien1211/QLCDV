@@ -53,14 +53,8 @@
             <div class="form-group">
                 <input type="text" class="form-control" id="tukhoa" name="tukhoa">
             </div>
-              
-              
-                
                   <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
                   <a href="{{route('CDV_Them')}}"><button type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
-                
-                
-              
         </form>
       </div>
         </div>
@@ -148,9 +142,6 @@
         function timkiem(){
           document.getElementById('search').click();
         }
-    
-
-
 
   // function loadAdd() {
   //   var xhttp = new XMLHttpRequest();
