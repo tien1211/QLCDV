@@ -37,7 +37,8 @@
                 @endforeach
               </select>
             </div>
-              <button type="submit" class="btn btn-outline-info">Tìm kiếm</button>
+            <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
+            <button id="js" type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button>
         </form>
         </div>
     </div>
@@ -64,7 +65,7 @@
             <th>Số lượng </th>
             <th>Đại lý</th>
             <th>Chi tiết </th>
-            <th>Cập nhật</th>
+            <th>Thao tác</th>
           </tr>
         </thead>
             @foreach ($Tour as $key => $t)

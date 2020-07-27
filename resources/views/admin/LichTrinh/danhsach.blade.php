@@ -13,7 +13,7 @@
             <div class="form-group">
                 <input type="text" class="form-control" id="tukhoa" placeholder="từ khóa tìm kiếm" name="tukhoa">
             </div>
-              <button type="submit" class="btn btn-outline-info">Tìm kiếm</button>
+            <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
         </form>
         </div>
     </div>
@@ -34,7 +34,7 @@
             <th>Lịch Trình Tên</th>
             <th>Lịch Trình File</th>
             <th>Hình ảnh liên quan</th>
-            <th>Cập Nhật</th>
+            <th>Thao tác</th>
           </tr>
         </thead>
         <div class="form-group" style="mt-3">
