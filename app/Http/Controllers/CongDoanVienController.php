@@ -39,7 +39,8 @@ class CongDoanVienController extends Controller
     }
 
     public function postThem(Request $request){
-        $this->validate($request, [
+        $this->validate($request, 
+        [
             'cv_id' => 'required',
             'lnv_id' => 'required',
             'dv_id'=>'required',
@@ -137,7 +138,6 @@ class CongDoanVienController extends Controller
             Session::flash('alert-info', 'Thêm thành công!!!');
             return redirect()->route('CDV_DanhSach');    
     }
-
     public function getSua($id){
         
         $CongDoanVien =  CongDoanVien::find($id);

@@ -1,4 +1,5 @@
-
+@extends('admin.layout.master')
+@section('admin_content')
 <div class="row">
   <div class="col-lg-12">
 
@@ -334,6 +335,7 @@
       </section>
   </div>
 </div>
+<<<<<<< HEAD
 @section('script')
 <script>
       document.getElementById('signupForm').addEventListener('submit',sub);
@@ -345,3 +347,6 @@
             }
 </script>
 @endsection
+=======
+@endsection
+>>>>>>> 8348a228aa4df71f57828403d108b64c640a8ce2

@@ -81,10 +81,10 @@
                     <td>{{$t->tour_soluong}}</td>
                     <td>{{$t->tour_daily}}</td>
                     {{-- <td>{{$t->tour_hinhanh}}</td> --}}
-                    <td><a href="{{route('TOUR_ChiTiet',['id'=>$t->tour_id])}}"><button type="button" class="btn btn-outline-info">Chi Tiết</button></a></td>
+                    <td><a class="glyphicon glyphicon-eye-open" href="{{route('TOUR_ChiTiet',['id'=>$t->tour_id])}}"></a></td>
                     <td>
-                      <i class='fas fa-pencil-alt'></i><a  href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}">Sửa</a>
-                        <i class='fas fa-trash-alt'></i><a href="{{route('TOUR_Xoa',['id'=>$t->tour_id])}}">Xóa</a>
+                      <a class="glyphicon glyphicon-edit"  href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}"></a>
+                      <a class="glyphicon glyphicon-trash" href="{{route('TOUR_Xoa',['id'=>$t->tour_id])}}"></a>
                       </td>
                 </tr>
             @endif
