@@ -25,30 +25,25 @@
         Session::put('message',null);
     }
     ?>
-    <div>
-    <table class="table" ui-jq="footable" ui-options='{
-        "paging": {
-        "enabled": true
-        },
-        "filtering": {
-        "enabled": true
-        },
-        "sorting": {
-        "enabled": true
-        }}'>
+    <table style="width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    border-collapse: collapse;">
         <tr>
-            <td><a style="color: #777; font-weight: bolder;">Giai đoạn: </a>{{$tour_giaidoan}}</td>
-            <td><a style="color: #777; font-weight: bolder;">Hạn đăng ký: </a>{{date('d/m/Y ',strtotime($tour_handk))}}</td>
-            <td><a style="color: #777; font-weight: bolder;">Ngày bắt đầu: </a>{{date('d/m/Y ',strtotime($tour_ngaybd))}}</td>
-            <td><a style="color: #777; font-weight: bolder;">Ngày kết thúc: </a>{{date('d/m/Y ',strtotime($tour_ngaykt))}}</td>
-            <td><a style="color: #777; font-weight: bolder;">Chi phí: </a>{{number_format($tour_chiphi)}} VNĐ</td>
-            <td><a style="color: #777; font-weight: bolder;">Số lượng: </a>{{$tour_soluong}}</td>
+            <td><a style="color: #999; font-weight: bolder;">Giai đoạn: </a><a style="color: #999;">{{$tour_giaidoan}}</a></td>
+            <td><a style="color: #999; font-weight: bolder;">Hạn đăng ký: </a><a style="color: #999;">{{date('d/m/Y ',strtotime($tour_handk))}}</a></td>
+            <td rowspan="3"><div style="margin:12px;"><img src="upload/tour/{{$tour_hinhanh}}" width="500px" height="230px"></div></td>
         </tr>
         <tr>
-            <td colspan="6"><img src="upload/tour/{{$tour_hinhanh}}" width="100%" height="500px"></td>
+            <td><a style="color: #999; font-weight: bolder;">Bắt đầu: </a><a style="color: #999;">{{date('d/m/Y ',strtotime($tour_ngaybd))}}</a></td>
+            <td><a style="color: #999; font-weight: bolder;">Kết thúc: </a><a style="color: #999;">{{date('d/m/Y ',strtotime($tour_ngaykt))}}</a></td>
+        </tr>
+        <tr>
+            <td><a style="color: #999; font-weight: bolder;">Chi phí: </a><a style="color: #999;">{{number_format($tour_chiphi)}} VNĐ</a></td>
+            <td><a style="color: #999; font-weight: bolder;">Số lượng: </a><a style="color: #999;">{{$tour_soluong}}</a></td>
         </tr>
     </table>
-    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -72,7 +67,8 @@
             <th>Số lượng người tham gia</th>
             <th>Chi phí phải trả</th>
             <th>Tình trạng thu phí</th>
-            <th>Cập nhật thu phí</th>
+            <th>Cập nhật thu phí
+            </th>
         </tr>
         </thead> 
             @foreach ($cdv_dk as $key => $cdv)
