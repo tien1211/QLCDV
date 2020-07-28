@@ -20,18 +20,20 @@
     }
     ?>
     <div class="panel-body">
-        <div class="position-right">
+        <div class="position-left">
             <form class="form-inline" role="form" enctype="multipart/form-data" action="{{route('LT_ThemHinh',['id'=>$lt_id])}}" method="post" >
             {{ csrf_field() }}
             <div class="form-group">
                 <a style="color: #777; font-weight: bold;">Thêm hình mới: </a>
                 <input type="file" class="form-control" name="hinh[]" multiple="true">
             </div>
-                <button type="submit" class="btn btn-outline-info">Thêm</button>
+                <button type="submit" class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button>
             </form>
         </div>
     </div>
     <div>
+    <form class="form-inline" role="form" enctype="multipart/form-data" action="{{route('LT_XoaHinh')}}" method="get" >
+            {{ csrf_field() }}
       <table class="table" ui-jq="footable" ui-options='{
         "paging": {
           "enabled": true
@@ -46,35 +48,46 @@
           <tr>
             <th data-breakpoints="xs">STT</th>
             <th>Hình ảnh liên quan</th>
-            <th>Thao tác</th>
+            <th><input type="checkbox" id="checkall" onClick="check()" /></th>
           </tr>
         </thead>
-        <div class="form-group" style="mt-6">
-          <div class="flash-message">
-            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-              @if(Session::has('alert-' . $msg))
-              <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="" class="close" d
-              ata-dismiss="alert" aria-label="close">&times;</a></p>
+        <tbody>
+          <div class="form-group" style="mt-6">
+            <div class="flash-message">
+              @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                @if(Session::has('alert-' . $msg))
+                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="" class="close" d
+                ata-dismiss="alert" aria-label="close">&times;</a></p>
+                @endif
+              @endforeach
+            </div>
+          </div>
+              @foreach ($hinh as $key => $hinh)
+              @if ($hinh->at_trangthai == 1)
+                  <tr data-expanded="true">
+                      <td>{{$key + 1}}</td>
+                      <td><img src="upload/tour/{{$hinh->at_hinhanh}}" width="200px" height="100px"></td>
+                      <td><input type="checkbox" name="at_id[]" value="{{$hinh->at_id}}"/></td>
+                  </tr>
               @endif
-            @endforeach
-        </div>
-        </div>
-            @foreach ($hinh as $key => $hinh)
-            @if ($hinh->at_trangthai == 1)
-                <tr data-expanded="true">
-                    <td>{{$key + 1}}</td>
-                    <td><img src="upload/tour/{{$hinh->at_hinhanh}}" width="200px" height="100px"></td>
-                    <td>
-                        <i class='fas fa-trash-alt'></i><a href="{{route('LT_XoaHinh',['id'=>$hinh->at_id])}} ">Xóa</a>
-                    </td>
-                </tr>
-            @endif
-          @endforeach
+              @endforeach
         </tbody>
-    </div>
+      </table>
+      <div class="panel-body">
+        <div class="position-right">
+          <button type="submit" class="btn btn-outline-info"><i class=" glyphicon glyphicon-trash"></i></button>
+        </div>
+      </div>
+    </from>
   </div>
- </div>
-
-
-
+</div>
+<script>
+  function check(){
+      checkboxes = document.getElementsByName('at_id[]');
+      var t = document.getElementById('checkall').checked;
+      for(var i=0, n=checkboxes.length;i<n;i++) {
+        checkboxes[i].checked = t;
+      }
+    }
+  </script>
 @endsection

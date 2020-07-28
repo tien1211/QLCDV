@@ -50,34 +50,11 @@
             <div class="form-group">
                 <input type="text" class="form-control" id="tukhoa" name="tukhoa">
             </div>
-<<<<<<< HEAD
-
-
-
-                  <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
-                  <button id="js" type="button" onclick="loadAdd()" class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button>
-
-
-
-        </form>
-      </div>
-        </div>
-
-
-
-
-
-
-
-
-
-=======
                   <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
                   <a href="{{route('CDV_Them')}}"><button type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
         </form>
       </div>
         </div>
->>>>>>> 8348a228aa4df71f57828403d108b64c640a8ce2
 
     <div>
       <table class="table" ui-jq="footable" ui-options='{

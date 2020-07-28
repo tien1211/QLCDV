@@ -136,7 +136,7 @@ Route::group(['prefix' => 'admin'], function () {
     //Sua hình ảnh
     Route::post('/LT_SuaHinhAnh/{id}','LichTrinhController@postSuaHinh')->name('LT_SuaHinh');
     //Xoa hình ảnh
-    Route::get('/LT_XoaHinhAnh/{id}','LichTrinhController@getXoaHinh')->name('LT_XoaHinh');
+    Route::get('/LT_XoaHinhAnh','LichTrinhController@getXoaHinh')->name('LT_XoaHinh');
     });
 });
 

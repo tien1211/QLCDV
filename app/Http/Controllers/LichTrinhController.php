@@ -189,9 +189,13 @@ class LichTrinhController extends Controller
         }
     }
 
-
-    public function getXoaHinh($id){
-        DB::table('anh_tour')->where('at_id',$id)->update(['at_trangthai'=>0]);
+    public function getXoaHinh(Request $request){
+        $at_id = $request->at_id;
+        //dd($at_id);
+        foreach($at_id as $anh){
+            //dd($anh);
+            DB::table('anh_tour')->where('at_id',$anh)->update(['at_trangthai'=>0]);
+        }
         Session::put('message','Xóa thành công!!!');
         return Redirect::back();
     }
