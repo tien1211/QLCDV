@@ -506,8 +506,8 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     padding: 0px;
     background: none;
     margin-right: 0;
-    border: 1px solid #8b5c7e;
-    background: #8b5c7e;
+    border: 1px solid #3a2fb3;
+    background: #385a94;
 }
 .top-nav ul.top-menu>li.language>a {
     margin-top:-2px;
@@ -528,8 +528,8 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     margin-left:10px;
 }
 .top-nav ul.top-menu>li>a:hover,.top-nav ul.top-menu>li>a:focus {
-    border:1px solid #fa9fa4;
-    background:#fa9fa4 !important;
+    border:1px solid #3a2fb3;
+    background:#3a2fb3 !important;
     border-radius:100px;
     -webkit-border-radius:100px;
 }
@@ -620,7 +620,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     color:#fff;
 }
 .sidebar-toggle-box:hover {
-    background:#fa9fa4;
+    background:#337ab7;
 }
 .hide-left-bar {
     margin-left:-240px !important;
