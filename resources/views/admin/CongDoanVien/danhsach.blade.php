@@ -9,7 +9,7 @@
     </div>
     <div class="panel-body">
         <div class="position-left">
-            <form  class="form-inline" role="form" action="{{route('CDV_Timkiem')}}" method="get">
+            <form  id="content-form" class="form-inline" role="form" action="{{route('CDV_Timkiem')}}" method="get">
             {{ csrf_field() }}
             <div class="form-group">
               <select id="dv" onchange="timkiem()" class="form-control m-bot15" name="dv_id">
@@ -47,9 +47,6 @@
                 @endforeach
               </select>
             </div>
-
-
-
             <div class="form-group">
                 <input type="text" class="form-control" id="tukhoa" name="tukhoa">
             </div>
@@ -182,6 +179,10 @@
   //   xhttp.open("GET", "{{route('CDV_Them')}}", true);
   //   xhttp.send();
   // }
+//   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
-  </script>
+
+
+
+
 @endsection

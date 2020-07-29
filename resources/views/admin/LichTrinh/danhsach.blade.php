@@ -7,13 +7,14 @@
     Danh Sách Tour
     </div>
     <div class="panel-body">
-        <div class="position-right">
+        <div class="position-left">
             <form class="form-inline" role="form" action="{{route('LT_Timkiem')}}" method="get">
             {{ csrf_field() }}
             <div class="form-group">
                 <input type="text" class="form-control" id="tukhoa" placeholder="từ khóa tìm kiếm" name="tukhoa">
             </div>
             <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
+            <a href="{{route('LT_Them')}}"><button type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
         </form>
         </div>
     </div>

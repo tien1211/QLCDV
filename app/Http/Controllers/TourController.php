@@ -21,12 +21,14 @@ class TourController extends Controller
         $ngaybd = "";
         $ngaykt = "";
         $gd_id = "";
+        $lt_id = "";
         view()->share('LichTrinh',$LichTrinh);
         view()->share('GiaiDoan', $GiaiDoan);
         view()->share('TinhTrangThuPhi',$TinhTrangThuPhi);
         view()->share('ngaybd',$ngaybd);
         view()->share('ngaykt',$ngaykt);
         view()->share('gd_id',$gd_id);
+        view()->share('lt_id',$lt_id);
 	}
 
 //Hiển thị danh sách
@@ -46,65 +48,83 @@ class TourController extends Controller
     }
 
     public function postThem(Request $request){
+
+        if ($request->ajax()) {
+
+            // Validator::make($request->all(),
+            // [
+            //     'lt_id' => 'required',
+            //     'tour_handk' => 'required',
+            //     'tour_ngaybd' => 'required',
+            //     'tour_ngaykt' => 'required',
+            //     'tour_chiphi' => 'required | numeric',
+            //     'tour_soluong' => 'required | numeric',
+            //     'gd_id' => 'required',
+            //     'tour_daily' => 'required',
+            //     'tour_hinhanh' =>   'required',
+
+
+            // ]
+            // ,
+            // [
+            //     'lt_id.required' => 'Bạn chưa nhập lịch trình!',
+            //     'tour_handk.required' => 'Bạn chưa nhập hạn đăng ký!',
+            //     'tour_ngaybd.required' => 'Bạn chưa nhập ngày bắt đầu!',
+            //     'tour_ngaykt.required' => 'Bạn chưa nhập ngày kết thúc!',
+            //     'tour_chiphi.required' => 'Bạn chưa nhập chi phí!',
+            //     'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
+            //     'gd_id.required' => 'Bạn chưa nhập giai đoạn!',
+            //     'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
+            //     'tour_hinhanh.required' => 'Bạn chưa chọn hình ảnh!',
+
+            // ])->validate();
+            //   $Tour = new Tour();
+            // $Tour->lt_id = $request->lt_id;
+
+
+            //  return \response(['lt_id.required'=>'Bạn chưa nhập lịch trình!',
+
+            //  ]);
+          }
+
+
+
+
+
+
         // Bắt các điều kiện nhập vào
-        Validator::make($request->all(),
-        [
-            'lt_id' => 'required',
-            'tour_handk' => 'required',
-            'tour_ngaybd' => 'required',
-            'tour_ngaykt' => 'required',
-            'tour_chiphi' => 'required | numeric',
-            'tour_soluong' => 'required | numeric',
-            'gd_id' => 'required',
-            'tour_daily' => 'required',
-            'tour_hinhanh' =>   'required',
 
 
-        ]
-        ,
-        [
-            'lt_id.required' => 'Bạn chưa nhập lịch trình!',
-            'tour_handk.required' => 'Bạn chưa nhập hạn đăng ký!',
-            'tour_ngaybd.required' => 'Bạn chưa nhập ngày bắt đầu!',
-            'tour_ngaykt.required' => 'Bạn chưa nhập ngày kết thúc!',
-            'tour_chiphi.required' => 'Bạn chưa nhập chi phí!',
-            'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
-            'gd_id.required' => 'Bạn chưa nhập giai đoạn!',
-            'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
-            'tour_hinhanh.required' => 'Bạn chưa chọn hình ảnh!',
+        // $Tour = new Tour();
+        // $Tour->lt_id = $request->lt_id;
+        // $Tour->tour_handk = $request->tour_handk;
+        // $Tour->tour_ngaybd = $request->tour_ngaybd;
+        // $Tour->tour_ngaykt = $request->tour_ngaykt;
+        // $Tour->tour_chiphi = $request->tour_chiphi;
+        // $Tour->tour_soluong = $request->tour_soluong;
+        // $Tour->gd_id = $request->gd_id;
+        // $Tour->tour_daily = $request->tour_daily;
 
-        ])->validate();
+        // if($request->hasFile('tour_hinhanh')){
+        //     $file = $request->file('tour_hinhanh');
+        //     $duoi = $file->getClientOriginalExtension();
 
-        $Tour = new Tour();
-        $Tour->lt_id = $request->lt_id;
-        $Tour->tour_handk = $request->tour_handk;
-        $Tour->tour_ngaybd = $request->tour_ngaybd;
-        $Tour->tour_ngaykt = $request->tour_ngaykt;
-        $Tour->tour_chiphi = $request->tour_chiphi;
-        $Tour->tour_soluong = $request->tour_soluong;
-        $Tour->gd_id = $request->gd_id;
-        $Tour->tour_daily = $request->tour_daily;
+        //     if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
+        //         Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
+        //         return redirect()->route('Tour_Them');
+        //     }
 
-        if($request->hasFile('tour_hinhanh')){
-            $file = $request->file('tour_hinhanh');
-            $duoi = $file->getClientOriginalExtension();
+        //     $name = $file->getClientOriginalName();
+        //     $file->move("upload/tour",$name);
+        //     $Tour->tour_hinhanh = $name;
 
-            if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
-                Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
-                return redirect()->route('Tour_Them');
-            }
+        // }else{
+        //     $Tour->tour_hinhanh="";
+        // }
+        // $Tour->tour_trangthai = 1;
+        // $Tour->save();
 
-            $name = $file->getClientOriginalName();
-            $file->move("upload/tour",$name);
-            $Tour->tour_hinhanh = $name;
-
-        }else{
-            $Tour->tour_hinhanh="";
-        }
-        $Tour->tour_trangthai = 1;
-        $Tour->save();
-
-        return redirect()->back()->with('thongbao','Thêm thành công');
+        // return redirect()->back()->with('thongbao','Thêm thành công');
     }
 
     public function getSua($id){
@@ -205,29 +225,53 @@ class TourController extends Controller
         $gd_id = $request->gd_id;
         $ngaybd = $request->tour_ngaybd;
         $ngaykt = $request->tour_ngaykt;
+        $lt_id = $request->lt_id;
         //dd($ngaybd);
-        if((!empty($gd_id)) && (!empty($ngaybd)) && (!empty($ngaykt))){
-            $Tour = Tour::where([['gd_id','=', $gd_id],['tour_ngaybd','>',$ngaybd],['tour_ngaykt','<=',$ngaykt],])->get();
+        if((!empty($gd_id)) && (!empty($ngaybd)) && (!empty($ngaykt)) && (!empty($lt_id))){
+            $Tour = Tour::where([['lt_id','=',$lt_id],['gd_id','=', $gd_id],['tour_ngaybd','>',$ngaybd],['tour_ngaykt','<=',$ngaykt],])->get();
         }
-        else if((empty($gd_id)) && (!empty($ngaybd)) && (!empty($ngaykt))){
+        else if((empty($gd_id)) && (!empty($ngaybd)) && (!empty($ngaykt)) && (!empty($lt_id))){
+            $Tour = Tour::where([['lt_id','=',$lt_id],['tour_ngaybd','>',$ngaybd],['tour_ngaykt','<=',$ngaykt],])->get();
+        }
+        else if((!empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt)) && (!empty($lt_id))){
+            $Tour = Tour::where([['lt_id','=',$lt_id],['gd_id','=', $gd_id],['tour_ngaykt','<=',$ngaykt],])->get();
+        }
+        else if((!empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt)) && (!empty($lt_id))){
+            $Tour = Tour::where([['lt_id','=',$lt_id],['gd_id','=', $gd_id],['tour_ngaybd','>',$ngaybd],])->get();
+        }
+        else if((!empty($gd_id)) && (empty($ngaybd)) && (empty($ngaykt)) && (!empty($lt_id))){
+            $Tour = Tour::where([['lt_id','=',$lt_id],['gd_id','=', $gd_id],])->get();
+        }
+        else if((empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt)) && (!empty($lt_id))){
+            $Tour = Tour::where([['lt_id','=',$lt_id],['tour_ngaybd','>',$ngaybd],])->get();
+        }
+        else if((empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt)) && (!empty($lt_id))){
+            $Tour = Tour::where([['lt_id','=',$lt_id],['tour_ngaykt','<=',$ngaykt],])->get();
+        }
+        else if((empty($gd_id)) && (empty($ngaybd)) && (empty($ngaykt)) && (!empty($lt_id))){
+            $Tour = Tour::where('lt_id','=',$lt_id)->get();
+        }
+        else if((empty($gd_id)) && (!empty($ngaybd)) && (!empty($ngaykt)) && (empty($lt_id))){
             $Tour = Tour::where([['tour_ngaybd','>=',$ngaybd],['tour_ngaykt','<=',$ngaykt],])->get();
         }
-        else if((!empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt))){
+        else if((!empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt)) && (empty($lt_id))){
                 $Tour = Tour::where([['gd_id','=', $gd_id],['tour_ngaykt','<=',$ngaykt],])->get();
         }
-        else if((!empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt))){
+        else if((!empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt)) && (empty($lt_id))){
             $Tour = Tour::where([['gd_id','=', $gd_id],['tour_ngaybd','>',$ngaybd],])->get();
         }
-        else if((!empty($gd_id)) && (empty($ngaybd)) && (empty($ngaykt))){
+        else if((!empty($gd_id)) && (empty($ngaybd)) && (empty($ngaykt)) && (empty($lt_id))){
             $Tour = Tour::where('gd_id','=', $gd_id)->get();
         }
-        else if((empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt))){
+        else if((empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt)) && (empty($lt_id))){
             $Tour = Tour::where('tour_ngaybd','>',$ngaybd)->get();
         }
-        else if((empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt))){
+        else if((empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt)) && (empty($lt_id))){
             $Tour = Tour::where('tour_ngaykt','<=',$ngaykt)->get();
+        }else{
+            $Tour = Tour::all();
         }
-        return view('admin.Tour.danhsach')->with('Tour', $Tour)->with('ngaybd',$ngaybd)->with('ngaykt',$ngaykt)->with('gd_id',$gd_id);
+        return view('admin.Tour.danhsach')->with('Tour', $Tour)->with('ngaybd',$ngaybd)->with('ngaykt',$ngaykt)->with('gd_id',$gd_id)->with('lt_id',$lt_id);
     }
 
     public function getchitietTour($id){
