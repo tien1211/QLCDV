@@ -177,17 +177,6 @@
                                                     <input type="text"  class="input-small form-control"  id='payment'  placeholder="Thành tiền" disabled>
                                                     </div>
                                                 </div>
-<<<<<<< HEAD
-                                            </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" disabled onclick="return confirm('Bạn có chắc muốn đăng ký không?');" class="btn roberto-btn w-100">HẾT HẠN ĐĂNG KÝ</button>
-                                    </div>
-                                </form>
-                                </div>
-
-                            {{-- disabled --}}
-=======
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" disabled onclick="return confirm('Bạn có chắc muốn đăng ký không?');" class="btn roberto-btn w-100">HẾT HẠN ĐĂNG KÝ</button>
@@ -195,7 +184,6 @@
                                     </form>
                                 </div>
                                 {{-- disabled --}}
->>>>>>> 80d74bfbb2d6544d5434fcfb9e45ffa8c343e34f
                             {{-- @endif --}}
                         @else
                             <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
