@@ -3,10 +3,14 @@
 @section('admin_content')
 
 <style>
-    ltid.error{
-        color: red;
+  label.error {
+        display: inline-block;
+        color:red;
+        width: 200px;
     }
-    </style>
+
+</style>
+
 
 @if(count($errors) > 0)
     <div class="alert alert-danger">
@@ -18,12 +22,12 @@
 
 @endif
 
-@if(session('thongbao'))
+{{-- @if(session('thongbao'))
     <div class="alert alert-success">
           {{session('thongbao')}}
     </div>
 
-@endif
+@endif --}}
 
 {{-- <form id="content-form" class="cmxform form-horizontal" enctype="multipart/form-data" method="post" novalidate="novalidate" > --}}
 
@@ -38,8 +42,8 @@
                 <div class="panel-body print-error-msg " >
                     <ul></ul>
                     <div class="form">
-                        <form class="cmxform form-horizontal " name="myForm" enctype="multipart/form-data" id="contactForm"  novalidate="novalidate">
-                            <div class="form-group ">
+                        <form class="cmxform form-horizontal " name="myForm" enctype="multipart/form-data" id="formDemo"  novalidate="novalidate">
+                             <div class="form-group ">
                                 <label for="firstname" class="control-label col-lg-3">Lịch trình</label>
                                 <div class="col-lg-3">
 
@@ -52,9 +56,9 @@
 
                                         </select>
                                 </div>
-                               <div id="ltid" ></div>
+                               <div id="ltid"></div>
 
-                                {{-- <div class="col-lg-3">
+                                 <div class="col-lg-3">
 
                                         <select class="form-control m-bot15" name="gd_id" id="gd_id">
                                              <option value="">Giai Đoạn</option>
@@ -90,14 +94,14 @@
                             <div class="form-group ">
                                 <label for="confirm_password" class="control-label col-lg-3">Chi phí</label>
                                 <div class="col-lg-6">
-                                    <input class="form-control "  name="tour_chiphi" type="number" id="tour_chiphi">
+                                    <input class="form-control " min="1000000" name="tour_chiphi" type="number" id="tour_chiphi">
                                 </div>
-                            </div>
+                             </div>
                             <div class="ltid" ></div>
                             <div class="form-group ">
                                 <label for="email" class="control-label col-lg-3">Số lượng</label>
                                 <div class="col-lg-6">
-                                    <input class="form-control "  name="tour_soluong" type="number" id="tour_soluong">
+                                    <input class="form-control " min="0"  name="tour_soluong" type="number" id="tour_soluong">
                                 </div>
                             </div>
 
@@ -113,7 +117,7 @@
                                 <div class="col-lg-6">
                                     <input class="form-control "  name="tour_hinhanh" type="file" id="tour_hinhanh">
                                 </div>
-                            </div> --}}
+                            </div>
 
                             <div class="form-group">
                                 <div class="col-lg-offset-3 col-lg-6">
@@ -135,123 +139,67 @@
 
 @section('script')
 
-<script>
-    function myFunction() {
-      var x, text;
-      var _token = $("input[name='_token']").val();
-      // Get the value of the input field with id="numb"
-      x = document.getElementById("lt_id").value;
-      // If x is Not a Number or less than one or greater than 10
-      if ($request->lt_id < 0 ) {
-          _token;
-        text = "Input not valid";
-      } else {
-        text = "Input OK";
-      }
-      document.getElementById("ltid").innerHTML = text;
-    }
-    </script>
+<script type="text/javascript">
 
 
 
-{{-- <script>
+$(document).ready(function() {
+    $("div#ltid").css("background-color", "red");
 
-      function validateForm() {
-        var x = document.forms["myForm"]["lt_id"].value;
-      if (x == "") {
-        alert("Name must be filled out");
-        return false;
-      }
-    }
-    function validateForm() {
-        var y = document.forms["myForm"]["tour_handk"].value;
-      if (y == "") {
-        alert("Name must be filled out");
-        return false;
-      }
-    }
-    function validateForm() {
-        var z = document.forms["myForm"]["tour_ngaybd"].value;
-      if (z == "") {
-        alert("Name must be filled out");
-        return false;
-      }
-    }
-    function validateForm() {
-        var a = document.forms["myForm"]["tour_ngaykt"].value;
-      if (a == "") {
-        alert("Name must be filled out");
-        return false;
-      }
-    }
-    function validateForm() {
-        var b = document.forms["myForm"]["tour_chiphi"].value;
-      if (b == "") {
-        alert("Name must be filled out");
-        return false;
-      }
-    }
-    function validateForm() {
-        var c = document.forms["myForm"]["tour_soluong"].value;
-      if (c == "") {
-        alert("Name must be filled out");
-        return false;
-      }
-    }
-    function validateForm() {
-        var d = document.forms["myForm"]["gd_id"].value;
-      if (d == "") {
-        alert("Name must be filled out");
-        return false;
-      }
-    }
-    function validateForm() {
-        var e = document.forms["myForm"]["tour_daily"].value;
-      if (e == "") {
-        alert("Name must be filled out");
-        return false;
-      }
-    }
-    function validateForm() {
-        var f = document.forms["myForm"]["tour_hinhanh"].value;
-      if (f == "") {
-        alert("Name must be filled out");
-        return false;
-      }
-    }
-    function validateForm() {
-        var g = document.forms["myForm"]["tour_trangthai"].value;
-      if (g == "") {
-        alert("Name must be filled out");
-        return false;
-      }
-    }
+    //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
+    $("#formDemo").validate({
+        rules: {
+            lt_id: "required",
+            tour_handk: "required",
+            tour_ngaybd: "required",
+            tour_ngaykt: "required",
+            tour_chiphi: "required",
+            tour_soluong: "required",
+            gd_id: "required",
+            tour_daily: "required",
+            tour_hinhanh: "required",
+        },
+        messages: {
+            lt_id: "Vui lòng chọn lịch trình",
+            tour_handk: "Vui lòng chọn hạn đăng ký",
+            tour_ngaybd: "Vui lòng chọn ngày bắt đầu",
+            tour_ngaykt: "Vui lòng chọn ngày kết thúc",
+            tour_chiphi: {
+                required: "Vui lòng chọn chi phí",
+                minlength : "Chi phí phải lớn hơn hoặc bằng 1.000.000"
+            },
+            tour_soluong:{
+                required: "Vui lòng chọn số lượng",
+                min: "Số lượng phải lớn hơn 0"
+        },
+            gd_id: "Vui lòng chọn giai đoạn",
+            tour_daily: "Vui lòng chọn đại lý",
+            tour_hinhanh: "Vui lòng chọn hình ảnh",
 
+        }
+    });
+});
 
+</script>
 
-    </script> --}}
-
-
-
-{{--}}
 
    <script type="text/javascript">
 
 
-    $('#contactForm').on('submit',function(event){
+    $('#formDemo').on('submit',function(event){
 
       event.preventDefault();
-     //     //console.log('kjk');
+
         lt_id = $('#lt_id').val();
-        // tour_handk = $('#tour_handk').val();
-        // tour_ngaybd = $('#tour_ngaybd').val();
-        // tour_ngaykt = $('#tour_ngaykt').val();
-        // tour_chiphi = $('#tour_chiphi').val();
-        // tour_soluong = $('#tour_soluong').val();
-        // gd_id = $('#gd_id').val();
-        // tour_daily = $('#tour_daily').val();
-        // tour_hinhanh = $('#tour_hinhanh').val();
-        // tour_trangthai = $('#tour_trangthai').val();
+        tour_handk = $('#tour_handk').val();
+        tour_ngaybd = $('#tour_ngaybd').val();
+        tour_ngaykt = $('#tour_ngaykt').val();
+        tour_chiphi = $('#tour_chiphi').val();
+        tour_soluong = $('#tour_soluong').val();
+        gd_id = $('#gd_id').val();
+        tour_daily = $('#tour_daily').val();
+        tour_hinhanh = $('#tour_hinhanh').val();
+
 
                 $.ajax({
          url: "{{route('TOUR_XLThem')}}",
@@ -260,19 +208,18 @@
             "_token": "{{ csrf_token() }}",
 
         lt_id  : lt_id,
-        // tour_handk : tour_handk,
-        // tour_ngaybd : tour_ngaybd,
-        // tour_ngaykt : tour_ngaykt,
-        // tour_chiphi : tour_chiphi,
-        // tour_soluong : tour_soluong,
-        // gd_id : gd_id,
-        // tour_daily : tour_daily,
-        // tour_hinhanh : tour_hinhanh,
-        // tour_trangthai : tour_trangthai,
+        tour_handk : tour_handk,
+        tour_ngaybd : tour_ngaybd,
+        tour_ngaykt : tour_ngaykt,
+        tour_chiphi : tour_chiphi,
+        tour_soluong : tour_soluong,
+        gd_id : gd_id,
+        tour_daily : tour_daily,
+        tour_hinhanh : tour_hinhanh,
+
         },
         success:function(data){
-            console.log(data);
-
+          alert(data.thongbao);
         },
         });
 
@@ -280,64 +227,5 @@
 
       </script>
 
-      {{-- <script type="text/javascript">
 
-
-        $(document).ready(function() {
-            $(".btn-submit").click(function(e){
-                e.preventDefault();
-
-
-                var _token = $("input[name='_token']").val();
-                var lt_id  = $("select[name='lt_id']").val();
-                var tour_handk = $("input[name='tour_handk']").val();
-                var tour_ngaybd = $("input[name='tour_ngaybd']").val();
-                var tour_ngaykt = $("input[name='tour_ngaykt']").val();
-                var tour_chiphi = $("input[name='tour_chiphi']").val();
-                var tour_soluong = $("input[name='our_soluong']").val();
-                var gd_id = $("select[name='gd_id']").val();
-                var tour_daily = $("input[name='tour_daily']").val();
-                var tour_hinhanh = $("input[name='tour_hinhanh']").val();
-                var tour_trangthai = 1;
-
-                $.ajax({
-                    url: "{{route('TOUR_XLThem')}}",
-                    type:'POST',
-                    data: {
-                        _token:_token,
-                        lt_id  : lt_id,
-                        tour_handk : tour_handk,
-                        tour_ngaybd : tour_ngaybd,
-                        tour_ngaykt : tour_ngaykt,
-                        tour_chiphi : tour_chiphi,
-                        tour_soluong : tour_soluong,
-                        gd_id : gd_id,
-                        tour_daily : tour_daily,
-                        tour_hinhanh : tour_hinhanh,
-                        tour_trangthai : tour_trangthai,
-                        },
-                    success:function(data) {
-                        if($.isEmptyObject(data.error)){
-                            alert(data.success);
-                        }else{
-                            printErrorMsg(data.error);
-                        }
-                    }
-                });
-
-
-            });
-
-
-            function printErrorMsg (msg) {
-                $(".print-error-msg").find("ul").html('');
-                $(".print-error-msg").css('display','block');
-                $.each( msg, function( key, value ) {
-                    $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
-                });
-            }
-        });
-
-
-    </script> --}}
 @endsection

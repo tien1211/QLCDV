@@ -11,6 +11,10 @@ use App\TinhTrangThuPhi;
 use Validate;
 use Session;
 use DB;
+
+
+
+
 class TourController extends Controller
 {
 
@@ -49,7 +53,7 @@ class TourController extends Controller
 
     public function postThem(Request $request){
 
-        if ($request->ajax()) {
+        // if ($request->ajax()) {
 
             // Validator::make($request->all(),
             // [
@@ -85,7 +89,7 @@ class TourController extends Controller
             //  return \response(['lt_id.required'=>'Bạn chưa nhập lịch trình!',
 
             //  ]);
-          }
+          //}
 
 
 
@@ -95,37 +99,38 @@ class TourController extends Controller
         // Bắt các điều kiện nhập vào
 
 
-        // $Tour = new Tour();
-        // $Tour->lt_id = $request->lt_id;
-        // $Tour->tour_handk = $request->tour_handk;
-        // $Tour->tour_ngaybd = $request->tour_ngaybd;
-        // $Tour->tour_ngaykt = $request->tour_ngaykt;
-        // $Tour->tour_chiphi = $request->tour_chiphi;
-        // $Tour->tour_soluong = $request->tour_soluong;
-        // $Tour->gd_id = $request->gd_id;
-        // $Tour->tour_daily = $request->tour_daily;
+        $Tour = new Tour();
+        $Tour->lt_id = $request->lt_id;
+        $Tour->tour_handk = $request->tour_handk;
+        $Tour->tour_ngaybd = $request->tour_ngaybd;
+        $Tour->tour_ngaykt = $request->tour_ngaykt;
+        $Tour->tour_chiphi = $request->tour_chiphi;
+        $Tour->tour_soluong = $request->tour_soluong;
+        $Tour->gd_id = $request->gd_id;
+        $Tour->tour_daily = $request->tour_daily;
 
-        // if($request->hasFile('tour_hinhanh')){
-        //     $file = $request->file('tour_hinhanh');
-        //     $duoi = $file->getClientOriginalExtension();
+        if($request->hasFile('tour_hinhanh')){
+            $file = $request->file('tour_hinhanh');
+            $duoi = $file->getClientOriginalExtension();
 
-        //     if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
-        //         Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
-        //         return redirect()->route('Tour_Them');
-        //     }
+            if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
+                Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
+                return redirect()->route('Tour_Them');
+            }
 
-        //     $name = $file->getClientOriginalName();
-        //     $file->move("upload/tour",$name);
-        //     $Tour->tour_hinhanh = $name;
+            $name = $file->getClientOriginalName();
+            $file->move("upload/tour",$name);
+            $Tour->tour_hinhanh = $name;
 
-        // }else{
-        //     $Tour->tour_hinhanh="";
-        // }
-        // $Tour->tour_trangthai = 1;
-        // $Tour->save();
+        }else{
+            $Tour->tour_hinhanh="";
+        }
+        $Tour->tour_trangthai = 1;
+        $Tour->save();
 
-        // return redirect()->back()->with('thongbao','Thêm thành công');
-    }
+         return \response(['thongbao'=>'Thêm thành công'  ]);
+        }
+
 
     public function getSua($id){
         $Tour = Tour::find($id);
