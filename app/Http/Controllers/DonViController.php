@@ -12,7 +12,9 @@ class DonViController extends Controller
 {
     function __construct(){
         $DonVi = DB::table('DonVi')->where('dv_trangthai',1)->get();
+        $tukhoa = "";
         view()->share('DonVi',$DonVi);
+        view()->share('tukhoa',$tukhoa);
     }
     
     public function getDonVi()
@@ -75,5 +77,15 @@ class DonViController extends Controller
         $CongDoanVien = DB::table('CongDoanVien')->where('dv_id',$id)->paginate(5);
         //dd($CongDoanVien);
         return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien);
+    }
+    public function postTimkiem(Request $request){
+        $tukhoa = $request->tukhoa;
+        $DonVi = DB::table('DonVi')
+        ->leftjoin('DonVi as DonVitt','DonVitt.dv_id','=','DonVi.dv_tructhuoc_id')
+        ->select('DonVi.*','DonVitt.dv_ten as dv_tt')
+        ->where('DonVi.dv_ten','like',"%$tukhoa%")
+        ->get();
+        //dd($DonVi);
+        return view('admin.DonVi.danhsach')->with('DonVi',$DonVi)->with('tukhoa',$tukhoa);
     }
 }

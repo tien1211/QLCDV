@@ -9,7 +9,7 @@
     </div>
     <div class="panel-body">
         <div class="position-left">
-            <form  class="form-inline" role="form" action="{{route('CDV_Timkiem')}}" method="get">
+            <form  id="content-form" class="form-inline" role="form" action="{{route('CDV_Timkiem')}}" method="get">
             {{ csrf_field() }}
             <div class="form-group">
               <select id="dv" onchange="timkiem()" class="form-control m-bot15" name="dv_id">
@@ -168,30 +168,6 @@
         function timkiem(){
           document.getElementById('search').click();
         }
-<<<<<<< HEAD
-
-
-
-
-  function loadAdd() {
-      //window.location = "{{route('CDV_Them')}}";
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-
-        // document.getElementById("demo").innerHTML =
-        // this.responseText;
-      }
-        xhttp.open("GET", "{{route('CDV_Them')}}", true);
-    xhttp.send()
-    };
-
-  ;
-  }
-
-
-=======
->>>>>>> 8348a228aa4df71f57828403d108b64c640a8ce2
 
   // function loadAdd() {
   //   var xhttp = new XMLHttpRequest();
@@ -204,10 +180,10 @@
   //   xhttp.open("GET", "{{route('CDV_Them')}}", true);
   //   xhttp.send();
   // }
+//   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 8348a228aa4df71f57828403d108b64c640a8ce2
-  </script>
+
+
+
 @endsection

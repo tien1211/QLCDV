@@ -31,6 +31,9 @@ Route::get('/home1', function () {
 Route::get('/home','IndexController@getIndex')->name('trangchu');
 Route::get('/chitiet/{id}','IndexController@getChiTiet')->name('chitiettour');
 Route::post('/dangkytour/{id}','IndexController@postBook')->name('dktour');
+Route::post('/capnhattour/{id}','IndexController@postUpdate')->name('cntour');
+Route::post('/huytour/{id}','IndexController@postDelete')->name('huytour');
+Route::get('/quanlytour','IndexController@getQLTour')->name('quanlytour');
 
 
 
@@ -84,7 +87,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/DV_SuaDV/{id}', 'DonViController@postSua')->name('DV_XLSua');
         //Form Xóa đơn vị
         Route::get('/DV_XoaDV/{id}', 'DonViController@getXoa')->name('DV_Xoa');
-
+        // Tìm kiếm đơn vị
+        Route::get('/DV_Timkiem', 'DonViController@postTimkiem')->name('DV_Timkiem');
     });
     Route::group(['prefix' => 'Tour'], function () {
         //Danh sach tour
@@ -154,3 +158,12 @@ Route::group(['prefix' => 'frontend'], function () {
 
 
 });
+
+
+// Route::get('/hello',function(){
+//     return "Chao ban";
+// });
+
+// Route::get('user/{name?}', function ($name = 'Jonn') {
+//     return $name;
+// });

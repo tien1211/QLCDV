@@ -107,7 +107,7 @@
 </div>
 @endsection
 @section('script')
-    <script>  
+    <script>
         function timkiem(){
           document.getElementById('search').click();
         }

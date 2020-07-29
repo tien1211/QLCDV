@@ -5,6 +5,18 @@
         <div class="panel-heading">
             <h4 style="text-align: center; color: #32323a; display: inline-block">Công Đoàn Bưu Chính Viễn Thông Việt Nam</h4>
         </div>
+        <div class="panel-body">
+          <div class="position-left">
+          <form class="form-inline" role="form" action="{{route('DV_Timkiem')}}" method="get">
+            {{ csrf_field() }}
+            <div class="form-group">
+                <input type="text" class="form-control" id="tukhoa" placeholder="từ khóa tìm kiếm" name="tukhoa" value="{{$tukhoa}}">
+            </div>
+            <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
+            <a href="{{route('DV_Them')}}"><button type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
+        </form>
+          </div>
+        </div>
         <div>
       <table class="table" ui-jq="footable" ui-options='{
         "paging": {

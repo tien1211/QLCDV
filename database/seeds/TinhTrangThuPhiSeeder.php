@@ -16,6 +16,9 @@ class TinhTrangThuPhiSeeder extends Seeder
                 'tinh_trang' => 'Đã đóng phí'
             ],[
                 'tinh_trang' => 'Chưa đóng phí'
+            ],
+            [
+                'tinh_trang' => 'Đã hủy'
             ]
         ];
         DB::table('TinhTrangThuPhi')->insert($arr);

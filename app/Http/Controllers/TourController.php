@@ -11,6 +11,10 @@ use App\TinhTrangThuPhi;
 use Validate;
 use Session;
 use DB;
+
+
+
+
 class TourController extends Controller
 {
 
@@ -48,34 +52,52 @@ class TourController extends Controller
     }
 
     public function postThem(Request $request){
+
+        // if ($request->ajax()) {
+
+            // Validator::make($request->all(),
+            // [
+            //     'lt_id' => 'required',
+            //     'tour_handk' => 'required',
+            //     'tour_ngaybd' => 'required',
+            //     'tour_ngaykt' => 'required',
+            //     'tour_chiphi' => 'required | numeric',
+            //     'tour_soluong' => 'required | numeric',
+            //     'gd_id' => 'required',
+            //     'tour_daily' => 'required',
+            //     'tour_hinhanh' =>   'required',
+
+
+            // ]
+            // ,
+            // [
+            //     'lt_id.required' => 'Bạn chưa nhập lịch trình!',
+            //     'tour_handk.required' => 'Bạn chưa nhập hạn đăng ký!',
+            //     'tour_ngaybd.required' => 'Bạn chưa nhập ngày bắt đầu!',
+            //     'tour_ngaykt.required' => 'Bạn chưa nhập ngày kết thúc!',
+            //     'tour_chiphi.required' => 'Bạn chưa nhập chi phí!',
+            //     'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
+            //     'gd_id.required' => 'Bạn chưa nhập giai đoạn!',
+            //     'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
+            //     'tour_hinhanh.required' => 'Bạn chưa chọn hình ảnh!',
+
+            // ])->validate();
+            //   $Tour = new Tour();
+            // $Tour->lt_id = $request->lt_id;
+
+
+            //  return \response(['lt_id.required'=>'Bạn chưa nhập lịch trình!',
+
+            //  ]);
+          //}
+
+
+
+
+
+
         // Bắt các điều kiện nhập vào
-        Validator::make($request->all(),
-        [
-            'lt_id' => 'required',
-            'tour_handk' => 'required',
-            'tour_ngaybd' => 'required',
-            'tour_ngaykt' => 'required',
-            'tour_chiphi' => 'required | numeric',
-            'tour_soluong' => 'required | numeric',
-            'gd_id' => 'required',
-            'tour_daily' => 'required',
-            'tour_hinhanh' =>   'required',
 
-
-        ]
-        ,
-        [
-            'lt_id.required' => 'Bạn chưa nhập lịch trình!',
-            'tour_handk.required' => 'Bạn chưa nhập hạn đăng ký!',
-            'tour_ngaybd.required' => 'Bạn chưa nhập ngày bắt đầu!',
-            'tour_ngaykt.required' => 'Bạn chưa nhập ngày kết thúc!',
-            'tour_chiphi.required' => 'Bạn chưa nhập chi phí!',
-            'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
-            'gd_id.required' => 'Bạn chưa nhập giai đoạn!',
-            'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
-            'tour_hinhanh.required' => 'Bạn chưa chọn hình ảnh!',
-
-        ])->validate();
 
         $Tour = new Tour();
         $Tour->lt_id = $request->lt_id;
@@ -106,8 +128,9 @@ class TourController extends Controller
         $Tour->tour_trangthai = 1;
         $Tour->save();
 
-        return redirect()->back()->with('thongbao','Thêm thành công');
-    }
+         return \response(['thongbao'=>'Thêm thành công'  ]);
+        }
+
 
     public function getSua($id){
         $Tour = Tour::find($id);
