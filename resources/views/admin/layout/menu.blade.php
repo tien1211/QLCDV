@@ -4,7 +4,7 @@
                 <li>
                     <a class="" href="index.html">
                         <i class="fa fa-dashboard"></i>
-                        <span>Đơn Vị</span>
+                        <span >Đơn Vị</span>
                     </a>
                         <ul class="sub">
                             <li><a href="{{route('DV_DanhSach')}}">Danh sách đơn vị</a></li>

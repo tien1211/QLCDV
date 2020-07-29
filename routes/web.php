@@ -79,7 +79,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/DV_SuaDV/{id}', 'DonViController@postSua')->name('DV_XLSua');
         //Form Xóa đơn vị
         Route::get('/DV_XoaDV/{id}', 'DonViController@getXoa')->name('DV_Xoa');
-
+        // Tìm kiếm đơn vị
+        Route::get('/DV_Timkiem', 'DonViController@postTimkiem')->name('DV_Timkiem');
     });
     Route::group(['prefix' => 'Tour'], function () {
         //Danh sach tour
