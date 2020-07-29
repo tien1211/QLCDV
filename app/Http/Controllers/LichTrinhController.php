@@ -132,7 +132,7 @@ class LichTrinhController extends Controller
     public function postHinh(Request $request, $id){
         if($request->hasFile('hinh')){
             $dataTime = date('Ymd_His');
-            $file = $request->file('hinh');
+            foreach($request->hinh as $file){
             $duoi = $file->getClientOriginalExtension();
             if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
                 Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
@@ -151,6 +151,7 @@ class LichTrinhController extends Controller
             $data['lt_id'] = $id;
             $data['at_trangthai'] = 1;
             DB::table('anh_tour')->insert($data);
+        }
             Session::flash('message', 'Thêm thành công!!!');
             return redirect()->back();
         }else{
@@ -162,7 +163,7 @@ class LichTrinhController extends Controller
     public function postSuaHinh(Request $request, $id){
         if($request->hasFile('hinh')){
             $dataTime = date('Ymd_His');
-            $file = $request->file('hinh');
+            foreach($request->hinh as $file){
             $duoi = $file->getClientOriginalExtension();
             if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
                 Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
@@ -179,6 +180,7 @@ class LichTrinhController extends Controller
             //
             $data['at_hinhanh'] = $fileName;
             DB::table('anh_tour')->where('at_id',$id)->update(['at_hinhanh'=>$fileName]);
+        }
             Session::flash('message', 'Thêm thành công!!!');
             return redirect()->back();
         }else{
@@ -187,9 +189,13 @@ class LichTrinhController extends Controller
         }
     }
 
-
-    public function getXoaHinh($id){
-        DB::table('anh_tour')->where('at_id',$id)->update(['at_trangthai'=>0]);
+    public function getXoaHinh(Request $request){
+        $at_id = $request->at_id;
+        //dd($at_id);
+        foreach($at_id as $anh){
+            //dd($anh);
+            DB::table('anh_tour')->where('at_id',$anh)->update(['at_trangthai'=>0]);
+        }
         Session::put('message','Xóa thành công!!!');
         return Redirect::back();
     }
