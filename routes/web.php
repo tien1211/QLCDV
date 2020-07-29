@@ -31,6 +31,9 @@ Route::get('/home1', function () {
 Route::get('/home','IndexController@getIndex')->name('trangchu');
 Route::get('/chitiet/{id}','IndexController@getChiTiet')->name('chitiettour');
 Route::post('/dangkytour/{id}','IndexController@postBook')->name('dktour');
+Route::post('/capnhattour/{id}','IndexController@postUpdate')->name('cntour');
+Route::post('/huytour/{id}','IndexController@postDelete')->name('huytour');
+Route::get('/quanlytour','IndexController@getQLTour')->name('quanlytour');
 
 
 
@@ -48,6 +51,11 @@ Route::group(['prefix' => 'admin'], function () {
     })->name('admin');
 
     Route::group(['prefix' => 'CongDoanVien'], function () {
+
+        //Export Excel
+
+        Route::get('/CDV_Export/Export','CongDoanVienController@Export')->name('CDV_Export');
+        
         //Danh Sách Công Đoàn Viên
         Route::get('/CDV_DS', 'CongDoanVienController@getDanhSach')->name('CDV_DanhSach');
 

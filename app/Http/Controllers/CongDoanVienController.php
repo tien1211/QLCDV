@@ -10,6 +10,12 @@ use Validator;
 use Session;
 use DB;
 use Image;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\CongDoanVienExport;
+
+
+
+
 class CongDoanVienController extends Controller
 {
 
@@ -349,4 +355,12 @@ class CongDoanVienController extends Controller
         //dd($CongDoanVien);
         return redirect()->route('CDV_DanhSach');
     }
+
+
+    public function Export(){
+        $dataTime = date('Ymd_His');
+        $name = $dataTime. '-' . 'DSCDV.xlsx';
+        return Excel::download(new CongDoanVienExport, $name);
+    }
+       
 }

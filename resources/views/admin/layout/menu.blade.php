@@ -1,14 +1,14 @@
         <!-- sidebar menu start-->
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
-                <li>
+                <li class="sub-menu">
                     <a class="" href="index.html">
                         <i class="fa fa-dashboard"></i>
                         <span >Đơn Vị</span>
                     </a>
                         <ul class="sub">
                             <li><a href="{{route('DV_DanhSach')}}">Danh sách đơn vị</a></li>
-                            <li><a href="{{route('DV_Them')}}">Thêm đơn vị</a></li>
+                            {{-- <li><a href="{{route('DV_Them')}}">Thêm đơn vị</a></li> --}}
                     </ul>
                 </li>
 
