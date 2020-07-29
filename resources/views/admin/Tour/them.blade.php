@@ -113,7 +113,7 @@
                             </div>
 
                             <div class="form-group ">
-                                <label for="email" class="control-label col-lg-3">Hình ảnh</label>
+                                <label for="tour_hinhanh" class="control-label col-lg-3">Hình ảnh</label>
                                 <div class="col-lg-6">
                                     <input class="form-control "  name="tour_hinhanh" type="file" id="tour_hinhanh">
                                 </div>
@@ -142,10 +142,6 @@
 <script type="text/javascript">
 
 
-
-$(document).ready(function() {
-    $("div#ltid").css("background-color", "red");
-
     //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
     $("#formDemo").validate({
         rules: {
@@ -164,26 +160,20 @@ $(document).ready(function() {
             tour_handk: "Vui lòng chọn hạn đăng ký",
             tour_ngaybd: "Vui lòng chọn ngày bắt đầu",
             tour_ngaykt: "Vui lòng chọn ngày kết thúc",
-            tour_chiphi: {
-                required: "Vui lòng chọn chi phí",
-                minlength : "Chi phí phải lớn hơn hoặc bằng 1.000.000"
-            },
-            tour_soluong:{
-                required: "Vui lòng chọn số lượng",
-                min: "Số lượng phải lớn hơn 0"
-        },
+            tour_chiphi:  "Vui lòng chọn chi phí",
+            tour_soluong: "Vui lòng chọn số lượng",
             gd_id: "Vui lòng chọn giai đoạn",
             tour_daily: "Vui lòng chọn đại lý",
             tour_hinhanh: "Vui lòng chọn hình ảnh",
 
         }
     });
-});
-
-</script>
 
 
-   <script type="text/javascript">
+
+
+
+
 
 
     $('#formDemo').on('submit',function(event){
@@ -198,9 +188,12 @@ $(document).ready(function() {
         tour_soluong = $('#tour_soluong').val();
         gd_id = $('#gd_id').val();
         tour_daily = $('#tour_daily').val();
-        tour_hinhanh = $('#tour_hinhanh').val();
-
-
+        var file_data = $('#tour_hinhanh').prop('files');
+        //let tour_hinhanh = file_data.name;
+       //console.log(file_data);
+        //var type = file_data.type;
+        var form_data = new FormData();
+        form_data.append('tour_hinhanh', file_data);
                 $.ajax({
          url: "{{route('TOUR_XLThem')}}",
         type:"POST",
@@ -215,11 +208,12 @@ $(document).ready(function() {
         tour_soluong : tour_soluong,
         gd_id : gd_id,
         tour_daily : tour_daily,
-        tour_hinhanh : tour_hinhanh,
+        tour_hinhanh : file_data ,
 
         },
         success:function(data){
           alert(data.thongbao);
+          window.history.back(-2);
         },
         });
 
