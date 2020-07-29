@@ -66,6 +66,7 @@ class IndexController extends Controller
         $b = DB::table('Tour')->join('LichTrinh','LichTrinh.lt_id','=','Tour.lt_id')
             ->where('Tour.tour_id','=',$id)
             ->select('*')->get();
+
         $dk_t = DB::table('Tour')->join('LichTrinh','LichTrinh.lt_id','=','Tour.lt_id')
             ->join('DK_Tour','DK_Tour.tour_id','=','Tour.tour_id')
             ->join('CongDoanVien','CongDoanVien.cdv_id','=','DK_Tour.cdv_id')
@@ -91,9 +92,10 @@ class IndexController extends Controller
                 ],[
                     'dkt_soluong.required'=>'Vui lòng nhập số lượng cần đăng ký'
                 ]);
-            $travel = Tour::find($id);
-            $dkttt = DK_Tour::where('tour_id',$id)->get();
+           // $travel = Tour::find($id);
+           // $dkttt = DK_Tour::where('tour_id',$id)->get();
             $temp = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->get();
+
 
             if (sizeof($temp) == 0) {
                 $dkt = new DK_Tour();
@@ -101,11 +103,12 @@ class IndexController extends Controller
                 $dkt->tour_id = $id;
                 $dkt->tttp_id  = 2;
                 $dkt->dkt_soluong = $request->dkt_soluong;
+                return $dkt->dkt_soluong;
                 $dkt->save();
                 Session::flash('alert-info', 'Đăng ký thành công!!!');
                 return Redirect::back();
             }else{
-                Session::flash('alert-danger', 'Đăng ký tour đã tồn tại!!');
+                Session::flash('alert-danger', 'Đăng ký faile!!!');
                 return Redirect::back();
             }
         }

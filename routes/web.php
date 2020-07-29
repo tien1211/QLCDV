@@ -150,3 +150,12 @@ Route::group(['prefix' => 'frontend'], function () {
 
 
 });
+
+
+// Route::get('/hello',function(){
+//     return "Chao ban";
+// });
+
+// Route::get('user/{name?}', function ($name = 'Jonn') {
+//     return $name;
+// });

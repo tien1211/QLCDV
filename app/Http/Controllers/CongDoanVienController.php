@@ -31,7 +31,7 @@ class CongDoanVienController extends Controller
     public function getDanhSach(){
         $CongDoanVien = CongDoanVien::paginate(5);
         return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien);
-        
+
     }
 
     public function getThem(){
@@ -39,7 +39,7 @@ class CongDoanVienController extends Controller
     }
 
     public function postThem(Request $request){
-        $this->validate($request, 
+        $this->validate($request,
         [
             'cv_id' => 'required',
             'lnv_id' => 'required',
@@ -129,14 +129,14 @@ class CongDoanVienController extends Controller
                 //
                 $CongDoanVien->cdv_hinhanh = $fileName;
             }else{
-                $CongDoanVien->cdv_hinhanh=""; 
+                $CongDoanVien->cdv_hinhanh="";
             }
             $CongDoanVien->cdv_username = $request->cdv_username;
             $CongDoanVien->password =bcrypt($request->password);
             $CongDoanVien->cdv_quyen = $request->cdv_quyen;
             $CongDoanVien->save();
             Session::flash('alert-info', 'Thêm thành công!!!');
-            return redirect()->route('CDV_DanhSach');    
+            return redirect()->route('CDV_DanhSach');
     }
     public function getSua($id){
         $CongDoanVien =  CongDoanVien::find($id);
@@ -224,26 +224,26 @@ class CongDoanVienController extends Controller
                 //
                 $CongDoanVien->cdv_hinhanh = $fileName;
             }else{
-                $CongDoanVien->cdv_hinhanh= $CongDoanVien->cdv_hinhanh; 
+                $CongDoanVien->cdv_hinhanh= $CongDoanVien->cdv_hinhanh;
             }
             $CongDoanVien->cdv_quyen = $request->cdv_quyen;
             if($request->changepassword == "on"){
                 $this->validate($request, [
-                    
+
                     'password'=>'required|min:8|max:50',
                     'confirm_password'=>'required|same:password',
                     ],[
-                        
+
                         'password.required'=>'Vui lòng không được để trống mật khẩu',
                         'password.min'=>'Mật khẩu phải ít nhất 8 kí tự',
                         'password.max' => 'Mật khẩu không được quá 50 kí tự',
                         'confirm_password.required'=>'Vui lòng không được để trống xác nhận mật khẩu',
                         'confirm_password.same' => 'Mật khẩu không trùng khớp',
-                        
+
                     ]);
                 $CongDoanVien->password =bcrypt($request->password);
             }
-            
+
             $CongDoanVien->save();
 
             Session::flash('alert-info', 'Cập nhật thành công!!!');
@@ -257,12 +257,12 @@ class CongDoanVienController extends Controller
         Session::flash('alert-info', 'Xóa thành công!!!');
             return redirect()->route('CDV_DanhSach');
     }
-    
+
     public function getchitietCDV($id){
         $CongDoanVien = CongDoanVien::find($id);
         return view('admin.CongDoanVien.chitiet')->with('CongDoanVien',$CongDoanVien);
     }
-    
+
     public function postTimkiem(Request $request){
         $tukhoa = $request->tukhoa;
         $cv_id = $request->cv_id;
