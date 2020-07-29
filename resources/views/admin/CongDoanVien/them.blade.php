@@ -335,18 +335,4 @@
       </section>
   </div>
 </div>
-<<<<<<< HEAD
-@section('script')
-<script>
-      document.getElementById('signupForm').addEventListener('submit',sub);
-    function sub(e){
-        alert('hih');
-        e.preventDefault();
-
-
-            }
-</script>
 @endsection
-=======
-@endsection
->>>>>>> 8348a228aa4df71f57828403d108b64c640a8ce2

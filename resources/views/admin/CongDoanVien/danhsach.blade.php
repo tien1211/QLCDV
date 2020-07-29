@@ -125,7 +125,8 @@
             <center>{!! $CongDoanVien->links() !!}</center>
           </div>
             <a href="{{route('CDV_CNMHT')}}"><button type="button" class="btn btn-outline-info">Cập nhật mức hổ trợ</button></a>
-        </div>
+            <a href="{{route('CDV_Export')}}" class="btn btn-sm btn-primary float-right">Export</a>
+          </div>
       </div>
     </div>
   {{-- </div> --}}
