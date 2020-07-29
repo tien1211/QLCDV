@@ -78,12 +78,14 @@
                                     $i = 1;
                                 @endphp
                                 @foreach ($dk_t as $dk)
+                                @if($dk->tttp_id != 3)
                               <tr>
                               <td>{{$i}}</td>
                               <td>{{$dk->cdv_ten}}</td>
                               <td>{{$dk->lt_ten}} {{date('Y ',strtotime($dk->tour_handk))}}</td>
                               <td>{{$dk->dkt_soluong}}</td>
                               </tr>
+                                @endif
                               @php
                                   $i = $i+1;
                               @endphp
@@ -110,6 +112,11 @@
                             @endforeach
                         </div>
                         </div>
+                        @php
+                            foreach($temp as $t){
+                                $tttp_id = $t->tttp_id;
+                            }
+                        @endphp
                         @if ($now > $datail->tour_handk)
                             {{-- @if (isset($auth) && $auth->cdv_quyen ==1 && $now < $datail->tour_ngaybd)
                                 <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
@@ -150,7 +157,6 @@
                                 {{-- disabled --}}
                                 <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
                                     @csrf
-
                                         <div class="form-group mb-30">
                                             <label for="checkInDate">Chi phí:</label>
                                                 <div class="row no-gutters">
@@ -185,6 +191,70 @@
                                 </div>
                                 {{-- disabled --}}
                             {{-- @endif --}}
+                        @elseif(sizeof($temp) != 0 && $tttp_id != 3)
+                        @php
+                        foreach($temp as $t){
+                            $sl = $t->dkt_soluong;
+                        }
+                        @endphp
+                            <div class="form-group mb-30">
+                                <label for="checkInDate">Chi phí:</label>
+                                    <div class="row no-gutters">
+                                        <div class="col-12">
+                                        <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}} VND"  name="tour_chiphi" disabled>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="form-group mb-30">
+                                <label for="checkInDate">Số Lượng Đăng Ký:</label>
+                                    <div class="row no-gutters">
+                                        <div class="col-12">
+                                            <input type="number" min="1" max="20" disabled class="input-small form-control" name="dkt_soluong"  value="{{$sl}}">
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="form-group mb-30">
+                                <label for="checkInDate">Thành Tiền: </label>
+                                    <div class="row no-gutters">
+                                        <div class="col-12">
+                                        <input type="text"  class="input-small form-control" value="{{number_format($datail->tour_chiphi*$sl)}} VND" disabled>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" disabled class="btn roberto-btn w-100">Đã đăng ký</button>
+                            </div>
+                            <form action="{{route('cntour',['id'=> $datail->tour_id])}}" method="post">
+                                @csrf
+                            <div class="form-group mb-30">
+                            <label for="checkInDate">Cập nhật thêm người tham gia:</label>
+                                <div class="row no-gutters">
+                                    <div class="col-12">
+                                        <input type="number" min="1" max="20" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
+                                        @if($errors->has('dkt_soluong'))
+                                        <div style="color:red">{{ $errors->first('dkt_soluong')}}</div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-30">
+                                <label for="checkInDate">Thành Tiền: </label>
+                                    <div class="row no-gutters">
+                                        <div class="col-12">
+                                        <input type="text"  class="input-small form-control"  id='payment'  placeholder="Thành tiền" disabled>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" onclick="return confirm('Bạn có chắc muốn cập nhật không?');" class="btn roberto-btn w-100">Cập nhật</button>
+                            </div>
+                        </form>
+                        <form action="{{route('huytour',['id'=> $datail->tour_id])}}" method="post">
+                            @csrf
+                            <div class="form-group">
+                                <button type="submit" onclick="return confirm('Bạn có chắc muốn hủy đăng ký không?');" class="btn roberto-btn w-100">Hủy đăng ký</button>
+                            </div>
+                        </from>
                         @else
                             <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
                                 @csrf

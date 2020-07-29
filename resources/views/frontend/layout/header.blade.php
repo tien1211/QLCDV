@@ -56,7 +56,7 @@
                                 <li><a href="#">{{$auth->cdv_username}}</a>
                                     <ul class="dropdown">
                                         <li><a href="./index.html">Thông tin cá nhân</a></li>
-                                        <li><a href="./room.html">Quản Lý Tour</a></li>
+                                        <li><a href="{{route('quanlytour')}}">Quản Lý Tour</a></li>
                                         <li><a href="{{route('logout')}}">Đăng xuất</a></li>
                                     </ul>
                                 </li>
