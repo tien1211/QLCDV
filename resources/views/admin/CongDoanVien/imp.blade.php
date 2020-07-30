@@ -2,7 +2,7 @@
 @section('admin_content')
 <!-- page start-->
 
-<div class="row">
+{{-- <div class="row">
     <div class="col-sm-12">
         <section class="panel">
             <header class="panel-heading">
@@ -14,20 +14,66 @@
                 </span>
             </header>
             <div class="panel-body">
-                <form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
-                    <div id="drop">
-                        Drop Here
-                        <a>Browse</a>
-                        <input type="file" name="upl" multiple="">
+                
+                <form method="post" action="{{route('Import')}}" enctype="multipart/form-data">
+                    @csrf
+
+                    <div class="form-group ">
+                        <a href="samp/Samp.xlsx"><label for="username" class="control-label col-lg-3">DOWNLOAD MẪU EXCEL</label></a>
                     </div>
-                    <ul>
-                        <!-- The file uploads will be shown here -->
-                    </ul>
+                    
+                    <div class="form-group ">
+                        <label for="username" class="control-label col-lg-12">Chèn File:</label>
+                        
+                        <div class="col-sm-6 col-lg-12">
+                            <input class="form-control "  name="file" type="file">
+                            @if($errors->has('file')) 
+                            <div style="color:red">{{ $errors->first('file')}}</div>
+                            @endif
+                        </div>
+                    </div>
+                
                 </form>
             </div>
         </section>
     </div>
-</div>
+</div> --}}
 <!-- page end-->
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+            IMPORT DANH SÁCH CÔNG ĐOÀN VIÊN
+            </header>
+            <div class="panel-body">
+                <div class="form">
+                    <form class="cmxform form-horizontal " enctype="multipart/form-data" id="signupForm" method="post" action="{{route('Import')}}" novalidate="novalidate">
+                        @csrf
+                        <div class="form-group ">
+                            <div class="col-lg-12">
+                            <a href="samp/Samp.xlsx"><label for="username" class="control-label col-lg-3">DOWNLOAD MẪU EXCEL</label></a>
+                            </div>
+                            <br><br>
+                            <label for="username" class="control-label col-lg-3">FILE IMPORT</label>
+                            <div class="col-lg-6">
+                                <input class="form-control "  name="lt_file" type="file">
+                            </div>
+                        </div>
+            
+                        <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-6">
+                                <button class="btn btn-primary" type="submit">SUBMIT</button>
+                                <a href="{{route('LT_DanhSach')}}"><button class="btn btn-default" type="button">Thoát</button></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
 
 @endsection
