@@ -67,8 +67,6 @@
             <th>Số lượng người tham gia</th>
             <th>Chi phí phải trả</th>
             <th>Tình trạng thu phí</th>
-            <th>Cập nhật thu phí
-            </th>
         </tr>
         </thead> 
             @foreach ($cdv_dk as $key => $cdv)
@@ -79,19 +77,7 @@
                     <td>{{$cdv->cdv_ten}}</td>
                     <td>{{$cdv->dkt_soluong}}</td>
                     <td>{{number_format($cdv->dkt_soluong*$cdv->tour_chiphi)}} VNĐ</td>
-                    <td>
-                    <input type="hidden" value="{{$cdv->cdv_id}}" name="cdv_id">
-                    <select class="form-control m-bot15" name="tttp_id">
-                        @foreach($TinhTrangThuPhi as $tp)
-                        @if($cdv->tttp_id == $tp->tttp_id)
-                        <option selected value='{{$tp->tttp_id}}'>{{$tp->tinh_trang}}</option>
-                        @else
-                        <option value='{{$tp->tttp_id}}'>{{$tp->tinh_trang}}</option>
-                        @endif
-                        @endforeach
-                    </select>
-                    </td>
-                    <td><a><button type="submit" class="btn btn-outline-info">Cập nhật</button></a></td>
+                    <td>{{$cdv->tinh_trang}}</td>
                 </tr>
                 </form>
             @endforeach

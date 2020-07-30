@@ -177,10 +177,64 @@
                                                     <input type="text"  class="input-small form-control"  id='payment'  placeholder="Thành tiền" disabled>
                                                     </div>
                                                 </div>
+<<<<<<< HEAD
                                             </div>
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" disabled onclick="return confirm('Bạn có chắc muốn đăng ký không?');" class="btn roberto-btn w-100">HẾT HẠN ĐĂNG KÝ</button>
+=======
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" disabled onclick="return confirm('Bạn có chắc muốn đăng ký không?');" class="btn roberto-btn w-100">HẾT HẠN ĐĂNG KÝ</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                {{-- disabled --}}
+                            {{-- @endif --}}
+                        @elseif(sizeof($temp) != 0)
+                        @php
+                        foreach($temp as $t){
+                            $sl = $t->dkt_soluong;
+                        }
+                        @endphp
+                            <div class="form-group mb-30">
+                                <label for="checkInDate">Chi phí:</label>
+                                    <div class="row no-gutters">
+                                        <div class="col-12">
+                                        <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}} VND"  name="tour_chiphi" disabled>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="form-group mb-30">
+                                <label for="checkInDate">Số Lượng Đăng Ký:</label>
+                                    <div class="row no-gutters">
+                                        <div class="col-12">
+                                            <input type="number" min="1" max="20" disabled class="input-small form-control" name="dkt_soluong"  value="{{$sl}}">
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="form-group mb-30">
+                                <label for="checkInDate">Thành Tiền: </label>
+                                    <div class="row no-gutters">
+                                        <div class="col-12">
+                                        <input type="text"  class="input-small form-control" value="{{number_format($datail->tour_chiphi*$sl)}} VND" disabled>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" disabled class="btn roberto-btn w-100">Đã đăng ký</button>
+                            </div>
+                            <form action="{{route('cntour',['id'=> $datail->tour_id])}}" method="post">
+                                @csrf
+                            <div class="form-group mb-30">
+                            <label for="checkInDate">Cập nhật thêm người tham gia:</label>
+                                <div class="row no-gutters">
+                                    <div class="col-12">
+                                        <input type="number" min="1" max="50" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
+                                        @if($errors->has('dkt_soluong'))
+                                        <div style="color:red">{{ $errors->first('dkt_soluong')}}</div>
+                                        @endif
+>>>>>>> 5975510379c059773ad9612e4286eecd0fc91c09
                                     </div>
                                 </form>
                                 </div>
@@ -188,7 +242,7 @@
                             {{-- disabled --}}
                             {{-- @endif --}}
                         @else
-                            <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
+                            <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post" id="myForm">
                                 @csrf
                                     <div class="form-group mb-30">
                                         <label for="checkInDate">Chi phí:</label>
@@ -202,7 +256,13 @@
                                         <label for="checkInDate">Số Lượng Đăng Ký:</label>
                                             <div class="row no-gutters">
                                                 <div class="col-12">
-                                                    <input type="number" min="1" max="20" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
+                                                    @php
+                                                    foreach ($dk_t as $dk){
+                                                        $soluong = $dk->tour_soluong;
+                                                    }
+                                                    @endphp
+                                                    <input type="number" min="1" max="50" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
+                                                    <input type="hidden" id="soluong" value="{{$soluong}}">
                                                     @if($errors->has('dkt_soluong'))
                                                     <div style="color:red">{{ $errors->first('dkt_soluong')}}</div>
                                                     @endif
@@ -218,7 +278,7 @@
                                             </div>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" onclick="return confirm('Bạn có chắc muốn đăng ký không?');" class="btn roberto-btn w-100">Đăng Ký Tour</button>
+                                        <button type="submit" onclick="return confirm('Bạn có chắc muốn đăng ký không?');" class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button>
                                     </div>
                                 </form>
                             </div>
@@ -246,7 +306,16 @@
 
             // "$1,234,567,890.00"
             document.getElementById("payment").value = formatter.format(parseInt(x) * parseInt(y)) + " VND";
-
         }
+    </script>
+    <script type="text/javascript">
+    $('.check_quantity').click(function(){
+        var a = document.getElementById("soluong").value;
+        var b = document.getElementById("amount").value;
+        if(b > a){
+            location.reload();
+            alert("vượt quá số lượng đăng ký");
+        }
+    });
     </script>
 @endsection

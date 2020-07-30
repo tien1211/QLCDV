@@ -20,6 +20,7 @@
                     <ul class="sub">
 						<li><a href="{{route('CDV_DanhSach')}}">Danh Sách Công Đoàn Viên</a></li>
                     <li><a href="{{route('CDV_Them')}}">Thêm Công Đoàn Viên</a></li>
+                    <li><a href="{{route('CDV_formImp')}}">Import File Danh Sách</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">

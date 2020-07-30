@@ -10,8 +10,10 @@ use Validator;
 use Session;
 use DB;
 use Image;
+use Response;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\CongDoanVienExport;
+use App\Imports\CongDoanVienImport;
 
 
 
@@ -362,5 +364,17 @@ class CongDoanVienController extends Controller
         $name = $dataTime. '-' . 'DSCDV.xlsx';
         return Excel::download(new CongDoanVienExport, $name);
     }
-       
+    
+    public function getImport(){
+        return view('admin.CongDoanVien.imp');
+    }
+
+    public function Import(Request $request){
+        $file = $request->file;
+        Excel::import(new CongDoanVienImport, $file);
+        echo "Import successfully";
+    }
+
+
+   
 }
