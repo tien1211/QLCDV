@@ -112,11 +112,6 @@
                             @endforeach
                         </div>
                         </div>
-                        @php
-                            foreach($temp as $t){
-                                $tttp_id = $t->tttp_id;
-                            }
-                        @endphp
                         @if ($now > $datail->tour_handk)
                             {{-- @if (isset($auth) && $auth->cdv_quyen ==1 && $now < $datail->tour_ngaybd)
                                 <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
@@ -191,7 +186,7 @@
                                 </div>
                                 {{-- disabled --}}
                             {{-- @endif --}}
-                        @elseif(sizeof($temp) != 0 && $tttp_id != 3)
+                        @elseif(sizeof($temp) != 0)
                         @php
                         foreach($temp as $t){
                             $sl = $t->dkt_soluong;
@@ -230,7 +225,7 @@
                             <label for="checkInDate">Cập nhật thêm người tham gia:</label>
                                 <div class="row no-gutters">
                                     <div class="col-12">
-                                        <input type="number" min="1" max="20" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
+                                        <input type="number" min="1" max="50" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
                                         @if($errors->has('dkt_soluong'))
                                         <div style="color:red">{{ $errors->first('dkt_soluong')}}</div>
                                         @endif
@@ -256,7 +251,7 @@
                             </div>
                         </from>
                         @else
-                            <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
+                            <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post" id="myForm">
                                 @csrf
                                     <div class="form-group mb-30">
                                         <label for="checkInDate">Chi phí:</label>
@@ -270,7 +265,13 @@
                                         <label for="checkInDate">Số Lượng Đăng Ký:</label>
                                             <div class="row no-gutters">
                                                 <div class="col-12">
-                                                    <input type="number" min="1" max="20" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
+                                                    @php
+                                                    foreach ($dk_t as $dk){
+                                                        $soluong = $dk->tour_soluong;
+                                                    }
+                                                    @endphp
+                                                    <input type="number" min="1" max="50" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
+                                                    <input type="hidden" id="soluong" value="{{$soluong}}">
                                                     @if($errors->has('dkt_soluong'))
                                                     <div style="color:red">{{ $errors->first('dkt_soluong')}}</div>
                                                     @endif
@@ -286,7 +287,7 @@
                                             </div>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" onclick="return confirm('Bạn có chắc muốn đăng ký không?');" class="btn roberto-btn w-100">Đăng Ký Tour</button>
+                                        <button type="submit" onclick="return confirm('Bạn có chắc muốn đăng ký không?');" class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button>
                                     </div>
                                 </form>
                             </div>
@@ -314,7 +315,16 @@
 
             // "$1,234,567,890.00"
             document.getElementById("payment").value = formatter.format(parseInt(x) * parseInt(y)) + " VND";
-
         }
+    </script>
+    <script type="text/javascript">
+    $('.check_quantity').click(function(){
+        var a = document.getElementById("soluong").value;
+        var b = document.getElementById("amount").value;
+        if(b > a){
+            location.reload();
+            alert("vượt quá số lượng đăng ký");
+        }
+    });
     </script>
 @endsection
