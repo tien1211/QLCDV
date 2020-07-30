@@ -51,7 +51,8 @@ Route::group(['prefix' => 'admin'], function () {
     })->name('admin');
 
     Route::group(['prefix' => 'CongDoanVien'], function () {
-
+        //download sample
+        Route::get('/download', 'CongDoanVienController@getDownload')->name('download');
         //Import Excel
         Route::get('/CDV_Import','CongDoanVienController@getImport')->name('CDV_formImp');
         Route::post('/CDV_Import/Import','CongDoanVienController@Import')->name('Import');

@@ -10,6 +10,7 @@ use Validator;
 use Session;
 use DB;
 use Image;
+use Response;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\CongDoanVienExport;
 use App\Imports\CongDoanVienImport;
@@ -373,4 +374,7 @@ class CongDoanVienController extends Controller
         Excel::import(new CongDoanVienImport, $file);
         echo "Import successfully";
     }
+
+
+   
 }
