@@ -55,7 +55,7 @@ Route::group(['prefix' => 'admin'], function () {
         //Export Excel
 
         Route::get('/CDV_Export/Export','CongDoanVienController@Export')->name('CDV_Export');
-        
+
         //Danh Sách Công Đoàn Viên
         Route::get('/CDV_DS', 'CongDoanVienController@getDanhSach')->name('CDV_DanhSach');
 

@@ -53,7 +53,31 @@ class TourController extends Controller
 
     public function postThem(Request $request){
 
-        // if ($request->ajax()) {
+        $Tour = new Tour();
+        $Tour->lt_id = $request->lt_id;
+         $Tour->tour_handk = $request->tour_handk;
+         $Tour->tour_ngaybd = $request->tour_ngaybd;
+        $Tour->gd_id = $request->gd_id;
+        $Tour->tour_ngaykt = $request->tour_ngaykt;
+        $Tour->tour_chiphi = $request->tour_chiphi;
+        $Tour->tour_soluong = $request->tour_soluong;
+        $Tour->tour_daily = $request->tour_daily;
+
+        if ($request->hasFile('tour_hinhanh')){
+
+        $file = $request->file('tour_hinhanh');
+        $name = $file->getClientOriginalName();
+        $file->move('upload/tour/', $name);
+
+    }
+        $Tour->tour_hinhanh = $name;
+       $Tour->tour_trangthai = 1;
+         $Tour->save();
+        return \response(['mess'=>'Da them thanh cong!']);
+
+}
+    //}
+   // if ($request->ajax()) {
 
             // Validator::make($request->all(),
             // [
@@ -99,41 +123,54 @@ class TourController extends Controller
         // Bắt các điều kiện nhập vào
 
 
-        $Tour = new Tour();
-        $Tour->lt_id = $request->lt_id;
-        $Tour->tour_handk = $request->tour_handk;
-        $Tour->tour_ngaybd = $request->tour_ngaybd;
-        $Tour->tour_ngaykt = $request->tour_ngaykt;
-        $Tour->tour_chiphi = $request->tour_chiphi;
-        $Tour->tour_soluong = $request->tour_soluong;
-        $Tour->gd_id = $request->gd_id;
-        $Tour->tour_daily = $request->tour_daily;
+        // $Tour = new Tour();
+        // $Tour->lt_id = $request->lt_id;
+        // $Tour->tour_handk = $request->tour_handk;
+        // $Tour->tour_ngaybd = $request->tour_ngaybd;
+        // $Tour->tour_ngaykt = $request->tour_ngaykt;
+        // $Tour->tour_chiphi = $request->tour_chiphi;
+        // $Tour->tour_soluong = $request->tour_soluong;
+        // $Tour->gd_id = $request->gd_id;
+        // $Tour->tour_daily = $request->tour_daily;
+        // $Tour->tour_hinhanh = $request->tour_hinhanh;
+        // $file = $request->tour_hinhanh;
 
-        if($request->hasFile('file_data')){
+      //  return $file;
 
-            $file = $request->file('file_data');
-            $duoi = $file->getClientOriginalExtension();
+        // if($request->hasFile('tour_hinhanh')){
 
-            if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
-                // Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
-                return \response(['thongbao'=>'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!'  ]);
-            }
+        //     $file = $request->file('tour_hinhanh');
+        //     $duoi = $file->getClientOriginalExtension();
 
-            $name = $file->getClientOriginalName();
+        //     if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
+        //         // Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
+        //         return \response(['thongbao'=>'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!'  ]);
+        //     }
 
-            $file->move("upload/tour",$name);
-            $Tour->tour_hinhanh = $name;
+        //      $name = $file->getClientOriginalName();
+
+        // //     //return $name;
+
+        //      $file->move('upload/tour/',$name);
+
+        //     //  return response()->json([
+        //     //     'message' => 'Image upload successfully',
+        //     //     'uploaded_image' => '<img src="/upload/tour/'.$name.'/>',
+        //     //    ]);
 
 
-        }else{
-            $Tour->tour_hinhanh="";
-        }
+        //     // $Tour->tour_hinhanh = $name;
+
+
+        // }else{
+        //     $Tour->tour_hinhanh="";
+        // }
         //return  $Tour->tour_hinhanh;
-        $Tour->tour_trangthai = 1;
-        $Tour->save();
+        // $Tour->tour_trangthai = 1;
+        // $Tour->save();
 
-         return \response(['thongbao'=>'Thêm thành công'  ]);
-        }
+        //  return \response(['thongbao'=>'Thêm thành công'  ]);
+        // }
 
 
     public function getSua($id){
