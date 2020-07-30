@@ -14,15 +14,14 @@
                 </span>
             </header>
             <div class="panel-body">
-                <form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
-                    <div id="drop">
+            <form id="upload" method="post" action="{{route('Import')}}" enctype="multipart/form-data">
+                @csrf    
+               
                         Drop Here
                         <a>Browse</a>
-                        <input type="file" name="upl" multiple="">
-                    </div>
-                    <ul>
-                        <!-- The file uploads will be shown here -->
-                    </ul>
+                        <input type="file" name="file" multiple="">
+                    
+                        <button type="submit">Gởi</button>
                 </form>
             </div>
         </section>

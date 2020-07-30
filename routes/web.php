@@ -52,6 +52,10 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['prefix' => 'CongDoanVien'], function () {
 
+        //Import Excel
+        Route::get('/CDV_Import','CongDoanVienController@getImport')->name('CDV_formImp');
+        Route::post('/CDV_Import/Import','CongDoanVienController@Import')->name('Import');
+
         //Export Excel
 
         Route::get('/CDV_Export/Export','CongDoanVienController@Export')->name('CDV_Export');
