@@ -10,7 +10,7 @@
           <div class="panel-body">
 
               <div class="form" >
-              <form class="cmxform form-horizontal" enctype="multipart/form-data" id="signupForm" novalidate="novalidate">
+              <form class="cmxform form-horizontal"method="post" action="{{route('CDV_XLSua',['id'=> $CongDoanVien->cdv_id])}}" enctype="multipart/form-data" id="signupForm" novalidate="novalidate">
                 @csrf
 
                 {{-- Mức Đơn vị --}}
@@ -371,10 +371,9 @@
             }
         });
     });
-
 </script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
     $('#signupForm').on('submit',function(event){
         event.preventDefault();
@@ -436,6 +435,6 @@
           },
          });
         });
-      </script>
+      </script> -->
 
 @endsection
