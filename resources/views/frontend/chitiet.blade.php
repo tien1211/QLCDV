@@ -225,7 +225,13 @@
                             <label for="checkInDate">Cập nhật thêm người tham gia:</label>
                                 <div class="row no-gutters">
                                     <div class="col-12">
-                                        <input type="number" min="1" max="50" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
+                                        @php
+                                        foreach ($dk_t as $dk){
+                                            $soluong = $dk->tour_soluong;
+                                        }
+                                        @endphp
+                                        <input type="number" min="1" max="100" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
+                                        <input type="hidden" id="soluong" value="{{$soluong}}">
                                         @if($errors->has('dkt_soluong'))
                                         <div style="color:red">{{ $errors->first('dkt_soluong')}}</div>
                                         @endif
@@ -241,7 +247,7 @@
                                     </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" onclick="return confirm('Bạn có chắc muốn cập nhật không?');" class="btn roberto-btn w-100">Cập nhật</button>
+                                <button type="submit" onclick="return confirm('Bạn có chắc muốn cập nhật không?');" class="btn roberto-btn w-100 check_quantity">Cập nhật</button>
                             </div>
                         </form>
                         <form action="{{route('huytour',['id'=> $datail->tour_id])}}" method="post">
@@ -270,7 +276,7 @@
                                                         $soluong = $dk->tour_soluong;
                                                     }
                                                     @endphp
-                                                    <input type="number" min="1" max="50" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
+                                                    <input type="number" min="1" max="100" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
                                                     <input type="hidden" id="soluong" value="{{$soluong}}">
                                                     @if($errors->has('dkt_soluong'))
                                                     <div style="color:red">{{ $errors->first('dkt_soluong')}}</div>
