@@ -58,30 +58,38 @@ class IndexController extends Controller
 
 
     public function getChiTiet($id){
-        $datail=Tour::find($id);
-        $a = DB::table('LichTrinh')->join('Tour','LichTrinh.lt_id','=','Tour.lt_id')
-            ->join('Anh_Tour','Anh_Tour.lt_id','=','LichTrinh.lt_id')
-            ->where('Tour.tour_id','=',$id)
-            ->select('*')->get();
-        $b = DB::table('Tour')->join('LichTrinh','LichTrinh.lt_id','=','Tour.lt_id')
-            ->where('Tour.tour_id','=',$id)
-            ->select('*')->get();
-
-        $dk_t = DB::table('Tour')->join('LichTrinh','LichTrinh.lt_id','=','Tour.lt_id')
-            ->join('DK_Tour','DK_Tour.tour_id','=','Tour.tour_id')
+        
+            $datail=Tour::find($id);
+            $a = DB::table('LichTrinh')->join('Tour','LichTrinh.lt_id','=','Tour.lt_id')
+                ->join('Anh_Tour','Anh_Tour.lt_id','=','LichTrinh.lt_id')
+                ->where('Tour.tour_id','=',$id)
+                ->select('*')->get();
+            $b = DB::table('Tour')->join('LichTrinh','LichTrinh.lt_id','=','Tour.lt_id')
+                ->where('Tour.tour_id','=',$id)
+                ->select('*')->get();
+            $cdv_dk = DB::table('dk_tour')
+            ->join('Tour','Tour.tour_id','=','dk_Tour.tour_id')
             ->join('CongDoanVien','CongDoanVien.cdv_id','=','DK_Tour.cdv_id')
             ->where('Tour.tour_id',$id)->select('*')->get();
-        $temp = DB::table('DK_Tour')
-            ->join('tour','tour.tour_id','=','DK_Tour.tour_id')
-            ->where([['dk_tour.tour_id',$id],['cdv_id',Auth::user()->cdv_id],])
-            ->get();
-
-        //dd($temp);
-        // return $dk_t;
-        return view('frontend.chitiet')->with('a',$a)->with('b',$b)
-        ->with('datail',$datail)
-        ->with('dk_t',$dk_t)
-        ->with('temp',$temp);
+            //dd($cdv_dk);
+        if(!Auth::check()){
+            $temp = [];
+                //dd($temp);
+            return view('frontend.chitiet')->with('a',$a)->with('b',$b)
+                ->with('datail',$datail)
+                ->with('cdv_dk',$cdv_dk)
+                ->with('temp',$temp);
+        }else{
+            $temp = DB::table('DK_Tour')
+                ->join('tour','tour.tour_id','=','DK_Tour.tour_id')
+                ->where([['dk_tour.tour_id',$id],['cdv_id',Auth::user()->cdv_id],['tttp_id','<>',3]])
+                ->get();
+                //dd($temp);
+            return view('frontend.chitiet')->with('a',$a)->with('b',$b)
+                ->with('datail',$datail)
+                ->with('cdv_dk',$cdv_dk)
+                ->with('temp',$temp);
+        }
     }
 
 
@@ -100,7 +108,9 @@ class IndexController extends Controller
                 ]);
            // $travel = Tour::find($id);
             //$dkttt = DK_Tour::where('tour_id',$id)->get();
-            $temp = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->get();
+            $tour = DB::table('tour')->where('tour_id',$id)->first();
+            $soluongconlai = $tour->tour_soluong - $request->dkt_soluong;
+            //dd($soluongconlai);
                 $dkt = new DK_Tour();
                 $dkt->cdv_id = Auth::user()->cdv_id;
                 $dkt->tour_id = $id;
@@ -108,6 +118,7 @@ class IndexController extends Controller
                 $dkt->dkt_soluong = $request->dkt_soluong;
                 //return $dkt->dkt_soluong;
                 $dkt->save();
+                DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $soluongconlai]);
                 Session::flash('alert-info', 'Đăng ký thành công!!!');
                 return Redirect::back();
         }
@@ -115,29 +126,31 @@ class IndexController extends Controller
     
     public function postUpdate(Request $request, $id)
     {
-        if(!Auth::check()){
-            Session::flash('alert-danger', 'Bạn cần đăng nhập để đăng ký tour!!');
-            return Redirect::back();
-        }else{
             $this->validate($request, [
-
                 'dkt_soluong'=>'required'
-
                 ],[
                     'dkt_soluong.required'=>'Vui lòng nhập số lượng cần cập nhật'
                 ]);
+            // cập nhật số lượng người tham gia
             $tourtrc = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->first();
             $soluongmoi = $tourtrc->dkt_soluong + $request->dkt_soluong;
-            //dd($soluongmoi);
             $temp = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->update(['dkt_soluong' => $soluongmoi]);
+            // cập nhật số lượng tour
+            $tour = DB::table('tour')->where('tour_id',$id)->first();
+            $soluongconlai = $tour->tour_soluong - $request->dkt_soluong;
+            DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $soluongconlai]);
             Session::flash('alert-info', 'Cập nhật thành công!!!');
             return Redirect::back();
-        }
     }
 
     public function postDelete($id)
     {
-            $temp = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->update(['tttp_id' => 3]);
+            $temp = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->first();
+            $tour = DB::table('tour')->where('tour_id',$id)->first();
+            $soluongconlai = $tour->tour_soluong + $temp->dkt_soluong;
+
+            DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->update(['tttp_id' => 3]);
+            DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $soluongconlai]);
             Session::flash('alert-info', 'Hủy đăng ký thành công!!!');
             return Redirect::back();
     }

@@ -53,7 +53,31 @@ class TourController extends Controller
 
     public function postThem(Request $request){
 
-        // if ($request->ajax()) {
+        $Tour = new Tour();
+        $Tour->lt_id = $request->lt_id;
+         $Tour->tour_handk = $request->tour_handk;
+         $Tour->tour_ngaybd = $request->tour_ngaybd;
+        $Tour->gd_id = $request->gd_id;
+        $Tour->tour_ngaykt = $request->tour_ngaykt;
+        $Tour->tour_chiphi = $request->tour_chiphi;
+        $Tour->tour_soluong = $request->tour_soluong;
+        $Tour->tour_daily = $request->tour_daily;
+
+        if ($request->hasFile('tour_hinhanh')){
+
+        $file = $request->file('tour_hinhanh');
+        $name = $file->getClientOriginalName();
+        $file->move('upload/tour/', $name);
+
+    }
+        $Tour->tour_hinhanh = $name;
+       $Tour->tour_trangthai = 1;
+         $Tour->save();
+        return \response(['mess'=>'Da them thanh cong!']);
+
+}
+    //}
+   // if ($request->ajax()) {
 
             // Validator::make($request->all(),
             // [
@@ -99,37 +123,54 @@ class TourController extends Controller
         // Bắt các điều kiện nhập vào
 
 
-        $Tour = new Tour();
-        $Tour->lt_id = $request->lt_id;
-        $Tour->tour_handk = $request->tour_handk;
-        $Tour->tour_ngaybd = $request->tour_ngaybd;
-        $Tour->tour_ngaykt = $request->tour_ngaykt;
-        $Tour->tour_chiphi = $request->tour_chiphi;
-        $Tour->tour_soluong = $request->tour_soluong;
-        $Tour->gd_id = $request->gd_id;
-        $Tour->tour_daily = $request->tour_daily;
+        // $Tour = new Tour();
+        // $Tour->lt_id = $request->lt_id;
+        // $Tour->tour_handk = $request->tour_handk;
+        // $Tour->tour_ngaybd = $request->tour_ngaybd;
+        // $Tour->tour_ngaykt = $request->tour_ngaykt;
+        // $Tour->tour_chiphi = $request->tour_chiphi;
+        // $Tour->tour_soluong = $request->tour_soluong;
+        // $Tour->gd_id = $request->gd_id;
+        // $Tour->tour_daily = $request->tour_daily;
+        // $Tour->tour_hinhanh = $request->tour_hinhanh;
+        // $file = $request->tour_hinhanh;
 
-        if($request->hasFile('tour_hinhanh')){
-            $file = $request->file('tour_hinhanh');
-            $duoi = $file->getClientOriginalExtension();
+      //  return $file;
 
-            if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
-                Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
-                return redirect()->route('Tour_Them');
-            }
+        // if($request->hasFile('tour_hinhanh')){
 
-            $name = $file->getClientOriginalName();
-            $file->move("upload/tour",$name);
-            $Tour->tour_hinhanh = $name;
+        //     $file = $request->file('tour_hinhanh');
+        //     $duoi = $file->getClientOriginalExtension();
 
-        }else{
-            $Tour->tour_hinhanh="";
-        }
-        $Tour->tour_trangthai = 1;
-        $Tour->save();
+        //     if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
+        //         // Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
+        //         return \response(['thongbao'=>'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!'  ]);
+        //     }
 
-         return \response(['thongbao'=>'Thêm thành công'  ]);
-        }
+        //      $name = $file->getClientOriginalName();
+
+        // //     //return $name;
+
+        //      $file->move('upload/tour/',$name);
+
+        //     //  return response()->json([
+        //     //     'message' => 'Image upload successfully',
+        //     //     'uploaded_image' => '<img src="/upload/tour/'.$name.'/>',
+        //     //    ]);
+
+
+        //     // $Tour->tour_hinhanh = $name;
+
+
+        // }else{
+        //     $Tour->tour_hinhanh="";
+        // }
+        //return  $Tour->tour_hinhanh;
+        // $Tour->tour_trangthai = 1;
+        // $Tour->save();
+
+        //  return \response(['thongbao'=>'Thêm thành công'  ]);
+        // }
 
 
     public function getSua($id){
@@ -143,30 +184,30 @@ class TourController extends Controller
     public function postSua(Request $request, $id){
 
         //Bắt các điều kiện nhập vào
-        $this->validate($request,
-        [
-            'lt_id' => 'required',
-            'tour_handk' => 'required',
-            'tour_ngaybd' => 'required',
-            'tour_ngaykt' => 'required',
-            'tour_chiphi' => 'required | numeric',
-            'tour_soluong' => 'required | numeric',
-            'gd_id' => 'required',
-            'tour_daily' => 'required',
-            'tour_hinhanh' =>   'required',
-        ]
-        ,
-        [
-            'lt_id.required' => 'Bạn chưa nhập lịch trình!',
-            'tour_handk.required' => 'Bạn chưa nhập hạn đăng ký!',
-            'tour_ngaybd.required' => 'Bạn chưa nhập ngày bắt đầu!',
-            'tour_ngaykt.required' => 'Bạn chưa nhập ngày kết thúc!',
-            'tour_chiphi.required' => 'Bạn chưa nhập chi phí!',
-            'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
-            'gd_id.required' => 'Bạn chưa nhập giai đoạn!',
-            'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
-            'tour_hinhanh.required' => 'Bạn chưa chọn hình ảnh!',
-        ]);
+        // $this->validate($request,
+        // [
+        //     'lt_id' => 'required',
+        //     'tour_handk' => 'required',
+        //     'tour_ngaybd' => 'required',
+        //     'tour_ngaykt' => 'required',
+        //     'tour_chiphi' => 'required | numeric',
+        //     'tour_soluong' => 'required | numeric',
+        //     'gd_id' => 'required',
+        //     'tour_daily' => 'required',
+        //     'tour_hinhanh' =>   'required',
+        // ]
+        // ,
+        // [
+        //     'lt_id.required' => 'Bạn chưa nhập lịch trình!',
+        //     'tour_handk.required' => 'Bạn chưa nhập hạn đăng ký!',
+        //     'tour_ngaybd.required' => 'Bạn chưa nhập ngày bắt đầu!',
+        //     'tour_ngaykt.required' => 'Bạn chưa nhập ngày kết thúc!',
+        //     'tour_chiphi.required' => 'Bạn chưa nhập chi phí!',
+        //     'tour_soluong.required' => 'Bạn chưa nhập số lượng!',
+        //     'gd_id.required' => 'Bạn chưa nhập giai đoạn!',
+        //     'tour_daily.required' => 'Bạn chưa nhập địa điểm!',
+        //     'tour_hinhanh.required' => 'Bạn chưa chọn hình ảnh!',
+        // ]);
 
         $Tour = Tour::find($id);
         $Tour->lt_id = $request->lt_id;
@@ -196,9 +237,12 @@ class TourController extends Controller
         }
         $Tour->tour_trangthai = 1;
         $Tour->save();
-        Session::put('message','Sửa thành công!!!');
-                // Session::flash('alert-info', 'Sửa thành công!!!');
-        return redirect()->route('TOUR_Sua');
+        // Session::put('message','Sửa thành công!!!');
+               // Session::flash('alert-info', 'Sửa thành công!!!');
+       // return redirect()->route('TOUR_DS');
+        // return view('TOUR_DS',compact('Tour'));
+        return \response(['thongbao'=>'Sửa thành công'  ]);
+
     }
 
 
