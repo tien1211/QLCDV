@@ -29,7 +29,7 @@
 
 @endif
 
-<form class="cmxform form-horizontal" enctype="multipart/form-data" method="post" action="{{route('TOUR_XLSua',['id'=> $Tour->tour_id])}}" novalidate="novalidate" >
+{{-- <form class="cmxform form-horizontal" enctype="multipart/form-data" method="post" action="{{route('TOUR_XLSua',['id'=> $Tour->tour_id])}}" novalidate="novalidate" > --}}
 
     @csrf
 
@@ -46,7 +46,7 @@
                 </header>
                 <div class="panel-body">
                     <div class="form">
-                        <form class="cmxform form-horizontal " enctype="multipart/form-data" id="formDemo" method="get" action="" novalidate="novalidate">
+                        <form class="cmxform form-horizontal " enctype="multipart/form-data" id="formDemo1" method="get" action="" novalidate="novalidate">
                             <div class="form-group ">
                                 <label for="firstname" class="control-label col-lg-3">Lịch trình</label>
                                 <div class="col-lg-3">
@@ -119,12 +119,26 @@
                                 <input class="form-control" value="{{$Tour->tour_daily}}"  name="tour_daily" type="text">
                                 </div>
                             </div>
-                            <div class="form-group ">
+                            {{-- <div class="form-group ">
                                 <label for="email" class="control-label col-lg-3">Hình ảnh</label>
                                 <div class="col-lg-6">
-                                <input class="form-control" value="{{$Tour->tour_hinhanh}}"  name="tour_hinhanh" type="file">
+
+                                <input class="form-control" value="{{$Tour->tour_hinhanh}}"  name="tour_hinhanh" id="tour_hinhanh" type="file">
                                 </div>
-                            </div>
+                            </div> --}}
+
+                            <div class="form-group ">
+                                <label for="email" class="control-label col-lg-3">Ảnh tour</label>
+                                <div class="col-lg-6">
+                                  <img alt="" src="upload/tour/{{$Tour->tour_hinhanh}}" style="width: 15rem">
+                                  </div>
+                              </div>
+                              <div class="form-group ">
+                                <label for="firstname" class="control-label col-lg-3">Ảnh tour</label>
+                                <div class="col-lg-6">
+                                    <input class="form-control " id="tour_hinhanh" name="tour_hinhanh" type="file">
+                                  </div>
+                              </div>
 
                             <div class="form-group">
                                 <div class="col-lg-offset-3 col-lg-6">
@@ -139,21 +153,16 @@
         </div>
     </div>
 
-
     </form>
 
 @endsection
 
 @section('script')
 
-<script type="text/javascript">
-
-
-
-
+<script>
 
     //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
-    $("#formDemo").validate({
+    $("#formDemo1").validate({
         rules: {
             lt_id: "required",
             tour_handk: "required",
@@ -170,69 +179,76 @@
             tour_handk: "Vui lòng chọn hạn đăng ký",
             tour_ngaybd: "Vui lòng chọn ngày bắt đầu",
             tour_ngaykt: "Vui lòng chọn ngày kết thúc",
-            tour_chiphi: {
-                required: "Vui lòng chọn chi phí",
-                minlength : "Chi phí phải lớn hơn hoặc bằng 1.000.000"
-            },
-            tour_soluong:{
-                required: "Vui lòng chọn số lượng",
-                min: "Số lượng phải lớn hơn 0"
-        },
+            tour_chiphi:  "Vui lòng chọn chi phí",
+            tour_soluong: "Vui lòng chọn số lượng",
             gd_id: "Vui lòng chọn giai đoạn",
             tour_daily: "Vui lòng chọn đại lý",
             tour_hinhanh: "Vui lòng chọn hình ảnh",
 
         }
     });
-});
-
-</script>
 
 
-   <script type="text/javascript">
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+        //xử lý khi có sự kiện click
+        $('#formDemo1').on('submit', function (e) {
+            //Lấy ra files
+              e.preventDefault();
+            var lt_id = $('#lt_id').val();
+            var tour_handk = $('#tour_handk').val();
+            var tour_ngaybd = $('#tour_ngaybd').val();
+            var gd_id = $('#gd_id').val();
 
+            var tour_ngaykt = $('#tour_ngaykt').val();
+            var tour_chiphi = $('#tour_chiphi').val();
+            var tour_soluong = $('#tour_soluong').val();
+            var tour_daily = $('#tour_daily').val();
+             var file_data = $('#tour_hinhanh').prop('files')[0];
 
-    $('#formDemo').on('submit',function(event){
+            //lấy ra kiểu file
+            var type = file_data.type;
+            //Xét kiểu file được upload
+            var match = ["image/gif", "image/png", "image/jpg",];
+            //kiểm tra kiểu file
+            if (type == match[0] || type == match[1] || type == match[2]) {
+                //khởi tạo đối tượng form data
+                var form_data = new FormData();
 
-      event.preventDefault();
+                 form_data.append('lt_id', lt_id);
+                 form_data.append('tour_handk', tour_handk);
+                 form_data.append('tour_ngaybd', tour_ngaybd);
+                  form_data.append('gd_id', gd_id);
+                form_data.append('tour_ngaykt', tour_ngaykt);
+                form_data.append('tour_chiphi', tour_chiphi);
+                form_data.append('tour_soluong', tour_soluong);
+                form_data.append('tour_daily', tour_daily);
+                 form_data.append('tour_hinhanh', file_data);
 
-        lt_id = $('#lt_id').val();
-        tour_handk = $('#tour_handk').val();
-        tour_ngaybd = $('#tour_ngaybd').val();
-        tour_ngaykt = $('#tour_ngaykt').val();
-        tour_chiphi = $('#tour_chiphi').val();
-        tour_soluong = $('#tour_soluong').val();
-        gd_id = $('#gd_id').val();
-        tour_daily = $('#tour_daily').val();
-        tour_hinhanh = $('#tour_hinhanh').val();
-
-
+                //sử dụng ajax post
                 $.ajax({
-         url: "{{route('TOUR_XLSua',['id'=>'tour_id'])}}",
-        type:"POST",
-        data:{
-            "_token": "{{ csrf_token() }}",
+                    url: "{{route('TOUR_XLSua',['id'=> $Tour->tour_id])}}", // gửi đến file upload.php
+                    dataType: 'text',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data:form_data,
+                    type: 'post',
+                    success: function (res) {
+                        $('.status').text(res);
+                        $('#tour_hinhanh').val('');
+                      window.location =" {{route('TOUR_DanhSach')}}";
 
-        lt_id  : lt_id,
-        tour_handk : tour_handk,
-        tour_ngaybd : tour_ngaybd,
-        tour_ngaykt : tour_ngaykt,
-        tour_chiphi : tour_chiphi,
-        tour_soluong : tour_soluong,
-        gd_id : gd_id,
-        tour_daily : tour_daily,
-        tour_hinhanh : tour_hinhanh,
+                    }
+                });
+            }
 
-        },
-        success:function(data){
-          alert(data.thongbao);
-        },
+             return false;
         });
-
-        });
-
-      </script>
-
+    </script>
 
 @endsection
 
