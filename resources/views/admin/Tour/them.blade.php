@@ -142,6 +142,36 @@
 @section('script')
 <script>
 
+    //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
+    $("#formDemo1").validate({
+        rules: {
+            lt_id: "required",
+            tour_handk: "required",
+            tour_ngaybd: "required",
+            tour_ngaykt: "required",
+            tour_chiphi: "required",
+            tour_soluong: "required",
+            gd_id: "required",
+            tour_daily: "required",
+            tour_hinhanh: "required",
+        },
+        messages: {
+            lt_id: "Vui lòng chọn lịch trình",
+            tour_handk: "Vui lòng chọn hạn đăng ký",
+            tour_ngaybd: "Vui lòng chọn ngày bắt đầu",
+            tour_ngaykt: "Vui lòng chọn ngày kết thúc",
+            tour_chiphi:  "Vui lòng chọn chi phí",
+            tour_soluong: "Vui lòng chọn số lượng",
+            gd_id: "Vui lòng chọn giai đoạn",
+            tour_daily: "Vui lòng chọn đại lý",
+            tour_hinhanh: "Vui lòng chọn hình ảnh",
+
+        }
+    });
+
+
+
+
 
 
     $.ajaxSetup({
@@ -193,116 +223,17 @@
                     data:form_data,
                     type: 'post',
                     success: function (res) {
-                            console.log(res);
                         $('.status').text(res);
                         $('#tour_hinhanh').val('');
-                    //    window.history.back(-2);
+                      window.location =" {{route('TOUR_DanhSach')}}";
 
 
                     }
                 });
             }
-            // else {
-            //     $('.status').text('Chỉ được upload file ảnh');
-            //     $('#tour_hinhanh').val('');
-            // }
-            // return false;
+
+             return false;
         });
     </script>
-{{--
 
-<script type="text/javascript">
-
-
-    //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
-    $("#formDemo").validate({
-        rules: {
-            // lt_id: "required",
-            // tour_handk: "required",
-            // tour_ngaybd: "required",
-            // tour_ngaykt: "required",
-            // tour_chiphi: "required",
-            // tour_soluong: "required",
-            // gd_id: "required",
-            tour_daily: "required",
-            tour_hinhanh: "required",
-        },
-        messages: {
-            // lt_id: "Vui lòng chọn lịch trình",
-            // tour_handk: "Vui lòng chọn hạn đăng ký",
-            // tour_ngaybd: "Vui lòng chọn ngày bắt đầu",
-            // tour_ngaykt: "Vui lòng chọn ngày kết thúc",
-            // tour_chiphi:  "Vui lòng chọn chi phí",
-            // tour_soluong: "Vui lòng chọn số lượng",
-            // gd_id: "Vui lòng chọn giai đoạn",
-            tour_daily: "Vui lòng chọn đại lý",
-            tour_hinhanh: "Vui lòng chọn hình ảnh",
-
-        }
-    });
-
-
-
-
-
-
-
-
-    $('#formDemo').on('submit',function(event){
-
-      event.preventDefault();
-
-        // lt_id = $('#lt_id').val();
-        // tour_handk = $('#tour_handk').val();
-        // tour_ngaybd = $('#tour_ngaybd').val();
-        // tour_ngaykt = $('#tour_ngaykt').val();
-        // tour_chiphi = $('#tour_chiphi').val();
-        // tour_soluong = $('#tour_soluong').val();
-        // gd_id = $('#gd_id').val();
-        tour_daily = $('#tour_daily').val();
-       // tour_hinhanh =  $('#tour_hinhanh').val();
-         var file_data = $('#tour_hinhanh').prop('files')[0];
-          console.log(file_data);
-
-         // let tour_hinhanh = file_data.name;
-         //console.log(file_data);
-     // console.log(tour_hinhanh);
-        //var type = file_data.type;
-        form_data = new FormData(file_data);
-      //console.log(form_data);
-
-       form_data.append('tour_hinhanh', file_data);
-                $.ajax({
-         url: "{{route('TOUR_XLThem')}}",
-        type:"POST",
-        data:{
-            "_token": "{{ csrf_token() }}",
-        dataType: 'JSON',
-         contentType: flase,
-         cache: flase,
-         processData: flase,
-
-        // lt_id  : lt_id,
-        // tour_handk : tour_handk,
-        // tour_ngaybd : tour_ngaybd,
-        // tour_ngaykt : tour_ngaykt,
-        // tour_chiphi : tour_chiphi,
-        // tour_soluong : tour_soluong,
-        // gd_id : gd_id,
-        tour_daily : tour_daily,
-        tour_hinhanh : file_data   ,
-
-        },
-        success:function(data){
-            //$('#uploaded_image').html(data.uploaded_image);
-          alert(data.thongbao);
-          window.history.back(-2);
-        },
-        });
-
-        });
-
-      </script>
-
---}}
 @endsection
