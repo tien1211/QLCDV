@@ -203,15 +203,15 @@
                 //khởi tạo đối tượng form data
                 var form_data = new FormData();
 
-                 form_data.append('lt_id', lt_id);
-                 form_data.append('tour_handk', tour_handk);
-                 form_data.append('tour_ngaybd', tour_ngaybd);
-                  form_data.append('gd_id', gd_id);
+                form_data.append('lt_id', lt_id);
+                form_data.append('tour_handk', tour_handk);
+                form_data.append('tour_ngaybd', tour_ngaybd);
+                form_data.append('gd_id', gd_id);
                 form_data.append('tour_ngaykt', tour_ngaykt);
                 form_data.append('tour_chiphi', tour_chiphi);
                 form_data.append('tour_soluong', tour_soluong);
                 form_data.append('tour_daily', tour_daily);
-                 form_data.append('tour_hinhanh', file_data);
+                form_data.append('tour_hinhanh', file_data);
 
                 //sử dụng ajax post
                 $.ajax({

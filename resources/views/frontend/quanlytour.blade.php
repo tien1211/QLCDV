@@ -15,7 +15,6 @@
         </thead>
         <tbody>
             @foreach ($tourdk as $key => $tour)
-            @if($tour->tttp_id != 3)
             <tr>
             <td>{{$key + 1}}</td>
             <td>{{$tour->lt_ten}} {{date('Y ',strtotime($tour->tour_handk))}}</td>
@@ -24,7 +23,6 @@
             <td>{{$tour->tour_chiphi}}</td>
             <td><a href="{{route('chitiettour',['id'=>$tour->tour_id])}}" class="post-author">Chi tiết</a></td>
             </tr>
-            @endif
             @endforeach
         </tbody>
     </table>
