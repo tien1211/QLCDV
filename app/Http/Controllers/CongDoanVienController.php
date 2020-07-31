@@ -166,7 +166,7 @@ class CongDoanVienController extends Controller
             'cdv_nguyenquan'=>'required',
             'cdv_diachi'=>'bail|required',
             'cdv_sdt'=>'required|max:10|min:10',
-            'cdv_email'=>'required|unique:CongDoanVien',
+            'cdv_email'=>'required',
             'cdv_dantoc'=>'required',
             'cdv_trinhdo'=>'required',
             'cdv_tongiao'=>'bail|required',
@@ -195,7 +195,6 @@ class CongDoanVienController extends Controller
                 'cdv_ngaythuviec.required'=>'Vui lòng không được để trống ngày vào công đoàn',
                 'cdv_ngayvaonganh.required'=>'Vui lòng không được để trống ngày vào ngành',
                 'cdv_quyen.required' => 'Vui lòng chọn quyền cho công đoàn viên',
-                'cdv_email.unique'=>'Email đã tồn tại'
             ]);
 
             $CongDoanVien = CongDoanVien::find($id);

@@ -141,7 +141,6 @@
 
 @section('script')
 <script>
-
     //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
     $("#formDemo1").validate({
         rules: {
@@ -165,14 +164,8 @@
             gd_id: "Vui lòng chọn giai đoạn",
             tour_daily: "Vui lòng chọn đại lý",
             tour_hinhanh: "Vui lòng chọn hình ảnh",
-
         }
     });
-
-
-
-
-
 
     $.ajaxSetup({
       headers: {
@@ -182,7 +175,7 @@
         //xử lý khi có sự kiện click
         $('#formDemo1').on('submit', function (e) {
             //Lấy ra files
-              e.preventDefault();
+            e.preventDefault();
             var lt_id = $('#lt_id').val();
             var tour_handk = $('#tour_handk').val();
             var tour_ngaybd = $('#tour_ngaybd').val();
@@ -225,14 +218,14 @@
                     success: function (res) {
                         $('.status').text(res);
                         $('#tour_hinhanh').val('');
-                      window.location =" {{route('TOUR_DanhSach')}}";
+                    window.location =" {{route('TOUR_DanhSach')}}";
 
 
                     }
                 });
             }
 
-             return false;
+            return false;
         });
     </script>
 

@@ -52,9 +52,20 @@ class IndexController extends Controller
 
     
     public function getIndex()
+<<<<<<< HEAD
     {
         
         return view('frontend.index');
+=======
+    {   
+        $tour1 = DB::table('Tour')
+            ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
+            ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
+            ->orderBy('tour.tour_handk','desc')
+            ->limit(5)->get();
+            //dd($tour1);
+        return view('frontend.index')->with('tour1',$tour1);
+>>>>>>> 4f43905bf862b9d09deccc77233e20198b5c661b
     }
 
 
@@ -72,6 +83,11 @@ class IndexController extends Controller
             ->join('Tour','Tour.tour_id','=','dk_Tour.tour_id')
             ->join('CongDoanVien','CongDoanVien.cdv_id','=','DK_Tour.cdv_id')
             ->where('Tour.tour_id',$id)->select('*')->get();
+            $tourkhac = DB::table('Tour')
+            ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
+            ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
+            ->where('tour.tour_id','<>',$id)
+            ->limit(4)->get();
             //dd($cdv_dk);
         if(!Auth::check()){
             $temp = [];
@@ -79,6 +95,7 @@ class IndexController extends Controller
             return view('frontend.chitiet')->with('a',$a)->with('b',$b)
                 ->with('datail',$datail)
                 ->with('cdv_dk',$cdv_dk)
+                ->with('tourkhac',$tourkhac)
                 ->with('temp',$temp);
         }else{
             $temp = DB::table('DK_Tour')
@@ -89,6 +106,7 @@ class IndexController extends Controller
             return view('frontend.chitiet')->with('a',$a)->with('b',$b)
                 ->with('datail',$datail)
                 ->with('cdv_dk',$cdv_dk)
+                ->with('tourkhac',$tourkhac)
                 ->with('temp',$temp);
         }
     }

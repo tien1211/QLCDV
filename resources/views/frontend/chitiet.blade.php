@@ -198,8 +198,8 @@
                                     </div>
                             </div>
                             <div class="form-group mb-30">
-                                <label for="checkInDate">Số Lượng Đăng Ký:</label>
-                                    <div class="row no-gutters">
+                                
+                                    <div class="row no-gutters"><label for="checkInDate">Số Lượng Đăng Ký:</label>
                                         <div class="col-12">
                                             <input type="number" min="1" max="20" disabled class="input-small form-control" name="dkt_soluong"  value="{{$sl}}">
                                         </div>
@@ -285,6 +285,24 @@
                                 </form>
                             </div>
                         @endif
+                        <label for="checkInDate">Các tour khác:</label>
+                        @foreach($tourkhac as $tourkhac)
+                        <div class="single-recent-post d-flex">
+                            <!-- Thumb -->
+                            <div class="post-thumb">
+                                <a href="{{route('chitiettour',['id'=>$tourkhac->tour_id])}}"><img src="upload/tour/{{$tourkhac->tour_hinhanh}}" alt=""></a>
+                            </div>
+                            <!-- Content -->
+                            <div class="post-content">
+                                <!-- Post Meta -->
+                                <div class="post-meta">
+                                    <a href="#" class="post-author">{{date('d-m-Y ',strtotime($tourkhac->tour_handk))}}</a>
+                                    <a href="#" class="post-tutorial">{{number_format($tourkhac->tour_chiphi)}} VND</a>
+                                </div>
+                                <a href="{{route('chitiettour',['id'=>$tourkhac->tour_id])}}" class="post-title">{{$tourkhac->lt_ten}} {{date('Y ',strtotime($tourkhac->tour_handk))}}</a>
+                            </div>
+                        </div>
+                        @endforeach
                 </div>
  <!-- FORM BOOK -->
             </div>
