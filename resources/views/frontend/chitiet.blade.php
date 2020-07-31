@@ -222,13 +222,8 @@
                             <label for="checkInDate">Cập nhật thêm người tham gia:</label>
                                 <div class="row no-gutters">
                                     <div class="col-12">
-                                        @php
-                                        foreach ($dk_t as $dk){
-                                            $soluong = $dk->tour_soluong;
-                                        }
-                                        @endphp
                                         <input type="number" min="1" max="100" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
-                                        <input type="hidden" id="soluong" value="{{$soluong}}">
+                                        <input type="hidden" id="soluong" value="{{$datail->tour_soluong}}">
                                         @if($errors->has('dkt_soluong'))
                                         <div style="color:red">{{ $errors->first('dkt_soluong')}}</div>
                                         @endif
@@ -268,13 +263,8 @@
                                         <label for="checkInDate">Số Lượng Đăng Ký:</label>
                                             <div class="row no-gutters">
                                                 <div class="col-12">
-                                                    @php
-                                                    foreach ($dk_t as $dk){
-                                                        $soluong = $dk->tour_soluong;
-                                                    }
-                                                    @endphp
                                                     <input type="number" min="1" max="100" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
-                                                    <input type="hidden" id="soluong" value="{{$soluong}}">
+                                                    <input type="hidden" id="soluong" value="{{$datail->tour_soluong}}">
                                                     @if($errors->has('dkt_soluong'))
                                                     <div style="color:red">{{ $errors->first('dkt_soluong')}}</div>
                                                     @endif
