@@ -50,9 +50,10 @@ class IndexController extends Controller
         view()->share('TinhTrangThuPhi',$TinhTrangThuPhi);
     }
 
-
+    
     public function getIndex()
     {
+        
         return view('frontend.index');
     }
 

@@ -56,6 +56,7 @@ Route::group(['prefix' => 'admin'], function () {
         //Import Excel
         Route::get('/CDV_Import','CongDoanVienController@getImport')->name('CDV_formImp');
         Route::post('/CDV_Import/Import','CongDoanVienController@Import')->name('Import');
+       
 
         //Export Excel
 

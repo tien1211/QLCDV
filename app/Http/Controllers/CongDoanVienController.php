@@ -11,6 +11,7 @@ use Session;
 use DB;
 use Image;
 use Response;
+use Redirect;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\CongDoanVienExport;
 use App\Imports\CongDoanVienImport;
@@ -82,8 +83,8 @@ class CongDoanVienController extends Controller
                 'cdv_nguyenquan.required'=>'Vui lòng không được để trống nguyên quán',
                 'cdv_diachi.required'=>'Vui lòng không được để trống địa chỉ',
                 'cdv_sdt.required'=>'Vui lòng không được để trống số điện thoại',
-                'cdv_cmnd.min' => 'Số điện thoại phải ít nhất 10 kí tự',
-                'cdv_cmnd.max' => 'Số điện thoại phải không quá 10 kí tự',
+                'cdv_sdt.min' => 'Số điện thoại phải ít nhất 10 kí tự',
+                'cdv_sdt.max' => 'Số điện thoại phải không quá 10 kí tự',
                 'cdv_email.required'=>'Vui lòng không được để trống email',
                 'cdv_dantoc.required'=>'Vui lòng không được để trống dân tộc',
                 'cdv_trinhdo.required'=>'Vui lòng không được để trống trình độ',
@@ -381,13 +382,17 @@ class CongDoanVienController extends Controller
                 'file.required'=>'Vui lòng không được thêm trống',
                 'file.mimes'=>'Tập tin không đúng định dạng',
             ]);
+
             
-            $file = $request->file;
-            Excel::import(new CongDoanVienImport, $file);
-            Session::flash('alert-info', 'Import thành công!!!');
-            return redirect()->route('CDV_DanhSach');
-           
-            
+            try {
+                $file = $request->file;
+                Excel::import(new CongDoanVienImport, $file);
+                Session::flash('alert-info', 'Import thành công!!!');
+                return redirect()->route('CDV_DanhSach');
+            } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+                $f  = $e->failures();
+                return view('admin.CongDoanVien.imp',compact('f'));
+            } 
         }
 
    

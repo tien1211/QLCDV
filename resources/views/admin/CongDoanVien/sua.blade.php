@@ -78,6 +78,7 @@
                 {{-- Loại Nhân Viên --}}
 
 
+
                 {{-- Họ tên --}}
                   @csrf
                     <div class="form-group " >
@@ -374,68 +375,5 @@
 
 </script>
 
-<script type="text/javascript">
-
-    $('#signupForm').on('submit',function(event){
-        event.preventDefault();
-
-        cdv_id = $('#cdv_id').val();
-        dv_id = $('#dv_id ').val();
-        cv_id = $('#cv_id').val();
-        lnv_id = $('#lnv_id').val();
-        mht_id = $('#mht_id').val();
-        cdv_ten = $('#cdv_ten').val();
-        cdv_ngaysinh = $('#cdv_ngaysinh').val();
-        cdv_gioitinh = $('#cdv_gioitinh').val();
-        cdv_cmnd = $('#cdv_cmnd').val();
-        cdv_nguyenquan = $('#cdv_nguyenquan').val();
-        cdv_diachi = $('#cdv_diachi').val();
-        cdv_sdt = $('#cdv_sdt').val();
-        cdv_email = $('#cdv_email').val();
-        cdv_dantoc = $('#cdv_dantoc').val();
-        cdv_trinhdo = $('#cdv_trinhdo').val();
-        cdv_tongiao = $('#cdv_tongiao').val();
-        cdv_ngaythuviec = $('#cdv_ngaythuviec').val();
-        cdv_ngayvaonganh = $('#cdv_ngayvaonganh').val();
-        cdv_trangthai = $('#cdv_trangthai').val();
-        cdv_hinhanh = $('#cdv_hinhanh').val();
-        cdv_username = $('#cdv_username').val();
-        password = $('#password').val();
-        password = $('#cdv_quyen').val();
-        $.ajax({
-          url: "{{route('CDV_XLSua',['id'=> $CongDoanVien->cdv_id])}}",
-          type:"POST",
-          data:{
-            "_token": "{{ csrf_token() }}",
-            cdv_id:cdv_id  ,
-            dv_id:dv_id ,
-            cv_id :cv_id,
-            lnv_id :lnv_id,
-            mht_id : mht_id ,
-            cdv_ten : cdv_ten,
-            cdv_ngaysinh : cdv_ngaysinh,
-            cdv_gioitinh : cdv_gioitinh ,
-            cdv_cmnd : cdv_cmnd ,
-            cdv_nguyenquan : cdv_nguyenquan,
-            cdv_diachi : cdv_diachi,
-            cdv_sdt : cdv_sdt,
-            cdv_email : cdv_email,
-            cdv_dantoc : cdv_dantoc,
-            cdv_trinhdo : cdv_trinhdo,
-            cdv_tongiao : cdv_tongiao,
-            cdv_ngaythuviec : cdv_ngaythuviec,
-            cdv_ngayvaonganh : cdv_ngayvaonganh,
-            cdv_trangthai : cdv_trangthai,
-            cdv_hinhanh : cdv_hinhanh,
-            cdv_username : cdv_username,
-            password : password,
-            cdv_quyen : cdv_quyen,
-          },
-          success:function(response){
-            console.log(response);
-          },
-         });
-        });
-      </script>
 
 @endsection

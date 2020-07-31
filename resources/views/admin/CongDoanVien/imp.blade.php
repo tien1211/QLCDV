@@ -50,19 +50,38 @@
                 <div class="form">
                     <form class="cmxform form-horizontal " enctype="multipart/form-data" id="signupForm" method="post" action="{{route('Import')}}" novalidate="novalidate">
                         @csrf
+                        <div class="form-group" style="mt-6">
+                            <div class="flash-message">
+                              @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                                @if(Session::has('alert-' . $msg))
+                                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="" class="close" d
+                                ata-dismiss="alert" aria-label="close">&times;</a></p>
+                                @endif
+                              @endforeach
+                          </div>
+                          </div>
                         <div class="form-group ">
                             <div class="col-lg-12">
                             <a href="samp/Samp.xlsx"><label for="username" class="control-label col-lg-3">DOWNLOAD MẪU EXCEL</label></a>
                             </div>
+                            
                             <br><br>
                             <label for="username" class="control-label col-lg-3">FILE IMPORT</label>
-                            
-                            <div class="col-lg-6">
-                                <input class="form-control" name="file" type="file">
-                                @if($errors->has('file'))
-                              <div style="color:red">{{ $errors->first('file')}}</div>
-                              @endif
-                            </div>
+                          
+                                <div class="col-lg-6">
+                                    <input class="form-control" name="file" type="file">
+                                    @if($errors->has('file'))
+                                    <div style="color:red">{{ $errors->first('file')}}</div>
+                                     @endif
+
+                                     @if (isset($f))
+                                     @foreach ($f as $f1)
+                                            @foreach ($f1->errors() as $error)
+                                            <div style="color: red">{{ $error }}</div> 
+                                            @endforeach
+                                     @endforeach
+                                    @endif
+                                </div>
                         </div>
             
                         <div class="form-group">
