@@ -233,11 +233,11 @@
 
                   {{-- Ngày vào Công Đoàn --}}
                   <div class="form-group ">
-                    <label for="firstname" class="control-label col-lg-3">Ngày Vào Công Đoàn</label>
+                    <label for="firstname" class="control-label col-lg-3">Ngày Vào Thử Việc</label>
                     <div class="col-lg-6">
-                        <input class=" form-control" id="" value="{{$CongDoanVien->cdv_ngayvaocd}}" disabled name="cdv_ngayvaocd" type="date">
-                        @if($errors->has('cdv_ngayvaocd')) 
-                        <div style="color:red">{{ $errors->first('cdv_ngayvaocd')}}</div>
+                        <input class=" form-control" id="" value="{{$CongDoanVien->cdv_ngaythuviec}}" disabled name="cdv_ngayvaocd" type="date">
+                        @if($errors->has('cdv_ngaythuviec')) 
+                        <div style="color:red">{{ $errors->first('cdv_ngaythuviec')}}</div>
                         @endif
                       </div>
                   </div>

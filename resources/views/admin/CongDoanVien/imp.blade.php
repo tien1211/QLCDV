@@ -56,8 +56,12 @@
                             </div>
                             <br><br>
                             <label for="username" class="control-label col-lg-3">FILE IMPORT</label>
+                            
                             <div class="col-lg-6">
-                                <input class="form-control "  name="lt_file" type="file">
+                                <input class="form-control" name="file" type="file">
+                                @if($errors->has('file'))
+                              <div style="color:red">{{ $errors->first('file')}}</div>
+                              @endif
                             </div>
                         </div>
             

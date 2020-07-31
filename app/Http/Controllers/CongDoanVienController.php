@@ -59,7 +59,7 @@ class CongDoanVienController extends Controller
             'cdv_nguyenquan'=>'required',
             'cdv_diachi'=>'bail|required',
             'cdv_sdt'=>'required|max:10|min:10',
-            'cdv_email'=>'required',
+            'cdv_email'=>'required|unique:CongDoanVien',
             'cdv_dantoc'=>'required',
             'cdv_trinhdo'=>'required',
             'cdv_tongiao'=>'bail|required',
@@ -92,6 +92,7 @@ class CongDoanVienController extends Controller
                 'cdv_ngayvaonganh.required'=>'Vui lòng không được để trống ngày vào ngành',
                 'cdv_username.required'=>'Vui lòng không được để trống tên đăng nhập',
                 'cdv_username.unique'=>'Tên đăng nhập đã tồn tại',
+                'cdv_email.unique'=>'Email đã tồn tại',
                 'password.required'=>'Vui lòng không được để trống mật khẩu',
                 'password.min'=>'Mật khẩu phải ít nhất 8 kí tự',
                 'password.max' => 'Mật khẩu không được quá 50 kí tự',
@@ -146,6 +147,7 @@ class CongDoanVienController extends Controller
             Session::flash('alert-info', 'Thêm thành công!!!');
             return redirect()->route('CDV_DanhSach');
     }
+    
     public function getSua($id){
         $CongDoanVien =  CongDoanVien::find($id);
         return view('admin.CongDoanVien.sua')->with('CongDoanVien',$CongDoanVien);
@@ -191,7 +193,7 @@ class CongDoanVienController extends Controller
                 'cdv_tongiao.required'=>'Vui lòng không được để trống tôn giáo',
                 'cdv_ngaythuviec.required'=>'Vui lòng không được để trống ngày vào công đoàn',
                 'cdv_ngayvaonganh.required'=>'Vui lòng không được để trống ngày vào ngành',
-                'cdv_quyen.required' => 'Vui lòng chọn quyền cho công đoàn viên'
+                'cdv_quyen.required' => 'Vui lòng chọn quyền cho công đoàn viên',
             ]);
 
             $CongDoanVien = CongDoanVien::find($id);
@@ -358,7 +360,6 @@ class CongDoanVienController extends Controller
         return redirect()->route('CDV_DanhSach');
     }
 
-
     public function Export(){
         $dataTime = date('Ymd_His');
         $name = $dataTime. '-' . 'DSCDV.xlsx';
@@ -370,11 +371,23 @@ class CongDoanVienController extends Controller
     }
 
     public function Import(Request $request){
-        $file = $request->file;
-        Excel::import(new CongDoanVienImport, $file);
-        echo "Import successfully";
-    }
 
+        $this->validate($request, [
+
+            'file'=>'required|mimes:xlsx,xls,xlsm',
+           
+            ],[
+                'file.required'=>'Vui lòng không được thêm trống',
+                'file.mimes'=>'Tập tin không đúng định dạng',
+            ]);
+            
+            $file = $request->file;
+            Excel::import(new CongDoanVienImport, $file);
+            Session::flash('alert-info', 'Import thành công!!!');
+            return redirect()->route('CDV_DanhSach');
+           
+            
+        }
 
    
 }

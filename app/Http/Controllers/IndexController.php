@@ -52,8 +52,14 @@ class IndexController extends Controller
 
 
     public function getIndex()
-    {
-        return view('frontend.index');
+    {   
+        $tour1 = DB::table('Tour')
+            ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
+            ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
+            ->orderBy('tour.tour_handk','desc')
+            ->limit(5)->get();
+            //dd($tour1);
+        return view('frontend.index')->with('tour1',$tour1);
     }
 
 
@@ -71,6 +77,11 @@ class IndexController extends Controller
             ->join('Tour','Tour.tour_id','=','dk_Tour.tour_id')
             ->join('CongDoanVien','CongDoanVien.cdv_id','=','DK_Tour.cdv_id')
             ->where('Tour.tour_id',$id)->select('*')->get();
+            $tourkhac = DB::table('Tour')
+            ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
+            ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
+            ->where('tour.tour_id','<>',$id)
+            ->limit(4)->get();
             //dd($cdv_dk);
         if(!Auth::check()){
             $temp = [];
@@ -78,6 +89,7 @@ class IndexController extends Controller
             return view('frontend.chitiet')->with('a',$a)->with('b',$b)
                 ->with('datail',$datail)
                 ->with('cdv_dk',$cdv_dk)
+                ->with('tourkhac',$tourkhac)
                 ->with('temp',$temp);
         }else{
             $temp = DB::table('DK_Tour')
@@ -88,6 +100,7 @@ class IndexController extends Controller
             return view('frontend.chitiet')->with('a',$a)->with('b',$b)
                 ->with('datail',$datail)
                 ->with('cdv_dk',$cdv_dk)
+                ->with('tourkhac',$tourkhac)
                 ->with('temp',$temp);
         }
     }
@@ -165,7 +178,7 @@ class IndexController extends Controller
                 ->join('tour','tour.tour_id','=','dk_tour.tour_id')
                 ->join('giaidoan','giaidoan.gd_id','=','tour.gd_id')
                 ->join('lichtrinh','lichtrinh.lt_id','=','tour.lt_id')
-                ->where('dk_tour.cdv_id','=',Auth::user()->cdv_id)
+                ->where([['dk_tour.cdv_id','=',Auth::user()->cdv_id],['dk_tour.tttp_id','<>',3]])
                 ->get();
             //dd($tourdk);
             return view('frontend.quanlytour')->with('tourdk',$tourdk);
