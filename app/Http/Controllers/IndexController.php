@@ -67,20 +67,17 @@ class IndexController extends Controller
             $b = DB::table('Tour')->join('LichTrinh','LichTrinh.lt_id','=','Tour.lt_id')
                 ->where('Tour.tour_id','=',$id)
                 ->select('*')->get();
-
-            $dk_t = DB::table('Tour')->join('LichTrinh','LichTrinh.lt_id','=','Tour.lt_id')
-                ->join('DK_Tour','DK_Tour.tour_id','=','Tour.tour_id')
-                ->join('CongDoanVien','CongDoanVien.cdv_id','=','DK_Tour.cdv_id')
-                ->where('Tour.tour_id',$id)->select('*')->get();
+            $cdv_dk = DB::table('dk_tour')
+            ->join('Tour','Tour.tour_id','=','dk_Tour.tour_id')
+            ->join('CongDoanVien','CongDoanVien.cdv_id','=','DK_Tour.cdv_id')
+            ->where('Tour.tour_id',$id)->select('*')->get();
+            //dd($cdv_dk);
         if(!Auth::check()){
-            $temp = DB::table('DK_Tour')
-                ->join('tour','tour.tour_id','=','DK_Tour.tour_id')
-                ->where('dk_tour.tour_id',$id)
-                ->get();
+            $temp = [];
                 //dd($temp);
             return view('frontend.chitiet')->with('a',$a)->with('b',$b)
                 ->with('datail',$datail)
-                ->with('dk_t',$dk_t)
+                ->with('cdv_dk',$cdv_dk)
                 ->with('temp',$temp);
         }else{
             $temp = DB::table('DK_Tour')
@@ -90,7 +87,7 @@ class IndexController extends Controller
                 //dd($temp);
             return view('frontend.chitiet')->with('a',$a)->with('b',$b)
                 ->with('datail',$datail)
-                ->with('dk_t',$dk_t)
+                ->with('cdv_dk',$cdv_dk)
                 ->with('temp',$temp);
         }
     }
@@ -129,14 +126,8 @@ class IndexController extends Controller
     
     public function postUpdate(Request $request, $id)
     {
-        if(!Auth::check()){
-            Session::flash('alert-danger', 'Bạn cần đăng nhập để đăng ký tour!!');
-            return Redirect::back();
-        }else{
             $this->validate($request, [
-
                 'dkt_soluong'=>'required'
-
                 ],[
                     'dkt_soluong.required'=>'Vui lòng nhập số lượng cần cập nhật'
                 ]);
@@ -150,7 +141,6 @@ class IndexController extends Controller
             DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $soluongconlai]);
             Session::flash('alert-info', 'Cập nhật thành công!!!');
             return Redirect::back();
-        }
     }
 
     public function postDelete($id)
