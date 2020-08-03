@@ -52,11 +52,6 @@ class IndexController extends Controller
 
     
     public function getIndex()
-<<<<<<< HEAD
-    {
-        
-        return view('frontend.index');
-=======
     {   
         $tour1 = DB::table('Tour')
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
@@ -65,7 +60,6 @@ class IndexController extends Controller
             ->limit(5)->get();
             //dd($tour1);
         return view('frontend.index')->with('tour1',$tour1);
->>>>>>> 4f43905bf862b9d09deccc77233e20198b5c661b
     }
 
 
@@ -125,11 +119,10 @@ class IndexController extends Controller
                 ],[
                     'dkt_soluong.required'=>'Vui lòng nhập số lượng cần đăng ký'
                 ]);
-           // $travel = Tour::find($id);
-            //$dkttt = DK_Tour::where('tour_id',$id)->get();
-            $tour = DB::table('tour')->where('tour_id',$id)->first();
-            $soluongconlai = $tour->tour_soluong - $request->dkt_soluong;
-            //dd($soluongconlai);
+           
+                $tour = DB::table('tour')->where('tour_id',$id)->first();
+                $soluongconlai = $tour->tour_soluong - $request->dkt_soluong;
+           
                 $dkt = new DK_Tour();
                 $dkt->cdv_id = Auth::user()->cdv_id;
                 $dkt->tour_id = $id;

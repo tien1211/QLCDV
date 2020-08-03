@@ -9,7 +9,7 @@
 <div class="single-blog-post d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="100ms">
     <!-- Post Thumbnail -->
     <div class="post-thumbnail">
-    <a href="#"><img src="upload/tour/{{$t->tour_hinhanh}}" alt=""></a>
+    <a href="{{route('chitiettour',['id'=>$t->tour_id])}}"><img src="upload/tour/{{$t->tour_hinhanh}}" alt=""></a>
     </div>
     <!-- Post Content -->
     <div class="post-content" style="">
