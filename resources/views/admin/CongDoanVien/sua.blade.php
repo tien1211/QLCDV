@@ -78,6 +78,7 @@
                 {{-- Loại Nhân Viên --}}
 
 
+
                 {{-- Họ tên --}}
                   @csrf
                     <div class="form-group " >
@@ -373,6 +374,8 @@
     });
 </script>
 
+<<<<<<< HEAD
+=======
 <!-- <script type="text/javascript">
 
     $('#signupForm').on('submit',function(event){
@@ -436,5 +439,6 @@
          });
         });
       </script> -->
+>>>>>>> 4f43905bf862b9d09deccc77233e20198b5c661b
 
 @endsection

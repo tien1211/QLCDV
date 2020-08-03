@@ -50,8 +50,13 @@ class IndexController extends Controller
         view()->share('TinhTrangThuPhi',$TinhTrangThuPhi);
     }
 
-
+    
     public function getIndex()
+<<<<<<< HEAD
+    {
+        
+        return view('frontend.index');
+=======
     {   
         $tour1 = DB::table('Tour')
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
@@ -60,6 +65,7 @@ class IndexController extends Controller
             ->limit(5)->get();
             //dd($tour1);
         return view('frontend.index')->with('tour1',$tour1);
+>>>>>>> 4f43905bf862b9d09deccc77233e20198b5c661b
     }
 
 
