@@ -73,14 +73,21 @@
                                     @if($errors->has('file'))
                                     <div style="color:red">{{ $errors->first('file')}}</div>
                                      @endif
-
-                                     @if (isset($f))
-                                     @foreach ($f as $f1)
-                                            @foreach ($f1->errors() as $error)
-                                            <div style="color: red">{{ $error }}</div> 
-                                            @endforeach
-                                     @endforeach
-                                    @endif
+                                    
+                                        @if (isset($f))
+                                            <div class="alert alert-warning" style="color: red"><ul>ERROR FILE IMPORT:</ul>
+                                                @foreach ($f as $f1)
+                                                
+                                                        @foreach ($f1->errors() as $error)
+                                                        
+                                                            <li style="color: red">{{ $error }}</li> 
+                                                        
+                                                        @endforeach
+                                                    
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                   
                                 </div>
                         </div>
             
