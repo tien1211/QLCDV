@@ -85,10 +85,12 @@ class LichTrinhController extends Controller
         [
             'lt_ten' => 'required',
             'lt_file' => 'max:5000',
+            'lt_mota' => 'required',
         ],
         [
             'lt_ten.required' => 'Bạn chưa nhập tên lịch trình!',
             'lt_file.max' => 'File có dung lượng quá lớn!',
+            'lt_mota' => 'Bạn chưa nhập mô tả!',
         ]);
         $LichTrinh = LichTrinh::find($id);
         $LichTrinh->lt_ten = $request->lt_ten;
@@ -98,7 +100,7 @@ class LichTrinhController extends Controller
             $dataTime = date('Ymd_His');
             $lt_file = $request->lt_file;
             $duoi = $lt_file->getClientOriginalExtension();
-            if($duoi != 'doc' && $duoi != 'docx'){
+            if($duoi != 'doc' && $duoi != 'docx' && $duoi != 'pdf'){
                 Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi doc, docx!!!');
                 return redirect()->route('LT_Sua');
             }
@@ -115,27 +117,6 @@ class LichTrinhController extends Controller
             Session::flash('alert-info', 'Sửa thành công!!!');
             return redirect()->route('LT_DanhSach');
         }
-        ///////////////////////////////////////////////////////////////////////////////
-        // $LichTrinh = new LichTrinh($id);
-        // $LichTrinh->lt_ten = $request->lt_ten;
-        // if ($request->hasFile('lt_file')){
-
-        //     $file = $request->file('lt_file');
-        //     $name = $file->getClientOriginalName();
-        //     $file->move('upload/lichtrinh/', $name);
-        //     $LichTrinh->lt_file = $name;
-        // }
-
-        // else{
-        //     $LichTrinh->lt_file=  $LichTrinh->lt_file;
-        // }
-        //     $LichTrinh->lt_mota= $request->lt_mota;
-        //     $LichTrinh->lt_trangthai = 1;
-        //     $LichTrinh->save();
-        //     // return \response(['thongbao'=>'Thêm Lịch Trình Thành Công'  ]);
-
-        //     Session::flash('alert-info', 'Thêm thành công!!!');
-        //     return redirect()->route('LT_DanhSach');
     }
 
 
