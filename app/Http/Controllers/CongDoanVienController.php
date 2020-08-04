@@ -14,6 +14,7 @@ use Response;
 use Redirect;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\CongDoanVienExport;
+// use App\Imports\CDVImport;
 use App\Imports\CongDoanVienImport;
 
 
@@ -385,6 +386,7 @@ class CongDoanVienController extends Controller
             
             try {
                 $file = $request->file;
+                // Excel::import(new CDVImport, $file);
                 Excel::import(new CongDoanVienImport, $file);
                 Session::flash('alert-info', 'Import thành công!!!');
                 return redirect()->route('CDV_DanhSach');

@@ -110,43 +110,6 @@
                         </div>
                         </div>
                         @if ($now > $datail->tour_handk)
-                            {{-- @if (isset($auth) && $auth->cdv_quyen ==1 && $now < $datail->tour_ngaybd)
-                                <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
-                                    @csrf
-                                        <div class="form-group mb-30">
-                                            <label for="checkInDate">Chi phí:</label>
-                                                <div class="row no-gutters">
-                                                    <div class="col-12">
-                                                    <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}} VND"  name="tour_chiphi" disabled>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        <div class="form-group mb-30">
-                                            <label for="checkInDate">Số Lượng Đăng Ký:</label>
-                                                <div class="row no-gutters">
-                                                    <div class="col-12">
-                                                        <input type="number" min="1" max="20" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
-                                                        @if($errors->has('dkt_soluong'))
-                                                        <div style="color:red">{{ $errors->first('dkt_soluong')}}</div>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        <div class="form-group mb-30">
-                                            <label for="checkInDate">Thành Tiền: </label>
-                                                <div class="row no-gutters">
-                                                    <div class="col-12">
-                                                    <input type="text"  class="input-small form-control"  id='payment'  placeholder="Thành tiền" disabled>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" onclick="return confirm('Bạn có chắc muốn đăng ký không?');" class="btn roberto-btn w-100">Đăng Ký Tour</button>
-                                        </div>
-                                    </form>
-                                </div> --}}
-                            {{-- @else --}}
-                                {{-- disabled --}}
                                 <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
                                     @csrf
                                         <div class="form-group mb-30">
@@ -303,6 +266,8 @@
                             </div>
                         </div>
                         @endforeach
+                        
+                        
                 </div>
  <!-- FORM BOOK -->
             </div>
