@@ -391,9 +391,15 @@ class CongDoanVienController extends Controller
                 Session::flash('alert-info', 'Import thành công!!!');
                 return redirect()->route('CDV_DanhSach');
             } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
-                $f  = $e->failures();
-                return view('admin.CongDoanVien.imp',compact('f'));
+                Session::flash('alert-danger', 'Import thất bại, vui lòng xem lại file!!!');
+                return redirect::back();
             } 
+
+            
+            
+
+
+
         }
 
    
