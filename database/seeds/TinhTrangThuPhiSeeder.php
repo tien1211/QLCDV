@@ -13,9 +13,7 @@ class TinhTrangThuPhiSeeder extends Seeder
     {
         $arr=[
             [
-                'tinh_trang' => 'Đã đóng phí'
-            ],[
-                'tinh_trang' => 'Chưa đóng phí'
+                'tinh_trang' => 'Đã đăng ký'
             ],
             [
                 'tinh_trang' => 'Đã hủy'

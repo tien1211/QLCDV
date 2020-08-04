@@ -96,7 +96,7 @@ class IndexController extends Controller
         }else{
             $temp = DB::table('DK_Tour')
                 ->join('tour','tour.tour_id','=','DK_Tour.tour_id')
-                ->where([['dk_tour.tour_id',$id],['cdv_id',Auth::user()->cdv_id],['tttp_id','<>',3]])
+                ->where([['dk_tour.tour_id',$id],['cdv_id',Auth::user()->cdv_id],['tttp_id','<>',2]])
                 ->get();
                 //dd($temp);
             return view('frontend.chitiet')->with('a',$a)->with('b',$b)
@@ -119,20 +119,64 @@ class IndexController extends Controller
                 ],[
                     'dkt_soluong.required'=>'Vui lòng nhập số lượng cần đăng ký'
                 ]);
-           
-                $tour = DB::table('tour')->where('tour_id',$id)->first();
-                $soluongconlai = $tour->tour_soluong - $request->dkt_soluong;
-           
+            // cập nhật số lượng
+            $tour = DB::table('tour')->where('tour_id',$id)->first();
+            $soluongconlai = $tour->tour_soluong - $request->dkt_soluong;
+            //MucHoTro
+            $tourtrc = DB::table('dk_tour')
+            ->join('Tour','Tour.tour_id','=','dk_tour.tour_id')
+            ->where([['tour.gd_id',$tour->gd_id],['tttp_id','<>',2]])
+            ->select('cdv_id')
+            ->get();
+            $cdv_id = Auth::user()->cdv_id;
+            if(sizeof($tourtrc) != 0){
+                foreach($tourtrc as $t){
+                    $a[] = $t->cdv_id;
+                }
+                if(in_array($cdv_id,$a)){
+                    $dkt = new DK_Tour();
+                    $dkt->cdv_id = $cdv_id;
+                    $dkt->tour_id = $id;
+                    $dkt->tttp_id  = 1;
+                    $dkt->dkt_soluong = $request->dkt_soluong;
+                    $dkt->phihotro = 0;
+                    //return $dkt->dkt_soluong;
+                    $dkt->save();
+                    DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $soluongconlai]);
+                    Session::flash('alert-info', 'Đăng ký thành công!!!');
+                    return Redirect::back();
+                }else{
+                    $phihotro = DB::table('congdoanvien')
+                        ->join('muchotro','muchotro.mht_id','=','congdoanvien.mht_id')
+                        ->where('cdv_id',$cdv_id)->first();
+                    $dkt = new DK_Tour();
+                    $dkt->cdv_id = $cdv_id;
+                    $dkt->tour_id = $id;
+                    $dkt->tttp_id  = 1;
+                    $dkt->dkt_soluong = $request->dkt_soluong;
+                    $dkt->phihotro = $phihotro->mht_phihotro;
+                    //return $dkt->dkt_soluong;
+                    $dkt->save();
+                    DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $soluongconlai]);
+                    Session::flash('alert-info', 'Đăng ký thành công!!!');
+                    return Redirect::back();
+                }
+            }else{
+                $phihotro = DB::table('congdoanvien')
+                    ->join('muchotro','muchotro.mht_id','=','congdoanvien.mht_id')
+                    ->where('cdv_id',$cdv_id)->first();
                 $dkt = new DK_Tour();
-                $dkt->cdv_id = Auth::user()->cdv_id;
+                $dkt->cdv_id = $cdv_id;
                 $dkt->tour_id = $id;
-                $dkt->tttp_id  = 2;
+                $dkt->tttp_id  = 1;
                 $dkt->dkt_soluong = $request->dkt_soluong;
+                $dkt->phihotro = $phihotro->mht_phihotro;
                 //return $dkt->dkt_soluong;
                 $dkt->save();
                 DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $soluongconlai]);
                 Session::flash('alert-info', 'Đăng ký thành công!!!');
                 return Redirect::back();
+            }
         }
     }
     
@@ -159,7 +203,7 @@ class IndexController extends Controller
             $tour = DB::table('tour')->where('tour_id',$id)->first();
             $soluongconlai = $tour->tour_soluong + $temp->dkt_soluong;
 
-            DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->update(['tttp_id' => 3]);
+            DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->update(['tttp_id' => 2]);
             DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $soluongconlai]);
             Session::flash('alert-info', 'Hủy đăng ký thành công!!!');
             return Redirect::back();
@@ -175,7 +219,7 @@ class IndexController extends Controller
                 ->join('tour','tour.tour_id','=','dk_tour.tour_id')
                 ->join('giaidoan','giaidoan.gd_id','=','tour.gd_id')
                 ->join('lichtrinh','lichtrinh.lt_id','=','tour.lt_id')
-                ->where([['dk_tour.cdv_id','=',Auth::user()->cdv_id],['dk_tour.tttp_id','<>',3]])
+                ->where([['dk_tour.cdv_id','=',Auth::user()->cdv_id],['dk_tour.tttp_id','<>',2]])
                 ->get();
             //dd($tourdk);
             return view('frontend.quanlytour')->with('tourdk',$tourdk);
