@@ -16,22 +16,26 @@ class DK_TourSeeder extends Seeder
                 'cdv_id' => 1,
                 'tour_id'=> 1,
                 'tttp_id' => 1,
-                'dkt_soluong'=> 5
+                'dkt_soluong'=> 5,
+                'phihotro'=> 1000000
             ],[
                 'cdv_id' => 2,
                 'tour_id'=> 1,
                 'tttp_id' => 1,
-                'dkt_soluong'=> 3
+                'dkt_soluong'=> 3,
+                'phihotro'=> 1000000
             ],[
                 'cdv_id' => 3,
                 'tour_id'=> 2,
-                'tttp_id' => 2,
-                'dkt_soluong'=> 4
+                'tttp_id' => 1,
+                'dkt_soluong'=> 4,
+                'phihotro'=> 1000000
             ],[
                 'cdv_id' => 4,
                 'tour_id'=> 2,
-                'tttp_id' => 2,
-                'dkt_soluong'=> 10
+                'tttp_id' => 1,
+                'dkt_soluong'=> 10,
+                'phihotro'=> 1000000
             ]
         ];
         DB::table('DK_Tour')->insert($arr);

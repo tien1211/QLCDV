@@ -77,7 +77,7 @@
                                     $i = 1;
                                 @endphp
                                 @foreach ($cdv_dk as $dk)
-                                @if($dk->tttp_id != 3)
+                                @if($dk->tttp_id != 2)
                                 <tr>
                                 <td>{{$i}}</td>
                                 <td>{{$dk->cdv_ten}}</td>
