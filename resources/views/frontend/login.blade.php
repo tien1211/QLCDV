@@ -41,7 +41,7 @@
 					</span>
 
 					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="cdv_username" placeholder="Nhập tên đăng nhập.....">
+					<input class="input100" type="text" value="{{old('cdv_username')}}" name="cdv_username" placeholder="Nhập tên đăng nhập.....">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
@@ -74,7 +74,7 @@
 					</div>
 
 					<div class="text-center">
-						<a href="#" class="txt2 hov1">
+					<a href="{{route('trangchu')}}" class="txt2 hov1">
 							Trang chủ
 						</a>
 					</div>

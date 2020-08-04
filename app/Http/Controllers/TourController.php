@@ -323,8 +323,7 @@ class TourController extends Controller
         $chitietTour = DB::table('Tour')
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
-            ->where('tour_id',$id)->get();
-        //dd($chitietTour);
+            ->where('tour_id',$id)->first();
         $cdv_dk = DB::table('dk_tour')
             ->join('Tour','Tour.tour_id','=','dk_tour.tour_id')
             ->join('congdoanvien','congdoanvien.cdv_id','=','dk_tour.cdv_id')

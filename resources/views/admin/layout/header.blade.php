@@ -29,7 +29,6 @@
                 </a>
                 <ul class="dropdown-menu extended logout">
                 <li><a href="{{route('trangchu')}}"><i class=" fa fa-suitcase"></i>Trở về trang chủ</a></li>
-                    <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                 <li><a href="{{route('logout')}}"><i class="fa fa-key"></i> Log Out</a></li>
                 </ul>
                 @else
