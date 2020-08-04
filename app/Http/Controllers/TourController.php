@@ -229,7 +229,7 @@ class TourController extends Controller
         }
 
         else{
-            $Tour->tour_hinhanh= '';
+            $Tour->tour_hinhanh= $Tour->tour_hinhanh;
         }
         $Tour->tour_trangthai = 1;
         $Tour->save();
