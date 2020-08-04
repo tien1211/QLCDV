@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+<style>
+  label.error {
+        display: inline-block;
+        color:red;
+        width: 200px;
+    }
+
+</style>
 <head>
 	<title>Đăng Nhập</title>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <base href="{{asset('')}}">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="login/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="login/vendor/bootstrap/css/bootstrap.min.css">
@@ -16,26 +25,27 @@
 	<link rel="stylesheet" type="text/css" href="login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="login/vendor/animate/animate.css">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="login/vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="login/vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="login/vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="login/vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="login/css/util.css">
 	<link rel="stylesheet" type="text/css" href="login/css/main.css">
 <!--===============================================================================================-->
+
 </head>
 <body>
-	
+
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-			<form class="login100-form validate-form" method="post" action="{{route('login')}}">
-				@csrf	
+			<form class="login100-form validate-form" id="formDemo1" method="post" action="{{route('login')}}">
+				@csrf
 				<span class="login100-form-title p-b-33">
 						ĐĂNG NHẬP
 					</span>
@@ -82,9 +92,9 @@
 			</div>
 		</div>
 	</div>
-	
 
-	
+
+
 <!--===============================================================================================-->
 	<script src="login/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
@@ -100,7 +110,27 @@
 <!--===============================================================================================-->
 	<script src="login/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="login/js/main.js"></script>
+
+    <script src="login/js/main.js"></script>
+
+    @section('script')
+    <script>
+        //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
+        $("#formDemo1").validate({
+            rules: {
+                cdv_username: "required",
+                password : "required",
+
+
+            },
+            messages: {
+                cdv_username: "Bạn chưa nhập username!!",
+                password: "Bạn chưa nhập password!!",
+            }
+        });
+    </script>
+@endsection
 
 </body>
+
 </html>
