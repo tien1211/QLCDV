@@ -94,7 +94,7 @@
                             <div class="form-group ">
                                 <label for="confirm_password" class="control-label col-lg-3">Chi phí</label>
                                 <div class="col-lg-6">
-                                    <input class="form-control " min="1000000" name="tour_chiphi" type="number" id="tour_chiphi">
+                                    <input class="form-control " step="50000" min="1000000" name="tour_chiphi" type="number" id="tour_chiphi">
                                 </div>
                              </div>
                             <div class="ltid" ></div>

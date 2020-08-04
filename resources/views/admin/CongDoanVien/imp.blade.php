@@ -67,27 +67,8 @@
                             
                             <br><br>
                             <label for="username" class="control-label col-lg-3">FILE IMPORT</label>
-                          
                                 <div class="col-lg-6">
                                     <input class="form-control" name="file" type="file">
-                                    @if($errors->has('file'))
-                                    <div style="color:red">{{ $errors->first('file')}}</div>
-                                     @endif
-                                    
-                                        @if (isset($f))
-                                            <div class="alert alert-warning" style="color: red"><ul>ERROR FILE IMPORT:</ul>
-                                                @foreach ($f as $f1)
-                                                
-                                                        @foreach ($f1->errors() as $error)
-                                                        
-                                                            <li style="color: red">{{ $error }}</li> 
-                                                        
-                                                        @endforeach
-                                                    
-                                                @endforeach
-                                            </div>
-                                        @endif
-                                   
                                 </div>
                         </div>
             

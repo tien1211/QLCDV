@@ -35,7 +35,12 @@ class IndexController extends Controller
         $ThongTinNguoiDK = ThongTinNguoiDK::all();
         $TinhTrangThuPhi = TinhTrangThuPhi::all();
         $now=  Carbon::now('Asia/Ho_Chi_Minh');
-
+        $ifo= DB::table('Tour')
+            ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
+            ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
+            ->orderBy('tour.tour_handk','desc')
+            ->limit(5)->get();
+        view() ->share('ifo',$ifo);
         view() ->share('now',$now);
         view()->share('Tour',$Tour);
         view()->share('ChucVu',$ChucVu);
@@ -50,9 +55,7 @@ class IndexController extends Controller
         view()->share('TinhTrangThuPhi',$TinhTrangThuPhi);
     }
 
-    
-    public function getIndex()
-    {   
+    public function getIndex(){   
         $tour1 = DB::table('Tour')
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
@@ -61,7 +64,6 @@ class IndexController extends Controller
             //dd($tour1);
         return view('frontend.index')->with('tour1',$tour1);
     }
-
 
     public function getChiTiet($id){
         
@@ -105,9 +107,7 @@ class IndexController extends Controller
         }
     }
 
-
-    public function postBook(Request $request, $id)
-    {
+    public function postBook(Request $request, $id) {
         if(!Auth::check()){
             Session::flash('alert-danger', 'Bạn cần đăng nhập để đăng ký tour!!');
             return Redirect::back();
@@ -136,8 +136,7 @@ class IndexController extends Controller
         }
     }
     
-    public function postUpdate(Request $request, $id)
-    {
+    public function postUpdate(Request $request, $id){
             $this->validate($request, [
                 'dkt_soluong'=>'required'
                 ],[
@@ -155,8 +154,7 @@ class IndexController extends Controller
             return Redirect::back();
     }
 
-    public function postDelete($id)
-    {
+    public function postDelete($id) {
             $temp = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->first();
             $tour = DB::table('tour')->where('tour_id',$id)->first();
             $soluongconlai = $tour->tour_soluong + $temp->dkt_soluong;
@@ -183,4 +181,6 @@ class IndexController extends Controller
             return view('frontend.quanlytour')->with('tourdk',$tourdk);
         }
     }
+
+    
 }

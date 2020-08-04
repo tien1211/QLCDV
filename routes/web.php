@@ -34,6 +34,7 @@ Route::post('/dangkytour/{id}','IndexController@postBook')->name('dktour');
 Route::post('/capnhattour/{id}','IndexController@postUpdate')->name('cntour');
 Route::post('/huytour/{id}','IndexController@postDelete')->name('huytour');
 Route::get('/quanlytour','IndexController@getQLTour')->name('quanlytour');
+Route::get('/menu','IndexController@getInfoMenu')->name('menu');
 
 
 
@@ -159,17 +160,5 @@ Route::group(['prefix' => 'admin'], function () {
 /////
 
 
-Route::group(['prefix' => 'frontend'], function () {
 
 
-
-});
-
-
-// Route::get('/hello',function(){
-//     return "Chao ban";
-// });
-
-// Route::get('user/{name?}', function ($name = 'Jonn') {
-//     return $name;
-// });
