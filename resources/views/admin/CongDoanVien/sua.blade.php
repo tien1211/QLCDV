@@ -1,5 +1,14 @@
 @extends('admin.layout.master')
 @section('admin_content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<style>
+  label.error {
+        display: inline-block;
+        color:red;
+        width: 200px;
+    }
+
+</style>
 <div class="row">
   <div class="col-lg-12">
 
@@ -10,7 +19,7 @@
           <div class="panel-body">
 
               <div class="form" >
-              <form class="cmxform form-horizontal"method="post" action="{{route('CDV_XLSua',['id'=> $CongDoanVien->cdv_id])}}" enctype="multipart/form-data" id="signupForm" novalidate="novalidate">
+              <form class="cmxform form-horizontal"method="post" action="" enctype="multipart/form-data" id="formDemo1" novalidate="novalidate">
                 @csrf
 
                 {{-- Mức Đơn vị --}}
@@ -253,7 +262,7 @@
                   <div class="form-group ">
                     <label for="firstname" class="control-label col-lg-3">Ngày Vào Ngành</label>
                     <div class="col-lg-6">
-                        <input class=" form-control" id="cdv_ngayvaonghanh" value="{{$CongDoanVien->cdv_ngayvaonganh}}" name="cdv_ngayvaonganh" type="date">
+                        <input class=" form-control" id="cdv_ngayvaonganh" value="{{$CongDoanVien->cdv_ngayvaonganh}}" name="cdv_ngayvaonganh" type="date">
                         @if($errors->has('cdv_ngayvaonganh'))
                         <div style="color:red">{{ $errors->first('cdv_ngayvaonganh')}}</div>
                         @endif
@@ -304,7 +313,7 @@
                           <label for="password" class="control-label col-lg-3">Password</label>
                           <div class="col-lg-6">
                             <h5><input type="checkbox" id="changepassword" name="changepassword"> Đổi mật khẩu:</h5>
-                              <input class="form-control password" id="password" name="password" type="password" disabled="">
+                              <input class="form-control password" id="cdv_password" name="password" type="password" disabled="">
                               @if($errors->has('password'))
                               <div style="color:red">{{ $errors->first('password')}}</div>
                               @endif
@@ -316,7 +325,7 @@
                       <div class="form-group ">
                           <label for="confirm_password" class="control-label col-lg-3">Confirm Password</label>
                           <div class="col-lg-6">
-                              <input class="form-control password" id="password" name="confirm_password" type="password" disabled="">
+                              <input class="form-control password" id="cdv_password" name="confirm_password" type="password" disabled="">
                               @if($errors->has('confirm_password'))
                               <div style="color:red">{{ $errors->first('confirm_password')}}</div>
                               @endif
@@ -372,73 +381,99 @@
             }
         });
     });
+
+
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+        //xử lý khi có sự kiện click
+        $('#formDemo1').on('submit', function (e) {
+            //Lấy ra files
+            e.preventDefault();
+            var dv_id = $('#dv_id').val();
+            var  cv_id = $('#cv_id').val();
+            var lnv_id = $('#lnv_id').val();
+            var cdv_ten = $('#cdv_ten').val();
+
+            var cdv_ngaysinh = $('#cdv_ngaysinh').val();
+            var cdv_gioitinh = $('#cdv_gioitinh').val();
+            var cdv_cmnd = $('#cdv_cmnd ').val();
+            var cdv_nguyenquan = $('#cdv_nguyenquan').val();
+            var cdv_diachi = $('#cdv_diachi').val();
+            var cdv_sdt = $('#cdv_sdt ').val();
+            var cdv_email = $('#cdv_email ').val();
+            var cdv_dantoc = $('#cdv_dantoc').val();
+
+            var cdv_trinhdo = $('#cdv_trinhdo').val();
+            var cdv_tongiao = $('#cdv_tongiao ').val();
+            var cdv_ngaythuviec = $('#cdv_ngaythuviec').val();
+            var cdv_ngayvaonganh = $('#cdv_ngayvaonganh').val();
+            var cdv_username = $('#cdv_username').val();
+            var cdv_password = $('#cdv_password').val();
+            var cdv_quyen = $('#cdv_quyen').val();
+
+            var file_data = $('#cdv_hinhanh').prop('files')[0];
+            //console.log(file_data);
+            var type ="";
+            //lấy ra kiểu file
+            if(file_data){
+                type = file_data.type;
+            }
+
+
+            //Xét kiểu file được upload
+            var match = ["image/gif", "image/png", "image/jpg",];
+            //kiểm tra kiểu file
+            if (type == match[0] || type == match[1] || type == match[2] || !file_data) {
+                //khởi tạo đối tượng form data
+                var form_data = new FormData();
+
+                form_data.append(' dv_id',  dv_id);
+                form_data.append('cv_id', cv_id);
+                form_data.append('lnv_id', lnv_id);
+                form_data.append('cdv_ten', cdv_ten);
+                form_data.append('cdv_ngaysinh', cdv_ngaysinh);
+                form_data.append('cdv_gioitinh', cdv_gioitinh);
+                form_data.append('cdv_cmnd', cdv_cmnd);
+                form_data.append('cdv_nguyenquan', cdv_nguyenquan);
+                form_data.append('cdv_diachi', cdv_diachi);
+                form_data.append('cdv_sdt', cdv_sdt);
+                form_data.append('cdv_email', cdv_email);
+                form_data.append('cdv_dantoc', cdv_dantoc);
+                form_data.append('cdv_trinhdo', cdv_trinhdo);
+                form_data.append('cdv_tongiao', cdv_tongiao);
+                form_data.append('cdv_ngaythuviec', cdv_ngaythuviec);
+                form_data.append('cdv_ngayvaonganh', cdv_ngayvaonganh);
+                form_data.append('cdv_username', cdv_username);
+                form_data.append('cdv_password', cdv_password);
+                form_data.append('cdv_quyen', cdv_quyen);
+
+                form_data.append('cdv_hinhanh', file_data);
+
+                //sử dụng ajax post
+                $.ajax({
+                    url: "{{route('CDV_XLSua',['id'=>$CongDoanVien->cdv_id])}}", // gửi đến file upload.php
+                    dataType: 'text',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data:form_data,
+                    type: 'post',
+                    success: function (res) {
+                        $('.status').text(res);
+                        $('#cdv_hinhanh').val('');
+                    window.location =" {{route('CDV_DanhSach')}}";
+
+
+                    }
+                });
+            }
+
+            return false;
+        });
 </script>
 
-<<<<<<< HEAD
-=======
-<!-- <script type="text/javascript">
-
-    $('#signupForm').on('submit',function(event){
-        event.preventDefault();
-
-        cdv_id = $('#cdv_id').val();
-        dv_id = $('#dv_id ').val();
-        cv_id = $('#cv_id').val();
-        lnv_id = $('#lnv_id').val();
-        mht_id = $('#mht_id').val();
-        cdv_ten = $('#cdv_ten').val();
-        cdv_ngaysinh = $('#cdv_ngaysinh').val();
-        cdv_gioitinh = $('#cdv_gioitinh').val();
-        cdv_cmnd = $('#cdv_cmnd').val();
-        cdv_nguyenquan = $('#cdv_nguyenquan').val();
-        cdv_diachi = $('#cdv_diachi').val();
-        cdv_sdt = $('#cdv_sdt').val();
-        cdv_email = $('#cdv_email').val();
-        cdv_dantoc = $('#cdv_dantoc').val();
-        cdv_trinhdo = $('#cdv_trinhdo').val();
-        cdv_tongiao = $('#cdv_tongiao').val();
-        cdv_ngaythuviec = $('#cdv_ngaythuviec').val();
-        cdv_ngayvaonganh = $('#cdv_ngayvaonganh').val();
-        cdv_trangthai = $('#cdv_trangthai').val();
-        cdv_hinhanh = $('#cdv_hinhanh').val();
-        cdv_username = $('#cdv_username').val();
-        password = $('#password').val();
-        password = $('#cdv_quyen').val();
-        $.ajax({
-          url: "{{route('CDV_XLSua',['id'=> $CongDoanVien->cdv_id])}}",
-          type:"POST",
-          data:{
-            "_token": "{{ csrf_token() }}",
-            cdv_id:cdv_id  ,
-            dv_id:dv_id ,
-            cv_id :cv_id,
-            lnv_id :lnv_id,
-            mht_id : mht_id ,
-            cdv_ten : cdv_ten,
-            cdv_ngaysinh : cdv_ngaysinh,
-            cdv_gioitinh : cdv_gioitinh ,
-            cdv_cmnd : cdv_cmnd ,
-            cdv_nguyenquan : cdv_nguyenquan,
-            cdv_diachi : cdv_diachi,
-            cdv_sdt : cdv_sdt,
-            cdv_email : cdv_email,
-            cdv_dantoc : cdv_dantoc,
-            cdv_trinhdo : cdv_trinhdo,
-            cdv_tongiao : cdv_tongiao,
-            cdv_ngaythuviec : cdv_ngaythuviec,
-            cdv_ngayvaonganh : cdv_ngayvaonganh,
-            cdv_trangthai : cdv_trangthai,
-            cdv_hinhanh : cdv_hinhanh,
-            cdv_username : cdv_username,
-            password : password,
-            cdv_quyen : cdv_quyen,
-          },
-          success:function(response){
-            console.log(response);
-          },
-         });
-        });
-      </script> -->
->>>>>>> 4f43905bf862b9d09deccc77233e20198b5c661b
 
 @endsection

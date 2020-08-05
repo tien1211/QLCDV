@@ -49,59 +49,59 @@ class CongDoanVienController extends Controller
     }
 
     public function postThem(Request $request){
-        $this->validate($request,
-        [
-            'cv_id' => 'required',
-            'lnv_id' => 'required',
-            'dv_id'=>'required',
-            'cdv_ten'=>'bail|required',
-            'cdv_ngaysinh'=>'required',
-            'cdv_gioitinh'=>'required',
-            'cdv_cmnd'=>'required|max:10|min:10',
-            'cdv_nguyenquan'=>'required',
-            'cdv_diachi'=>'bail|required',
-            'cdv_sdt'=>'required|max:10|min:10',
-            'cdv_email'=>'required|unique:CongDoanVien',
-            'cdv_dantoc'=>'required',
-            'cdv_trinhdo'=>'required',
-            'cdv_tongiao'=>'bail|required',
-            'cdv_ngaythuviec'=>'required',
-            'cdv_ngayvaonganh'=>'required',
-            'cdv_username'=>'bail|required|unique:CongDoanVien',
-            'password'=>'required|min:8|max:50',
-            'confirm_password'=>'required|same:password',
-            'cdv_quyen' => 'required'
-            ],[
-                'cv_id.required' => 'Vui lòng không được để trống chức vụ',
-                'lnv_id.required' => 'Vui lòng không được để trống loại nhân viên',
-                'dv_id.required'=>'Vui lòng không được để trống đơn vị',
-                'cdv_ten.required'=>'Vui lòng không được để trống tên công đoàn viên',
-                'cdv_ngaysinh.required'=>'Vui lòng không được để trống ngày sinh',
-                'cdv_gioitinh.required'=>'Vui lòng không được để trống giới tính',
-                'cdv_cmnd.required' => 'Vui lòng không được để trống CMND',
-                'cdv_cmnd.min' => 'CMND phải ít nhất 10 kí tự',
-                'cdv_cmnd.max' => 'CMND phải không quá 10 kí tự',
-                'cdv_nguyenquan.required'=>'Vui lòng không được để trống nguyên quán',
-                'cdv_diachi.required'=>'Vui lòng không được để trống địa chỉ',
-                'cdv_sdt.required'=>'Vui lòng không được để trống số điện thoại',
-                'cdv_sdt.min' => 'Số điện thoại phải ít nhất 10 kí tự',
-                'cdv_sdt.max' => 'Số điện thoại phải không quá 10 kí tự',
-                'cdv_email.required'=>'Vui lòng không được để trống email',
-                'cdv_dantoc.required'=>'Vui lòng không được để trống dân tộc',
-                'cdv_trinhdo.required'=>'Vui lòng không được để trống trình độ',
-                'cdv_tongiao.required'=>'Vui lòng không được để trống tôn giáo',
-                'cdv_ngaythuviec.required'=>'Vui lòng không được để trống ngày vào công đoàn',
-                'cdv_ngayvaonganh.required'=>'Vui lòng không được để trống ngày vào ngành',
-                'cdv_username.required'=>'Vui lòng không được để trống tên đăng nhập',
-                'cdv_username.unique'=>'Tên đăng nhập đã tồn tại',
-                'cdv_email.unique'=>'Email đã tồn tại',
-                'password.required'=>'Vui lòng không được để trống mật khẩu',
-                'password.min'=>'Mật khẩu phải ít nhất 8 kí tự',
-                'password.max' => 'Mật khẩu không được quá 50 kí tự',
-                'confirm_password.required'=>'Vui lòng không được để trống xác nhận mật khẩu',
-                'confirm_password.same' => 'Mật khẩu không trùng khớp',
-                'cdv_quyen.required' => 'Vui lòng chọn quyền cho công đoàn viên'
-            ]);
+        // $this->validate($request,
+        // [
+        //     'cv_id' => 'required',
+        //     'lnv_id' => 'required',
+        //     'dv_id'=>'required',
+        //     'cdv_ten'=>'bail|required',
+        //     'cdv_ngaysinh'=>'required',
+        //     'cdv_gioitinh'=>'required',
+        //     'cdv_cmnd'=>'required|max:10|min:10',
+        //     'cdv_nguyenquan'=>'required',
+        //     'cdv_diachi'=>'bail|required',
+        //     'cdv_sdt'=>'required|max:10|min:10',
+        //     'cdv_email'=>'required|unique:CongDoanVien',
+        //     'cdv_dantoc'=>'required',
+        //     'cdv_trinhdo'=>'required',
+        //     'cdv_tongiao'=>'bail|required',
+        //     'cdv_ngaythuviec'=>'required',
+        //     'cdv_ngayvaonganh'=>'required',
+        //     'cdv_username'=>'bail|required|unique:CongDoanVien',
+        //     'password'=>'required|min:8|max:50',
+        //     'confirm_password'=>'required|same:password',
+        //     'cdv_quyen' => 'required'
+        //     ],[
+        //         'cv_id.required' => 'Vui lòng không được để trống chức vụ',
+        //         'lnv_id.required' => 'Vui lòng không được để trống loại nhân viên',
+        //         'dv_id.required'=>'Vui lòng không được để trống đơn vị',
+        //         'cdv_ten.required'=>'Vui lòng không được để trống tên công đoàn viên',
+        //         'cdv_ngaysinh.required'=>'Vui lòng không được để trống ngày sinh',
+        //         'cdv_gioitinh.required'=>'Vui lòng không được để trống giới tính',
+        //         'cdv_cmnd.required' => 'Vui lòng không được để trống CMND',
+        //         'cdv_cmnd.min' => 'CMND phải ít nhất 10 kí tự',
+        //         'cdv_cmnd.max' => 'CMND phải không quá 10 kí tự',
+        //         'cdv_nguyenquan.required'=>'Vui lòng không được để trống nguyên quán',
+        //         'cdv_diachi.required'=>'Vui lòng không được để trống địa chỉ',
+        //         'cdv_sdt.required'=>'Vui lòng không được để trống số điện thoại',
+        //         'cdv_sdt.min' => 'Số điện thoại phải ít nhất 10 kí tự',
+        //         'cdv_sdt.max' => 'Số điện thoại phải không quá 10 kí tự',
+        //         'cdv_email.required'=>'Vui lòng không được để trống email',
+        //         'cdv_dantoc.required'=>'Vui lòng không được để trống dân tộc',
+        //         'cdv_trinhdo.required'=>'Vui lòng không được để trống trình độ',
+        //         'cdv_tongiao.required'=>'Vui lòng không được để trống tôn giáo',
+        //         'cdv_ngaythuviec.required'=>'Vui lòng không được để trống ngày vào công đoàn',
+        //         'cdv_ngayvaonganh.required'=>'Vui lòng không được để trống ngày vào ngành',
+        //         'cdv_username.required'=>'Vui lòng không được để trống tên đăng nhập',
+        //         'cdv_username.unique'=>'Tên đăng nhập đã tồn tại',
+        //         'cdv_email.unique'=>'Email đã tồn tại',
+        //         'password.required'=>'Vui lòng không được để trống mật khẩu',
+        //         'password.min'=>'Mật khẩu phải ít nhất 8 kí tự',
+        //         'password.max' => 'Mật khẩu không được quá 50 kí tự',
+        //         'confirm_password.required'=>'Vui lòng không được để trống xác nhận mật khẩu',
+        //         'confirm_password.same' => 'Mật khẩu không trùng khớp',
+        //         'cdv_quyen.required' => 'Vui lòng chọn quyền cho công đoàn viên'
+        //     ]);
             $CongDoanVien = new CongDoanVien();
             $CongDoanVien->dv_id = $request->dv_id;
             $CongDoanVien->cv_id = $request->cv_id;
@@ -121,82 +121,91 @@ class CongDoanVienController extends Controller
             $CongDoanVien->cdv_ngayvaonganh = $request->cdv_ngayvaonganh;
             $CongDoanVien->cdv_trangthai = 1;
             $CongDoanVien->mht_id = 1;
-            if($request->hasFile('cdv_hinhanh')){
-                $dataTime = date('Ymd_His');
+            // if($request->hasFile('cdv_hinhanh')){
+            //     $dataTime = date('Ymd_His');
+            //     $file = $request->file('cdv_hinhanh');
+            //     $duoi = $file->getClientOriginalExtension();
+            //     if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
+            //         Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
+            //         return redirect()->route('CDV_Them');
+            //     }
+            //     $fileName = $dataTime . '-' . $file->getClientOriginalName();
+            //     //resize ảnh
+            //     $destinationPath = public_path('upload/cdv');
+            //     $resize_image = Image::make($file->getRealPath());
+            //     $resize_image->resize(300, 300, function($constraint)
+            //     {
+            //         $constraint->aspectRatio();
+            //     })->save($destinationPath . '/' . $fileName);
+            //     //
+            //     $CongDoanVien->cdv_hinhanh = $fileName;
+            // }else{
+            //     $CongDoanVien->cdv_hinhanh="";
+            // }
+            if ($request->hasFile('cdv_hinhanh')){
+
                 $file = $request->file('cdv_hinhanh');
-                $duoi = $file->getClientOriginalExtension();
-                if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
-                    Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
-                    return redirect()->route('CDV_Them');
-                }
-                $fileName = $dataTime . '-' . $file->getClientOriginalName();
-                //resize ảnh
-                $destinationPath = public_path('upload/cdv');
-                $resize_image = Image::make($file->getRealPath());
-                $resize_image->resize(300, 300, function($constraint)
-                {
-                    $constraint->aspectRatio();
-                })->save($destinationPath . '/' . $fileName);
-                //
-                $CongDoanVien->cdv_hinhanh = $fileName;
-            }else{
-                $CongDoanVien->cdv_hinhanh="";
+                $name = $file->getClientOriginalName();
+                $file->move('upload/cdv/', $name);
+
             }
+                $CongDoanVien->cdv_hinhanh = $name;
             $CongDoanVien->cdv_username = $request->cdv_username;
             $CongDoanVien->password =bcrypt($request->password);
             $CongDoanVien->cdv_quyen = $request->cdv_quyen;
             $CongDoanVien->save();
-            Session::flash('alert-info', 'Thêm thành công!!!');
-            return redirect()->route('CDV_DanhSach');
+            // Session::flash('alert-info', 'Thêm thành công!!!');
+            // return redirect()->route('CDV_DanhSach');
+            return \response(['mess'=>'Da them thanh cong!']);
     }
-    
+
     public function getSua($id){
         $CongDoanVien =  CongDoanVien::find($id);
         return view('admin.CongDoanVien.sua')->with('CongDoanVien',$CongDoanVien);
     }
 
     public function postSua(Request $request, $id){
-        $this->validate($request, [
-            'cv_id' => 'required',
-            'lnv_id' => 'required',
-            'dv_id'=>'required',
-            'cdv_ten'=>'bail|required',
-            'cdv_ngaysinh'=>'required',
-            'cdv_gioitinh'=>'required',
-            'cdv_cmnd'=>'required|max:10|min:10',
-            'cdv_nguyenquan'=>'required',
-            'cdv_diachi'=>'bail|required',
-            'cdv_sdt'=>'required|max:10|min:10',
-            'cdv_email'=>'required',
-            'cdv_dantoc'=>'required',
-            'cdv_trinhdo'=>'required',
-            'cdv_tongiao'=>'bail|required',
-            'cdv_ngaythuviec'=>'required',
-            'cdv_ngayvaonganh'=>'required',
-            'cdv_quyen' => 'required'
-            ],[
-                'cv_id.required' => 'Vui lòng không được để trống chức vụ',
-                'lnv_id.required' => 'Vui lòng không được để trống loại nhân viên',
-                'dv_id.required'=>'Vui lòng không được để trống đơn vị',
-                'cdv_ten.required'=>'Vui lòng không được để trống tên công đoàn viên',
-                'cdv_ngaysinh.required'=>'Vui lòng không được để trống ngày sinh',
-                'cdv_gioitinh.required'=>'Vui lòng không được để trống giới tính',
-                'cdv_cmnd.required' => 'Vui lòng không được để trống CMND',
-                'cdv_cmnd.min' => 'CMND phải ít nhất 10 kí tự',
-                'cdv_cmnd.max' => 'CMND phải không quá 10 kí tự',
-                'cdv_nguyenquan.required'=>'Vui lòng không được để trống nguyên quán',
-                'cdv_diachi.required'=>'Vui lòng không được để trống địa chỉ',
-                'cdv_sdt.required'=>'Vui lòng không được để trống số điện thoại',
-                'cdv_sdt.min' => 'Số điện thoại phải ít nhất 10 kí tự',
-                'cdv_sdt.max' => 'Số điện thoại phải không quá 10 kí tự',
-                'cdv_email.required'=>'Vui lòng không được để trống email',
-                'cdv_dantoc.required'=>'Vui lòng không được để trống dân tộc',
-                'cdv_trinhdo.required'=>'Vui lòng không được để trống trình độ',
-                'cdv_tongiao.required'=>'Vui lòng không được để trống tôn giáo',
-                'cdv_ngaythuviec.required'=>'Vui lòng không được để trống ngày vào công đoàn',
-                'cdv_ngayvaonganh.required'=>'Vui lòng không được để trống ngày vào ngành',
-                'cdv_quyen.required' => 'Vui lòng chọn quyền cho công đoàn viên',
-            ]);
+        // $this->validate($request, [
+        //     'cv_id' => 'required',
+        //     'lnv_id' => 'required',
+        //     'dv_id'=>'required',
+        //     'cdv_ten'=>'bail|required',
+        //     'cdv_ngaysinh'=>'required',
+        //     'cdv_gioitinh'=>'required',
+        //     'cdv_cmnd'=>'required|max:10|min:10',
+        //     'cdv_nguyenquan'=>'required',
+        //     'cdv_diachi'=>'bail|required',
+        //     'cdv_sdt'=>'required|max:10|min:10',
+        //     'cdv_email'=>'required',
+        //     'cdv_dantoc'=>'required',
+        //     'cdv_trinhdo'=>'required',
+        //     'cdv_tongiao'=>'bail|required',
+        //     'cdv_ngaythuviec'=>'required',
+        //     'cdv_ngayvaonganh'=>'required',
+        //     'cdv_quyen' => 'required'
+        //     ],[
+        //         'cv_id.required' => 'Vui lòng không được để trống chức vụ',
+        //         'lnv_id.required' => 'Vui lòng không được để trống loại nhân viên',
+        //         'dv_id.required'=>'Vui lòng không được để trống đơn vị',
+        //         'cdv_ten.required'=>'Vui lòng không được để trống tên công đoàn viên',
+        //         'cdv_ngaysinh.required'=>'Vui lòng không được để trống ngày sinh',
+        //         'cdv_gioitinh.required'=>'Vui lòng không được để trống giới tính',
+        //         'cdv_cmnd.required' => 'Vui lòng không được để trống CMND',
+        //         'cdv_cmnd.min' => 'CMND phải ít nhất 10 kí tự',
+        //         'cdv_cmnd.max' => 'CMND phải không quá 10 kí tự',
+        //         'cdv_nguyenquan.required'=>'Vui lòng không được để trống nguyên quán',
+        //         'cdv_diachi.required'=>'Vui lòng không được để trống địa chỉ',
+        //         'cdv_sdt.required'=>'Vui lòng không được để trống số điện thoại',
+        //         'cdv_sdt.min' => 'Số điện thoại phải ít nhất 10 kí tự',
+        //         'cdv_sdt.max' => 'Số điện thoại phải không quá 10 kí tự',
+        //         'cdv_email.required'=>'Vui lòng không được để trống email',
+        //         'cdv_dantoc.required'=>'Vui lòng không được để trống dân tộc',
+        //         'cdv_trinhdo.required'=>'Vui lòng không được để trống trình độ',
+        //         'cdv_tongiao.required'=>'Vui lòng không được để trống tôn giáo',
+        //         'cdv_ngaythuviec.required'=>'Vui lòng không được để trống ngày vào công đoàn',
+        //         'cdv_ngayvaonganh.required'=>'Vui lòng không được để trống ngày vào ngành',
+        //         'cdv_quyen.required' => 'Vui lòng chọn quyền cho công đoàn viên',
+        //     ]);
 
             $CongDoanVien = CongDoanVien::find($id);
             $CongDoanVien->dv_id = $request->dv_id;
@@ -217,49 +226,64 @@ class CongDoanVienController extends Controller
             $CongDoanVien->cdv_ngayvaonganh = $request->cdv_ngayvaonganh;
             $CongDoanVien->cdv_trangthai = 1;
             $CongDoanVien->mht_id = $CongDoanVien->mht_id;
-            if($request->hasFile('cdv_hinhanh')){
-                $dataTime = date('Ymd_His');
+            // if($request->hasFile('cdv_hinhanh')){
+            //     $dataTime = date('Ymd_His');
+            //     $file = $request->file('cdv_hinhanh');
+            //     $duoi = $file->getClientOriginalExtension();
+            //     if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
+            //         Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
+            //         return redirect()->route('CDV_Them');
+            //     }
+            //     $fileName = $dataTime . '-' . $file->getClientOriginalName();
+            //     //resize ảnh
+            //     $destinationPath = public_path('upload/cdv');
+            //     $resize_image = Image::make($file->getRealPath());
+            //     $resize_image->resize(300, 300, function($constraint)
+            //     {
+            //         $constraint->aspectRatio();
+            //     })->save($destinationPath . '/' . $fileName);
+            //     //
+            //     $CongDoanVien->cdv_hinhanh = $fileName;
+            // }else{
+            //     $CongDoanVien->cdv_hinhanh= $CongDoanVien->cdv_hinhanh;
+            // }
+            // $CongDoanVien->cdv_quyen = $request->cdv_quyen;
+            // if($request->changepassword == "on"){
+            //     $this->validate($request, [
+
+            //         'password'=>'required|min:8|max:50',
+            //         'confirm_password'=>'required|same:password',
+            //         ],[
+
+            //             'password.required'=>'Vui lòng không được để trống mật khẩu',
+            //             'password.min'=>'Mật khẩu phải ít nhất 8 kí tự',
+            //             'password.max' => 'Mật khẩu không được quá 50 kí tự',
+            //             'confirm_password.required'=>'Vui lòng không được để trống xác nhận mật khẩu',
+            //             'confirm_password.same' => 'Mật khẩu không trùng khớp',
+
+            //         ]);
+            //     $CongDoanVien->password =bcrypt($request->password);
+            // }
+            if ($request->hasFile('cdv_hinhanh')){
+
                 $file = $request->file('cdv_hinhanh');
-                $duoi = $file->getClientOriginalExtension();
-                if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
-                    Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
-                    return redirect()->route('CDV_Them');
-                }
-                $fileName = $dataTime . '-' . $file->getClientOriginalName();
-                //resize ảnh
-                $destinationPath = public_path('upload/cdv');
-                $resize_image = Image::make($file->getRealPath());
-                $resize_image->resize(300, 300, function($constraint)
-                {
-                    $constraint->aspectRatio();
-                })->save($destinationPath . '/' . $fileName);
-                //
-                $CongDoanVien->cdv_hinhanh = $fileName;
+                $name = $file->getClientOriginalName();
+                $file->move('upload/cdv/', $name);
+                $CongDoanVien->cdv_hinhanh = $name;
+
             }else{
-                $CongDoanVien->cdv_hinhanh= $CongDoanVien->cdv_hinhanh;
+                $CongDoanVien->cdv_hinhanh = $CongDoanVien->cdv_hinhanh;
             }
+
+            $CongDoanVien->cdv_username = $request->cdv_username;
+            $CongDoanVien->password =bcrypt($request->password);
             $CongDoanVien->cdv_quyen = $request->cdv_quyen;
-            if($request->changepassword == "on"){
-                $this->validate($request, [
-
-                    'password'=>'required|min:8|max:50',
-                    'confirm_password'=>'required|same:password',
-                    ],[
-
-                        'password.required'=>'Vui lòng không được để trống mật khẩu',
-                        'password.min'=>'Mật khẩu phải ít nhất 8 kí tự',
-                        'password.max' => 'Mật khẩu không được quá 50 kí tự',
-                        'confirm_password.required'=>'Vui lòng không được để trống xác nhận mật khẩu',
-                        'confirm_password.same' => 'Mật khẩu không trùng khớp',
-
-                    ]);
-                $CongDoanVien->password =bcrypt($request->password);
-            }
 
             $CongDoanVien->save();
 
-            Session::flash('alert-info', 'Cập nhật thành công!!!');
-            return redirect()->route('CDV_DanhSach');
+            // Session::flash('alert-info', 'Cập nhật thành công!!!');
+            // return redirect()->route('CDV_DanhSach');
+            return \response(['mess'=>'Da cap nhat thanh cong!']);
     }
 
     public function getXoa($id){
@@ -367,7 +391,7 @@ class CongDoanVienController extends Controller
         $name = $dataTime. '-' . 'DSCDV.xlsx';
         return Excel::download(new CongDoanVienExport, $name);
     }
-    
+
     public function getImport(){
         return view('admin.CongDoanVien.imp');
     }
@@ -377,13 +401,13 @@ class CongDoanVienController extends Controller
         $this->validate($request, [
 
             'file'=>'required|mimes:xlsx,xls,xlsm',
-           
+
             ],[
                 'file.required'=>'Vui lòng không được thêm trống',
                 'file.mimes'=>'Tập tin không đúng định dạng',
             ]);
 
-            
+
             try {
                 $file = $request->file;
                 // Excel::import(new CDVImport, $file);
@@ -391,6 +415,11 @@ class CongDoanVienController extends Controller
                 Session::flash('alert-info', 'Import thành công!!!');
                 return redirect()->route('CDV_DanhSach');
             } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+<<<<<<< HEAD
+                $f  = $e->failures();
+                return view('admin.CongDoanVien.imp',compact('f'));
+            }
+=======
                 Session::flash('alert-danger', 'Import thất bại, vui lòng xem lại file!!!');
                 return redirect::back();
                 // $f  = $e->failures();
@@ -402,7 +431,8 @@ class CongDoanVienController extends Controller
 
 
 
+>>>>>>> e437409397cc471c71687d0a7b4ebd15bd877933
         }
 
-   
+
 }
