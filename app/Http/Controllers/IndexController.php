@@ -234,5 +234,7 @@ class IndexController extends Controller
         }
     }
 
-    
+    public function getProfile(){
+        return view('frontend.thongtincanhan');
+    }
 }

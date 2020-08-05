@@ -34,7 +34,7 @@ Route::post('/dangkytour/{id}','IndexController@postBook')->name('dktour');
 Route::post('/capnhattour/{id}','IndexController@postUpdate')->name('cntour');
 Route::post('/huytour/{id}','IndexController@postDelete')->name('huytour');
 Route::get('/quanlytour','IndexController@getQLTour')->name('quanlytour');
-Route::get('/menu','IndexController@getInfoMenu')->name('menu');
+Route::get('/profile','IndexController@getProfile')->name('proFile');
 
 
 
