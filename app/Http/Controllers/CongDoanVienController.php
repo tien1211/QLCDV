@@ -393,6 +393,8 @@ class CongDoanVienController extends Controller
             } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
                 Session::flash('alert-danger', 'Import thất bại, vui lòng xem lại file!!!');
                 return redirect::back();
+                // $f  = $e->failures();
+                // return view('admin.CongDoanVien.imp',compact('f'));
             } 
 
             
