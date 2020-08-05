@@ -1,7 +1,7 @@
 <div class="col-12 col-sm-8 col-md-6 col-lg-4">
     <div class="roberto-sidebar-area pl-md-4">
 
-        
+
 
         <!-- Recent Post -->
         <div class="single-widget-area mb-100">
@@ -25,8 +25,8 @@
             </div>
             @endforeach
         </div>
-    
-    
+
+
 
 
         <div class="single-widget-area mb-100">
@@ -101,7 +101,7 @@
             </div>
         </div>
 
-      
+
 
     </div>
 </div>

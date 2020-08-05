@@ -51,13 +51,13 @@
 					</span>
 
 					<div class="wrap-input100 validate-input">
-					<input class="input100" type="text" value="{{old('cdv_username')}}" name="cdv_username" placeholder="Nhập tên đăng nhập.....">
+					<input class="input100" type="text" value="{{old('cdv_username')}}" name="cdv_username" placeholder="Nhập tên đăng nhập....." required>
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
 					<div class="wrap-input100 rs1 validate-input">
-						<input class="input100" type="password" name="password" placeholder="Nhập mật khẩu.....">
+						<input class="input100" type="password" name="password" placeholder="Nhập mật khẩu....." required>
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
@@ -114,21 +114,19 @@
     <script src="login/js/main.js"></script>
 
     @section('script')
-    <script>
-        //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
-        $("#formDemo1").validate({
-            rules: {
-                cdv_username: "required",
-                password : "required",
 
+        {{-- //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
+        <script type="text/javascript">
+    function confirmed_pass(){
+        var password = document.getElementById("password").value;
+        var confirmed_password = document.getElementById("confirmed").value;
+        if(password != confirmed_password){
+          document.getElementById("check").innerHTML= "Mật khẩu không khớp";
+          document.getElementById("check").style.color = "red";
+        }
+    }
 
-            },
-            messages: {
-                cdv_username: "Bạn chưa nhập username!!",
-                password: "Bạn chưa nhập password!!",
-            }
-        });
-    </script>
+    </script> --}}
 @endsection
 
 </body>
