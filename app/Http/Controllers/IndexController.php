@@ -116,7 +116,7 @@ class IndexController extends Controller
                 ->with('nguoithamgia',$nguoithamgia);
         }
     }
-
+    // đăng ký tour
     public function postBook(Request $request, $id) {
         if(!Auth::check()){
             Session::flash('alert-danger', 'Bạn cần đăng nhập để đăng ký tour!!');
@@ -132,9 +132,14 @@ class IndexController extends Controller
             return view('frontend.thongtinnguoidkt')->with('tour_id',$id)->with('soluong',$request->dkt_soluong);
             }
         }
+<<<<<<< HEAD
     
    
         public function postUpdate(Request $request, $id){
+=======
+    // Form cập nhật thêm người tham gia tour
+    public function postUpdate(Request $request, $id){
+>>>>>>> bc9075cfc2a3d91d7552e6df2cd27bdf5c366908
         $this->validate($request, [
             'dkt_soluong'=>'required'
             ],[
@@ -142,7 +147,7 @@ class IndexController extends Controller
             ]);
         return view('frontend.capnhatthongtinnguoidkt')->with('tour_id',$id)->with('soluong',$request->dkt_soluong);
     }
-
+    // Hủy Tour
     public function postDelete($id) {
             $temp = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->first();
             $tour = DB::table('tour')->where('tour_id',$id)->first();
@@ -151,9 +156,9 @@ class IndexController extends Controller
             DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->update(['tttp_id' => 2]);
             DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $soluongconlai]);
             Session::flash('alert-info', 'Hủy đăng ký thành công!!!');
-            return Redirect::back();
+            return redirect()->route('quanlytour');
     }
-
+    // Danh Sách tour tham gia
     public function getQLTour(){
         if(!Auth::check()){
             Session::flash('alert-danger', 'Bạn cần đăng nhập để quản lý các tour đã đăng ký!!');
@@ -170,7 +175,7 @@ class IndexController extends Controller
             return view('frontend.quanlytour')->with('tourdk',$tourdk);
         }
     }
-    
+    // Thêm thông tin người tham gia tour
     public function postTTDK(Request $request, $id){
         $tour = DB::table('tour')->where('tour_id',$id)->first();
         $soluongconlai = $tour->tour_soluong - $request->dkt_soluong;
