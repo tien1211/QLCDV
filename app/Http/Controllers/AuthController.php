@@ -26,9 +26,9 @@ class AuthController extends Controller
 
         if (Auth::attempt($arr)) {
             return redirect()->route("admin");#chuyển về trang chủ
-            
+
         } else {
-            
+
             return redirect()->back()
             ->withInput()->with("error", "Sai tài khoản hoặc mật khẩu");
         }
@@ -47,8 +47,6 @@ class AuthController extends Controller
 
     public function postChangePass(Request $request, $id){
         $usr = CongDoanVien::find($id);
-
-   
                 $this->validate($request, [
                         'new_password'                  =>  'required|min:8|max:50',
                         'confirm_password'              =>  'required|same:password',
@@ -62,13 +60,13 @@ class AuthController extends Controller
                     ]);
 
 
-                $usr->password =bcrypt($request->password);
+            $usr->password =bcrypt($request->new_password);
 
-                $usr->save();
+            $usr->save();
 
-                Session::flash('alert-success', 'Đổi mật khẩu thành công!!');
-                return redirect()->route('trangchu');
-            
+            Session::flash('alert-success', 'Đổi mật khẩu thành công!!');
+            return redirect()->route('trangchu');
+
 
     }
 

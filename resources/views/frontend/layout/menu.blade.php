@@ -6,8 +6,8 @@
 
             @foreach($ifo as $info)
             @if ($now < $info->tour_ngaykt )
-                
-            
+
+
             <div class="single-recent-post d-flex">
                 <!-- Thumb -->
                 <div class="post-thumb">
@@ -27,13 +27,13 @@
             @endforeach
         </div>
 
-        
-        <div class="single-widget-area mb-100">
-            <h4 class="widget-title mb-30">Tour Đã Diễn Ra</h4>
 
-           
+        <div class="single-widget-area mb-100">
+        <a href="{{route('tourdadienra')}}"><h4 class="widget-title mb-30">Tour Đã Diễn Ra</h4></a>
+
+
             @foreach($ifo1 as $info1)
-            
+
                     <div class="single-recent-post d-flex">
                         <!-- Thumb -->
                         <div class="post-thumb">
@@ -46,11 +46,11 @@
                             <a href="{{route('chitiettour',['id'=>$info1->tour_id])}}" class="post-title">{{$info1->lt_ten}} {{date('Y ',strtotime($info1->tour_handk))}}</a>
                         </div>
                     </div>
-                
+
             @endforeach
-            
+
         </div>
-      
+
 
     </div>
 </div>

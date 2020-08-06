@@ -38,7 +38,7 @@ class IndexController extends Controller
         $ifo= DB::table('Tour')
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
-            
+
             ->orderBy('tour.tour_handk','desc')
             ->limit(3)->get();
         $ifo1= DB::table('Tour')
@@ -47,6 +47,8 @@ class IndexController extends Controller
         ->where('Tour.tour_ngaykt','<',$now)
         ->orderBy('tour.tour_handk','desc')
         ->limit(3)->get();
+
+
         view() ->share('ifo',$ifo);
         view() ->share('ifo1',$ifo1);
         view() ->share('now',$now);
@@ -64,7 +66,10 @@ class IndexController extends Controller
     }
 
     public function getIndex(){
+<<<<<<< HEAD
+=======
         $moment=  Carbon::now('Asia/Ho_Chi_Minh');   
+>>>>>>> b5aa24b9ba9b429a7404f8a121f9acb99b37e47f
         $tour1 = DB::table('Tour')
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
@@ -76,6 +81,10 @@ class IndexController extends Controller
     }
 
     public function getChiTiet($id){
+<<<<<<< HEAD
+
+=======
+>>>>>>> b5aa24b9ba9b429a7404f8a121f9acb99b37e47f
             $datail=Tour::find($id);
             $a = DB::table('LichTrinh')->join('Tour','LichTrinh.lt_id','=','Tour.lt_id')
                 ->join('Anh_Tour','Anh_Tour.lt_id','=','LichTrinh.lt_id')
@@ -124,8 +133,16 @@ class IndexController extends Controller
         }else{
             return view('frontend.FormDK');
         }
+<<<<<<< HEAD
     }
+=======
+<<<<<<< HEAD
+    }
+
+=======
+>>>>>>> 7dff0836bc9daa1a1a11c11c1f5888e8a15ecfbb
     // Form cập nhật thêm người tham gia tour
+>>>>>>> b5aa24b9ba9b429a7404f8a121f9acb99b37e47f
     public function postUpdate(Request $request, $id){
         $this->validate($request, [
             'dkt_soluong'=>'required'

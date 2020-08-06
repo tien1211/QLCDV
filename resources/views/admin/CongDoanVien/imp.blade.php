@@ -78,8 +78,8 @@
                                         
                                     </div>
                                    @endif
-                                    {{-- @if (isset($f))
-                                        <div class="alert alert-warning" style="color: red">ERROR FILE IMPORT:
+                                    @if (isset($f))
+                                        <div class="alert alert-warning mt-4" style="color: red;">ERROR FILE IMPORT:
                                             @foreach ($f as $f1)
                                                 <ul>
                                                     @foreach ($f1->errors() as $error)
@@ -91,7 +91,7 @@
                                                 </ul>
                                             @endforeach
                                         </div>
-                                    @endif --}}
+                                    @endif
                                 </div>
                 {{------------------- SHOW ERROR ------------------}}           
                         </div>
