@@ -63,10 +63,12 @@ class IndexController extends Controller
         view()->share('TinhTrangThuPhi',$TinhTrangThuPhi);
     }
 
-    public function getIndex(){   
+    public function getIndex(){
+        $moment=  Carbon::now('Asia/Ho_Chi_Minh');   
         $tour1 = DB::table('Tour')
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
+            ->where('Tour.tour_ngaykt','>',$moment)
             ->orderBy('tour.tour_handk','desc')
             ->limit(5)->get();
             //dd($tour1);
