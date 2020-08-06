@@ -13,7 +13,7 @@ class ThongTinNguoiDK extends Model
         'dkt_id',
         'ttndk_ten',
         'ttndk_gt',
-        'ttndk_sdt',
+        'ttndk_cmnd',
         'ttndk_trangthai'
     ];
 

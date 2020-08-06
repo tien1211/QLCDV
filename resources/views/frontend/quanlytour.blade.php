@@ -8,9 +8,8 @@
                 <th>STT</th>
                 <th>Tên tour</th>
                 <th>Giai đoạn</th>
-                <th>Hạn đăng ký</th>
                 <th>Chi phí</th>
-                <th>Chi tiết</th>
+                <th>Người tham gia</th>
             </tr>
         </thead>
         <tbody>
@@ -19,9 +18,8 @@
             <td>{{$key + 1}}</td>
             <td>{{$tour->lt_ten}} {{date('Y ',strtotime($tour->tour_handk))}}</td>
             <td>{{$tour->giai_doan}}</td>
-            <td>{{$tour->tour_handk}}</td>
             <td>{{$tour->tour_chiphi}}</td>
-            <td><a href="{{route('chitiettour',['id'=>$tour->tour_id])}}" class="post-author">Chi tiết</a></td>
+            <td><a href="{{route('DS_NTG',['id'=>$tour->tour_id])}}" class="post-author">Chi tiết</a></td>
             </tr>
             @endforeach
         </tbody>
