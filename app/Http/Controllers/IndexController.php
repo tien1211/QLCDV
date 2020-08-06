@@ -133,7 +133,8 @@ class IndexController extends Controller
             }
         }
     
-    public function postUpdate(Request $request, $id){
+   
+        public function postUpdate(Request $request, $id){
         $this->validate($request, [
             'dkt_soluong'=>'required'
             ],[
