@@ -21,7 +21,7 @@
             <td>{{$tour->giai_doan}}</td>
             <td>{{$tour->tour_chiphi}}</td>
             <td><a href="{{route('DS_NTG',['id'=>$tour->tour_id])}}" class="post-author"><li class="fas fa-list" style="font-size: 20px"></li></a>&nbsp;&nbsp;&nbsp;
-                <a href="{{route('DS_NTG',['id'=>$tour->tour_id])}}" class="post-author"><li class="fas fa-trash-alt" style="font-size: 20px;"></li></a>
+                <a href="{{route('huytour',['id'=>$tour->tour_id])}}" class="post-author"><li class="fas fa-trash-alt" style="font-size: 20px;"></li></a>
             </td>
             </tr>
             @endforeach
