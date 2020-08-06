@@ -38,9 +38,19 @@ class IndexController extends Controller
         $ifo= DB::table('Tour')
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
+
             ->orderBy('tour.tour_handk','desc')
-            ->limit(5)->get();
+            ->limit(3)->get();
+        $ifo1= DB::table('Tour')
+        ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
+        ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
+        ->where('Tour.tour_ngaykt','<',$now)
+        ->orderBy('tour.tour_handk','desc')
+        ->limit(3)->get();
+
+
         view() ->share('ifo',$ifo);
+        view() ->share('ifo1',$ifo1);
         view() ->share('now',$now);
         view()->share('Tour',$Tour);
         view()->share('ChucVu',$ChucVu);
@@ -55,7 +65,7 @@ class IndexController extends Controller
         view()->share('TinhTrangThuPhi',$TinhTrangThuPhi);
     }
 
-    public function getIndex(){   
+    public function getIndex(){
         $tour1 = DB::table('Tour')
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
@@ -66,7 +76,7 @@ class IndexController extends Controller
     }
 
     public function getChiTiet($id){
-        
+
             $datail=Tour::find($id);
             $a = DB::table('LichTrinh')->join('Tour','LichTrinh.lt_id','=','Tour.lt_id')
                 ->join('Anh_Tour','Anh_Tour.lt_id','=','LichTrinh.lt_id')
@@ -179,7 +189,7 @@ class IndexController extends Controller
             }
         }
     }
-    
+
     public function postUpdate(Request $request, $id){
             $this->validate($request, [
                 'dkt_soluong'=>'required'
@@ -226,5 +236,9 @@ class IndexController extends Controller
         }
     }
 
-    
+    public function getTourdadienra(){
+        return view('frontend.tourdadienra');
+    }
+
+
 }

@@ -24,6 +24,8 @@ Route::get('/home1', function () {
     return view('frontend.layout.master1');
 })->name('admin1');
 
+Route::get('/tourdadienra','IndexController@getTourdadienra')->name('tourdadienra');
+
 // Route::get('/home',function(){
 //     return view('frontend.layout.master');
 // })->name('trangchu');
@@ -57,7 +59,7 @@ Route::group(['prefix' => 'admin'], function () {
         //Import Excel
         Route::get('/CDV_Import','CongDoanVienController@getImport')->name('CDV_formImp');
         Route::post('/CDV_Import/Import','CongDoanVienController@Import')->name('Import');
-       
+
 
         //Export Excel
 
