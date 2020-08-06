@@ -1,16 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-<style>
-  label.error {
-        display: inline-block;
-        color:red;
-        width: 200px;
-    }
-
-</style>
 <head>
-	<title>Đăng Nhập</title>
+	<title>Đổi Mật Khẩu</title>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -37,28 +28,32 @@
 	<link rel="stylesheet" type="text/css" href="login/css/util.css">
 	<link rel="stylesheet" type="text/css" href="login/css/main.css">
 <!--===============================================================================================-->
-
 </head>
 <body>
 
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-			<form class="login100-form validate-form" id="formDemo1" method="post" action="{{route('login')}}">
+			<form class="login100-form validate-form" method="post" action="{{route('changePass',['id'=>$auth->cdv_id])}}">
 				@csrf
 				<span class="login100-form-title p-b-33">
-						ĐĂNG NHẬP
+						ĐỔI MẬT KHẨU
 					</span>
 
 					<div class="wrap-input100 validate-input">
-					<input class="input100" type="text" value="{{old('cdv_username')}}" required name="cdv_username" placeholder="Nhập tên đăng nhập.....">
+					    <input class="input100" type="password" required name="password" id="pass" placeholder="Nhập mật khẩu củ.....">
+						<span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
 
-					<span class="focus-input100-1"></span>
+                    <div class="wrap-input100 validate-input">
+					    <input class="input100" type="password" required name="new_password" id="newpass" placeholder="Nhập mật khẩu mới.....">
+						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
 					<div class="wrap-input100 rs1 validate-input">
-						<input class="input100" type="password" name="password" required placeholder="Nhập mật khẩu.....">
+						<input class="input100" type="password"    onchange="confirmed_pass()" name="confirm_password" id="repass" required placeholder="Nhập lại mật khẩu.....">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
@@ -70,8 +65,8 @@
 				  	@endif
 
 					<div class="container-login100-form-btn m-t-20">
-						<button class="login100-form-btn">
-							Đăng nhập
+						<button class="login100-form-btn" >
+							Đổi Mật Khẩu
 						</button>
 					</div>
 
@@ -112,25 +107,31 @@
 <!--===============================================================================================-->
 	<script src="login/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-
     <script src="login/js/main.js"></script>
+<!--===============================================================================================-->
 
-    @section('script')
 
-        {{-- //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
-        <script type="text/javascript">
+<script>
+
+    // function checkpass(){
+    //     var a = {{$ar->password}}
+    //     console.log(a);
+    // }
+    //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
+
     function confirmed_pass(){
-        var password = document.getElementById("password").value;
-        var confirmed_password = document.getElementById("confirmed").value;
+        var password = document.getElementById("newpass").value;
+        var confirmed_password = document.getElementById("repass").value;
         if(password != confirmed_password){
           document.getElementById("check").innerHTML= "Mật khẩu không khớp";
           document.getElementById("check").style.color = "red";
         }
     }
 
-    </script> --}}
-@endsection
+
+
+
+</script>
 
 </body>
-
 </html>

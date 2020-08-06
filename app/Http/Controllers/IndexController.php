@@ -236,9 +236,9 @@ class IndexController extends Controller
         }
     }
 
-    public function getTourdadienra(){
-        return view('frontend.tourdadienra');
+    public function getProfile($id){
+
+        $profile = CongDoanVien::find($id);
+        return view('frontend.profile')->with("profile",$profile);
     }
-
-
 }

@@ -55,8 +55,9 @@
                                 @else
                                 <li><a href="#">{{$auth->cdv_username}}</a>
                                     <ul class="dropdown">
-                                        <li><a href="./index.html">Thông tin cá nhân</a></li>
+                                        <li><a href="{{route('proFile',['id'=>$auth->cdv_id])}}">Thông tin cá nhân</a></li>
                                         <li><a href="{{route('quanlytour')}}">Quản Lý Tour</a></li>
+                                        <li><a href="{{route('formChange',['id'=>$auth->cdv_id])}}">Đổi Mật Khẩu</a></li>
                                         <li><a href="{{route('logout')}}">Đăng xuất</a></li>
                                     </ul>
                                 </li>

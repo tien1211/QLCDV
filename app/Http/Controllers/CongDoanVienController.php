@@ -418,10 +418,13 @@ class CongDoanVienController extends Controller
                 Session::flash('alert-danger', 'Import thất bại, vui lòng xem lại file!!!');
                 return redirect::back();
 <<<<<<< HEAD
+<<<<<<< HEAD
             }
 
 
 =======
+=======
+>>>>>>> ba4e3e053172fa56cd7ac37a424c539f653458b6
                 // $f  = $e->failures();
                 // return view('admin.CongDoanVien.imp',compact('f'));
             } 
