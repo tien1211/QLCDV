@@ -1,9 +1,8 @@
 @extends('admin.layout.master')
-
 @section('admin_content')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <style>
-  label.error {
+label.error {
         display: inline-block;
         color:red;
         width: 200px;
@@ -23,12 +22,12 @@
 
 {{-- @if(session('thongbao'))
     <div class="alert alert-success">
-          {{session('thongbao')}}
+        {{session('thongbao')}}
     </div>
 @endif --}}
 
 
-     @csrf
+    @csrf
 
     <div class="row">
         <div class="col-lg-12">
@@ -39,7 +38,7 @@
                 <div class="panel-body print-error-msg " >
                     <ul></ul>
                     <div class="form" id="message">
-                        <form class="cmxform form-horizontal " name="myForm" enctype="multipart/form-data" id="formDemo1"  novalidate="novalidate">
+                        <form class="cmxform form-horizontal" enctype="multipart/form-data" id="formDemo1"  novalidate="novalidate">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                              <div class="form-group ">
                                 <label for="firstname" class="control-label col-lg-3">Lịch trình</label>
@@ -94,7 +93,7 @@
                                 <div class="col-lg-6">
                                     <input class="form-control " step="50000" min="1000000" name="tour_chiphi" type="number" id="tour_chiphi">
                                 </div>
-                             </div>
+                            </div>
                             <div class="ltid" ></div>
                             <div class="form-group ">
                                 <label for="email" class="control-label col-lg-3">Số lượng</label>
@@ -125,7 +124,6 @@
                             </div>
                         </form>
                         <br>
-
                     </div>
                 </div>
             </section>

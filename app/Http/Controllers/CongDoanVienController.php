@@ -410,11 +410,12 @@ class CongDoanVienController extends Controller
 
             try {
                 $file = $request->file;
-                // Excel::import(new CDVImport, $file);
+                
                 Excel::import(new CongDoanVienImport, $file);
                 Session::flash('alert-info', 'Import thành công!!!');
                 return redirect()->route('CDV_DanhSach');
             } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+<<<<<<< HEAD
                 Session::flash('alert-danger', 'Import thất bại, vui lòng xem lại file!!!');
                 return redirect::back();
 <<<<<<< HEAD
@@ -427,12 +428,21 @@ class CongDoanVienController extends Controller
 >>>>>>> ba4e3e053172fa56cd7ac37a424c539f653458b6
                 // $f  = $e->failures();
                 // return view('admin.CongDoanVien.imp',compact('f'));
+=======
+                // Session::flash('alert-danger', 'Import thất bại, vui lòng xem lại file!!!');
+                // return redirect::back();
+                $f  = $e->failures();
+                return view('admin.CongDoanVien.imp',compact('f'));
+>>>>>>> b5aa24b9ba9b429a7404f8a121f9acb99b37e47f
             } 
 >>>>>>> a36294ef83f68ea7039a0f2eef0dc614af1f4306
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> b5aa24b9ba9b429a7404f8a121f9acb99b37e47f
         }
 
 

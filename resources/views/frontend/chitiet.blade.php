@@ -63,29 +63,29 @@
                     </div>
                     <!-- Room Service -->
                     <div class="room-service mb-50">
-                        <h4>Danh Sách Công Đoàn Viên Tham Gia</h4>
+                        <h4>Danh Sách Người Tham gia Tham Gia</h4>
                         <table class="table">
                             <thead class="thead-light">
                                 <tr>
                                     <th>STT</th>
-                                    <th>Người đăng ký</th>
-                                    <th>Số lượng đăng ký</th>
+                                    <th>Người tham gia</th>
+                                    <th>Công đoàn viên đăng ký</th>
+                                    <th>Giới tính</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @php
-                                    $i = 1;
-                                @endphp
-                                @foreach ($cdv_dk as $dk)
+                                @foreach ($nguoithamgia as $key => $dk)
                                 @if($dk->tttp_id != 2)
                                 <tr>
-                                <td>{{$i}}</td>
+                                <td>{{$key + 1}}</td>
+                                <td>{{$dk->ttndk_ten}}</td>
                                 <td>{{$dk->cdv_ten}}</td>
-                                <td>{{$dk->dkt_soluong}}</td>
+                                @if($dk->ttndk_gt == 1)
+                                <td>Nam</td>
+                                @else
+                                <td>Nữ</td>
+                                @endif
                                 </tr>
-                                @php
-                                    $i = $i+1;
-                                @endphp
                                 @endif
                                 @endforeach
                             </tbody>

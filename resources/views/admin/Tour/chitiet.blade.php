@@ -53,7 +53,7 @@
             <th>Họ và tên</th>
             <th>Số lượng đăng ký</th>
             <th>Chi phí</th>
-            <th>mức hổ trợ</th>
+            <th>Mức Hổ Trợ</th>
             <th>Tình trạng thu phí</th>
         </tr>
         </thead> 
@@ -63,7 +63,7 @@
                     <td>{{$cdv->cdv_ten}}</td>
                     <td>{{$cdv->dkt_soluong}}</td>
                     <td>{{number_format($cdv->dkt_soluong*$cdv->tour_chiphi)}} VNĐ</td>
-                    <td>{{$cdv->phihotro}}</td>
+                    <td>{{number_format($cdv->phihotro)}} VNĐ</td>
                     <td>{{$cdv->tinh_trang}}</td>
                 </tr>
             @endforeach
