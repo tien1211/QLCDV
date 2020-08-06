@@ -66,10 +66,7 @@ class IndexController extends Controller
     }
 
     public function getIndex(){
-<<<<<<< HEAD
-=======
-        $moment=  Carbon::now('Asia/Ho_Chi_Minh');   
->>>>>>> b5aa24b9ba9b429a7404f8a121f9acb99b37e47f
+        $moment=  Carbon::now('Asia/Ho_Chi_Minh');
         $tour1 = DB::table('Tour')
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
@@ -81,10 +78,6 @@ class IndexController extends Controller
     }
 
     public function getChiTiet($id){
-<<<<<<< HEAD
-
-=======
->>>>>>> b5aa24b9ba9b429a7404f8a121f9acb99b37e47f
             $datail=Tour::find($id);
             $a = DB::table('LichTrinh')->join('Tour','LichTrinh.lt_id','=','Tour.lt_id')
                 ->join('Anh_Tour','Anh_Tour.lt_id','=','LichTrinh.lt_id')
@@ -141,12 +134,7 @@ class IndexController extends Controller
             return view('frontend.thongtinnguoidkt')->with('tour_id',$id)->with('soluong',$request->dkt_soluong);
             }
         }
-<<<<<<< HEAD
-    }
-
-=======
     // Form cập nhật thêm người tham gia tour
->>>>>>> b5aa24b9ba9b429a7404f8a121f9acb99b37e47f
     public function postUpdate(Request $request, $id){
         $this->validate($request, [
             'dkt_soluong'=>'required'
@@ -210,7 +198,7 @@ class IndexController extends Controller
                 DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $soluongconlai]);
                 Session::flash('alert-info', 'Đăng ký thành công!!!');
                 $data = array();
-                for($i=0; $i<$request->dkt_soluong; $i++){     
+                for($i=0; $i<$request->dkt_soluong; $i++){
                     $data['dkt_id'] = $dkt->dkt_id;
                     $data['ttndk_ten'] = $request->ttndk_ten[$i];
                     $data['ttndk_gt'] = $request->ttndk_gt[$i];
@@ -235,7 +223,7 @@ class IndexController extends Controller
                 $dkt->save();
                 DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $soluongconlai]);
                 $data = array();
-                for($i=0; $i<$request->dkt_soluong; $i++){     
+                for($i=0; $i<$request->dkt_soluong; $i++){
                     $data['dkt_id'] = $dkt->dkt_id;
                     $data['ttndk_ten'] = $request->ttndk_ten[$i];
                     $data['ttndk_gt'] = $request->ttndk_gt[$i];
@@ -261,7 +249,7 @@ class IndexController extends Controller
             $dkt->save();
             DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $soluongconlai]);
             $data = array();
-            for($i=0; $i<$request->dkt_soluong; $i++){     
+            for($i=0; $i<$request->dkt_soluong; $i++){
                 $data['dkt_id'] = $dkt->dkt_id;
                 $data['ttndk_ten'] = $request->ttndk_ten[$i];
                 $data['ttndk_gt'] = $request->ttndk_gt[$i];
@@ -285,7 +273,7 @@ class IndexController extends Controller
         $soluongconlai = $tour->tour_soluong - $request->dkt_soluong;
         DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $soluongconlai]);
         $data = array();
-        for($i=0; $i<$request->dkt_soluong; $i++){     
+        for($i=0; $i<$request->dkt_soluong; $i++){
             $data['dkt_id'] = $tourtrc->dkt_id;
             $data['ttndk_ten'] = $request->ttndk_ten[$i];
             $data['ttndk_gt'] = $request->ttndk_gt[$i];
@@ -311,7 +299,7 @@ class IndexController extends Controller
         //dd($nguoithamgia);
         return view('frontend.danhsachnguoithamgia')->with('nguoithamgia',$nguoithamgia)->with('tour',$tour);
     }
-    
+
     public function postXNTG(Request $request, $id){
         $ntg = $request->ttndk_id;
         foreach($ntg as $t){

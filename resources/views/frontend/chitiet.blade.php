@@ -161,7 +161,7 @@
                                     </div>
                             </div>
                             <div class="form-group mb-30">
-                                
+
                                     <div class="row no-gutters"><label for="checkInDate">Số Lượng Đăng Ký:</label>
                                         <div class="col-12">
                                             <input type="number" min="1" max="20" disabled class="input-small form-control" name="dkt_soluong"  value="{{$sl}}">
@@ -210,7 +210,7 @@
                             <div class="form-group">
                                 <button type="submit" onclick="return confirm('Bạn có chắc muốn hủy đăng ký không?');" class="btn roberto-btn w-100">Hủy đăng ký</button>
                             </div>
-                        </from>
+                        {{-- </from> --}}
                         @else
                             <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post" id="myForm">
                                 @csrf
@@ -266,8 +266,8 @@
                             </div>
                         </div>
                         @endforeach
-                        
-                        
+
+
                 </div>
  <!-- FORM BOOK -->
             </div>
