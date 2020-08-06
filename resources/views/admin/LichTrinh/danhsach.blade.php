@@ -4,7 +4,7 @@
 
  <div class="panel panel-default">
     <div class="panel-heading">
-    Danh Sách Tour
+    Danh Sách Lịch Trình
     </div>
     <div class="panel-body">
         <div class="position-left">

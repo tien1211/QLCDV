@@ -219,20 +219,16 @@ class TourController extends Controller
         $Tour->gd_id = $request->gd_id;
         $Tour->tour_daily = $request->tour_daily;
 
-        if($request->hasFile('tour_hinhanh')){
+
+        if ($request->hasFile('tour_hinhanh')){
+
             $file = $request->file('tour_hinhanh');
-            $duoi = $file->getClientOriginalExtension();
-
-            if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
-                Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
-                return redirect()->route('Tour_Them');
-            }
-
             $name = $file->getClientOriginalName();
-            $file->move("upload/tour",$name);
+            $file->move('upload/tour/', $name);
             $Tour->tour_hinhanh = $name;
+        }
 
-        }else{
+        else{
             $Tour->tour_hinhanh= $Tour->tour_hinhanh;
         }
         $Tour->tour_trangthai = 1;

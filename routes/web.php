@@ -38,7 +38,7 @@ Route::post('/capnhatthongtindktour/{id}','IndexController@postCNTTDK')->name('X
 Route::post('/xoanguoithamgia/{id}','IndexController@postXNTG')->name('XL_XNTTDK');
 Route::get('/danhsachnguoithamgia{id}','IndexController@getDSNTG')->name('DS_NTG');
 Route::get('/quanlytour','IndexController@getQLTour')->name('quanlytour');
-Route::get('/menu','IndexController@getInfoMenu')->name('menu');
+Route::get('/profile/{id}','IndexController@getProfile')->name('proFile');
 
 
 
@@ -47,6 +47,9 @@ Route::get('/dangnhap','AuthController@getLogin')->name('formLogin');
 Route::post('/dangnhap-xl','AuthController@postLogin')->name('login');
 Route::get('/dangxuat','AuthController@logOut')->name('logout');
 
+
+Route::get('/doimatkhau/{id}','AuthController@getChangePass')->name('formChange');
+Route::post('/changpass/{id}','AuthController@postChangePass')->name('changePass');
 
 
 

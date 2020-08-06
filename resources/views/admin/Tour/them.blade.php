@@ -182,6 +182,7 @@ label.error {
              var file_data = $('#tour_hinhanh').prop('files')[0];
             //lấy ra kiểu file
             var type = file_data.type;
+
             //Xét kiểu file được upload
             var match = ["image/gif", "image/png", "image/jpg",];
             //kiểm tra kiểu file
