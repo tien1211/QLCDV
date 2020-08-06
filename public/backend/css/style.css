@@ -859,7 +859,7 @@ span.panel-title{
 }
 .notification-info p {
     margin: 0px;
-    color: #999;
+    color: black;
     font-size: 12px;
 }
 .notification-meta {
@@ -1165,7 +1165,7 @@ h4.title {
 }
 /*-- icons --*/
 .codes a {
-    color: #999;
+    color: black;
 }
 .icon-box {
     padding: 8px 15px;
@@ -1387,7 +1387,7 @@ li.list-group-item1 {
 	margin-bottom: 1em;
 }
 .grid_3 p{
-	color: #999;
+	color: black;
 	font-size: 0.85em;
 	margin-bottom: 1em;
 	font-weight: 300;
@@ -1456,7 +1456,7 @@ section#tables  p {
 }
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
 	font-size: 0.9em;
-	color: #999;
+	color: black;
 	border-top: none !important;
 }
 .tab-content > .active {

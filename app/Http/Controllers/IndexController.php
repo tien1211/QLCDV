@@ -132,14 +132,8 @@ class IndexController extends Controller
             return view('frontend.thongtinnguoidkt')->with('tour_id',$id)->with('soluong',$request->dkt_soluong);
             }
         }
-<<<<<<< HEAD
-    
-   
-        public function postUpdate(Request $request, $id){
-=======
     // Form cập nhật thêm người tham gia tour
     public function postUpdate(Request $request, $id){
->>>>>>> bc9075cfc2a3d91d7552e6df2cd27bdf5c366908
         $this->validate($request, [
             'dkt_soluong'=>'required'
             ],[

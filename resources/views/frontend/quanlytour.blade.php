@@ -20,13 +20,8 @@
             <td>{{$tour->lt_ten}} {{date('Y ',strtotime($tour->tour_handk))}}</td>
             <td>{{$tour->giai_doan}}</td>
             <td>{{$tour->tour_chiphi}}</td>
-<<<<<<< HEAD
-            <td><a href="{{route('DS_NTG',['id'=>$tour->tour_id])}}" class="post-author"><li class="fas fa-list" title="Danh Sách Người Đăng Ký" style="font-size: 20px"></li></a>&nbsp;&nbsp;&nbsp;
-                <a href="{{route('DS_NTG',['id'=>$tour->tour_id])}}" class="post-author"><li class="fas fa-trash-alt" title="Hủy Đăng Ký" style="font-size: 20px;"></li></a>
-=======
             <td><a href="{{route('DS_NTG',['id'=>$tour->tour_id])}}" class="post-author"><li class="fas fa-list" style="font-size: 20px"></li></a>&nbsp;&nbsp;&nbsp;
                 <a href="{{route('huytour',['id'=>$tour->tour_id])}}" class="post-author"><li class="fas fa-trash-alt" style="font-size: 20px;"></li></a>
->>>>>>> bc9075cfc2a3d91d7552e6df2cd27bdf5c366908
             </td>
             </tr>
             @endforeach
