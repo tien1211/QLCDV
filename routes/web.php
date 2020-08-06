@@ -34,7 +34,7 @@ Route::post('/dangkytour/{id}','IndexController@postBook')->name('dktour');
 Route::post('/capnhattour/{id}','IndexController@postUpdate')->name('cntour');
 Route::post('/huytour/{id}','IndexController@postDelete')->name('huytour');
 Route::get('/quanlytour','IndexController@getQLTour')->name('quanlytour');
-Route::get('/profile','IndexController@getProfile')->name('proFile');
+Route::get('/profile/{id}','IndexController@getProfile')->name('proFile');
 
 
 
@@ -42,6 +42,9 @@ Route::get('/dangnhap','AuthController@getLogin')->name('formLogin');
 Route::post('/dangnhap-xl','AuthController@postLogin')->name('login');
 Route::get('/dangxuat','AuthController@logOut')->name('logout');
 
+
+Route::get('/doimatkhau/{id}','AuthController@getChangePass')->name('formChange');
+Route::post('/changpass/{id}','AuthController@postChangePass')->name('changePass');
 
 
 

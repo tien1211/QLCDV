@@ -234,7 +234,9 @@ class IndexController extends Controller
         }
     }
 
-    public function getProfile(){
-        return view('frontend.thongtincanhan');
+    public function getProfile($id){
+
+        $profile = CongDoanVien::find($id);
+        return view('frontend.profile')->with("profile",$profile);
     }
 }

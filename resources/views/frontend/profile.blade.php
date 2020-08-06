@@ -8,26 +8,175 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-8">
 
-                <div class="roberto-contact-form mt-10 mb-100">
+                <div class="roberto-contact-form mt-1 mb-100">
                 <center><h2>Thông tin các nhân: {{$auth->cdv_ten}}</h2></center>
 
                     <!-- Form -->
                     <form action="#" method="post">
                         <div class="row">
-                            <div class="col-12">
-                                <input type="text" name="message-name" class="form-control mb-30" placeholder="Your Name">
+                            
+                            <div class="col-5 ">
+                                <label for=""><h5>Họ Tên:</h5></label>
                             </div>
-                            <div class="col-12">
-                                <input type="email" name="message-email" class="form-control mb-30" placeholder="Email">
+                            <div class="col-7">
+                            {{$profile->cdv_ten}}
                             </div>
-                            <div class="col-12">
-                                <input type="text" name="website" class="form-control mb-30" placeholder="Websites">
+
+
+                            <div class="col-5 mt-3">
+                                <h5>Giới tính:</h5>
                             </div>
-                            <div class="col-12">
-                                <textarea name="message" class="form-control mb-30" placeholder="Start the discussion..."></textarea>
+                            <div class="col-7 mt-3">
+                                
+                                @if ($profile->cdv_gioitinh == 1)
+                                Nam
+                                @else
+                                Nữ
+                                @endif
                             </div>
+
+                            
+
+                            <div class="col-5 mt-3">
+                                <label for=""><h5>Đơn Vị:</h5></label>
+                            </div>
+                            <div class="col-7 mt-3">
+                            {{$profile->DonVi->dv_ten}}
+                            </div>
+
+                            <div class="col-5 mt-3">
+                                <label for=""><h5>Chức vụ:</h5></label>
+                            </div>
+                            <div class="col-7 mt-3">
+                            {{$profile->ChucVu->cv_ten}}
+                            </div>
+                            
+                            <div class="col-5 mt-3">
+                                <label for=""><h5>Loại Nhân Viên:</h5></label>
+                            </div>
+                            <div class="col-7 mt-3">
+                            {{$profile->LoaiNhanVien->lnv_ten}}
+                            </div>
+
+
+                            <div class="col-5 mt-3" >
+                                <label for=""><h5>CMND:</h5></label>
+                            </div>
+                            <div class="col-7 mt-3">
+                                {{$profile->cdv_cmnd}}
+                            </div>
+
+
+                            <div class="col-5 mt-3">
+                                <label for=""><h5>Số Điện Thoại:</h5></label>
+                            </div>
+                            <div class="col-7 mt-3">
+                                {{$profile->cdv_sdt}}
+                            </div>
+
+                            <div class="col-5 mt-3">
+                                <label for=""><h5>Ngày Sinh:</h5></label>
+                            </div>
+                            <div class="col-7 mt-3">
+                                {{date('d-m-Y',strtotime($profile->cdv_ngaysinh))}}
+                                
+                            </div>
+                            
+
+
+                            <div class="col-5 mt-3">
+                                <label for=""><h5>Nguyên Quán:</h5></label>
+                            </div>
+                            <div class="col-7 mt-3">
+                            {{$profile->cdv_nguyenquan}}
+                            </div>
+
+
+                            <div class="col-5 mt-3">
+                                <label for=""><h5>Địa Chỉ:</h5></label>
+                            </div>
+                            <div class="col-7 mt-3">
+                            {{$profile->cdv_diachi}}
+                            </div>
+                            
+                            <div class="col-5 mt-3">
+                                <label for=""><h5>Email:</h5></label>
+                            </div>
+                            <div class="col-7 mt-3">
+                            {{$profile->cdv_email}}
+                            </div>
+
+
+
+
+                            <div class="col-5 mt-3">
+                                <label for=""><h5>Dân Tộc:</h5></label>
+                            </div>
+                            <div class="col-7 mt-3">
+                            {{$profile->cdv_dantoc}}
+                            </div>
+
+
+
+
+                            <div class="col-5 mt-3">
+                                <label for=""><h5>Trình Độ:</h5></label>
+                            </div>
+                            <div class="col-7 mt-3">
+                            {{$profile->cdv_trinhdo}}
+                            </div>
+
+
+
+
+                            <div class="col-5 mt-3">
+                                <label for=""><h5>Tôn Giáo:</h5></label>
+                            </div>
+                            <div class="col-7 mt-3">
+                            {{$profile->cdv_tongiao}}
+                            </div>
+
+
+
+
+                            <div class="col-5 mt-3">
+                                <label for=""><h5>Ngày Thử Việc:</h5></label>
+                            </div>
+                            <div class="col-7 mt-3">
+                            {{date('d-m-Y',strtotime($profile->cdv_ngaythuviec))}}
+                            </div>
+
+
+
+
+                            <div class="col-5 mt-3">
+                            <label for=""><h5>Ngày Vào Ngành:</h5></label>
+                            </div>
+                            <div class="col-7 mt-3">
+                                {{date('d-m-Y',strtotime($profile->cdv_ngayvaonganh))}}
+                            
+                            </div>
+
+
+
+
+                            <div class="col-5 mt-3">
+                                <label for=""><h5>Vai Trò:</h5></label>
+                            </div>
+                            <div class="col-7 mt-3">
+                            @if ($profile->cdv_quyen == 1)
+                                Admin
+                            @else
+                                Thường
+                            @endif
+                            </div>
+                            
+                            
+
+
+
                             <div class="col-12">
-                                <button type="submit" class="btn roberto-btn btn-3 mt-15">Post Comment</button>
+                            <a href="{{route('trangchu')}}" class="btn roberto-btn btn-3 mt-15">Trở Về Trang Chủ</a>
                             </div>
                         </div>
                     </form>
