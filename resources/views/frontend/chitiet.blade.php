@@ -110,109 +110,7 @@
                         </div>
                         </div>
                         @if ($now > $datail->tour_handk)
-                                <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
-                                    @csrf
-                                        <div class="form-group mb-30">
-                                            <label for="checkInDate">Chi phí:</label>
-                                                <div class="row no-gutters">
-                                                    <div class="col-12">
-                                                    <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}} VND"  name="tour_chiphi" disabled>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        <div class="form-group mb-30">
-                                            <label for="checkInDate">Số Lượng Đăng Ký:</label>
-                                                <div class="row no-gutters">
-                                                    <div class="col-12">
-                                                        <input type="number" min="1" max="20" onchange="load()"  id="amount" disabled class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
-                                                        @if($errors->has('dkt_soluong'))
-                                                        <div style="color:red">{{ $errors->first('dkt_soluong')}}</div>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        <div class="form-group mb-30">
-                                            <label for="checkInDate">Thành Tiền: </label>
-                                                <div class="row no-gutters">
-                                                    <div class="col-12">
-                                                    <input type="text"  class="input-small form-control"  id='payment'  placeholder="Thành tiền" disabled>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" disabled class="btn roberto-btn w-100">HẾT HẠN ĐĂNG KÝ</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                {{-- disabled --}}
-                            {{-- @endif --}}
-                        @elseif(sizeof($temp) != 0)
-                        @php
-                        foreach($temp as $t){
-                            $sl = $t->dkt_soluong;
-                        }
-                        @endphp
-                            <div class="form-group mb-30">
-                                <label for="checkInDate">Chi phí:</label>
-                                    <div class="row no-gutters">
-                                        <div class="col-12">
-                                        <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}} VND"  name="tour_chiphi" disabled>
-                                        </div>
-                                    </div>
-                            </div>
-                            <div class="form-group mb-30">
-                                
-                                    <div class="row no-gutters"><label for="checkInDate">Số Lượng Đăng Ký:</label>
-                                        <div class="col-12">
-                                            <input type="number" min="1" max="20" disabled class="input-small form-control" name="dkt_soluong"  value="{{$sl}}">
-                                        </div>
-                                    </div>
-                            </div>
-                            <div class="form-group mb-30">
-                                <label for="checkInDate">Thành Tiền: </label>
-                                    <div class="row no-gutters">
-                                        <div class="col-12">
-                                        <input type="text"  class="input-small form-control" value="{{number_format($datail->tour_chiphi*$sl)}} VND" disabled>
-                                        </div>
-                                    </div>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" disabled class="btn roberto-btn w-100">Đã đăng ký</button>
-                            </div>
-                            <form action="{{route('cntour',['id'=> $datail->tour_id])}}" method="post">
-                                @csrf
-                            <div class="form-group mb-30">
-                            <label for="checkInDate">Cập nhật thêm người tham gia:</label>
-                                <div class="row no-gutters">
-                                    <div class="col-12">
-                                        <input type="number" min="1" max="100" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
-                                        <input type="hidden" id="soluong" value="{{$datail->tour_soluong}}">
-                                        @if($errors->has('dkt_soluong'))
-                                        <div style="color:red">{{ $errors->first('dkt_soluong')}}</div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group mb-30">
-                                <label for="checkInDate">Thành Tiền: </label>
-                                    <div class="row no-gutters">
-                                        <div class="col-12">
-                                        <input type="text"  class="input-small form-control"  id='payment'  placeholder="Thành tiền" disabled>
-                                        </div>
-                                    </div>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" onclick="return confirm('Bạn có chắc muốn đăng ký không?');" class="btn roberto-btn w-100 check_quantity">Cập nhật</button>
-                            </div>
-                        </form>
-                        <form action="{{route('huytour',['id'=> $datail->tour_id])}}" method="post">
-                            @csrf
-                            <div class="form-group">
-                                <button type="submit" onclick="return confirm('Bạn có chắc muốn hủy đăng ký không?');" class="btn roberto-btn w-100">Hủy đăng ký</button>
-                            </div>
-                        </from>
-                        @else
-                            <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post" id="myForm">
+                            <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
                                 @csrf
                                     <div class="form-group mb-30">
                                         <label for="checkInDate">Chi phí:</label>
@@ -226,8 +124,7 @@
                                         <label for="checkInDate">Số Lượng Đăng Ký:</label>
                                             <div class="row no-gutters">
                                                 <div class="col-12">
-                                                    <input type="number" min="1" max="100" onchange="load()"  id="amount" class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
-                                                    <input type="hidden" id="soluong" value="{{$datail->tour_soluong}}">
+                                                    <input type="number" min="1" max="20" onchange="load()"  id="amount" disabled class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
                                                     @if($errors->has('dkt_soluong'))
                                                     <div style="color:red">{{ $errors->first('dkt_soluong')}}</div>
                                                     @endif
@@ -243,9 +140,22 @@
                                             </div>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" onclick="return confirm('Bạn có chắc muốn đăng ký không?');" class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button>
+                                        <button type="submit" disabled class="btn roberto-btn w-100">HẾT HẠN ĐĂNG KÝ</button>
                                     </div>
                                 </form>
+                            </div>
+                        @else
+                                    <div class="form-group mb-30">
+                                        <label for="checkInDate">Chi phí:</label>
+                                            <div class="row no-gutters">
+                                                <div class="col-12">
+                                                <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}} VND"  name="tour_chiphi" disabled>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button></a>
+                                    </div>
                             </div>
                         @endif
                         <label for="checkInDate">Các tour khác:</label>

@@ -30,7 +30,7 @@ Route::get('/home1', function () {
 
 Route::get('/home','IndexController@getIndex')->name('trangchu');
 Route::get('/chitiet/{id}','IndexController@getChiTiet')->name('chitiettour');
-Route::post('/dangkytour/{id}','IndexController@postBook')->name('dktour');
+Route::get('/dangkytour/{id}','IndexController@getFormDK')->name('dktour');
 Route::post('/capnhattour/{id}','IndexController@postUpdate')->name('cntour');
 Route::post('/huytour/{id}','IndexController@postDelete')->name('huytour');
 Route::post('/thongtindktour/{id}','IndexController@postTTDK')->name('XL_TTDK');
