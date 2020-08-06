@@ -859,7 +859,7 @@ span.panel-title{
 }
 .notification-info p {
     margin: 0px;
-    color: black;
+    color: #999;
     font-size: 12px;
 }
 .notification-meta {
@@ -1165,7 +1165,7 @@ h4.title {
 }
 /*-- icons --*/
 .codes a {
-    color: black;
+    color: #999;
 }
 .icon-box {
     padding: 8px 15px;
@@ -1387,7 +1387,7 @@ li.list-group-item1 {
 	margin-bottom: 1em;
 }
 .grid_3 p{
-	color: black;
+	color: #999;
 	font-size: 0.85em;
 	margin-bottom: 1em;
 	font-weight: 300;
