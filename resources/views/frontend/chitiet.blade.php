@@ -146,17 +146,17 @@
                                 </form>
                             </div>
                         @else
-                            <div class="form-group mb-30">
-                                <label for="checkInDate">Chi phí:</label>
-                                    <div class="row no-gutters">
-                                        <div class="col-12">
-                                        <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}} VND"  name="tour_chiphi" disabled>
+                                <div class="form-group mb-30">
+                                    <label for="checkInDate">Chi phí:</label>
+                                        <div class="row no-gutters">
+                                            <div class="col-12">
+                                            <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}} VND"  name="tour_chiphi" disabled>
+                                            </div>
                                         </div>
-                                    </div>
-                            </div>
-                            <div class="form-group">
-                                <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button></a>
-                            </div>
+                                </div>
+                                <div class="form-group">
+                                    <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button></a>
+                                </div>
                             </div>
                         @endif
                         <label for="checkInDate">Các tour khác:</label>

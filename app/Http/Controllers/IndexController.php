@@ -35,13 +35,13 @@ class IndexController extends Controller
         $ThongTinNguoiDK = ThongTinNguoiDK::all();
         $TinhTrangThuPhi = TinhTrangThuPhi::all();
         $now=  Carbon::now('Asia/Ho_Chi_Minh');
-        $ifo= DB::table('Tour')
+        $ifo= DB::table('Tour')//tour mới
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
-
             ->orderBy('tour.tour_handk','desc')
             ->limit(3)->get();
-        $ifo1= DB::table('Tour')
+            
+        $ifo1= DB::table('Tour')//hết hạn
         ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
         ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
         ->where('Tour.tour_ngaykt','<',$now)
