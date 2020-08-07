@@ -86,7 +86,7 @@
 
             span {
                 color: $white;
-                font-size: 16px;
+                font-size: 17px;
             }
         }
 
@@ -228,7 +228,7 @@
 
             span {
                 color: $secondary;
-                font-size: 14px;
+                font-size: 17px;
             }
         }
 
@@ -248,7 +248,7 @@
                 margin-bottom: 10px;
 
                 @media #{$breakpoint-lg} {
-                    font-size: 14px;
+                    font-size: 17px;
                 }
 
                 span {
@@ -556,7 +556,7 @@ html .ui-button.ui-state-disabled:active {
                     margin-bottom: 0;
 
                     @media #{$breakpoint-xs} {
-                        font-size: 14px;
+                        font-size: 17px;
                     }
                 }
             }

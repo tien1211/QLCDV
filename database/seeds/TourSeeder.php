@@ -42,7 +42,6 @@ class TourSeeder extends Seeder
             ],
             [
                 'lt_id' => '3',
-
                 'tour_handk' => '2020-08-25',
                 'tour_ngaybd' => '2020-08-10',
                 'tour_ngaykt' => '2020-08-27',
@@ -56,13 +55,12 @@ class TourSeeder extends Seeder
             ],
             [
                 'lt_id' => '4',
-
                 'tour_handk' => '2021-01-25',
                 'tour_ngaybd' => '2021-01-10',
                 'tour_ngaykt' => '2021-01-27',
                 'tour_chiphi' => '3500000',
                 'tour_soluong' => '25',
-                'gd_id' => '4',
+                'gd_id' => '3',
                 'tour_daily' => 'MyThoTravel',
                 'tour_hinhanh' => 'tour-danang.png',
                 'tour_trangthai' => 1,

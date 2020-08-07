@@ -1,5 +1,12 @@
 @extends('frontend.layout.master')
 @section('frontend_content')
+<div class="col-12">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+        @if(Session::has('alert-' . $msg))
+        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} </p>
+        @endif
+    @endforeach
+</div>
 <div class="row">
     <div class="col-12">
         <!-- Section Heading -->
@@ -17,8 +24,8 @@
                 <div class="col-12 col-lg-9 wow fadeInUp" data-wow-delay="100ms">
                     <input type="text" required name="ttndk_ten"  class="form-control mb-30" placeholder="Tên người tham gia thứ ">
                 </div>
-                <div class="col-12 col-lg-3 wow fadeInUp" data-wow-delay="100ms">
-                    <select class="form-control" name="ttndk_gt" required>
+                <div class="col-12 col-lg-3 wow fadeInUp" data-wow-delay="100ms" style="color: black">
+                 <select class="form-control" name="ttndk_gt" required>
                     <option value="">Chọn giới tính</option>
                     <option value="1">Nam</option>
                     <option value="0">Nữ</option>
@@ -27,7 +34,7 @@
                 <div class="col-12 col-lg-9 wow fadeInUp" data-wow-delay="100ms">
                     <input type="text" required name="ttndk_tuoi"  class="form-control mb-30" placeholder="Tuổi">
                 </div>
-                <div class="col-12 col-lg-3 wow fadeInUp" data-wow-delay="100ms">
+                <div class="col-12 col-lg-3 wow fadeInUp" data-wow-delay="100ms" style="color: #000000;">
                     <select class="form-control" name="ttndk_cv" required>
                     <option value="">Chọn quan hệ</option>
                     <option value="1">Người thân</option>
@@ -37,20 +44,26 @@
             </div>
             @if($tour->tour_soluong == 0)
             <input style="color: red;" type="text" class="input-small form-control" value="Số lượng còn lại: {{$tour->tour_soluong}}" disabled>
-            <button type="submit" disabled class="btn roberto-btn mt-15" style="float:right;">Hết chổ</button>
+            <button type="submit" disabled class="btn roberto-btn mt-15" style="margin-left: 390px;">Hết chổ</button>
+            <a href="{{route('chitiettour',['id'=>$tour_id])}}" class="btn roberto-btn mt-15"  >Quay lại</a>
             @else
             <input style="color: #000000;" type="text" class="input-small form-control" value="Số lượng còn lại: {{$tour->tour_soluong}}" disabled>
-<<<<<<< HEAD
-            <button type="submit" class="btn roberto-btn mt-15" style="float:right;">Ghi danh</button>
-           <a href="{{route('chitiettour',['id'=>$tour_id])}}"  class="btn roberto-btn mt-15"  >Quay lại</a>
-=======
             <button type="submit" class="btn roberto-btn mt-15" style="margin-left: 390px;">Ghi danh</button>
-           <a href="{{route('chitiettour',['id'=>$tour_id])}}" class="btn roberto-btn mt-15"  >Quay lại</a>
->>>>>>> 711b36794f5e6be4e2dbba1141edc4c535acde20
+            <a href="{{route('chitiettour',['id'=>$tour_id])}}" class="btn roberto-btn mt-15"  >Quay lại</a>
             @endif
             </form>
     </div>
 </div>
+@if(count($nguoithamgia) == 0)
+<div class="row">
+    <div class="col-12">
+        <!-- Section Heading -->
+        <div class="section-heading text-center wow fadeInUp" style="margin-top: 30px;" data-wow-delay="100ms">
+            <h3>Bạn chưa đăng ký người tham gia</h3>
+        </div>
+    </div>
+</div>
+@else
 <div class="row">
     <div class="col-12">
         <!-- Section Heading -->
@@ -93,4 +106,5 @@
         </tbody>
     </table>
 </div>
+@endif
 @endsection
