@@ -1,7 +1,7 @@
 @extends('frontend.layout.master1')
 @section('frontend_content')
     <!-- Rooms Area Start -->
-    <div class="roberto-rooms-area section-padding-100-0">
+    <div class="roberto-rooms-area ">
         <div class="col-12">
             <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
                 <h2>{{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</h2>
@@ -109,6 +109,7 @@
                             @endforeach
                         </div>
                         </div>
+
                         @if ($now > $datail->tour_handk)
                             <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
                                 @csrf

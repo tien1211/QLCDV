@@ -47,7 +47,7 @@
         <!-- Room Thumbnail -->
 
         <div class="room-thumbnail">
-           <a href="{{route('chitiettour',['id'=>$t->tour_id])}}"><img src="upload/tour/{{$t->tour_hinhanh}}" alt=""></a>
+            <a href="{{route('chitiettour',['id'=>$t->tour_id])}}"><img src="upload/tour/{{$t->tour_hinhanh}}" alt=""></a>
         </div>
         <!-- Room Content -->
         <div class="room-content">
@@ -85,7 +85,7 @@
 
             <h6>Số chỗ còn lại: <span>{{$t->tour_soluong}}</span></h6>
             </div>
-            <a href="{{route('chitiettour',['id'=>$t->tour_id])}}" class="btn btn-info">Chi Tiết</a>
+            <a href="{{route('chitiettour',['id'=>$t->tour_id])}}" class="btn view-detail-btn">Chi Tiết <i class="fa fa-long-arrow-right" style="margin-left: 7px" aria-hidden="true"></i></a>
         </div>
 
     </div>
