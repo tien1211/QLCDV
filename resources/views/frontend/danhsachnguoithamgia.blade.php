@@ -53,10 +53,10 @@
     </table>
 </div>
 @if ($now > $tour->tour_handk)
-    <button type="submit" disabled class="btn roberto-btn mt-15" style="margin-left: 380px;" >Tour đã diễn ra</button>
+    <button type="submit" disabled class="btn roberto-btn mt-15" style="margin-left: 420px;" >Tour đã diễn ra</button>
     <a href="{{route('quanlytour')}}" class="btn roberto-btn mt-15"  >Quay lại</a>
 @else
-    <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa?');" class="btn roberto-btn mt-15" style="margin-left: 420px;">Xóa</button>
+    <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa?');" class="btn roberto-btn mt-15" style="margin-left: 390px;">Hủy đăng ký</button>
     <a href="{{route('quanlytour')}}" class="btn roberto-btn mt-15"  >Quay lại</a>
 @endif
 </form>
