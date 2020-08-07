@@ -99,22 +99,6 @@
                 <div class="col-12 col-lg-4">
                     <!-- Hotel Reservation Area -->
                     <div class="hotel-reservation--area mb-100">
-<<<<<<< HEAD
-
-                       {{-- MESSAGE ERROR --}}
-                        <div class="form-group" style="mt-6">
-                            <div class="flash-message">
-                                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                                    @if(Session::has('alert-' . $msg))
-                                    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} </p>
-                                    @endif
-                                @endforeach
-                            </div>
-                        </div>
-                        {{-- MESSAGE ERROR --}}
-
-=======
->>>>>>> 9c5d76e711e9d4f0cb8ac3cbcf9d1220c68169c4
                         @if ($now > $datail->tour_handk)
                             <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
                                 @csrf
@@ -183,6 +167,7 @@
                                                     </div>
                                                 @else
                                                     <div class="post-meta">
+        
                                                         <span>{{date('d-m-Y ',strtotime($datail->tour_handk))}}</span>
 
                                                     </div>
@@ -200,61 +185,6 @@
                             </form>
                     </div>
                         @else
-<<<<<<< HEAD
-                        {{-- CON HAN --}}
-                            {{-- <div class="form-group mb-30">
-                                <label for="checkInDate">Chi phí:</label>
-                                    <div class="row no-gutters">
-                                        <div class="col-12">
-                                        <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}} VND"  name="tour_chiphi" disabled>
-                                        </div>
-                                    </div>
-                            </div>
-                            <div class="form-group">
-                                <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button></a>
-                            </div> --}}
-                        {{-- CON HAN --}}
-
-
-
-                        {{-- test --}}
-                        <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
-                            <h4>{{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</h4>
-                        </div>
-
-                        <div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="100ms">
-                            <!-- Room Thumbnail -->
-
-
-                            <!-- Room Content -->
-                            <div class="room-content">
-                            <h2>{{$datail->lt_ten}}</h2>
-                                <h4>{{number_format($datail->tour_chiphi)}} VNĐ<span>/ Người</span></h4>
-                                <div class="room-feature" >
-                                    <h6>Ngày Bắt Đầu: <span>{{date('d-m-Y ',strtotime($datail->tour_ngaybd))}}</span></h6>
-                                    <h6>Ngày Kết Thúc: <span>{{date('d-m-Y ',strtotime($datail->tour_ngaykt))}}</span></h6>
-                                    <h6>Hạn Đăng ký:
-
-                                        @if ($now > $datail->tour_handk)
-                                            <div class="post-meta" >
-                                                <a href="#" class="post-author mt-20" style="color: red">Hết hạn đăng kí</a>
-
-                                            </div>
-                                        @elseif($datail->tour_soluong == 0 && $now < $datail->tour_handk)
-                                            <div class="post-meta" >
-                                                <a href="#" class="post-author mt-20" style="color: red">Hết chổ</a>
-
-                                            </div>
-                                        @else
-                                            <div class="post-meta">
-                                                <span>{{date('d-m-Y ',strtotime($datail->tour_handk))}}</span>
-
-                                            </div>
-                                        @endif
-                                    </h6>
-
-                                <h6>Số chỗ còn lại: <span>{{$datail->tour_soluong}}</span></h6>
-=======
                                 <div class="form-group mb-30">
                                     <label for="checkInDate">Chi phí:</label>
                                         <div class="row no-gutters">
@@ -262,22 +192,11 @@
                                             <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}} VND"  name="tour_chiphi" disabled>
                                             </div>
                                         </div>
->>>>>>> 9c5d76e711e9d4f0cb8ac3cbcf9d1220c68169c4
                                 </div>
                                 <div class="form-group">
                                     <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button></a>
                                 </div>
                             </div>
-<<<<<<< HEAD
-
-                        </div>
-
-
-
-                        {{-- test --}}
-                    </div>
-=======
->>>>>>> 9c5d76e711e9d4f0cb8ac3cbcf9d1220c68169c4
                         @endif
 
                         {{-- TOUR KHAC --}}
