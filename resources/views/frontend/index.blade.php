@@ -83,7 +83,7 @@
 
 
 
-                <h6>Số chỗ còn lại: <span>40</span></h6>
+            <h6>Số chỗ còn lại: <span>{{$t->tour_soluong}}</span></h6>
             </div>
             <a href="{{route('chitiettour',['id'=>$t->tour_id])}}" class="btn view-detail-btn">Chi Tiết <i class="fa fa-long-arrow-right" style="margin-left: 7px" aria-hidden="true"></i></a>
         </div>

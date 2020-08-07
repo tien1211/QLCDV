@@ -58,7 +58,7 @@
                         </div>
                     <p>{{$datail->LichTrinh->lt_mota}}</p>
                         <ul>
-                            <li><i class="fa fa-check"></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}"> DownLoad Lịch Trình:  {{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</a></li>
+                            <h5><li style="color: blue"><i class="fa fa-check" ></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}" style="color: blue"> DownLoad Lịch Trình:  {{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</a></li></h5>
                         </ul>
                     </div>
                     <!-- Room Service -->
@@ -109,7 +109,7 @@
                             @endforeach
                         </div>
                         </div>
-                        
+
                         @if ($now > $datail->tour_handk)
                             <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
                                 @csrf
@@ -159,7 +159,7 @@
                                 </div>
                             </div>
                         @endif
-                        <label for="checkInDate">Các tour khác:</label>
+                       <h4> <label for="checkInDate">Các Tour khác:</label></h4><hr>
                         @foreach($tourkhac as $tourkhac)
                         <div class="single-recent-post d-flex">
                             <!-- Thumb -->
@@ -177,8 +177,8 @@
                             </div>
                         </div>
                         @endforeach
-                        
-                        
+
+
                 </div>
  <!-- FORM BOOK -->
             </div>
