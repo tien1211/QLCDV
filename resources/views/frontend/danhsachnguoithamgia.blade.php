@@ -1,7 +1,15 @@
 @extends('frontend.layout.master')
 @section('frontend_content')
+<div class="row">
+    <div class="col-12">
+        <!-- Section Heading -->
+        <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
+            <h3>Danh Sách người bạn đã đăng ký tour</h3>
+            <h3>{{$tour->lt_ten}} {{date('Y ',strtotime($tour->tour_handk))}}</h3>
+        </div>
+    </div>
+</div>
 <div class="room-service mb-50">
-    <h4>Danh Sách người tham gia tour {{$tour->lt_ten}} {{date('Y ',strtotime($tour->tour_handk))}}</h4>
     <form class="form-inline" role="form" enctype="multipart/form-data" action="{{route('XL_XNTTDK',['id'=>$tour->tour_id])}}" method="post" >
         {{ csrf_field() }}
     <table class="table">
@@ -10,7 +18,8 @@
                 <th>STT</th>
                 <th>Tên người tham gia</th>
                 <th>Giới tính</th>
-                <th>CMND</th>
+                <th>Tuổi</th>
+                <th>Quan hệ</th>
                 <th><input type="checkbox" id="checkall" onClick="check()" /></th>
             </tr>
         </thead>
@@ -24,7 +33,12 @@
             @else
             <td>Nữ</td>
             @endif
-            <td>{{$ntg->ttndk_cmnd}}</td>
+            <td>{{$ntg->ttndk_tuoi}}</td>
+            @if($ntg->ttndk_cv == 1)
+            <td>Ngươi thân</td>
+            @else
+            <td>Công đoàn viên</td>
+            @endif
             <td><input type="checkbox" name="ttndk_id[]" value="{{$ntg->ttndk_id}}"/></td>
             </tr>
             @endforeach
@@ -33,7 +47,7 @@
 </div>
 @if ($now > $tour->tour_handk)
 <div class="col-12 text-center wow fadeInUp" data-wow-delay="100ms">
-    <button type="submit" disabled onclick="return confirm('Bạn có chắc muốn xóa?');" class="btn roberto-btn mt-15">Tour đã diễn ra</button>
+    <button type="submit" disabled class="btn roberto-btn mt-15">Tour đã diễn ra</button>
 </div>
 @else
 <div class="col-12 text-center wow fadeInUp" data-wow-delay="100ms">

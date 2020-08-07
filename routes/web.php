@@ -31,6 +31,7 @@ Route::get('/tourdadienra','IndexController@getTourdadienra')->name('tourdadienr
 // })->name('trangchu');
 
 Route::get('/home','IndexController@getIndex')->name('trangchu');
+// get chi tiết tour
 Route::get('/chitiet/{id}','IndexController@getChiTiet')->name('chitiettour');
 // Đăng ký tour
 Route::get('/dangkytour/{id}','IndexController@getFormDK')->name('dktour');

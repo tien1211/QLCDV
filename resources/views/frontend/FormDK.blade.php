@@ -38,15 +38,24 @@
             @if($tour->tour_soluong == 0)
             <input style="color: red;" type="text" class="input-small form-control" value="Số lượng còn lại: {{$tour->tour_soluong}}" disabled>
             <button type="submit" disabled class="btn roberto-btn mt-15" style="float:right;">Hết chổ</button>
-            <button  class="btn roberto-btn mt-15" style="float:right;">Ghi danh</button>
             @else
             <input style="color: #000000;" type="text" class="input-small form-control" value="Số lượng còn lại: {{$tour->tour_soluong}}" disabled>
             <button type="submit" class="btn roberto-btn mt-15" style="float:right;">Ghi danh</button>
-            <a href="{{route('chitiettour',['id'=>$tour_id])}}"><button class="btn roberto-btn mt-15" >Quay lại</button></a>
             @endif
             </form>
+            <button class="btn roberto-btn mt-15" href="{{route('chitiettour',['id'=>$tour_id])}}">Quay lại</button>
     </div>
 </div>
+@if(count($nguoithamgia) == 0)
+<div class="row">
+    <div class="col-12">
+        <!-- Section Heading -->
+        <div class="section-heading text-center wow fadeInUp" style="margin-top: 30px;" data-wow-delay="100ms">
+            <h3>Bạn chưa đăng ký người tham gia</h3>
+        </div>
+    </div>
+</div>
+@else
 <div class="row">
     <div class="col-12">
         <!-- Section Heading -->
@@ -89,4 +98,5 @@
         </tbody>
     </table>
 </div>
+@endif
 @endsection
