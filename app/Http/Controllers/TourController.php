@@ -219,15 +219,12 @@ class TourController extends Controller
         $Tour->gd_id = $request->gd_id;
         $Tour->tour_daily = $request->tour_daily;
 
-
         if ($request->hasFile('tour_hinhanh')){
-
             $file = $request->file('tour_hinhanh');
             $name = $file->getClientOriginalName();
             $file->move('upload/tour/', $name);
             $Tour->tour_hinhanh = $name;
         }
-
         else{
             $Tour->tour_hinhanh= $Tour->tour_hinhanh;
         }
@@ -238,9 +235,7 @@ class TourController extends Controller
        // return redirect()->route('TOUR_DS');
         // return view('TOUR_DS',compact('Tour'));
         return \response(['thongbao'=>'Sửa thành công'  ]);
-
     }
-
 
     public function getXoa($id){
         $Tour = Tour::find($id);
@@ -324,15 +319,23 @@ class TourController extends Controller
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
             ->where('tour_id',$id)->first();
+        $nguoithamgia = DB::table('thongtinnguoidk')
+            ->join('dk_tour','dk_tour.dkt_id','=','thongtinnguoidk.dkt_id')
+            ->join('congdoanvien','congdoanvien.cdv_id','=','dk_tour.cdv_id')
+            ->join('tinhtrangthuphi','tinhtrangthuphi.tttp_id','=','dk_tour.tttp_id')
+            ->where([['dk_tour.tour_id',$id],['congdoanvien.cdv_trangthai','<>',0],])
+            ->orderBy('dk_tour.cdv_id','asc')
+            ->orderBy('dk_tour.tttp_id','asc')
+            ->get();
         $cdv_dk = DB::table('dk_tour')
             ->join('Tour','Tour.tour_id','=','dk_tour.tour_id')
             ->join('congdoanvien','congdoanvien.cdv_id','=','dk_tour.cdv_id')
-            ->join('tinhtrangthuphi','tinhtrangthuphi.tttp_id','=','dk_tour.tttp_id')
-            ->where('dk_tour.tour_id',$id)
+            ->where([['dk_tour.tour_id',$id],['congdoanvien.cdv_trangthai','<>',0],['dk_tour.tttp_id','<>',2]])
             ->orderBy('dk_tour.dkt_id','desc')
             ->get();
-        //dd($cdv_dk);
-        return view('admin.Tour.chitiet')->with('chitietTour',$chitietTour)->with('cdv_dk',$cdv_dk);
+        return view('admin.Tour.chitiet')->with('chitietTour',$chitietTour)
+            ->with('nguoithamgia',$nguoithamgia)
+            ->with('cdv_dk',$cdv_dk);
     }
 
     public function getThuPhi($id){

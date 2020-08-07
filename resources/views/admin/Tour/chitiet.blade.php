@@ -34,7 +34,43 @@
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">
-    Danh sách tham gia
+    Danh sách Công đoàn viên đăng ký
+    </div>
+    <div>
+    <table class="table" ui-jq="footable" ui-options='{
+        "paging": {
+        "enabled": true
+        },
+        "filtering": {
+        "enabled": true
+        },
+        "sorting": {
+        "enabled": true
+        }}'>
+        <tr>
+            <th>STT</th>
+            <th>Họ và tên</th>
+            <th>Số lượng đã đăng ký</th>
+            <th>Chi phí</th>
+            <th>Mức Hổ Trợ</th>
+        </tr>
+        </thead> 
+            @foreach ($cdv_dk as $key => $cdv)
+                <tr data-expanded="true">
+                    <td>{{$key + 1}}</td>
+                    <td>{{$cdv->cdv_ten}}</td>
+                    <td>{{$cdv->dkt_soluong}}</td>
+                    <td>{{number_format($cdv->dkt_soluong*$cdv->tour_chiphi)}} VNĐ</td>
+                    <td>{{number_format($cdv->phihotro)}} VNĐ</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+    Danh sách người đăng ký tham gia
     </div>
     <div>
     <table class="table" ui-jq="footable" ui-options='{
@@ -51,20 +87,34 @@
         <tr>
             <th>STT</th>
             <th>Họ và tên</th>
-            <th>Số lượng đăng ký</th>
-            <th>Chi phí</th>
-            <th>Mức Hổ Trợ</th>
-            <th>Tình trạng thu phí</th>
+            <th>Giới tính</th>
+            <th>Tuổi</th>
+            <th>Quan hệ</th>
+            <th>Công đoàn viên đăng ký</th>
+            <th>Trạng thái</th>
         </tr>
         </thead> 
-            @foreach ($cdv_dk as $key => $cdv)
+            @foreach ($nguoithamgia as $key => $ntg)
                 <tr data-expanded="true">
                     <td>{{$key + 1}}</td>
-                    <td>{{$cdv->cdv_ten}}</td>
-                    <td>{{$cdv->dkt_soluong}}</td>
-                    <td>{{number_format($cdv->dkt_soluong*$cdv->tour_chiphi)}} VNĐ</td>
-                    <td>{{number_format($cdv->phihotro)}} VNĐ</td>
-                    <td>{{$cdv->tinh_trang}}</td>
+                    <td>{{$ntg->ttndk_ten}}</td>
+                    @if($ntg->ttndk_gt == 1)
+                        <td>Nam</td>
+                    @else
+                        <td>Nữ</td>
+                    @endif
+                    <td>{{$ntg->ttndk_tuoi}}</td>
+                    @if($ntg->ttndk_cv == 1)
+                        <td>Ngươi thân</td>
+                    @else
+                        <td>Công đoàn viên</td>
+                    @endif
+                    <td>{{$ntg->cdv_ten}}</td>
+                    @if($ntg->ttndk_trangthai == 1)
+                        <td>Đã đăng ký</td>
+                    @else
+                        <td><a style="color:red">Hủy đăng ký</a></td>
+                    @endif
                 </tr>
             @endforeach
         </tbody>

@@ -222,14 +222,22 @@ class IndexController extends Controller
     }
     // Hủy Tour
     public function postDelete($id) {
-            $temp = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->first();
-            $tour = DB::table('tour')->where('tour_id',$id)->first();
-            $soluongconlai = $tour->tour_soluong + $temp->dkt_soluong;
-
-            DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])->update(['tttp_id' => 2]);
-            DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $soluongconlai]);
-            Session::flash('alert-info', 'Hủy đăng ký thành công!!!');
-            return redirect()->route('quanlytour');
+        // Cập nhật lại số lượng tour
+        $temp = DB::table('dk_tour')->where('dkt_id',$id)->first();
+        $tour = DB::table('tour')->where('tour_id',$temp->tour_id)->first();
+        $soluongconlai = $tour->tour_soluong + $temp->dkt_soluong;
+        DB::table('tour')->where('tour_id',$temp->tour_id)->update(['tour_soluong' => $soluongconlai]);
+        // Cập nhật trạng thái tour
+        DB::table('DK_Tour')->where('dkt_id',$id)->update(['tttp_id' => 2]);
+        // Cập nhật trạng thái người đăng ký tour
+        $ntg = DB::table('thongtinnguoidk')->where('dkt_id',$id)->get();
+        foreach ($ntg as $t){
+            DB::table('thongtinnguoidk')
+                ->where('ttndk_id',$t->ttndk_id)
+                ->update(['ttndk_trangthai'=>0]);
+        }
+        Session::flash('alert-info', 'Hủy đăng ký thành công!!!');
+        return redirect()->route('quanlytour');
     }
     // Danh Sách tour đã đăng ký
     public function getQLTour(){
