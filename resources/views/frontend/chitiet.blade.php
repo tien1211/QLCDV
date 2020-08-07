@@ -99,7 +99,6 @@
                 <div class="col-12 col-lg-4">
                     <!-- Hotel Reservation Area -->
                     <div class="hotel-reservation--area mb-100">
-<<<<<<< HEAD
 
                        {{-- MESSAGE ERROR --}}
                         <div class="form-group" style="mt-6">
@@ -113,8 +112,6 @@
                         </div>
                         {{-- MESSAGE ERROR --}}
 
-=======
->>>>>>> 9c5d76e711e9d4f0cb8ac3cbcf9d1220c68169c4
                         @if ($now > $datail->tour_handk)
                             <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
                                 @csrf
@@ -200,7 +197,6 @@
                             </form>
                     </div>
                         @else
-<<<<<<< HEAD
                         {{-- CON HAN --}}
                             {{-- <div class="form-group mb-30">
                                 <label for="checkInDate">Chi phí:</label>
@@ -254,21 +250,11 @@
                                     </h6>
 
                                 <h6>Số chỗ còn lại: <span>{{$datail->tour_soluong}}</span></h6>
-=======
-                                <div class="form-group mb-30">
-                                    <label for="checkInDate">Chi phí:</label>
-                                        <div class="row no-gutters">
-                                            <div class="col-12">
-                                            <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}} VND"  name="tour_chiphi" disabled>
-                                            </div>
-                                        </div>
->>>>>>> 9c5d76e711e9d4f0cb8ac3cbcf9d1220c68169c4
                                 </div>
                                 <div class="form-group">
                                     <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button></a>
                                 </div>
                             </div>
-<<<<<<< HEAD
 
                         </div>
 
@@ -276,8 +262,6 @@
 
                         {{-- test --}}
                     </div>
-=======
->>>>>>> 9c5d76e711e9d4f0cb8ac3cbcf9d1220c68169c4
                         @endif
 
                         {{-- TOUR KHAC --}}
