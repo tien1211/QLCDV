@@ -365,8 +365,6 @@ class CongDoanVienController extends Controller
         else {
             $CongDoanVien = CongDoanVien::where('cdv_ten','like',"%$tukhoa%")->paginate(5);
         }
-        //dd($dv_id);
-        //dd($CongDoanVien);
         return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien)->with('lnv_id',$lnv_id)->with('cv_id',$cv_id)->with('tukhoa',$tukhoa)->with('dv_id',$dv_id);
     }
 
@@ -415,34 +413,17 @@ class CongDoanVienController extends Controller
                 Session::flash('alert-info', 'Import thành công!!!');
                 return redirect()->route('CDV_DanhSach');
             } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
-<<<<<<< HEAD
-                Session::flash('alert-danger', 'Import thất bại, vui lòng xem lại file!!!');
-                return redirect::back();
-<<<<<<< HEAD
-<<<<<<< HEAD
-            }
 
-
-=======
-=======
->>>>>>> ba4e3e053172fa56cd7ac37a424c539f653458b6
-                // $f  = $e->failures();
+               // $f  = $e->failures();
                 // return view('admin.CongDoanVien.imp',compact('f'));
-=======
+
                 // Session::flash('alert-danger', 'Import thất bại, vui lòng xem lại file!!!');
                 // return redirect::back();
                 $f  = $e->failures();
                 return view('admin.CongDoanVien.imp',compact('f'));
->>>>>>> b5aa24b9ba9b429a7404f8a121f9acb99b37e47f
-            } 
->>>>>>> a36294ef83f68ea7039a0f2eef0dc614af1f4306
-
-<<<<<<< HEAD
+            }
 
 
-
-=======
->>>>>>> b5aa24b9ba9b429a7404f8a121f9acb99b37e47f
         }
 
 

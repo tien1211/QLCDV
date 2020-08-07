@@ -1,5 +1,12 @@
 @extends('frontend.layout.master')
 @section('frontend_content')
+<div class="col-12">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+        @if(Session::has('alert-' . $msg))
+        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} </p>
+        @endif
+    @endforeach
+</div>
 <div class="row">
     <div class="col-12">
         <!-- Section Heading -->
@@ -37,13 +44,14 @@
             </div>
             @if($tour->tour_soluong == 0)
             <input style="color: red;" type="text" class="input-small form-control" value="Số lượng còn lại: {{$tour->tour_soluong}}" disabled>
-            <button type="submit" disabled class="btn roberto-btn mt-15" style="float:right;">Hết chổ</button>
+            <button type="submit" disabled class="btn roberto-btn mt-15" style="margin-left: 390px;">Hết chổ</button>
+            <a href="{{route('chitiettour',['id'=>$tour_id])}}" class="btn roberto-btn mt-15"  >Quay lại</a>
             @else
             <input style="color: #000000;" type="text" class="input-small form-control" value="Số lượng còn lại: {{$tour->tour_soluong}}" disabled>
-            <button type="submit" class="btn roberto-btn mt-15" style="float:right;">Ghi danh</button>
+            <button type="submit" class="btn roberto-btn mt-15" style="margin-left: 390px;">Ghi danh</button>
+            <a href="{{route('chitiettour',['id'=>$tour_id])}}" class="btn roberto-btn mt-15"  >Quay lại</a>
             @endif
             </form>
-            <button class="btn roberto-btn mt-15" href="{{route('chitiettour',['id'=>$tour_id])}}">Quay lại</button>
     </div>
 </div>
 @if(count($nguoithamgia) == 0)

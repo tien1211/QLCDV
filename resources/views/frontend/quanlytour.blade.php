@@ -1,5 +1,12 @@
 @extends('frontend.layout.master')
 @section('frontend_content')
+<div class="col-12">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+        @if(Session::has('alert-' . $msg))
+        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} </p>
+        @endif
+    @endforeach
+</div>
 <div class="row">
     <div class="col-12">
         <!-- Section Heading -->

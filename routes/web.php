@@ -36,14 +36,16 @@ Route::get('/chitiet/{id}','IndexController@getChiTiet')->name('chitiettour');
 // Đăng ký tour
 Route::get('/dangkytour/{id}','IndexController@getFormDK')->name('dktour');
 Route::post('/xndangkytour/{id}','IndexController@postDKT')->name('xndktour');
+//Quản lý tour đã đăng ký
+Route::get('/quanlytour','IndexController@getQLTour')->name('quanlytour');
+Route::get('/danhsachnguoithamgia{id}','IndexController@getDSNTG')->name('DS_NTG');
+Route::post('/xoanguoithamgia/{id}','IndexController@postXNTG')->name('XL_XNTTDK');
 
 Route::post('/capnhattour/{id}','IndexController@postUpdate')->name('cntour');
 Route::post('/huytour/{id}','IndexController@postDelete')->name('huytour');
 Route::post('/thongtindktour/{id}','IndexController@postTTDK')->name('XL_TTDK');
 Route::post('/capnhatthongtindktour/{id}','IndexController@postCNTTDK')->name('XL_CNTTDK');
-Route::post('/xoanguoithamgia/{id}','IndexController@postXNTG')->name('XL_XNTTDK');
-Route::get('/danhsachnguoithamgia{id}','IndexController@getDSNTG')->name('DS_NTG');
-Route::get('/quanlytour','IndexController@getQLTour')->name('quanlytour');
+
 Route::get('/profile/{id}','IndexController@getProfile')->name('proFile');
 
 

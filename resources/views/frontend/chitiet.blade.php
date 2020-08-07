@@ -1,7 +1,7 @@
 @extends('frontend.layout.master1')
 @section('frontend_content')
     <!-- Rooms Area Start -->
-    <div class="roberto-rooms-area section-padding-100-0">
+    <div class="roberto-rooms-area ">
         <div class="col-12">
             <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
                 <h2>{{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</h2>
@@ -58,7 +58,7 @@
                         </div>
                     <p>{{$datail->LichTrinh->lt_mota}}</p>
                         <ul>
-                            <li><i class="fa fa-check"></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}"> DownLoad Lịch Trình:  {{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</a></li>
+                            <h5><li style="color: blue"><i class="fa fa-check" ></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}" style="color: blue"> DownLoad Lịch Trình:  {{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</a></li></h5>
                         </ul>
                     </div>
                     <!-- Room Service -->
@@ -100,15 +100,6 @@
                 <div class="col-12 col-lg-4">
                     <!-- Hotel Reservation Area -->
                     <div class="hotel-reservation--area mb-100">
-                        <div class="form-group" style="mt-6">
-                            <div class="flash-message">
-                            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                                @if(Session::has('alert-' . $msg))
-                                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} </p>
-                                @endif
-                            @endforeach
-                        </div>
-                        </div>
                         @if ($now > $datail->tour_handk)
                             <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
                                 @csrf
@@ -145,20 +136,20 @@
                                 </form>
                             </div>
                         @else
-                            <div class="form-group mb-30">
-                                <label for="checkInDate">Chi phí:</label>
-                                    <div class="row no-gutters">
-                                        <div class="col-12">
-                                        <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}} VND"  name="tour_chiphi" disabled>
+                                <div class="form-group mb-30">
+                                    <label for="checkInDate">Chi phí:</label>
+                                        <div class="row no-gutters">
+                                            <div class="col-12">
+                                            <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}} VND"  name="tour_chiphi" disabled>
+                                            </div>
                                         </div>
-                                    </div>
-                            </div>
-                            <div class="form-group">
-                                <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button></a>
-                            </div>
+                                </div>
+                                <div class="form-group">
+                                    <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button></a>
+                                </div>
                             </div>
                         @endif
-                        <label for="checkInDate">Các tour khác:</label>
+                       <h4> <label for="checkInDate">Các Tour khác:</label></h4><hr>
                         @foreach($tourkhac as $tourkhac)
                         <div class="single-recent-post d-flex">
                             <!-- Thumb -->
@@ -176,8 +167,8 @@
                             </div>
                         </div>
                         @endforeach
-                        
-                        
+
+
                 </div>
  <!-- FORM BOOK -->
             </div>

@@ -1,5 +1,12 @@
 @extends('frontend.layout.master')
 @section('frontend_content')
+<div class="col-12">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+        @if(Session::has('alert-' . $msg))
+        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} </p>
+        @endif
+    @endforeach
+</div>
 <div class="row">
     <div class="col-12">
         <!-- Section Heading -->
@@ -9,7 +16,7 @@
         </div>
     </div>
 </div>
-<div class="room-service mb-50">
+<div class="room-service mb-50" style="margin-bottom: 10px;">
     <form class="form-inline" role="form" enctype="multipart/form-data" action="{{route('XL_XNTTDK',['id'=>$tour->tour_id])}}" method="post" >
         {{ csrf_field() }}
     <table class="table">
@@ -46,13 +53,11 @@
     </table>
 </div>
 @if ($now > $tour->tour_handk)
-<div class="col-12 text-center wow fadeInUp" data-wow-delay="100ms">
-    <button type="submit" disabled class="btn roberto-btn mt-15">Tour đã diễn ra</button>
-</div>
+    <button type="submit" disabled class="btn roberto-btn mt-15" style="margin-left: 380px;" >Tour đã diễn ra</button>
+    <a href="{{route('quanlytour')}}" class="btn roberto-btn mt-15"  >Quay lại</a>
 @else
-<div class="col-12 text-center wow fadeInUp" data-wow-delay="100ms">
-    <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa?');" class="btn roberto-btn mt-15">Xóa</button>
-</div>
+    <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa?');" class="btn roberto-btn mt-15" style="margin-left: 420px;">Xóa</button>
+    <a href="{{route('quanlytour')}}" class="btn roberto-btn mt-15"  >Quay lại</a>
 @endif
 </form>
 <script>
