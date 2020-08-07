@@ -47,8 +47,6 @@ class IndexController extends Controller
         ->where('Tour.tour_ngaykt','<',$now)
         ->orderBy('tour.tour_handk','desc')
         ->limit(3)->get();
-
-
         view() ->share('ifo',$ifo);
         view() ->share('ifo1',$ifo1);
         view() ->share('now',$now);
@@ -66,10 +64,7 @@ class IndexController extends Controller
     }
 
     public function getIndex(){
-<<<<<<< HEAD
-=======
         $moment=  Carbon::now('Asia/Ho_Chi_Minh');   
->>>>>>> b5aa24b9ba9b429a7404f8a121f9acb99b37e47f
         $tour1 = DB::table('Tour')
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
@@ -81,10 +76,6 @@ class IndexController extends Controller
     }
 
     public function getChiTiet($id){
-<<<<<<< HEAD
-
-=======
->>>>>>> b5aa24b9ba9b429a7404f8a121f9acb99b37e47f
             $datail=Tour::find($id);
             $a = DB::table('LichTrinh')->join('Tour','LichTrinh.lt_id','=','Tour.lt_id')
                 ->join('Anh_Tour','Anh_Tour.lt_id','=','LichTrinh.lt_id')
@@ -111,7 +102,8 @@ class IndexController extends Controller
             return view('frontend.chitiet')->with('a',$a)->with('b',$b)
                 ->with('datail',$datail)
                 ->with('tourkhac',$tourkhac)
-                ->with('temp',$temp);
+                ->with('temp',$temp)
+                ->with('nguoithamgia',$nguoithamgia);
         }else{
             $temp = DB::table('DK_Tour')
                 ->join('tour','tour.tour_id','=','DK_Tour.tour_id')
@@ -131,25 +123,64 @@ class IndexController extends Controller
             Session::flash('alert-danger', 'Bạn cần đăng nhập để đăng ký tour!!');
             return Redirect::back();
         }else{
-            return view('frontend.FormDK');
+            // danh sách người tham gia
+            $nguoithamgia = DB::table('thongtinnguoidk')
+            ->join('dk_tour','dk_tour.dkt_id','=','thongtinnguoidk.dkt_id')
+            ->join('congdoanvien','congdoanvien.cdv_id','=','dk_tour.cdv_id')
+            ->where([['dk_tour.tour_id',$id],['dk_tour.cdv_id',Auth::user()->cdv_id],['thongtinnguoidk.ttndk_trangthai','<>',0],])
+            ->get();
+            // thông tin tour
+            $tour = DB::table('tour')->where('tour_id',$id)->first();
+            return view('frontend.FormDK')
+                ->with('nguoithamgia',$nguoithamgia)
+                ->with('tour_id',$id)
+                ->with('tour',$tour);
         }
-<<<<<<< HEAD
     }
-=======
-<<<<<<< HEAD
-    }
-
-=======
->>>>>>> 7dff0836bc9daa1a1a11c11c1f5888e8a15ecfbb
-    // Form cập nhật thêm người tham gia tour
->>>>>>> b5aa24b9ba9b429a7404f8a121f9acb99b37e47f
-    public function postUpdate(Request $request, $id){
-        $this->validate($request, [
-            'dkt_soluong'=>'required'
-            ],[
-                'dkt_soluong.required'=>'Vui lòng nhập số lượng cần cập nhật'
-            ]);
-        return view('frontend.capnhatthongtinnguoidkt')->with('tour_id',$id)->with('soluong',$request->dkt_soluong);
+    // xác nhận đăng ký tour
+    public function postDKT(Request $request, $id){
+        $temp = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],['tttp_id','<>',2],])->first();
+        if($temp == null){
+            //đăng ký tour mới
+            $datadkt = array();
+            $datadkt['tour_id'] = $id;
+            $datadkt['cdv_id'] = Auth::user()->cdv_id;
+            $datadkt['tttp_id'] = 1;
+            $datadkt['dkt_soluong'] = 1;
+            $datadkt['phihotro'] = 1000;
+            DB::table('dk_tour')->insert($datadkt);
+            $t = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],['tttp_id','<>',2],])->first();
+            // cập nhật thông tin người tham gia
+            $data = array();
+            $data['dkt_id'] = $t->dkt_id;
+            $data['ttndk_ten'] = $request->ttndk_ten;
+            $data['ttndk_gt'] = $request->ttndk_gt;
+            $data['ttndk_tuoi'] = $request->ttndk_tuoi;
+            $data['ttndk_cv'] = $request->ttndk_cv;
+            $data['ttndk_trangthai'] = 1;
+            DB::table('thongtinnguoidk')->insert($data);
+            // cập nhật lại số lượng tour
+            $tour = DB::table('tour')->where('tour_id',$id)->first();
+            DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $tour->tour_soluong - 1]);
+            return redirect()->route('dktour',['id'=>$id]);
+        }else{
+            //Cập nhật số lượng tour
+            DB::table('dk_tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],['tttp_id','<>',2],])->update(['dkt_soluong'=>$temp->dkt_soluong + 1]);
+            $t = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],['tttp_id','<>',2],])->first();
+            // cập nhật thông tin người tham gia
+            $data = array();
+            $data['dkt_id'] = $t->dkt_id;
+            $data['ttndk_ten'] = $request->ttndk_ten;
+            $data['ttndk_gt'] = $request->ttndk_gt;
+            $data['ttndk_tuoi'] = $request->ttndk_tuoi;
+            $data['ttndk_cv'] = $request->ttndk_cv;
+            $data['ttndk_trangthai'] = 1;
+            DB::table('thongtinnguoidk')->insert($data);
+             // cập nhật lại số lượng tour
+            $tour = DB::table('tour')->where('tour_id',$id)->first();
+            DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $tour->tour_soluong - 1]);
+            return redirect()->route('dktour',['id'=>$id]);
+        }
     }
     // Hủy Tour
     public function postDelete($id) {
