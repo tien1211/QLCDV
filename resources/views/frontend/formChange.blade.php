@@ -5,7 +5,9 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <base href="{{asset('')}}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+	<base href="{{asset('')}}">
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="login/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -41,44 +43,48 @@
 					</span>
 
 					<div class="wrap-input100 validate-input">
-					    <input class="input100" type="password" required name="password" id="pass" placeholder="Nhập mật khẩu củ.....">
+					    <input class="input100" id="oldpass"   type="password"  name="old_password" placeholder="Nhập mật khẩu củ.....">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
                     <div class="wrap-input100 validate-input">
-					    <input class="input100" type="password" required name="new_password" id="newpass" placeholder="Nhập mật khẩu mới.....">
+					    <input class="input100" id="newpass"  type="password"  name="new_password" placeholder="Nhập mật khẩu mới.....">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
 					<div class="wrap-input100 rs1 validate-input">
-						<input class="input100" type="password"    onchange="confirmed_pass()" name="confirm_password" id="repass" required placeholder="Nhập lại mật khẩu.....">
+						<input class="input100" id="repass"  type="password" name="confirm_password"  placeholder="Nhập lại mật khẩu.....">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
-					<p id="message"></p>
+					<span id='message'></span>
+					
 					@if(session('error'))
 					<div style="color:red; padding: 20px;" role="alert">
 					<strong>{{session('error')}}</strong>
 					</div>
-				  	@endif
+					  @endif
+
+
+					  <div class="flash-message">
+						@foreach (['danger', 'warning', 'success', 'info'] as $msg)
+						  @if(Session::has('alert-' . $msg))
+						  <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} </p>
+						  @endif
+						@endforeach
+					</div>
+					  
+
 
 					<div class="container-login100-form-btn m-t-20">
-						<button class="login100-form-btn" >
+						<button type="submit" class="login100-form-btn" >
 							Đổi Mật Khẩu
 						</button>
 					</div>
 
-					<div class="text-center p-t-45 p-b-4">
-						<span class="txt1">
-							Forgot
-						</span>
-
-						<a href="#" class="txt2 hov1">
-							Username / Password?
-						</a>
-					</div>
+					
 
 					<div class="text-center">
 					<a href="{{route('trangchu')}}" class="txt2 hov1">
@@ -113,22 +119,24 @@
 
 <script>
 
-    // function checkpass(){
-    //     var a = {{$ar->password}}
-    //     console.log(a);
-    // }
-    //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
+	$('#newpass, #repass, #oldpass').on('keyup', function () {
+		var n = $('#newpass').val().length;
+		
+	
 
-    function confirmed_pass(){
-        var password = document.getElementById("newpass").value;
-        var confirmed_password = document.getElementById("repass").value;
-        if(password != confirmed_password){
-          document.getElementById("check").innerHTML= "Mật khẩu không khớp";
-          document.getElementById("check").style.color = "red";
-        }
-    }
-
-
+		if($('#oldpass').val() == "" || $('#newpass').val() == "" || $('#repass').val() ==""){
+			$('#message').html("<i class='fas fa-times'>  Không Được Để Trống Mật Khẩu!!</i>").css({'color':'red','font-size':'18px'});
+		}
+		else if( n > 8 && n < 50)
+		{
+			$('#message').html("<i class='fas fa-times'> Mật Khẩu Phải Từ 8 Đến 50 Ký Tự!!</i>").css({'color':'red','font-size':'18px'});
+		}
+		else if ($('#newpass').val() == $('#repass').val()) {
+		$('#message').html("<i class='far fa-check-circle'>  Match</i>").css({'color':'green','font-size':'18px'});
+		} else 
+		$('#message').html("<i class='fas fa-times'>  Mật Khẩu Không Trùng Khớp!!</i>").css({'color':'red','font-size':'18px'});
+	
+	});
 
 
 </script>
