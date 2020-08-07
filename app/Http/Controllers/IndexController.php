@@ -102,13 +102,8 @@ class IndexController extends Controller
             return view('frontend.chitiet')->with('a',$a)->with('b',$b)
                 ->with('datail',$datail)
                 ->with('tourkhac',$tourkhac)
-<<<<<<< HEAD
-                ->with('nguoithamgia',$nguoithamgia)
-                ->with('temp',$temp);
-=======
                 ->with('temp',$temp)
                 ->with('nguoithamgia',$nguoithamgia);
->>>>>>> 5c819fa866b81a7619c5d3031d4be1a3be6be9fd
         }else{
             $temp = DB::table('DK_Tour')
                 ->join('tour','tour.tour_id','=','DK_Tour.tour_id')
@@ -141,20 +136,6 @@ class IndexController extends Controller
                 ->with('tour_id',$id)
                 ->with('tour',$tour);
         }
-<<<<<<< HEAD
-
-    }
-
-    // Form cập nhật thêm người tham gia tour
-
-    public function postUpdate(Request $request, $id){
-        $this->validate($request, [
-            'dkt_soluong'=>'required'
-            ],[
-                'dkt_soluong.required'=>'Vui lòng nhập số lượng cần cập nhật'
-            ]);
-        return view('frontend.capnhatthongtinnguoidkt')->with('tour_id',$id)->with('soluong',$request->dkt_soluong);
-=======
     }
     // xác nhận đăng ký tour
     public function postDKT(Request $request, $id){
@@ -200,7 +181,6 @@ class IndexController extends Controller
             DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $tour->tour_soluong - 1]);
             return redirect()->route('dktour',['id'=>$id]);
         }
->>>>>>> 5c819fa866b81a7619c5d3031d4be1a3be6be9fd
     }
     // Hủy Tour
     public function postDelete($id) {
