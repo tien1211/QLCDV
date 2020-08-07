@@ -104,6 +104,7 @@ class IndexController extends Controller
             return view('frontend.chitiet')->with('a',$a)->with('b',$b)
                 ->with('datail',$datail)
                 ->with('tourkhac',$tourkhac)
+                ->with('nguoithamgia',$nguoithamgia)
                 ->with('temp',$temp);
         }else{
             $temp = DB::table('DK_Tour')
@@ -119,21 +120,15 @@ class IndexController extends Controller
         }
     }
     // đăng ký tour
-    public function postBook(Request $request, $id) {
+    public function getFormDK($id) {
         if(!Auth::check()){
             Session::flash('alert-danger', 'Bạn cần đăng nhập để đăng ký tour!!');
             return Redirect::back();
         }else{
-            $this->validate($request, [
-
-                'dkt_soluong'=>'required'
-
-                ],[
-                    'dkt_soluong.required'=>'Vui lòng nhập số lượng cần đăng ký'
-                ]);
-            return view('frontend.thongtinnguoidkt')->with('tour_id',$id)->with('soluong',$request->dkt_soluong);
-            }
+            return view('frontend.FormDK');
         }
+    }
+
     // Form cập nhật thêm người tham gia tour
     public function postUpdate(Request $request, $id){
         $this->validate($request, [

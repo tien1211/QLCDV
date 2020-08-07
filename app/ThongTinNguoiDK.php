@@ -13,15 +13,14 @@ class ThongTinNguoiDK extends Model
         'dkt_id',
         'ttndk_ten',
         'ttndk_gt',
-        'ttndk_cmnd',
+        'ttndk_tuoi',
+        'ttndk_cv',
         'ttndk_trangthai'
     ];
 
-     #một thông tin người đăng kí có thể đăng ký nhiều dk_tour
-     public function DK_Tour()
-     {
-         return $this->belongsTo('App\DK_Tour', 'dkt_id', 'dkt_id');
-     }
-
-     
+    #một thông tin người đăng kí có thể đăng ký nhiều dk_tour
+    public function DK_Tour()
+    {
+    return $this->belongsTo('App\DK_Tour', 'dkt_id', 'dkt_id');
+    }
 }
