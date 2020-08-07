@@ -365,8 +365,6 @@ class CongDoanVienController extends Controller
         else {
             $CongDoanVien = CongDoanVien::where('cdv_ten','like',"%$tukhoa%")->paginate(5);
         }
-        //dd($dv_id);
-        //dd($CongDoanVien);
         return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien)->with('lnv_id',$lnv_id)->with('cv_id',$cv_id)->with('tukhoa',$tukhoa)->with('dv_id',$dv_id);
     }
 
