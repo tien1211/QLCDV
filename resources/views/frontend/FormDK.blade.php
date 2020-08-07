@@ -4,46 +4,54 @@
     <div class="col-12">
         <!-- Section Heading -->
         <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
-            <h3>Thông tin người tham gia</h3>
+            <h3>Thông tin người đăng ký</h3>
         </div>
     </div>
 </div>
-<form class="form-inline" role="form" action="" method="post" >
+<form class="form-inline" role="form" action="{{route('xndktour',['id'=>$tour_id])}}" method="post" >
     {{ csrf_field() }}
 <div class="col-12">
     <!-- Form -->
     <div class="roberto-contact-form">
             <div class="row">
                 <div class="col-12 col-lg-9 wow fadeInUp" data-wow-delay="100ms">
-                    <input type="text" required name=""  class="form-control mb-30" placeholder="Tên người tham gia thứ ">
+                    <input type="text" required name="ttndk_ten"  class="form-control mb-30" placeholder="Tên người tham gia thứ ">
                 </div>
                 <div class="col-12 col-lg-3 wow fadeInUp" data-wow-delay="100ms">
-                    <select class="form-control" name="" required>
-                    <option value="">Chọn giới tính...</option>
+                    <select class="form-control" name="ttndk_gt" required>
+                    <option value="">Chọn giới tính</option>
                     <option value="1">Nam</option>
                     <option value="0">Nữ</option>
                     </select>
                 </div>
                 <div class="col-12 col-lg-9 wow fadeInUp" data-wow-delay="100ms">
-                    <input type="text" required name=""  class="form-control mb-30" placeholder="Tuổi">
+                    <input type="text" required name="ttndk_tuoi"  class="form-control mb-30" placeholder="Tuổi">
                 </div>
                 <div class="col-12 col-lg-3 wow fadeInUp" data-wow-delay="100ms">
-                    <select class="form-control" name="" required>
-                    <option value="">Chọn tình trạng</option>
+                    <select class="form-control" name="ttndk_cv" required>
+                    <option value="">Chọn quan hệ</option>
                     <option value="1">Người thân</option>
                     <option value="0">Công đoàn viên</option>
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn roberto-btn mt-15" style="float:right;">Đăng ký</button>
+            @if($tour->tour_soluong == 0)
+            <input style="color: red;" type="text" class="input-small form-control" value="Số lượng còn lại: {{$tour->tour_soluong}}" disabled>
+            <button type="submit" disabled class="btn roberto-btn mt-15" style="float:right;">Hết chổ</button>
+            <button  class="btn roberto-btn mt-15" style="float:right;">Ghi danh</button>
+            @else
+            <input style="color: #000000;" type="text" class="input-small form-control" value="Số lượng còn lại: {{$tour->tour_soluong}}" disabled>
+            <button type="submit" class="btn roberto-btn mt-15" style="float:right;">Ghi danh</button>
+            <a href="{{route('chitiettour',['id'=>$tour_id])}}"><button class="btn roberto-btn mt-15" >Quay lại</button></a>
+            @endif
             </form>
     </div>
 </div>
 <div class="row">
     <div class="col-12">
         <!-- Section Heading -->
-        <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
-            <h3>Người tham gia</h3>
+        <div class="section-heading text-center wow fadeInUp" style="margin-top: 30px;" data-wow-delay="100ms">
+            <h3>Danh sách người đã đăng ký</h3>
         </div>
     </div>
 </div>
@@ -56,10 +64,28 @@
                 <th>Công đoàn viên đăng ký</th>
                 <th>Giới tính</th>
                 <th>Tuổi</th>
-                <th>Trạng thái</th>
+                <th>Quan hệ</th>
             </tr>
         </thead>
         <tbody>
+        @foreach ($nguoithamgia as $key => $dk)
+            <tr>
+            <td>{{$key + 1}}</td>
+            <td>{{$dk->ttndk_ten}}</td>
+            <td>{{$dk->cdv_ten}}</td>
+            @if($dk->ttndk_gt == 1)
+            <td>Nam</td>
+            @else
+            <td>Nữ</td>
+            @endif
+            <td>{{$dk->ttndk_tuoi}}</td>
+            @if($dk->ttndk_cv == 1)
+            <td>Ngươi thân</td>
+            @else
+            <td>Công đoàn viên</td>
+            @endif
+            </tr>
+        @endforeach
         </tbody>
     </table>
 </div>

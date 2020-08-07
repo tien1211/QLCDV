@@ -32,7 +32,10 @@ Route::get('/tourdadienra','IndexController@getTourdadienra')->name('tourdadienr
 
 Route::get('/home','IndexController@getIndex')->name('trangchu');
 Route::get('/chitiet/{id}','IndexController@getChiTiet')->name('chitiettour');
+// Đăng ký tour
 Route::get('/dangkytour/{id}','IndexController@getFormDK')->name('dktour');
+Route::post('/xndangkytour/{id}','IndexController@postDKT')->name('xndktour');
+
 Route::post('/capnhattour/{id}','IndexController@postUpdate')->name('cntour');
 Route::post('/huytour/{id}','IndexController@postDelete')->name('huytour');
 Route::post('/thongtindktour/{id}','IndexController@postTTDK')->name('XL_TTDK');
