@@ -1,4 +1,4 @@
-<div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(upload/logo/anh-bia.png);" >
+<div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(upload/logo/logo-6.jpg);" >
     <div class="container h-100" src="upload/";>
         <div class="row h-100 align-items-center">
             <div class="col-12">

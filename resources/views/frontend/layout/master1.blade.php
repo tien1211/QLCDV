@@ -15,6 +15,10 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="frontend/style.css">
+    <link rel="stylesheet" href="frontend/scss/_heading.scss">
+    <link rel="stylesheet" href="frontend/scss/_spacing.scss">
+    <link rel="stylesheet" href="frontend/scss/_room.scss">
+    <link rel="stylesheet" href="frontend/scss/_contact.scss">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 
@@ -31,7 +35,7 @@
 
    @yield('frontend_content')
 
-    
+
 
     <!-- Footer Area Start -->
         @include('frontend.layout.footer')
