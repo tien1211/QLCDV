@@ -157,6 +157,7 @@ class IndexController extends Controller
                     $datadkt['tttp_id'] = 1;
                     $datadkt['dkt_soluong'] = 1;
                     $datadkt['phihotro'] = 0;
+                    $datadkt['created_at'] = date('y-m-d h:i:s');
                     DB::table('dk_tour')->insert($datadkt);
                 }else{
                     // lấy phí hổ trợ
@@ -170,6 +171,7 @@ class IndexController extends Controller
                     $datadkt['tttp_id'] = 1;
                     $datadkt['dkt_soluong'] = 1;
                     $datadkt['phihotro'] = $phihotro->mht_phihotro;
+                    $datadkt['created_at'] =  date('y-m-d h:i:s');
                     DB::table('dk_tour')->insert($datadkt);
                 }
             }else{
@@ -184,6 +186,7 @@ class IndexController extends Controller
                 $datadkt['tttp_id'] = 1;
                 $datadkt['dkt_soluong'] = 1;
                 $datadkt['phihotro'] = $phihotro->mht_phihotro;
+                $datadkt['created_at'] =  date('y-m-d h:i:s');
                 DB::table('dk_tour')->insert($datadkt);
             }
             // cập nhật thông tin người tham gia
@@ -202,7 +205,9 @@ class IndexController extends Controller
             return redirect()->route('dktour',['id'=>$id]);
         }else{
             //Cập nhật số lượng tour
-            DB::table('dk_tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],['tttp_id','<>',2],])->update(['dkt_soluong'=>$temp->dkt_soluong + 1]);
+            DB::table('dk_tour')
+                ->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],['tttp_id','<>',2],])
+                ->update(['dkt_soluong'=>$temp->dkt_soluong + 1]);
             $t = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],['tttp_id','<>',2],])->first();
             // cập nhật thông tin người tham gia
             $data = array();
@@ -236,8 +241,25 @@ class IndexController extends Controller
                 ->where('ttndk_id',$t->ttndk_id)
                 ->update(['ttndk_trangthai'=>0]);
         }
-        Session::flash('alert-info', 'Hủy đăng ký thành công!!!');
-        return redirect()->route('quanlytour');
+        //Cập nhật mức hổ trợ cho tour khác
+        if($temp->phihotro == 0){
+            Session::flash('alert-info', 'Hủy đăng ký thành công!!!');
+            return redirect()->route('quanlytour');
+        }else{
+            $cdv_id = Auth::user()->cdv_id;
+            // lấy mức hổ trợ
+            $phihotro = DB::table('congdoanvien')
+            ->join('muchotro','muchotro.mht_id','=','congdoanvien.mht_id')
+            ->where('cdv_id',$cdv_id)->first();
+            $tourtrc = DB::table('dk_tour')
+                ->join('Tour','Tour.tour_id','=','dk_tour.tour_id')
+                ->where([['tour.gd_id',$tour->gd_id],['cdv_id',$cdv_id],['tttp_id','<>',2]])
+                ->orderBy('dk_tour.created_at','asc')
+                ->limit(1)
+                ->update(['dk_tour.phihotro'=>$phihotro->mht_phihotro]);
+            Session::flash('alert-info', 'Hủy đăng ký thành công!!!');
+            return redirect()->route('quanlytour');
+        }
     }
     // Danh Sách tour đã đăng ký
     public function getQLTour(){
@@ -275,7 +297,7 @@ class IndexController extends Controller
                 ->where('ttndk_id',$t)
                 ->update(['ttndk_trangthai'=>0]);
         }
-        // //cập nhật lại số lượng tour
+        //cập nhật lại số lượng tour
         $tour = DB::table('tour')
             ->where('tour_id',$id)
             ->first();
@@ -285,7 +307,7 @@ class IndexController extends Controller
             ->update(['tour_soluong' => $soluongmoi]);
         //cập nhật lại số lượng đăng ký tour
         $tourdk = DB::table('dk_tour')
-            ->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])
+            ->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],['tttp_id','<>',2],])
             ->first();
         $soluongconlai = $tourdk->dkt_soluong - count($ntg);
         DB::table('dk_tour')
@@ -294,13 +316,31 @@ class IndexController extends Controller
         // cập nhật lại hủy tour
         if($soluongconlai == 0){
             DB::table('dk_tour')
-            ->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])
+            ->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],['tttp_id','<>',2],])
             ->update(['tttp_id' => 2]);
-            Session::flash('alert-info', 'Hủy đăng ký thành công!!!');
-            return redirect()->route('quanlytour');
-        }
+            //Cập nhật mức hổ trợ cho tour khác
+            if($tourdk->phihotro == 0){
+                Session::flash('alert-info', 'Hủy đăng ký thành công!!!');
+                return redirect()->route('quanlytour');
+            }else{
+                $cdv_id = Auth::user()->cdv_id;
+                // lấy mức hổ trợ
+                $phihotro = DB::table('congdoanvien')
+                ->join('muchotro','muchotro.mht_id','=','congdoanvien.mht_id')
+                ->where('cdv_id',$cdv_id)->first();
+                $tourtrc = DB::table('dk_tour')
+                    ->join('Tour','Tour.tour_id','=','dk_tour.tour_id')
+                    ->where([['tour.gd_id',$tour->gd_id],['cdv_id',$cdv_id],['tttp_id','<>',2]])
+                    ->orderBy('dk_tour.created_at','asc')
+                    ->limit(1)
+                    ->update(['dk_tour.phihotro'=>$phihotro->mht_phihotro]);
+                Session::flash('alert-info', 'Hủy đăng ký thành công!!!');
+                return redirect()->route('quanlytour');
+            }
+        }else{
         Session::flash('alert-info', 'Xóa thành công!!!');
         return redirect()->route('DS_NTG',['id'=>$id]);
+        }
     }
 
     public function getProfile($id){
