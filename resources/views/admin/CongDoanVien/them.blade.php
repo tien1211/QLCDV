@@ -40,7 +40,12 @@
                     <select required  class="form-control m-bot15" value={{old('dv_id')}} name="dv_id" id="dv_id">
                       <option value="">Chọn đơn vị...</option>
                       @foreach ($DonVi as $dv)
+                      @if ($dv->dv_trangthai == 1)
+                          
+                      
                       <option value='{{$dv->dv_id}}'>{{$dv->dv_ten}}</option>
+
+                      @endif
                       @endforeach
                     </select>
                     @if($errors->has('dv_id'))
@@ -58,7 +63,10 @@
                     <select class="form-control m-bot15" value={{old('cv_id')}} name="cv_id" id="cv_id">
                       <option value="">Chọn chức vụ...</option>
                       @foreach ($ChucVu as $cv)
+                      @if ($cv->cv_trangthai==1)
+                          
                       <option value='{{$cv->cv_id}}'>{{$cv->cv_ten}}</option>
+                      @endif
                       @endforeach
                     </select>
                     @if($errors->has('cv_id'))
@@ -75,7 +83,10 @@
                     <select class="form-control m-bot15" value={{old('lnv_id')}} name="lnv_id" id="lnv_id">
                       <option value="">Chọn loại nhân viên...</option>
                       @foreach ($LoaiNhanVien as $lnv)
+                      @if ($lnv->lnv_trangthai==1)
+                          
                       <option value='{{$lnv->lnv_id}}'>{{$lnv->lnv_ten}}</option>
+                      @endif
                       @endforeach
                     </select>
                     @if($errors->has('lnv_id'))
@@ -320,10 +331,10 @@
                       <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Quyền</label>
                       <div class="col-lg-6">
                           <label class="radio-inline">
-                              <input type="radio" id="cdv_quyen" name="cdv_quyen" value="1"> Admin
+                              <input type="radio" id="cdv_quyen" value="{{old('cdv_quyen')}}" name="cdv_quyen" value="1"> Admin
                           </label>
                           <label class="radio-inline">
-                              <input type="radio" id="cdv_quyen" name="cdv_quyen" value="0"> Bình Thường
+                              <input type="radio" id="cdv_quyen" value="{{old('cdv_quyen')}}" name="cdv_quyen" value="0"> Bình Thường
                           </label>
                           @if($errors->has('cdv_quyen'))
                           <div style="color:red">{{ $errors->first('cdv_quyen')}}</div>

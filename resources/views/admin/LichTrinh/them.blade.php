@@ -51,7 +51,7 @@
                             <div class="form-group ">
                                 <label for="firstname" class="control-label col-lg-3">Mô tả</label>
                                 <div class="col-lg-6">
-                                    <textarea class="form-control" id="lt_mota" name="lt_mota" type="text" style="resize: none" rows="8"></textarea>
+                                <textarea class="form-control" id="lt_mota" name="lt_mota" type="text" style="resize: none" rows="8">{{old('lt_mota')}}</textarea>
                                         @if($errors->has('lt_mota'))
                                             <div style="color:red">{{ $errors->first('lt_mota')}}</div>
                                         @endif
