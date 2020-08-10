@@ -345,7 +345,6 @@ class TourController extends Controller
             ->join('tinhtrangthuphi','tinhtrangthuphi.tttp_id','=','dk_tour.tttp_id')
             ->where('dk_tour.tour_id',$id)
             ->get();
-        //dd($cdv_dk);
         return view('admin.Tour.thuphi')->with('cdv_dk',$cdv_dk)->with('tour_id',$id);
     }
 
@@ -353,7 +352,6 @@ class TourController extends Controller
         $cdv_dk = DB::table('dk_tour')
             ->where([['tour_id',$id],['cdv_id',$request->cdv_id],])
             ->update(['tttp_id'=> $request->tttp_id]);
-        //dd($cdv_dk);
         return redirect()->back();
     }
 
