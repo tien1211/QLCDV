@@ -2,17 +2,18 @@
 @section('admin_content')
 <!--main content start-->
 
+@if(session('message'))
+    <div class="alert alert-success">
+        {{session('message')}}
+    </div>
+
+@endif
+
  <div class="panel panel-default">
     <div class="panel-heading">
     Danh Sách Tour
     </div>
-    <?php
-    $message = Session::get('message');
-    if($message){
-      echo '<span class="text-alert">'.$message.'</span>';
-      Session::put('message',null);
-    }
-    ?>
+
     <div class="panel-body">
         <div class="position-left">
             <form class="form-inline" role="form" action="{{route('TOUR_Timkiem')}}" method="get">
@@ -65,6 +66,7 @@
         "sorting": {
           "enabled": true
         }}'>
+        @extends('admin.layout.partials.complete-message')
         <thead>
           <tr>
             <th data-breakpoints="xs">STT</th>

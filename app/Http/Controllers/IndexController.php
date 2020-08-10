@@ -40,7 +40,7 @@ class IndexController extends Controller
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
             ->orderBy('tour.tour_handk','desc')
             ->limit(3)->get();
-            
+
         $ifo1= DB::table('Tour')//hết hạn
         ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
         ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
@@ -347,4 +347,18 @@ class IndexController extends Controller
         $profile = CongDoanVien::find($id);
         return view('frontend.profile')->with("profile",$profile);
     }
+
+    public function getTourdadienra(){
+        $hi = Carbon::now('Asia/Ho_Chi_Minh');
+        $deadline= DB::table('Tour')//hết hạn
+        ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
+        ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
+        ->where('Tour.tour_ngaykt','<',$hi)
+        ->orderBy('tour.tour_handk','desc')
+        ->get();
+
+        return view('frontend.tourdadienra')->with('deadline',$deadline);
+    }
+
+
 }
