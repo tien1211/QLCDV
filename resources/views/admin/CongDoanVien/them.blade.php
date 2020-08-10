@@ -9,14 +9,6 @@
     }
 
 </style>
-@if(session('message'))
-    <div class="alert alert-success">
-        {{session('message')}}
-    </div>
-
-@endif
-
-
 <div class="row">
   <div class="col-lg-12">
 
@@ -29,7 +21,7 @@
 
               <div class="form" >
 
-              <form  class="cmxform form-horizontal" enctype="multipart/form-data" id="formDemo1"  method="post" action="{{route('CDV_XLThem')}}" novalidate="novalidate">
+              <form  class="cmxform form-horizontal" enctype="multipart/form-data" id="formDemo1" method="post" action="" novalidate="novalidate">
                 @csrf
                 <div class="form-group" style="mt-3">
                   <div class="flash-message">
@@ -343,7 +335,7 @@
 
                       <div class="form-group">
                           <div class="col-lg-offset-3 col-lg-6">
-                            <a href="{{route('CDV_DanhSach')}}"> <button class="btn btn-primary" type="submit">Save</button></a>
+                              <button class="btn btn-primary" type="submit">Save</button>
                           <a href="{{route('CDV_DanhSach')}}"><button class="btn btn-default" type="button">Cancel</button></a>
                           </div>
                       </div>
@@ -354,8 +346,6 @@
   </div>
 </div>
 @endsection
-
-
 
 
 @section('script')
@@ -414,91 +404,91 @@
         }
     });
 
-    // $.ajaxSetup({
-    //   headers: {
-    //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //   }
-    // });
-    //     //xử lý khi có sự kiện click
-    //     $('#formDemo1').on('submit', function (e) {
-    //         //Lấy ra files
-    //         e.preventDefault();
-    //         var dv_id = $('#dv_id').val();
-    //         var  cv_id = $('#cv_id').val();
-    //         var lnv_id = $('#lnv_id').val();
-    //         var cdv_ten = $('#cdv_ten').val();
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+        //xử lý khi có sự kiện click
+        $('#formDemo1').on('submit', function (e) {
+            //Lấy ra files
+            e.preventDefault();
+            var dv_id = $('#dv_id').val();
+            var  cv_id = $('#cv_id').val();
+            var lnv_id = $('#lnv_id').val();
+            var cdv_ten = $('#cdv_ten').val();
 
-    //         var cdv_ngaysinh = $('#cdv_ngaysinh').val();
-    //         var cdv_gioitinh = $('#cdv_gioitinh').val();
-    //         var cdv_cmnd = $('#cdv_cmnd ').val();
-    //         var cdv_nguyenquan = $('#cdv_nguyenquan').val();
-    //         var cdv_diachi = $('#cdv_diachi').val();
-    //         var cdv_sdt = $('#cdv_sdt ').val();
-    //         var cdv_email = $('#cdv_email ').val();
-    //         var cdv_dantoc = $('#cdv_dantoc').val();
+            var cdv_ngaysinh = $('#cdv_ngaysinh').val();
+            var cdv_gioitinh = $('#cdv_gioitinh').val();
+            var cdv_cmnd = $('#cdv_cmnd ').val();
+            var cdv_nguyenquan = $('#cdv_nguyenquan').val();
+            var cdv_diachi = $('#cdv_diachi').val();
+            var cdv_sdt = $('#cdv_sdt ').val();
+            var cdv_email = $('#cdv_email ').val();
+            var cdv_dantoc = $('#cdv_dantoc').val();
 
-    //         var cdv_trinhdo = $('#cdv_trinhdo').val();
-    //         var cdv_tongiao = $('#cdv_tongiao ').val();
-    //         var cdv_ngaythuviec = $('#cdv_ngaythuviec').val();
-    //         var cdv_ngayvaonganh = $('#cdv_ngayvaonganh').val();
-    //         var cdv_username = $('#cdv_username').val();
-    //         var cdv_password = $('#cdv_password').val();
-    //         var cdv_quyen = $('#cdv_quyen').val();
+            var cdv_trinhdo = $('#cdv_trinhdo').val();
+            var cdv_tongiao = $('#cdv_tongiao ').val();
+            var cdv_ngaythuviec = $('#cdv_ngaythuviec').val();
+            var cdv_ngayvaonganh = $('#cdv_ngayvaonganh').val();
+            var cdv_username = $('#cdv_username').val();
+            var cdv_password = $('#cdv_password').val();
+            var cdv_quyen = $('#cdv_quyen').val();
 
-    //         var file_data = $('#cdv_hinhanh').prop('files')[0];
+            var file_data = $('#cdv_hinhanh').prop('files')[0];
 
-    //         //lấy ra kiểu file
-    //         var type = file_data.type;
-    //         //Xét kiểu file được upload
-    //         var match = ["image/gif", "image/png", "image/jpg",];
-    //         //kiểm tra kiểu file
-    //         if (type == match[0] || type == match[1] || type == match[2]) {
-    //             //khởi tạo đối tượng form data
-    //             var form_data = new FormData();
+            //lấy ra kiểu file
+            var type = file_data.type;
+            //Xét kiểu file được upload
+            var match = ["image/gif", "image/png", "image/jpg",];
+            //kiểm tra kiểu file
+            if (type == match[0] || type == match[1] || type == match[2]) {
+                //khởi tạo đối tượng form data
+                var form_data = new FormData();
 
-    //             form_data.append(' dv_id',  dv_id);
-    //             form_data.append('cv_id', cv_id);
-    //             form_data.append('lnv_id', lnv_id);
-    //             form_data.append('cdv_ten', cdv_ten);
-    //             form_data.append('cdv_ngaysinh', cdv_ngaysinh);
-    //             form_data.append('cdv_gioitinh', cdv_gioitinh);
-    //             form_data.append('cdv_cmnd', cdv_cmnd);
-    //             form_data.append('cdv_nguyenquan', cdv_nguyenquan);
-    //             form_data.append('cdv_diachi', cdv_diachi);
-    //             form_data.append('cdv_sdt', cdv_sdt);
-    //             form_data.append('cdv_email', cdv_email);
-    //             form_data.append('cdv_dantoc', cdv_dantoc);
-    //             form_data.append('cdv_trinhdo', cdv_trinhdo);
-    //             form_data.append('cdv_tongiao', cdv_tongiao);
-    //             form_data.append('cdv_ngaythuviec', cdv_ngaythuviec);
-    //             form_data.append('cdv_ngayvaonganh', cdv_ngayvaonganh);
-    //             form_data.append('cdv_username', cdv_username);
-    //             form_data.append('cdv_password', cdv_password);
-    //             form_data.append('cdv_quyen', cdv_quyen);
+                form_data.append(' dv_id',  dv_id);
+                form_data.append('cv_id', cv_id);
+                form_data.append('lnv_id', lnv_id);
+                form_data.append('cdv_ten', cdv_ten);
+                form_data.append('cdv_ngaysinh', cdv_ngaysinh);
+                form_data.append('cdv_gioitinh', cdv_gioitinh);
+                form_data.append('cdv_cmnd', cdv_cmnd);
+                form_data.append('cdv_nguyenquan', cdv_nguyenquan);
+                form_data.append('cdv_diachi', cdv_diachi);
+                form_data.append('cdv_sdt', cdv_sdt);
+                form_data.append('cdv_email', cdv_email);
+                form_data.append('cdv_dantoc', cdv_dantoc);
+                form_data.append('cdv_trinhdo', cdv_trinhdo);
+                form_data.append('cdv_tongiao', cdv_tongiao);
+                form_data.append('cdv_ngaythuviec', cdv_ngaythuviec);
+                form_data.append('cdv_ngayvaonganh', cdv_ngayvaonganh);
+                form_data.append('cdv_username', cdv_username);
+                form_data.append('cdv_password', cdv_password);
+                form_data.append('cdv_quyen', cdv_quyen);
 
-    //             form_data.append('cdv_hinhanh', file_data);
+                form_data.append('cdv_hinhanh', file_data);
 
-    //             //sử dụng ajax post
-    //             $.ajax({
-    //                 url: "{{route('CDV_XLThem')}}", // gửi đến file upload.php
-    //                 dataType: 'text',
-    //                 cache: false,
-    //                 contentType: false,
-    //                 processData: false,
-    //                 data:form_data,
-    //                 type: 'post',
-    //                 success: function (res) {
-    //                     $('.status').text(res);
-    //                     $('#cdv_hinhanh').val('');
-    //                 window.location =" {{route('CDV_DanhSach')}}";
+                //sử dụng ajax post
+                $.ajax({
+                    url: "{{route('CDV_XLThem')}}", // gửi đến file upload.php
+                    dataType: 'text',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data:form_data,
+                    type: 'post',
+                    success: function (res) {
+                        $('.status').text(res);
+                        $('#cdv_hinhanh').val('');
+                    window.location =" {{route('CDV_DanhSach')}}";
 
 
-    //                 }
-    //             });
-    //         }
+                    }
+                });
+            }
 
-    //         return false;
-    //     });
+            return false;
+        });
     </script>
 
 @endsection
