@@ -31,48 +31,41 @@ class LichTrinhController extends Controller
 
     }
     public function postThem(Request $request){
-        Validator::make($request->all(),
-        [
-            'lt_ten' => 'required',
-            'lt_file' => 'required|max:5000',
-            'lt_mota' => 'required',
-        ],
-        [
-            'lt_ten.required' => 'Bạn chưa nhập tên lịch trình!',
-            'lt_file.required' => 'Bạn chưa thêm file lịch trình!',
-            'lt_mota' => 'Bạn chưa nhập mô tả!',
-        ])->validate();
+        // Validator::make($request->all(),
+        // [
+        //     'lt_ten' => 'required',
+        //     'lt_file' => 'required|max:5000',
+        //     'lt_mota' => 'required',
+        // ],
+        // [
+        //     'lt_ten.required' => 'Bạn chưa nhập tên lịch trình!',
+        //     'lt_file.required' => 'Bạn chưa thêm file lịch trình!',
+        //     'lt_mota' => 'Bạn chưa nhập mô tả!',
+        // ])->validate();
         /////////////////////////////////////////////////////////////
-            $LichTrinh = new LichTrinh();
-
-        // if(!($request->hasFile($LichTrinh->lt_ten))){
-            $LichTrinh->lt_ten = $request->lt_ten;
-
-            if ($request->hasFile('lt_file')){
-
-                $file = $request->file('lt_file');
-                $name = $file->getClientOriginalName();
-                $file->move('upload/lichtrinh/', $name);
-                $LichTrinh->lt_file = $name;
+        $LichTrinh = new LichTrinh();
+        $LichTrinh->lt_ten = $request->lt_ten;
+        $LichTrinh->lt_mota= $request->lt_mota;
+        if($request->hasFile('lt_file')){
+            $dataTime = date('Ymd_His');
+            $lt_file = $request->lt_file;
+            $duoi = $lt_file->getClientOriginalExtension();
+            if($duoi != 'doc' && $duoi != 'docx'){
+                Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi doc, docx!!!');
+                return redirect()->route('LT_Them');
             }
-
-            else{
-                $LichTrinh->lt_file=  $LichTrinh->lt_file;
-            }
-                $LichTrinh->lt_mota= $request->lt_mota;
-                $LichTrinh->lt_trangthai = 1;
-                $LichTrinh->save();
-                Session::flash('alert-info', 'Thêm thành công!!!');
-                return redirect()->route('LT_DanhSach');
-        // }else{
-        //         Session::flash('alert-warning', 'Lịch Trình đã tồn tại!!!');
-        //         return redirect()->back();
-        //     }
-
-            // return \response(['thongbao'=>'Thêm Lịch Trình Thành Công'  ]);
-
-
-        //
+            $fileName = $dataTime . '-' . $lt_file->getClientOriginalName();
+            $savePath = public_path('upload/lichtrinh');
+            $lt_file->move($savePath,$fileName);
+            $LichTrinh->lt_file = $fileName;
+            $LichTrinh->lt_trangthai = 1;
+            $LichTrinh->save();
+            Session::put('message', 'Thêm thành công!!!');
+            return redirect()->route('LT_DanhSach');
+        }else{
+            Session::out('message', 'Bạn chưa chọn file');
+            return redirect()->back();
+        }
 
     }
 
@@ -81,17 +74,17 @@ class LichTrinhController extends Controller
         return view('admin.LichTrinh.sua',compact('LichTrinh'));
     }
     public function postSua(Request $request,$id){
-        $this->validate($request,
-        [
-            'lt_ten' => 'required',
-            'lt_file' => 'max:5000',
-            'lt_mota' => 'required',
-        ],
-        [
-            'lt_ten.required' => 'Bạn chưa nhập tên lịch trình!',
-            'lt_file.max' => 'File có dung lượng quá lớn!',
-            'lt_mota' => 'Bạn chưa nhập mô tả!',
-        ]);
+        // $this->validate($request,
+        // [
+        //     'lt_ten' => 'required',
+        //     'lt_file' => 'max:5000',
+        //     'lt_mota' => 'required',
+        // ],
+        // [
+        //     'lt_ten.required' => 'Bạn chưa nhập tên lịch trình!',
+        //     'lt_file.max' => 'File có dung lượng quá lớn!',
+        //     'lt_mota' => 'Bạn chưa nhập mô tả!',
+        // ]);
         $LichTrinh = LichTrinh::find($id);
         $LichTrinh->lt_ten = $request->lt_ten;
         $LichTrinh->lt_mota= $request->lt_mota;
@@ -100,7 +93,7 @@ class LichTrinhController extends Controller
             $dataTime = date('Ymd_His');
             $lt_file = $request->lt_file;
             $duoi = $lt_file->getClientOriginalExtension();
-            if($duoi != 'doc' && $duoi != 'docx' && $duoi != 'pdf'){
+            if($duoi != 'doc' && $duoi != 'docx'){
                 Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi doc, docx!!!');
                 return redirect()->route('LT_Sua');
             }
@@ -109,12 +102,12 @@ class LichTrinhController extends Controller
             $lt_file->move($savePath,$fileName);
             $LichTrinh->lt_file = $fileName;
             $LichTrinh->save();
-            Session::flash('alert-info', 'Sửa thành công!!!');
+            Session::put('message', 'Sửa thành công!!!');
             return redirect()->route('LT_DanhSach');
         }else{
             $LichTrinh->lt_file = $LichTrinh->lt_file;
             $LichTrinh->save();
-            Session::flash('alert-info', 'Sửa thành công!!!');
+            Session::put('message', 'Sửa thành công!!!');
             return redirect()->route('LT_DanhSach');
         }
     }

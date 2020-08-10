@@ -2,6 +2,12 @@
 @section('admin_content')
 <!--main content start-->
 
+@if(session('message'))
+    <div class="alert alert-success">
+        {{session('message')}}
+    </div>
+
+@endif
  <div class="panel panel-default">
     <div class="panel-heading">
     Danh Sách Lịch Trình
@@ -11,7 +17,7 @@
             <form class="form-inline" role="form" action="{{route('LT_Timkiem')}}" method="get">
             {{ csrf_field() }}
             <div class="form-group">
-                <input type="text" class="form-control" id="tukhoa" placeholder="từ khóa tìm kiếm" name="tukhoa">
+                <input type="text" class="form-control" id="tukhoa" placeholder="từ khóa tìm kiếm" name="tukhoa" style="font-size: 45px;">
             </div>
             <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
             <a href="{{route('LT_Them')}}"><button type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>

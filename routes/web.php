@@ -124,7 +124,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         //Form sửa tour
         Route::get('/TOUR_SuaTour/{id}','TourController@getSua')->name('TOUR_Sua');
-        Route::post('/TOUR_SuaTour/{id}','TourController@postSua')->name('TOUR_XLSua');
+        Route::post('/TOUR_SuaTour1/{id}','TourController@postSua')->name('TOUR_XLSua');
 
         //Form xóa tour
         Route::get('/TOUR_XoaTour/{id}', 'TourController@getXoa')->name('TOUR_Xoa');

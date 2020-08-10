@@ -2,6 +2,13 @@
 @section('admin_content')
 <!--main content start-->
 
+@if(session('message'))
+    <div class="alert alert-success">
+        {{session('message')}}
+    </div>
+
+@endif
+
  <div class="panel panel-default">
   {{-- <div id = demo> --}}
     <div class="panel-heading">

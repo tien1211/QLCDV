@@ -25,7 +25,12 @@ label.error {
         {{session('thongbao')}}
     </div>
 @endif --}}
+@if(session('message'))
+    <div class="alert alert-success">
+        {{session('message')}}
+    </div>
 
+@endif
 
     @csrf
 
@@ -38,7 +43,7 @@ label.error {
                 <div class="panel-body print-error-msg " >
                     <ul></ul>
                     <div class="form" id="message">
-                        <form class="cmxform form-horizontal" enctype="multipart/form-data" id="formDemo1"  novalidate="novalidate">
+                        <form class="cmxform form-horizontal" enctype="multipart/form-data" action="{{route('TOUR_XLThem')}}" id="formDemo1" method="post" novalidate="novalidate">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                              <div class="form-group ">
                                 <label for="firstname" class="control-label col-lg-3">Lịch trình</label>
@@ -135,7 +140,7 @@ label.error {
 
 @endsection
 
-@section('script')
+ @section('script')
 <script>
     //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
     $("#formDemo1").validate({
@@ -162,60 +167,60 @@ label.error {
             tour_hinhanh: "Vui lòng chọn hình ảnh",
         }
     });
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-        //xử lý khi có sự kiện click
-        $('#formDemo1').on('submit', function (e) {
-            //Lấy ra files
-            e.preventDefault();
-            var lt_id = $('#lt_id').val();
-            var tour_handk = $('#tour_handk').val();
-            var tour_ngaybd = $('#tour_ngaybd').val();
-            var gd_id = $('#gd_id').val();
-            var tour_ngaykt = $('#tour_ngaykt').val();
-            var tour_chiphi = $('#tour_chiphi').val();
-            var tour_soluong = $('#tour_soluong').val();
-            var tour_daily = $('#tour_daily').val();
-             var file_data = $('#tour_hinhanh').prop('files')[0];
-            //lấy ra kiểu file
-            var type = file_data.type;
+    // $.ajaxSetup({
+    //   headers: {
+    //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //   }
+    // });
+    //     //xử lý khi có sự kiện click
+    //     $('#formDemo1').on('submit', function (e) {
+    //         //Lấy ra files
+    //         e.preventDefault();
+    //         var lt_id = $('#lt_id').val();
+    //         var tour_handk = $('#tour_handk').val();
+    //         var tour_ngaybd = $('#tour_ngaybd').val();
+    //         var gd_id = $('#gd_id').val();
+    //         var tour_ngaykt = $('#tour_ngaykt').val();
+    //         var tour_chiphi = $('#tour_chiphi').val();
+    //         var tour_soluong = $('#tour_soluong').val();
+    //         var tour_daily = $('#tour_daily').val();
+    //          var file_data = $('#tour_hinhanh').prop('files')[0];
+    //         //lấy ra kiểu file
+    //         var type = file_data.type;
 
-            //Xét kiểu file được upload
-            var match = ["image/gif", "image/png", "image/jpg",];
-            //kiểm tra kiểu file
-            if (type == match[0] || type == match[1] || type == match[2]) {
-                //khởi tạo đối tượng form data
-                var form_data = new FormData();
-                form_data.append('lt_id', lt_id);
-                form_data.append('tour_handk', tour_handk);
-                form_data.append('tour_ngaybd', tour_ngaybd);
-                form_data.append('gd_id', gd_id);
-                form_data.append('tour_ngaykt', tour_ngaykt);
-                form_data.append('tour_chiphi', tour_chiphi);
-                form_data.append('tour_soluong', tour_soluong);
-                form_data.append('tour_daily', tour_daily);
-                form_data.append('tour_hinhanh', file_data);
-                //sử dụng ajax post
-                $.ajax({
-                    url: "{{route('TOUR_XLThem')}}", // gửi đến file upload.php
-                    dataType: 'text',
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    data:form_data,
-                    type: 'post',
-                    success: function (res) {
-                        $('.status').text(res);
-                        $('#tour_hinhanh').val('');
-                    window.location =" {{route('TOUR_DanhSach')}}";
-                    }
-                });
-            }
-            return false;
-        });
+    //         //Xét kiểu file được upload
+    //         var match = ["image/gif", "image/png", "image/jpg",];
+    //         //kiểm tra kiểu file
+    //         if (type == match[0] || type == match[1] || type == match[2]) {
+    //             //khởi tạo đối tượng form data
+    //             var form_data = new FormData();
+    //             form_data.append('lt_id', lt_id);
+    //             form_data.append('tour_handk', tour_handk);
+    //             form_data.append('tour_ngaybd', tour_ngaybd);
+    //             form_data.append('gd_id', gd_id);
+    //             form_data.append('tour_ngaykt', tour_ngaykt);
+    //             form_data.append('tour_chiphi', tour_chiphi);
+    //             form_data.append('tour_soluong', tour_soluong);
+    //             form_data.append('tour_daily', tour_daily);
+    //             form_data.append('tour_hinhanh', file_data);
+    //             //sử dụng ajax post
+    //             $.ajax({
+    //                 url: "{{route('TOUR_XLThem')}}", // gửi đến file upload.php
+    //                 dataType: 'text',
+    //                 cache: false,
+    //                 contentType: false,
+    //                 processData: false,
+    //                 data:form_data,
+    //                 type: 'post',
+    //                 success: function (res) {
+    //                     $('.status').text(res);
+    //                     $('#tour_hinhanh').val('');
+    //                 window.location =" {{route('TOUR_DanhSach')}}";
+    //                 }
+    //             });
+    //         }
+    //         return false;
+    //     });
     </script>
 
 @endsection

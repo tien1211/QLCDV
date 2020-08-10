@@ -50,6 +50,7 @@
                         <div class="classynav">
                             <ul id="nav">
                                 <li class="active"><a href="{{route('trangchu')}}">Trang chủ</a></li>
+                                <li class="active"><a href="{{route('tourdadienra')}}">Tour Đã diễn ra</a></li>
                                 @if (!isset($auth))
                             <li><a href="{{route('formLogin')}}">Đăng Nhập</a></li>
                                 @else

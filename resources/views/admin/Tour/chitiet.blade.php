@@ -54,7 +54,7 @@
             <th>Chi phí</th>
             <th>Mức Hổ Trợ</th>
         </tr>
-        </thead> 
+        </thead>
             @foreach ($cdv_dk as $key => $cdv)
                 <tr data-expanded="true">
                     <td>{{$key + 1}}</td>
@@ -93,7 +93,7 @@
             <th>Công đoàn viên đăng ký</th>
             <th>Trạng thái</th>
         </tr>
-        </thead> 
+        </thead>
             @foreach ($nguoithamgia as $key => $ntg)
                 <tr data-expanded="true">
                     <td>{{$key + 1}}</td>
