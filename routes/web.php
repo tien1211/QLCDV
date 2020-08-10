@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/admin', function () {
-    return view('admin.layout.master');
-})->name('admin');
+// Route::get('/admin', function () {
+//     return view('admin.layout.master');
+// })->name('admin');
 
 Route::get('/home1', function () {
     return view('frontend.layout.master1');
@@ -43,26 +43,18 @@ Route::post('/xoanguoithamgia/{id}','IndexController@postXNTG')->name('XL_XNTTDK
 // Hủy đăng ký tour
 Route::get('/huytour/{id}','IndexController@postDelete')->name('HUY_TOUR');
 
-Route::post('/capnhattour/{id}','IndexController@postUpdate')->name('cntour');
-Route::post('/thongtindktour/{id}','IndexController@postTTDK')->name('XL_TTDK');
-Route::post('/capnhatthongtindktour/{id}','IndexController@postCNTTDK')->name('XL_CNTTDK');
-
 Route::get('/profile/{id}','IndexController@getProfile')->name('proFile');
-
-
-
 
 Route::get('/dangnhap','AuthController@getLogin')->name('formLogin');
 Route::post('/dangnhap-xl','AuthController@postLogin')->name('login');
 Route::get('/dangxuat','AuthController@logOut')->name('logout');
-
 
 Route::get('/doimatkhau/{id}','AuthController@getChangePass')->name('formChange');
 Route::post('/changpass/{id}','AuthController@postChangePass')->name('changePass');
 
 
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
 
     Route::get('/admin', function () {
         return view('admin.layout.master');
@@ -74,15 +66,10 @@ Route::group(['prefix' => 'admin'], function () {
         //Import Excel
         Route::get('/CDV_Import','CongDoanVienController@getImport')->name('CDV_formImp');
         Route::post('/CDV_Import/Import','CongDoanVienController@Import')->name('Import');
-
-
         //Export Excel
-
         Route::get('/CDV_Export/Export','CongDoanVienController@Export')->name('CDV_Export');
-
         //Danh Sách Công Đoàn Viên
         Route::get('/CDV_DS', 'CongDoanVienController@getDanhSach')->name('CDV_DanhSach');
-
         //Form Thêm Công Đoàn Viên
         Route::get('/CDV_FormThem', 'CongDoanVienController@getThem')->name('CDV_Them');
         Route::post('/CDV_ThemCDV', 'CongDoanVienController@postThem')->name('CDV_XLThem');
@@ -133,35 +120,22 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/TOUR_ChiTiet/{id}','TourController@getchitietTour')->name('TOUR_ChiTiet');
         // Cập nhật thu phí
         Route::post('/TOUR_XLThuPhi/{id}','TourController@postThuPhi')->name('TOUR_XLThuPhi');
-        //Form đặt tour
-        // Route::get('/TOUR_DatTour/{id}','TourController@getDat')->name('TOUR_Dat');
-        // Route::post('/TOUR_DatTour/{id}','TourController@postDat')->name('TOUR_XLDat');
-
         //Tìm kiếm
         Route::get('/TOUR_Timkiem', 'TourController@postTimkiem')->name('TOUR_Timkiem');
-
-
-
     });
     Route::group(['prefix' => 'LichTrinh'], function () {
-
-        //Danh sách lịch trình
+    //Danh sách lịch trình
     Route::get('LT_DanhSach','LichTrinhController@getDanhSach')->name('LT_DanhSach');
-
     //Form thêm lịch trình
     Route::get('/LT_ThemLT','LichTrinhController@getThem')->name('LT_Them');
     Route::post('/LT_ThemLT','LichTrinhController@postThem')->name('LT_XLThem');
-
     //Form sửa lịch trình
     Route::get('/LT_SuaLT/{id}','LichTrinhController@getSua')->name('LT_Sua');
     Route::post('/LT_SuaLT/{id}','LichTrinhController@postSua')->name('LT_XLSua');
-
     //Xóa lịch trình
     Route::get('/LT_XoaLT/{id}', 'LichTrinhController@getXoa')->name('LT_Xoa');
-
     //Tìm kiếm lịch trình
     Route::get('/LT_Timkiem', 'LichTrinhController@getTimkiem')->name('LT_Timkiem');
-
     //Hình ảnh liên quan
     Route::get('/LT_HinhAnh/{id}','LichTrinhController@getHinh')->name('LT_HinhAnh');
     //Thêm hình liên quan
@@ -174,7 +148,6 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
-/////
 
 
 
