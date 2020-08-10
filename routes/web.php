@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/admin', function () {
-    return view('admin.layout.master');
-})->name('admin');
+// Route::get('/admin', function () {
+//     return view('admin.layout.master');
+// })->name('admin');
 
 Route::get('/home1', function () {
     return view('frontend.layout.master1');
@@ -62,7 +62,7 @@ Route::post('/changpass/{id}','AuthController@postChangePass')->name('changePass
 
 
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
 
     Route::get('/admin', function () {
         return view('admin.layout.master');

@@ -57,7 +57,7 @@
                         </div> --}}
                     <p>{{$datail->LichTrinh->lt_mota}}</p>
                         <ul>
-                            <h5><li style="color: blue"><i class="fa fa-check" ></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}" style="color: blue"> DownLoad Lịch Trình:  {{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</a></li></h5>
+                            <h5><li style="color: #1cc3b2"><i class="fa fa-download" ></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}" style="color: #1cc3b2"> DownLoad Lịch Trình:  {{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</a></li></h5>
                         </ul>
                     </div>
                     <!-- Room Service -->
@@ -99,8 +99,6 @@
                 <div class="col-12 col-lg-4">
                     <!-- Hotel Reservation Area -->
                     <div class="hotel-reservation--area mb-100">
-<<<<<<< HEAD
-=======
 
                        {{-- MESSAGE ERROR --}}
                         <div class="form-group" style="mt-6">
@@ -114,43 +112,10 @@
                         </div>
                         {{-- MESSAGE ERROR --}}
 
->>>>>>> 84de3e46a130569dff1d88b78fe5a847e4bcf742
                         @if ($now > $datail->tour_handk)
                             <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
                                 @csrf
-                                {{-- HET HAN --}}
-                                    {{-- <div class="form-group mb-30">
-                                        <label for="checkInDate">Chi phí:</label>
-                                            <div class="row no-gutters">
-                                                <div class="col-12">
-                                                <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}} VND"  name="tour_chiphi" disabled>
-                                                </div>
-                                            </div>
-                                    </div>
-                                    <div class="form-group mb-30">
-                                        <label for="checkInDate">Số Lượng Đăng Ký:</label>
-                                            <div class="row no-gutters">
-                                                <div class="col-12">
-                                                    <input type="number" min="1" max="20" onchange="load()"  id="amount" disabled class="input-small form-control" name="dkt_soluong"  placeholder="Số lượng...">
-                                                    @if($errors->has('dkt_soluong'))
-                                                    <div style="color:red">{{ $errors->first('dkt_soluong')}}</div>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                    </div>
-                                    <div class="form-group mb-30">
-                                        <label for="checkInDate">Thành Tiền: </label>
-                                            <div class="row no-gutters">
-                                                <div class="col-12">
-                                                <input type="text"  class="input-small form-control"  id='payment'  placeholder="Thành tiền" disabled>
-                                                </div>
-                                            </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" disabled class="btn roberto-btn w-100">HẾT HẠN ĐĂNG KÝ</button>
-                                    </div> --}}
-                                {{-- HET HAN --}}
-
+                                
 
                                 <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
                                     <h4>{{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</h4>
@@ -201,31 +166,6 @@
                             </form>
                     </div>
                         @else
-<<<<<<< HEAD
-                                <div class="form-group mb-30">
-                                    <label for="checkInDate">Chi phí:</label>
-                                        <div class="row no-gutters">
-                                            <div class="col-12">
-                                            <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}} VND"  name="tour_chiphi" disabled>
-                                            </div>
-                                        </div>
-=======
-                        {{-- CON HAN --}}
-                            {{-- <div class="form-group mb-30">
-                                <label for="checkInDate">Chi phí:</label>
-                                    <div class="row no-gutters">
-                                        <div class="col-12">
-                                        <input type="text" class="input-small form-control" id="cost" value="{{number_format($datail->tour_chiphi)}} VND"  name="tour_chiphi" disabled>
-                                        </div>
-                                    </div>
-                            </div>
-                            <div class="form-group">
-                                <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button></a>
-                            </div> --}}
-                        {{-- CON HAN --}}
-
-
-
                         {{-- test --}}
                         <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
                             <h4>{{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</h4>
@@ -263,14 +203,16 @@
                                     </h6>
 
                                 <h6>Số chỗ còn lại: <span>{{$datail->tour_soluong}}</span></h6>
->>>>>>> 84de3e46a130569dff1d88b78fe5a847e4bcf742
+                                </div>
+                                <div class="form-group">
+                                    <ul>
+                                        <h6><li style="color: #1cc3b2"><i class="fa fa-download" ></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}" style="color: #1cc3b2"> DownLoad Lịch Trình</a></li></h6>
+                                    </ul>
                                 </div>
                                 <div class="form-group">
                                     <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button></a>
                                 </div>
                             </div>
-<<<<<<< HEAD
-=======
 
                         </div>
 
@@ -278,7 +220,6 @@
 
                         {{-- test --}}
                     </div>
->>>>>>> 84de3e46a130569dff1d88b78fe5a847e4bcf742
                         @endif
 
                         {{-- TOUR KHAC --}}

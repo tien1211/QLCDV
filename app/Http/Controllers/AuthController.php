@@ -57,17 +57,25 @@ class AuthController extends Controller
                 ];
            
            if (Auth::attempt($arrr)) {
-                
+                    $this->validate($request, [
+                        'new_password'=>'min:8|max:50',
+                        'confirm_password'=>'same:new_password',
+                        ],[
+                            'new_password.min'=>'Mật khẩu phải ít nhất 8 kí tự',
+                            'new_password.max' => 'Mật khẩu không được quá 50 kí tự',
+                            'confirm_password.same' => 'Mật khẩu không trùng khớp',
+                        ]);
+
 
                     $usr->password =bcrypt($request->new_password);
 
-                     $usr->save();
+                    $usr->save();
 
                     Session::flash('alert-success', 'Đổi mật khẩu thành công!!');
                     return redirect::back();
            }else{
-            Session::flash('alert-warning', 'Đổi Mật Khẩu Thất Bại!!');
-            return redirect::back();
+                    Session::flash('alert-warning', 'Đổi Mật Khẩu Thất Bại!!');
+                    return redirect::back();
            }
             
             
