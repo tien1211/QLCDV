@@ -58,7 +58,7 @@
                 <input type="text" class="form-control" id="tukhoa" name="tukhoa">
             </div>
                   <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
-                  <a href="{{route('CDV_Them')}}"><button type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
+                  <a href="{{route('CDV_Them')}}"><button title="Thêm" type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
         </form>
       </div>
         </div>
@@ -116,10 +116,10 @@
                     <td>Nữ</td>
                     @endif
                 <td>{{number_format($cdv->MucHoTro->mht_phihotro)}} VNĐ</td>
-                <td><a class="glyphicon glyphicon-eye-open" href="{{route('CDV_ChiTiet',['id'=>$cdv->cdv_id])}}"></a></td>
+                <td><a title="Chi tiết" class="glyphicon glyphicon-eye-open" href="{{route('CDV_ChiTiet',['id'=>$cdv->cdv_id])}}"></a></td>
                 <td>
-                  <i class='fas fa-pencil-alt'></i><a class="glyphicon glyphicon-edit" href="{{route('CDV_Sua',['id'=>$cdv->cdv_id])}}"></a>
-                  <i class='fas fa-trash-alt'></i><a class="glyphicon glyphicon-trash" href="{{route('CDV_Xoa',['id'=>$cdv->cdv_id])}}" onclick="return confirm('Bạn có chắc muốn xóa không?');"></a>
+                  <i class='fas fa-pencil-alt'></i><a title="Sửa" class="glyphicon glyphicon-edit" href="{{route('CDV_Sua',['id'=>$cdv->cdv_id])}}"></a>
+                  <i class='fas fa-trash-alt'></i><a title="Xóa" class="glyphicon glyphicon-trash" href="{{route('CDV_Xoa',['id'=>$cdv->cdv_id])}}" onclick="return confirm('Bạn có chắc muốn xóa không?');"></a>
                 </td>
             </tr>
             @endif

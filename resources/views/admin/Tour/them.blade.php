@@ -49,10 +49,13 @@ label.error {
                                 <label for="firstname" class="control-label col-lg-3">Lịch trình</label>
                                 <div class="col-lg-3">
 
-                                        <select class="form-control m-bot15" name="lt_id" id="lt_id">
+                                <select class="form-control m-bot15" value="{{ old('lt_id)')}}" name="lt_id" id="lt_id">
                                              <option value="">Chon Lich Trinh</option>
                                                  @foreach ($LichTrinh as $lt)
-                                             <option value="{{$lt->lt_id}}">{{$lt->lt_ten}}</option>
+                                                    @if ($lt->lt_trangthai==1)
+                                                        
+                                                        <option value="{{$lt->lt_id}}">{{$lt->lt_ten}}</option>
+                                                    @endif
                                                   @endforeach
 
 
@@ -62,10 +65,13 @@ label.error {
 
                                  <div class="col-lg-3">
 
-                                        <select class="form-control m-bot15" name="gd_id" id="gd_id">
+                                 <select class="form-control m-bot15" value="{{ old('gd_id') }}" name="gd_id" id="gd_id">
                                              <option value="">Giai Đoạn</option>
                                                  @foreach ($GiaiDoan as $gd)
-                                             <option value="{{$gd->gd_id}}">{{$gd->giai_doan}}</option>
+                                                 @if ($gd->gd_trangthai==1)
+                                                 <option value="{{$gd->gd_id}}">{{$gd->giai_doan}}</option>
+                                                     
+                                                 @endif
                                                   @endforeach
 
 
@@ -78,39 +84,39 @@ label.error {
                             <div class="form-group ">
                                 <label for="lastname" class="control-label col-lg-3">Hạn đăng ký</label>
                                 <div class="col-lg-6">
-                                    <input class=" form-control"  name="tour_handk" type="date" id="tour_handk">
+                                <input class=" form-control" value="{{ old('tour_handk') }}"  name="tour_handk" type="date" id="tour_handk">
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label for="username" class="control-label col-lg-3">Ngày bắt đầu</label>
                                 <div class="col-lg-6">
-                                    <input class="form-control "  name="tour_ngaybd" type="date" id="tour_ngaybd">
+                                    <input class="form-control " value="{{ old('tour_ngaybd') }}"  name="tour_ngaybd" type="date" id="tour_ngaybd">
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label for="password" class="control-label col-lg-3">Ngày kết thúc</label>
                                 <div class="col-lg-6">
-                                    <input class="form-control "  name="tour_ngaykt" type="date" id="tour_ngaykt">
+                                    <input class="form-control " value="{{ old('tour_ngaykt') }}"  name="tour_ngaykt" type="date" id="tour_ngaykt">
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label for="confirm_password" class="control-label col-lg-3">Chi phí</label>
                                 <div class="col-lg-6">
-                                    <input class="form-control " step="50000" min="1000000" name="tour_chiphi" type="number" id="tour_chiphi">
+                                    <input class="form-control " value="{{ old('tour_chiphi') }}" step="50000" min="1000000" name="tour_chiphi" type="number" id="tour_chiphi">
                                 </div>
                             </div>
                             <div class="ltid" ></div>
                             <div class="form-group ">
                                 <label for="email" class="control-label col-lg-3">Số lượng</label>
                                 <div class="col-lg-6">
-                                    <input class="form-control " min="0"  name="tour_soluong" type="number" id="tour_soluong">
+                                    <input class="form-control " min="0" value="{{ old('tour_soluong') }}"  name="tour_soluong" type="number" id="tour_soluong">
                                 </div>
                             </div>
 
                             <div class="form-group ">
                                 <label for="email" class="control-label col-lg-3">Đại lý</label>
                                 <div class="col-lg-6">
-                                    <input class="form-control "  name="tour_daily" type="text" id="tour_daily">
+                                    <input class="form-control " value="{{ old('tour_daily') }}"  name="tour_daily" type="text" id="tour_daily">
                                 </div>
                             </div>
 

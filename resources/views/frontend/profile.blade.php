@@ -3,7 +3,7 @@
 
  <!-- Profile Start -->
    <!-- Blog Area Start -->
-   <div class="roberto-news-area section-padding-100-0">
+   <div class="roberto-news-area section-padding-20-0">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-8">

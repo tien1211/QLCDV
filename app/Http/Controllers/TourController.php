@@ -11,6 +11,7 @@ use App\TinhTrangThuPhi;
 use Validate;
 use Session;
 use DB;
+use Image;
 
 
 
@@ -66,26 +67,31 @@ class TourController extends Controller
             $file = $request->tour_hinhanh;
 
             if($request->hasFile('tour_hinhanh')){
-
+                $dataTime = date('Ymd_His');
                 $file = $request->file('tour_hinhanh');
                 $duoi = $file->getClientOriginalExtension();
-
                 if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
                     Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
-
+                    return redirect()->route('TOUR_Them');
                 }
-
-                $name = $file->getClientOriginalName();
-                $file->move('upload/tour/',$name);
-
+                $fileName = $dataTime . '-' . $file->getClientOriginalName();
+                //resize ảnh
+                $destinationPath = public_path('upload/tour');
+                $resize_image = Image::make($file->getRealPath());
+                $resize_image->resize(300, 300, function($constraint)
+                {
+                    $constraint->aspectRatio();
+                })->save($destinationPath . '/' . $fileName);
+                //
+                $Tour->tour_hinhanh = $fileName;
             }else{
-                $Tour->tour_hinhanh="";
+                $Tour->tour_hinhanh ="";
             }
             $Tour->tour_trangthai = 1;
             $Tour->save();
             Session::put('message','Thêm thành công!!!');
             // Session::flash('alert-info', 'Thêm thành công!!!');
-            return Redirect()->route('TOUR_DanhSach');
+           return Redirect()->route('TOUR_DanhSach');
 }
 
 
@@ -109,26 +115,31 @@ class TourController extends Controller
         $Tour->tour_daily = $request->tour_daily;
 
         if($request->hasFile('tour_hinhanh')){
+            $dataTime = date('Ymd_His');
             $file = $request->file('tour_hinhanh');
             $duoi = $file->getClientOriginalExtension();
-
             if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
                 Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
-                return redirect()->back();
+                return redirect()->route('TOUR_Them');
             }
-
-            $name = $file->getClientOriginalName();
-            $file->move("upload/tour",$name);
-            $Tour->tour_hinhanh = $name;
-
+            $fileName = $dataTime . '-' . $file->getClientOriginalName();
+            //resize ảnh
+            $destinationPath = public_path('upload/tour');
+            $resize_image = Image::make($file->getRealPath());
+            $resize_image->resize(300, 300, function($constraint)
+            {
+                $constraint->aspectRatio();
+            })->save($destinationPath . '/' . $fileName);
+            //
+            $Tour->tour_hinhanh = $fileName;
         }else{
-            $Tour->tour_hinhanh= $Tour->tour_hinhanh;
+            $Tour->tour_hinhanh = $Tour->tour_hinhanh;
         }
         $Tour->tour_trangthai = 1;
         $Tour->save();
         Session::put('message','Sửa thành công!!!');
          //Session::flash('alert-info', 'Sửa thành công!!!');
-        return redirect()->back();
+         return Redirect()->route('TOUR_DanhSach');
     }
 
     public function getXoa($id){
