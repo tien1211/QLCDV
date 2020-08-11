@@ -17,7 +17,7 @@
                 </header>
                 <div class="panel-body">
                     <div class="form">
-                        <form class="cmxform form-horizontal " enctype="multipart/form-data" id="formDemo1" method="post"  novalidate="novalidate">
+                        <form class="cmxform form-horizontal " enctype="multipart/form-data" action="{{route('LT_XLThem')}}" id="formDemo1" method="post"  novalidate="novalidate">
                             {{csrf_field()}}
                             <div class="form-group" style="mt-3">
                                 <div class="flash-message">
@@ -51,7 +51,7 @@
                             <div class="form-group ">
                                 <label for="firstname" class="control-label col-lg-3">Mô tả</label>
                                 <div class="col-lg-6">
-                                    <textarea class="form-control" id="lt_mota" name="lt_mota" type="text" style="resize: none" rows="8"></textarea>
+                                <textarea class="form-control" id="lt_mota" name="lt_mota" type="text" style="resize: none" rows="8">{{old('lt_mota')}}</textarea>
                                         @if($errors->has('lt_mota'))
                                             <div style="color:red">{{ $errors->first('lt_mota')}}</div>
                                         @endif
@@ -74,7 +74,7 @@
 
 
 @endsection
-{{-- @section('script')
+ @section('script')
 <script>
     //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
     $("#formDemo1").validate({
@@ -91,43 +91,43 @@
         }
     });
 
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-        //xử lý khi có sự kiện click
-        $('#formDemo1').on('submit', function (e) {
-            //Lấy ra files
-            e.preventDefault();
-            var lt_ten = $('#lt_ten').val();
-            var lt_mota = $('#lt_mota').val();
-            var lt_file = $("#lt_file").val();
-            var form_data = new FormData();
+//     $.ajaxSetup({
+//       headers: {
+//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//       }
+//     });
+//         //xử lý khi có sự kiện click
+//         $('#formDemo1').on('submit', function (e) {
+//             //Lấy ra files
+//             e.preventDefault();
+//             var lt_ten = $('#lt_ten').val();
+//             var lt_mota = $('#lt_mota').val();
+//             var lt_file = $("#lt_file").val();
+//             var form_data = new FormData();
 
-            form_data.append('lt_ten', lt_ten);
-            form_data.append('lt_mota', lt_mota);
-            form_data.append('lt_file', lt_file);
+//             form_data.append('lt_ten', lt_ten);
+//             form_data.append('lt_mota', lt_mota);
+//             form_data.append('lt_file', lt_file);
 
-                //sử dụng ajax post
-            $.ajax({
-                url: "{{route('LT_XLThem')}}", // gửi đến file upload.php
-                dataType: 'text',
-                cache: false,
-                contentType: false,
-                processData: false,
-                data:form_data,
-                type: 'post',
-                success: function (res) {
-                    $('.status').text(res);
-                    $('#lt_file').val('');
-                    window.location =" {{route('LT_DanhSach')}}";
-                 }
-                });
-    }
+//                 //sử dụng ajax post
+//             $.ajax({
+//                 url: "{{route('LT_XLThem')}}", // gửi đến file upload.php
+//                 dataType: 'text',
+//                 cache: false,
+//                 contentType: false,
+//                 processData: false,
+//                 data:form_data,
+//                 type: 'post',
+//                 success: function (res) {
+//                     $('.status').text(res);
+//                     $('#lt_file').val('');
+//                     window.location =" {{route('LT_DanhSach')}}";
+//                  }
+//                 });
+//     }
 
-         return false;
-});
+//          return false;
+// });
     </script>
 
-@endsection --}}
+@endsection

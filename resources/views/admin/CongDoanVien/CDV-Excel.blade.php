@@ -29,7 +29,7 @@
         <th>Ngày Thử Việc</th>
         <th>Ngày Vào Ngành</th>
         <th>Tên Đăng Nhập</th>
-        <th>Mật Khẩu</th>
+        
         <th>Quyền</th>
       </tr>
     </thead>
@@ -61,8 +61,7 @@
                 <td>{{date('d/m/Y',strtotime($cdv->cdv_ngaythuviec))}}</td>
                 <td>{{date('d/m/Y',strtotime($cdv->cdv_ngayvaonganh))}}</td>
                 <td>{{$cdv->cdv_username}}</td>
-                <td>{{$cdv->password}}</td>
-
+                
                 @if($cdv->cdv_quyen == 1)
                 <td>Admin</td>
                 @else

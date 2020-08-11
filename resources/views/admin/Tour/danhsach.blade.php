@@ -2,17 +2,18 @@
 @section('admin_content')
 <!--main content start-->
 
+@if(session('message'))
+    <div class="alert alert-success">
+        {{session('message')}}
+    </div>
+
+@endif
+
  <div class="panel panel-default">
     <div class="panel-heading">
     Danh Sách Tour
     </div>
-    <?php
-    $message = Session::get('message');
-    if($message){
-      echo '<span class="text-alert">'.$message.'</span>';
-      Session::put('message',null);
-    }
-    ?>
+
     <div class="panel-body">
         <div class="position-left">
             <form class="form-inline" role="form" action="{{route('TOUR_Timkiem')}}" method="get">
@@ -50,7 +51,7 @@
               <input onchange="timkiem()" class="form-control "  name="tour_ngaykt" type="date" value="{{$ngaykt}}">
             </div>
             <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
-            <a href="{{route('TOUR_Them')}}"><button type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
+            <a href="{{route('TOUR_Them')}}"><button title="Thêm" type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
         </form>
         </div>
     </div>
@@ -65,6 +66,7 @@
         "sorting": {
           "enabled": true
         }}'>
+        @extends('admin.layout.partials.complete-message')
         <thead>
           <tr>
             <th data-breakpoints="xs">STT</th>
@@ -93,10 +95,10 @@
                     <td>{{$t->tour_soluong}}</td>
                     <td>{{$t->tour_daily}}</td>
                     {{-- <td>{{$t->tour_hinhanh}}</td> --}}
-                    <td><a class="glyphicon glyphicon-eye-open" href="{{route('TOUR_ChiTiet',['id'=>$t->tour_id])}}"></a></td>
+                    <td><a class="glyphicon glyphicon-eye-open" title="Chi Tiết" href="{{route('TOUR_ChiTiet',['id'=>$t->tour_id])}}"></a></td>
                     <td>
-                      <a class="glyphicon glyphicon-edit"  href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}"></a>
-                      <a class="glyphicon glyphicon-trash" href="{{route('TOUR_Xoa',['id'=>$t->tour_id])}}"></a>
+                      <a class="glyphicon glyphicon-edit" title="Sửa" href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}"></a>
+                      <a class="glyphicon glyphicon-trash" title="Xóa" href="{{route('TOUR_Xoa',['id'=>$t->tour_id])}}"></a>
                       </td>
                 </tr>
             @endif

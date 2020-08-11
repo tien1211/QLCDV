@@ -16,9 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/admin', function () {
-//     return view('admin.layout.master');
-// })->name('admin');
 
 Route::get('/home1', function () {
     return view('frontend.layout.master1');
@@ -26,9 +23,7 @@ Route::get('/home1', function () {
 
 Route::get('/tourdadienra','IndexController@getTourdadienra')->name('tourdadienra');
 
-// Route::get('/home',function(){
-//     return view('frontend.layout.master');
-// })->name('trangchu');
+
 
 Route::get('/home','IndexController@getIndex')->name('trangchu');
 // get chi tiết tour
@@ -110,6 +105,7 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
         //Form sửa tour
         Route::get('/TOUR_SuaTour/{id}','TourController@getSua')->name('TOUR_Sua');
         Route::post('/TOUR_SuaTour/{id}','TourController@postSua')->name('TOUR_XLSua');
+
         //Form xóa tour
         Route::get('/TOUR_XoaTour/{id}', 'TourController@getXoa')->name('TOUR_Xoa');
         // Chi tiết tour

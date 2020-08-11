@@ -16,15 +16,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($ifo1 as $key => $tour)
+            @foreach ($deadline as $key => $tour)
 
             <tr>
             <td>{{$key + 1}}</td>
             <td>{{$tour->lt_ten}} {{date('Y ',strtotime($tour->tour_handk))}}</td>
             <td>{{$tour->giai_doan}}</td>
-            <td>{{$tour->tour_handk}}</td>
-            <td>{{$tour->tour_chiphi}}</td>
-            <td><a href="{{route('chitiettour',['id'=>$tour->tour_id])}}" class="post-author"><button  type="button" class="btn btn-primary">Chi tiết</button> </a></td>
+            <td>{{date('d-m-Y ',strtotime($tour->tour_handk))}}</td>
+            <td>{{number_format($tour->tour_chiphi)}} VND</td>
+            <td><a href="{{route('chitiettour',['id'=>$tour->tour_id])}}" class="post-author"><button  type="button" class="btn btn-info " style="width: 90px;" >Chi tiết</button> </a></td>
             </tr>
             @endforeach
         </tbody>

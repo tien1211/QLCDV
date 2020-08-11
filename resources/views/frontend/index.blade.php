@@ -52,7 +52,7 @@
         <!-- Room Content -->
         <div class="room-content">
         <a href="{{route('chitiettour',['id'=>$t->tour_id])}}"><h2>{{$t->lt_ten}}</h2></a>
-            <h4>{{number_format($t->tour_chiphi)}} <span>/ Người</span></h4>
+            <h4>{{number_format($t->tour_chiphi)}} VNĐ<span>/ Người</span></h4>
             <div class="room-feature">
                 <h6>Ngày Bắt Đầu: <span>{{date('d-m-Y ',strtotime($t->tour_ngaybd))}}</span></h6>
                 <h6>Ngày Kết Thúc: <span>{{date('d-m-Y ',strtotime($t->tour_ngaykt))}}</span></h6>
