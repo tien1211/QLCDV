@@ -94,6 +94,7 @@ class IndexController extends Controller
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
             ->where('tour.tour_id','<>',$id)
+            ->orderBy('tour.tour_handk','desc')
             ->limit(4)->get();
         if(!Auth::check()){
             $temp = [];

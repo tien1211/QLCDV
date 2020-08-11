@@ -110,7 +110,7 @@
                   
                             <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
                                 @csrf
-                                
+
 
                                 <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
                                     <h4>{{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</h4>
@@ -143,7 +143,7 @@
                                                     </div>
                                                 @else
                                                     <div class="post-meta">
-        
+
                                                         <span>{{date('d-m-Y ',strtotime($datail->tour_handk))}}</span>
 
                                                     </div>
