@@ -108,18 +108,13 @@
                         {{-- MESSAGE ERROR --}}
 
                   
-                            <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
-                                @csrf
-
-
+                
                                 <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
                                     <h4>{{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</h4>
                                 </div>
 
                                 <div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="100ms">
-                                    <!-- Room Thumbnail -->
-
-
+                                
                                     <!-- Room Content -->
                                     <div class="room-content">
                                     <h2>{{$datail->lt_ten}}</h2>
@@ -143,7 +138,7 @@
                                                     </div>
                                                 @else
                                                     <div class="post-meta">
-
+        
                                                         <span>{{date('d-m-Y ',strtotime($datail->tour_handk))}}</span>
 
                                                     </div>
@@ -159,16 +154,13 @@
                                                     
                                                 @else
                                                    
-                                                <button type="submit" class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button>
+                                                <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button></a>
 
                                                 @endif
                                         </div>
                                     </div>
 
                                 </div>
-                            </form>
-                    
-                        
                         {{-- test --}}
                       
                     </div>
