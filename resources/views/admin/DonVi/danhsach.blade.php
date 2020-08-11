@@ -13,7 +13,7 @@
                 <input type="text" class="form-control" id="tukhoa" placeholder="từ khóa tìm kiếm" name="tukhoa" value="{{$tukhoa}}">
             </div>
             <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
-            <a href="{{route('DV_Them')}}"><button type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
+            <a href="{{route('DV_Them')}}"><button title="Thêm" type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
         </form>
           </div>
         </div>
@@ -56,10 +56,10 @@
                     <td>{{$dv->dv_ten}}</td>
                     <td>{{$dv->dv_mota}}</td>
                     <td>{{$dv->dv_tt}}</td>
-                <td><a href="{{route('CDV_DSDV',['id'=>$dv->dv_id])}}"><button type="button" class="btn btn-outline-info">Dang sách công đoàn viên</button></a></td>
+                <td><a title="Danh Sách Công Đoàn Viên" href="{{route('CDV_DSDV',['id'=>$dv->dv_id])}}"><button type="button" class="btn btn-outline-info">Dang sách công đoàn viên</button></a></td>
                 <td>
-                  <a class="glyphicon glyphicon-edit" href="{{route('DV_Sua',['id'=>$dv->dv_id])}}"></a>
-                  <a class="glyphicon glyphicon-trash" href="{{route('DV_Xoa',['id'=>$dv->dv_id])}}" onclick="return confirm('Bạn có chắc muốn xóa không?');"></a>
+                  <a class="glyphicon glyphicon-edit" title="Sửa" href="{{route('DV_Sua',['id'=>$dv->dv_id])}}"></a>
+                  <a class="glyphicon glyphicon-trash" title="Xóa" href="{{route('DV_Xoa',['id'=>$dv->dv_id])}}" onclick="return confirm('Bạn có chắc muốn xóa không?');"></a>
                 </td>
             </tr>
             @endif
