@@ -104,24 +104,22 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
     Route::group(['prefix' => 'Tour'], function () {
         //Danh sach tour
         Route::get('TOUR_DS','TourController@getDanhSach')->name('TOUR_DanhSach');
-
         //Form thêm tour
         Route::get('/TOUR_ThemTour','TourController@getThem')->name('TOUR_Them');
         Route::post('/TOUR_ThemTour','TourController@postThem')->name('TOUR_XLThem');
-
         //Form sửa tour
         Route::get('/TOUR_SuaTour/{id}','TourController@getSua')->name('TOUR_Sua');
         Route::post('/TOUR_SuaTour/{id}','TourController@postSua')->name('TOUR_XLSua');
-
         //Form xóa tour
         Route::get('/TOUR_XoaTour/{id}', 'TourController@getXoa')->name('TOUR_Xoa');
-
         // Chi tiết tour
         Route::get('/TOUR_ChiTiet/{id}','TourController@getchitietTour')->name('TOUR_ChiTiet');
-        // Cập nhật thu phí
-        Route::post('/TOUR_XLThuPhi/{id}','TourController@postThuPhi')->name('TOUR_XLThuPhi');
-        //Tìm kiếm
+        // Tìm kiếm
         Route::get('/TOUR_Timkiem', 'TourController@postTimkiem')->name('TOUR_Timkiem');
+        // Đăng ký thêm cho người tham giai
+        Route::get('/TOUR_DKT/{id}','TourController@getDKT')->name('TOUR_DKT');
+        Route::post('/TOUR_DKT/{id}','TourController@postDKT')->name('XLTOUR_DKT');
+        Route::post('search/name','TourController@getSearchAjax')->name('search');
     });
     Route::group(['prefix' => 'LichTrinh'], function () {
     //Danh sách lịch trình

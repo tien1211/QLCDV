@@ -20,7 +20,7 @@
         <tr>
             <td><a style="color: #999; font-weight: bolder;">Giai đoạn: </a><a style="color: #999;">{{$chitietTour->giai_doan}}</a></td>
             <td><a style="color: #999; font-weight: bolder;">Hạn đăng ký: </a><a style="color: #999;">{{date('d/m/Y ',strtotime($chitietTour->tour_handk))}}</a></td>
-            <td rowspan="3"><div style="margin:12px;"><img src="upload/tour/{{$chitietTour->tour_hinhanh}}" width="500px" height="230px"></div></td>
+            <td rowspan="4"><div style="margin:12px;"><img src="upload/tour/{{$chitietTour->tour_hinhanh}}" width="500px" height="230px"></div></td>
         </tr>
         <tr>
             <td><a style="color: #999; font-weight: bolder;">Bắt đầu: </a><a style="color: #999;">{{date('d/m/Y ',strtotime($chitietTour->tour_ngaybd))}}</a></td>
@@ -29,6 +29,11 @@
         <tr>
             <td><a style="color: #999; font-weight: bolder;">Chi phí: </a><a style="color: #999;">{{number_format($chitietTour->tour_chiphi)}} VNĐ</a></td>
             <td><a style="color: #999; font-weight: bolder;">Số lượng: </a><a style="color: #999;">{{$chitietTour->tour_soluong}}</a></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <a href="{{route('TOUR_DKT',['id'=>$chitietTour->tour_id])}}"><button type="button"  class="btn btn-outline-info" style="width: 100%">Thêm người tham gia</button></a>
+            </td>
         </tr>
     </table>
 </div>
