@@ -42,7 +42,7 @@
                 </div>
                 </div>
                 {{-- Đơn Vị --}}
-                <div class="form-group">
+              <div class="form-group">
                   <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Đơn Vị</label>
                   <div class="col-lg-6">
                     <select required  class="form-control m-bot15" name="dv_id" id="dv_id">
@@ -342,7 +342,7 @@
 
                       <div class="form-group">
                           <div class="col-lg-offset-3 col-lg-6">
-                            <a href="{{route('CDV_DanhSach')}}"> <button class="btn btn-primary" type="submit">Save</button></a>
+                            <a href=""> <button class="btn btn-primary" type="submit">Save</button></a>
                           <a href="{{route('CDV_DanhSach')}}"><button class="btn btn-default" type="button">Cancel</button></a>
                           </div>
                       </div>
@@ -369,11 +369,23 @@
             cdv_ten: "required",
             cdv_ngaysinh: "required",
             cdv_gioitinh: "required",
-            cdv_cmnd: "required",
+            cdv_cmnd: {
+                required: true,
+                minlength:9,
+                maxlength:9
+            },
             cdv_nguyenquan: "required",
             cdv_diachi: "required",
-            cdv_sdt: "required",
-            cdv_email: "required",
+            cdv_sdt: {
+              required: true,
+              digits:true,
+              minlength: 10,
+              maxlength: 11
+            },
+            cdv_email: {
+              required: true,
+              email: true
+            },
             cdv_dantoc: "required",
             cdv_trinhdo: "required",
             cdv_tongiao: "required",
@@ -381,9 +393,19 @@
             cdv_ngayvaonganh: "required",
             // cdv_trangthai: "required",
             cdv_hinhanh: "required",
-            cdv_username: "required",
-            cdv_password: "required",
-            cdv_confirmpassword: "required",
+            cdv_username: {
+                required: true,
+                minlength: 8,
+                maxlength: 50
+            },
+            cdv_password: {
+              required: true,
+              minlength: 5
+            },
+            cdv_confirmpassword:{
+              required: true,
+              equalTo: "#cdv_password"
+            },
             cdv_quyen: "required",
         },
         messages: {
@@ -394,11 +416,23 @@
             cdv_ten: "Vui lòng nhập tên công đoàn viên",
             cdv_ngaysinh: "Vui lòng nhập ngày sinh",
             cdv_gioitinh: "Vui lòng chọn giới tính",
-            cdv_cmnd: "Vui lòng nhập CMND",
+            cdv_cmnd: {
+                required : "Vui lòng nhập CMND",
+                minlength: "CMND phải có 9 số",
+                maxlength: "CMND phải có 9 số"
+            },
             cdv_nguyenquan: "Vui lòng chọn nguyên quán",
             cdv_diachi: "Vui lòng nhập địa chỉ",
-            cdv_sdt: "Vui lòng nhập SĐT",
-            cdv_email: "Vui lòng nhập Email",
+            cdv_sdt: {
+              required: "Vui lòng nhập SĐT",
+              digits: "SĐT không được âm",
+              minlength: "SĐT phải có 10 hoặc 11 số",
+              maxlength: "SĐT phải có 10 hoặc 11 số"
+            },
+            cdv_email: {
+              required: "Vui lòng nhập Email",
+              email: "Email sai định dạng"
+            },
             cdv_dantoc: "Vui lòng nhập dân tộc",
             cdv_trinhdo: "Vui lòng nhập trình độ",
             cdv_tongiao: "Vui lòng nhập tôn giáo",
@@ -406,9 +440,19 @@
             cdv_ngayvaonganh: "Vui lòng nhập ngày vào nghành",
             // cdv_trangthai: "",
             cdv_hinhanh: "Vui lòng chọn hình ảnh",
-            cdv_username: "Vui lòng nhập username",
-            cdv_password: "Vui lòng nhập password",
-            cdv_confirmpassword: "Vui lòng nhập lại password",
+            cdv_username: {
+                required: "Vui lòng nhập Username",
+                minlength: "Username phải có ít nhất 8 ký tự",
+                maxlength: "Username không được vượt quá 50 ký tự"
+            },
+            cdv_password: {
+              required: "Vui lòng nhập mật khẩu",
+              minlength: "Mật khẩu quá ngắn"
+            },
+            cdv_confirmpassword:{
+              required: "Vui lòng nhập lại mật khẩu",
+              equalTo: "Mật khẩu không khớp"
+            },
             cdv_quyen: "Vui lòng chọn quyền",
         }
     });
