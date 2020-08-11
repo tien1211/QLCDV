@@ -265,7 +265,7 @@ class CongDoanVienController extends Controller
         DB::table('CongDoanVien')->whereRaw('YEAR(NOW()) - YEAR(cdv_ngayvaonganh) > 1 and YEAR(NOW()) - YEAR(cdv_ngayvaonganh) < 3')->update(['mht_id' => 2]);
         DB::table('CongDoanVien')->whereRaw('YEAR(NOW()) - YEAR(cdv_ngayvaonganh) > 3 and YEAR(NOW()) - YEAR(cdv_ngayvaonganh) < 5')->update(['mht_id' => 3]);
         DB::table('CongDoanVien')->whereRaw('YEAR(NOW()) - YEAR(cdv_ngayvaonganh) > 5')->update(['mht_id' => 4]);
-        //dd($CongDoanVien);
+       
         return redirect()->route('CDV_DanhSach');
     }
 
@@ -298,12 +298,6 @@ class CongDoanVienController extends Controller
                 Session::flash('alert-info', 'Import thành công!!!');
                 return redirect()->route('CDV_DanhSach');
             } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
-
-               // $f  = $e->failures();
-                // return view('admin.CongDoanVien.imp',compact('f'));
-
-                // Session::flash('alert-danger', 'Import thất bại, vui lòng xem lại file!!!');
-                // return redirect::back();
                 $f  = $e->failures();
                 return view('admin.CongDoanVien.imp',compact('f'));
             }

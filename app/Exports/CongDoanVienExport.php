@@ -5,6 +5,7 @@ namespace App\Exports;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use App\CongDoanVien;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 // use Maatwebsite\Excel\Concerns\FromCollection;
 
 // class CongDoanVienExport implements FromCollection
@@ -17,7 +18,7 @@ use App\CongDoanVien;
 //         return CongDoanVien::all();
 //     }
 // }
-class CongDoanVienExport implements FromView
+class CongDoanVienExport implements FromView,ShouldAutoSize
 {
     public function view(): View
         {

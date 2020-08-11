@@ -49,12 +49,7 @@
                         </div>
                         <hr>
                         <!-- Room Features -->
-                        {{-- <div class="room-features-area d-flex flex-wrap mb-50">
-                            <h6>Hạn Đăng Ký: <span>{{date('d-m-Y ',strtotime($datail->tour_handk))}}</span></h6>
-                            <h6><b>Ngày Bắt Đầu: </b><span>{{date('d-m-Y ',strtotime($datail->tour_ngaybd))}}</span></h6>
-                            <h6><b>Ngày Kết Thúc:</b> <span>{{date('d-m-Y ',strtotime($datail->tour_ngaykt))}}</span></h6>
-                            <h6><b>Số lượng:</b> <span>{{$datail->tour_soluong}}</span></h6>
-                        </div> --}}
+                       
                     <p>{{$datail->LichTrinh->lt_mota}}</p>
                         <ul>
                             <h5><li style="color: #1cc3b2"><i class="fa fa-download" ></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}" style="color: #1cc3b2"> DownLoad Lịch Trình:  {{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</a></li></h5>
@@ -112,7 +107,7 @@
                         </div>
                         {{-- MESSAGE ERROR --}}
 
-                        @if ($now > $datail->tour_handk)
+                  
                             <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
                                 @csrf
                                 
@@ -158,69 +153,27 @@
                                         <h6>Số chỗ còn lại: <span>{{$datail->tour_soluong}}</span></h6>
                                         </div>
                                         <div class="form-group">
-                                            <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button></a>
+                                            
+                                                @if ($now > $datail->tour_handk)
+                                                <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button disabled class="btn roberto-btn w-100 check_quantity">Đã Hết Hạn</button></a>
+                                                    
+                                                @else
+                                                   
+                                                <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button></a>
+
+                                                @endif
                                         </div>
                                     </div>
 
                                 </div>
                             </form>
-                    </div>
-                        @else
+                    
+                        
                         {{-- test --}}
-                        <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
-                            <h4>{{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</h4>
-                        </div>
-
-                        <div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="100ms">
-                            <!-- Room Thumbnail -->
-
-
-                            <!-- Room Content -->
-                            <div class="room-content">
-                            <h2>{{$datail->lt_ten}}</h2>
-                                <h4>{{number_format($datail->tour_chiphi)}} VNĐ<span>/ Người</span></h4>
-                                <div class="room-feature" >
-                                    <h6>Ngày Bắt Đầu: <span>{{date('d-m-Y ',strtotime($datail->tour_ngaybd))}}</span></h6>
-                                    <h6>Ngày Kết Thúc: <span>{{date('d-m-Y ',strtotime($datail->tour_ngaykt))}}</span></h6>
-                                    <h6>Hạn Đăng ký:
-
-                                        @if ($now > $datail->tour_handk)
-                                            <div class="post-meta" >
-                                                <a href="#" class="post-author mt-20" style="color: red">Hết hạn đăng kí</a>
-
-                                            </div>
-                                        @elseif($datail->tour_soluong == 0 && $now < $datail->tour_handk)
-                                            <div class="post-meta" >
-                                                <a href="#" class="post-author mt-20" style="color: red">Hết chổ</a>
-
-                                            </div>
-                                        @else
-                                            <div class="post-meta">
-                                                <span>{{date('d-m-Y ',strtotime($datail->tour_handk))}}</span>
-
-                                            </div>
-                                        @endif
-                                    </h6>
-
-                                <h6>Số chỗ còn lại: <span>{{$datail->tour_soluong}}</span></h6>
-                                </div>
-                                <div class="form-group">
-                                    <ul>
-                                        <h6><li style="color: #1cc3b2"><i class="fa fa-download" ></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}" style="color: #1cc3b2"> DownLoad Lịch Trình</a></li></h6>
-                                    </ul>
-                                </div>
-                                <div class="form-group">
-                                    <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button></a>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-
-                        {{-- test --}}
+                      
                     </div>
-                        @endif
+
+
 
                         {{-- TOUR KHAC --}}
                         <h4> <label for="checkInDate">Các Tour khác:</label></h4><hr>
