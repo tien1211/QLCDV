@@ -22,11 +22,14 @@
               <select id="dv" onchange="timkiem()" class="form-control m-bot15" name="dv_id">
                 <option  value="">Chọn đơn vị...</option>
                 @foreach($DonVi as $dv)
-                @if($dv->dv_id == $dv_id)
-                <option selected value='{{$dv->dv_id}}'>{{$dv->dv_ten}}</option>
-                @else
-                <option value='{{$dv->dv_id}}'>{{$dv->dv_ten}}</option>
+                @if ($dv->dv_trangthai == 1)
+                  @if($dv->dv_id == $dv_id)
+                  <option selected value='{{$dv->dv_id}}'>{{$dv->dv_ten}}</option>
+                  @else
+                  <option value='{{$dv->dv_id}}'>{{$dv->dv_ten}}</option>
+                  @endif
                 @endif
+                
                 @endforeach
               </select>
             </div>
@@ -34,10 +37,12 @@
               <select onchange="timkiem()" class="form-control m-bot15" name="lnv_id">
                 <option value="">Chọn loại nhân viên...</option>
                 @foreach($LoaiNhanVien as $lnv)
-                @if($lnv->lnv_id == $lnv_id)
-                <option selected value='{{$lnv->lnv_id}}'>{{$lnv->lnv_ten}}</option>
-                @else
-                <option value='{{$lnv->lnv_id}}'>{{$lnv->lnv_ten}}</option>
+                @if ($lnv->lnv_trangthai==1)
+                    @if($lnv->lnv_id == $lnv_id)
+                    <option selected value='{{$lnv->lnv_id}}'>{{$lnv->lnv_ten}}</option>
+                    @else
+                    <option value='{{$lnv->lnv_id}}'>{{$lnv->lnv_ten}}</option>
+                    @endif
                 @endif
                 @endforeach
               </select>
@@ -46,10 +51,12 @@
               <select onchange="timkiem()" class="form-control m-bot15" name="cv_id">
                 <option value="">Chọn chức vụ...</option>
                 @foreach ($ChucVu as $cv)
-                @if($cv->cv_id == $cv_id)
-                <option selected value='{{$cv->cv_id}}'>{{$cv->cv_ten}}</option>
-                @else
-                <option  value='{{$cv->cv_id}}'>{{$cv->cv_ten}}</option>
+                @if ($cv->cv_trangthai == 1)
+                  @if($cv->cv_id == $cv_id)
+                  <option selected value='{{$cv->cv_id}}'>{{$cv->cv_ten}}</option>
+                  @else
+                  <option  value='{{$cv->cv_id}}'>{{$cv->cv_ten}}</option>
+                  @endif
                 @endif
                 @endforeach
               </select>

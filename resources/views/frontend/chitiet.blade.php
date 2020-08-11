@@ -159,7 +159,7 @@
                                                     
                                                 @else
                                                    
-                                                <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button></a>
+                                                <button type="submit" class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button>
 
                                                 @endif
                                         </div>

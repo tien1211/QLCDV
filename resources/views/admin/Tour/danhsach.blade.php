@@ -22,11 +22,13 @@
               <select onchange="timkiem()" class="form-control m-bot15" name="lt_id">
                 <option value="">Chọn lịch trình...</option>
                 @foreach ($LichTrinh as $lt)
-                @if($lt->lt_id == $lt_id)
-                <option selected value='{{$lt->lt_id}}'>{{$lt->lt_ten}}</option>
-                @else
-                <option value='{{$lt->lt_id}}'>{{$lt->lt_ten}}</option>
-                @endif
+                  @if ($lt->lt_trangthai == 1)
+                    @if($lt->lt_id == $lt_id)
+                    <option selected value='{{$lt->lt_id}}'>{{$lt->lt_ten}}</option>
+                    @else
+                    <option value='{{$lt->lt_id}}'>{{$lt->lt_ten}}</option>
+                    @endif
+                  @endif
                 @endforeach
               </select>
             </div>
@@ -34,11 +36,13 @@
               <select onchange="timkiem()" class="form-control m-bot15" name="gd_id">
                 <option value="">Chọn giai đoạn...</option>
                 @foreach ($GiaiDoan as $gd)
-                @if($gd->gd_id == $gd_id)
-                <option selected value='{{$gd->gd_id}}'>{{$gd->giai_doan}}</option>
-                @else
-                <option value='{{$gd->gd_id}}'>{{$gd->giai_doan}}</option>
-                @endif
+                  @if ($gd->gd_trangthai == 1)
+                    @if($gd->gd_id == $gd_id)
+                    <option selected value='{{$gd->gd_id}}'>{{$gd->giai_doan}}</option>
+                    @else
+                    <option value='{{$gd->gd_id}}'>{{$gd->giai_doan}}</option>
+                    @endif
+                  @endif
                 @endforeach
               </select>
             </div>
@@ -72,14 +76,14 @@
             <th data-breakpoints="xs">STT</th>
             <th>Tour</th>
             <th>Giai Đoạn</th>
-            <th>Hạn đăng ký</th>
-            <th>Ngày bắt đầu</th>
-            <th>Ngày kết thúc</th>
-            <th>Chi phí</th>
-            <th>Số lượng </th>
-            <th>Đại lý</th>
-            <th>Chi tiết </th>
-            <th>Thao tác</th>
+            <th>Hạn Đăng Ký</th>
+            <th>Ngày Bắt Đầu</th>
+            <th>Ngày Kết Thúc</th>
+            <th>Chi Phí</th>
+            <th>Số Lượng </th>
+            <th>Đại Lý</th>
+            <th>Chi Tiết </th>
+            <th>Thao Tác</th>
           </tr>
         </thead>
             @foreach ($Tour as $key => $t)
