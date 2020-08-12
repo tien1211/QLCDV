@@ -20,8 +20,6 @@ label.error {
         {{session('thongbao')}}
     </div>
 @endif --}}
-<<<<<<< HEAD
-=======
 @if(session('message'))
     <div class="alert alert-success">
         {{session('message')}}
@@ -31,7 +29,6 @@ label.error {
 
     @csrf
 
->>>>>>> f1af09af3e3ef49d90b5cca91521f432ee090933
     <div class="row">
         <div class="col-lg-12">
             <section class="panel">
