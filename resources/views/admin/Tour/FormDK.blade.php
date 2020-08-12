@@ -46,7 +46,7 @@
                     <label for="firstname" class="control-label col-lg-3">Công đoàn viên đăng ký:</label>
                     <div class="col-lg-6">
                     <input type="text" name="cdv_ten" id="cdv_ten" class="form-control input-lg"/>
-                        <div id="countryList"></div>   
+                        <div id="countryList"></div>
                     </div>
                 </div>
                 {{ csrf_field() }}

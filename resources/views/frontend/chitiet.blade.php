@@ -94,8 +94,7 @@
                 <div class="col-12 col-lg-4">
                     <!-- Hotel Reservation Area -->
                     <div class="hotel-reservation--area mb-100">
-
-                       {{-- MESSAGE ERROR --}}
+                        {{-- MESSAGE ERROR --}}
                         <div class="form-group" style="mt-6">
                             <div class="flash-message">
                                 @foreach (['danger', 'warning', 'success', 'info'] as $msg)
@@ -106,20 +105,11 @@
                             </div>
                         </div>
                         {{-- MESSAGE ERROR --}}
-
-                  
-                            <form action="{{route('dktour',['id'=> $datail->tour_id])}}" method="post">
-                                @csrf
-
-
                                 <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
                                     <h4>{{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</h4>
                                 </div>
-
                                 <div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="100ms">
                                     <!-- Room Thumbnail -->
-
-
                                     <!-- Room Content -->
                                     <div class="room-content">
                                     <h2>{{$datail->lt_ten}}</h2>
@@ -130,51 +120,33 @@
                                             <h6>Ngày Kết Thúc: <span>{{date('d-m-Y ',strtotime($datail->tour_ngaykt))}}</span></h6>
                                             <br>
                                             <h6>Hạn Đăng ký:
-
                                                 @if ($now > $datail->tour_handk)
                                                     <div class="post-meta" >
                                                         <a href="#" class="post-author mt-20" style="color: red">Hết hạn đăng kí</a>
-
                                                     </div>
                                                 @elseif($datail->tour_soluong == 0 && $now < $datail->tour_handk)
                                                     <div class="post-meta" >
                                                         <a href="#" class="post-author mt-10" style="color: red">Hết chổ</a>
-
                                                     </div>
                                                 @else
                                                     <div class="post-meta">
-
                                                         <span>{{date('d-m-Y ',strtotime($datail->tour_handk))}}</span>
-
                                                     </div>
                                                 @endif
                                             </h6>
-
                                         <h6>Số chỗ còn lại: <span>{{$datail->tour_soluong}}</span></h6>
                                         </div>
                                         <div class="form-group">
-                                            
                                                 @if ($now > $datail->tour_handk)
                                                 <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button disabled class="btn roberto-btn w-100 check_quantity">Đã Hết Hạn</button></a>
-                                                    
                                                 @else
-                                                   
                                                 <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button class="btn roberto-btn w-100 check_quantity">Đăng Ký Tour</button></a>
-
                                                 @endif
                                         </div>
                                     </div>
-
-                                </div>
-                            </form>
-                    
-                        
-                        {{-- test --}}
-                      
+                                </div>      
+                        {{-- test --}}      
                     </div>
-
-
-
                         {{-- TOUR KHAC --}}
                         <h4> <label for="checkInDate">Các Tour khác:</label></h4><hr>
                         @foreach($tourkhac as $tourkhac)
@@ -195,40 +167,10 @@
                             </div>
                         @endforeach
                         {{-- TOUR KHAC --}}
-
                 </div>
  <!-- FORM BOOK -->
             </div>
         </div>
     </div>
     <!-- Rooms Area End -->
-@endsection
-@section('script')
-    <script>
-        function load(){
-            const formatter = new Intl.NumberFormat('vi-VN', {
-            //style: 'currency',
-            currency: 'VND',
-            minimumFractionDigits: 0
-            })
-            var y = document.getElementById("amount").value;
-            var x = {{$datail->tour_chiphi}};
-            formatter.format(x);
-
-            formatter.format(10);
-
-            // "$1,234,567,890.00"
-            document.getElementById("payment").value = formatter.format(parseInt(x) * parseInt(y)) + " VND";
-        }
-    </script>
-    <script type="text/javascript">
-    $('.check_quantity').click(function(){
-        var a = document.getElementById("soluong").value;
-        var b = document.getElementById("amount").value;
-        if(parseInt(b) > parseInt(a)){
-            location.reload();
-            alert("vượt quá số lượng đăng ký");
-        }
-    });
-    </script>
 @endsection

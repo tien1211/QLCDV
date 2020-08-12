@@ -25,7 +25,7 @@
                     <input type="text" required name="ttndk_ten"  class="form-control mb-30" placeholder="Tên người tham gia thứ ">
                 </div>
                 <div class="col-12 col-lg-3 wow fadeInUp" data-wow-delay="100ms" style="color: black">
-                 <select class="form-control" name="ttndk_gt" required>
+                <select class="form-control" name="ttndk_gt" required>
                     <option value="">Chọn giới tính</option>
                     <option value="1">Nam</option>
                     <option value="0">Nữ</option>

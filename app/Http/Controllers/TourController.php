@@ -265,8 +265,7 @@ class TourController extends Controller
             $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
             foreach($data as $row)
             {
-                $output .= '
-                <li>'.$row->cdv_ten.'</li></br>';
+                $output .= '<li>'.$row->cdv_ten.'</li></br>';
             }
             $output .= '</ul>';
             echo $output;
@@ -361,12 +360,12 @@ class TourController extends Controller
                 DB::table('thongtinnguoidk')->insert($data);
                 // cập nhật lại số lượng tour
                 $tour = DB::table('tour')->where('tour_id',$id)->first();
-                Session::flash('alert-info', 'Đăng ký thành công!!!');
+                Session::flash('message', 'Đăng ký thành công!!!');
                 DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $tour->tour_soluong - 1]);
                 return redirect()->back();
             }
         }else{
-            Session::flash('alert-info', 'Công đoàn viên không tồn tại');
+            Session::flash('message', 'Công đoàn viên không tồn tại');
             return redirect()->back();
         }
     }
