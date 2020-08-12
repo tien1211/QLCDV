@@ -95,7 +95,7 @@ class CongDoanVienController extends Controller
             $CongDoanVien->password =bcrypt($request->password);
             $CongDoanVien->cdv_quyen = $request->cdv_quyen;
             $CongDoanVien->save();
-            Session::put('message','Thêm thành công!!!');
+            Session::flash('alert-info', 'Thêm thành công!!!');
             return redirect()->route('CDV_DanhSach');
 
     }
@@ -167,7 +167,7 @@ class CongDoanVienController extends Controller
 
         $CongDoanVien->save();
 
-        Session::put('message','Cập nhật thành công!!!');
+        Session::flash('alert-info', 'Cập Nhật thành công!!!');
         return redirect()->route('CDV_DanhSach');
     }
 
