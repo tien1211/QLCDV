@@ -2,7 +2,16 @@
 @section('admin_content')
 <!--main content start-->
 
-
+<div class="form-group" style="mt-6">
+    <div class="flash-message">
+      @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+        @if(Session::has('alert-' . $msg))
+        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a class="close" d
+        ata-dismiss="alert" aria-label="close">&times;</a></p>
+        @endif
+      @endforeach
+    </div>
+</div>
 
  <div class="panel panel-default">
     <div class="panel-heading">
@@ -65,7 +74,7 @@
         "sorting": {
           "enabled": true
         }}'>
-       
+
         <thead>
           <tr>
             <th data-breakpoints="xs">STT</th>
@@ -81,16 +90,7 @@
             <th>Thao Tác</th>
           </tr>
         </thead>
-        <div class="form-group" style="mt-6">
-            <div class="flash-message">
-              @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                @if(Session::has('alert-' . $msg))
-                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a class="close" d
-                ata-dismiss="alert" aria-label="close">&times;</a></p>
-                @endif
-              @endforeach
-            </div>
-        </div>
+
         <tbody>
             @foreach ($Tour as $key => $t)
             @if ($t->tour_trangthai == 1)
