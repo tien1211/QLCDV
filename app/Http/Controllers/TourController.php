@@ -137,7 +137,7 @@ class TourController extends Controller
         }
         $Tour->tour_trangthai = 1;
         $Tour->save();
-        
+
          Session::flash('alert-info', 'Sửa thành công!!!');
          return Redirect()->route('TOUR_DanhSach');
     }

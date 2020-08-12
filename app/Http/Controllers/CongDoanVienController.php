@@ -265,7 +265,7 @@ class CongDoanVienController extends Controller
         DB::table('CongDoanVien')->whereRaw('YEAR(NOW()) - YEAR(cdv_ngayvaonganh) > 1 and YEAR(NOW()) - YEAR(cdv_ngayvaonganh) < 3')->update(['mht_id' => 2]);
         DB::table('CongDoanVien')->whereRaw('YEAR(NOW()) - YEAR(cdv_ngayvaonganh) > 3 and YEAR(NOW()) - YEAR(cdv_ngayvaonganh) < 5')->update(['mht_id' => 3]);
         DB::table('CongDoanVien')->whereRaw('YEAR(NOW()) - YEAR(cdv_ngayvaonganh) > 5')->update(['mht_id' => 4]);
-       
+
         return redirect()->route('CDV_DanhSach');
     }
 
