@@ -1,13 +1,16 @@
 @extends('admin.layout.master')
 @section('admin_content')
 <!--main content start-->
-
-@if(session('message'))
-    <div class="alert alert-success">
-        {{session('message')}}
-    </div>
-
-@endif
+<div class="form-group" style="mt-6">
+  <div class="flash-message">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+      @if(Session::has('alert-' . $msg))
+      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a class="close" d
+      ata-dismiss="alert" aria-label="close">&times;</a></p>
+      @endif
+    @endforeach
+</div>
+</div>
 
  <div class="panel panel-default">
   {{-- <div id = demo> --}}
@@ -95,16 +98,7 @@
             <th>Thao tác</th>
           </tr>
         </thead>
-        <div class="form-group" style="mt-6">
-          <div class="flash-message">
-            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-              @if(Session::has('alert-' . $msg))
-              <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a class="close" d
-              ata-dismiss="alert" aria-label="close">&times;</a></p>
-              @endif
-            @endforeach
-        </div>
-        </div>
+        
         <tbody>
             @foreach ($CongDoanVien as $key => $cdv)
 

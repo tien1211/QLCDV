@@ -1,6 +1,7 @@
 @extends('frontend.layout.master')
 @section('frontend_content')
 <div class="room-service mb-50">
+    
     <h2>Danh Sách Tour đã hết hạn</h2><hr>
 
     {{-- {{$ifo1}} --}}

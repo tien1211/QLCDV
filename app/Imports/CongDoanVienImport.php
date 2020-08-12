@@ -38,7 +38,6 @@ class CongDoanVienImport implements ToCollection,WithValidation
                     'cdv_ngaythuviec' => Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value[15]))->format('Y-m-d'),
                     'cdv_ngayvaonganh' => Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value[16]))->format('Y-m-d'),
                     'cdv_trangthai' => 1,
-                    
                     'cdv_username' => $value[18],
                     'password' => bcrypt($value[19]),
                     'cdv_quyen' => $value[20]
