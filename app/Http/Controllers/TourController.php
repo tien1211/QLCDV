@@ -146,7 +146,7 @@ class TourController extends Controller
         $Tour = Tour::find($id);
         $Tour->tour_trangthai = 0;
         $Tour->save();
-        Session::flash('alert-info', 'Xóa thành công!!!');
+        Session::put('message','Xóa thành công!!!');
         return Redirect::back();
     }
 
