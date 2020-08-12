@@ -21,21 +21,18 @@
 
               <div class="form" >
 
-              <form  class="cmxform form-horizontal" enctype="multipart/form-data" id="formDemo1" method="post" action="" novalidate="novalidate">
+              <form  class="cmxform form-horizontal" enctype="multipart/form-data" id="formDemo1" method="post" action="{{route('CDV_XLThem')}}" novalidate="novalidate">
                 @csrf
 
                 {{-- Đơn Vị --}}
               <div class="form-group">
                   <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Đơn Vị</label>
                   <div class="col-lg-6">
-                    <select required  class="form-control m-bot15" value={{old('dv_id')}} name="dv_id" id="dv_id">
+                    <select required  class="form-control m-bot15"  name="dv_id" id="dv_id">
                       <option value="">Chọn đơn vị...</option>
                       @foreach ($DonVi as $dv)
                       @if ($dv->dv_trangthai == 1)
-
-
                       <option value='{{$dv->dv_id}}'>{{$dv->dv_ten}}</option>
-
                       @endif
                       @endforeach
                     </select>
@@ -51,7 +48,7 @@
                 <div class="form-group">
                   <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Chức vụ</label>
                   <div class="col-lg-6">
-                    <select class="form-control m-bot15" value={{old('cv_id')}} name="cv_id" id="cv_id">
+                    <select class="form-control m-bot15" name="cv_id" id="cv_id">
                       <option value="">Chọn chức vụ...</option>
                       @foreach ($ChucVu as $cv)
                       @if ($cv->cv_trangthai==1)
@@ -71,7 +68,7 @@
                 <div class="form-group">
                   <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Loại Nhân Viên</label>
                   <div class="col-lg-6">
-                    <select class="form-control m-bot15" value={{old('lnv_id')}} name="lnv_id" id="lnv_id">
+                    <select class="form-control m-bot15"  name="lnv_id" id="lnv_id">
                       <option value="">Chọn loại nhân viên...</option>
                       @foreach ($LoaiNhanVien as $lnv)
                       @if ($lnv->lnv_trangthai==1)
@@ -94,7 +91,7 @@
                     <div class="form-group ">
                       <label for="firstname" class="control-label col-lg-3">Họ Tên</label>
                       <div class="col-lg-6">
-                          <input class=" form-control" id="cdv_ten" value="{{ old('cdv_ten') }}" name="cdv_ten" type="text">
+                          <input class=" form-control" id="cdv_ten"  name="cdv_ten" type="text">
 
                         @if($errors->has('cdv_ten'))
                         <div style="color:red">{{ $errors->first('cdv_ten')}}</div>
@@ -107,7 +104,7 @@
                     <div class="form-group ">
                       <label for="firstname" class="control-label col-lg-3">Ngày Sinh</label>
                       <div class="col-lg-6">
-                          <input class=" form-control" id="cdv_ngaysinh" value="{{old('cdv_ngaysinh')}}" name="cdv_ngaysinh" type="date">
+                          <input class=" form-control" id="cdv_ngaysinh"  name="cdv_ngaysinh" type="date">
                           @if($errors->has('cdv_ngaysinh'))
                           <div style="color:red">{{ $errors->first('cdv_ngaysinh')}}</div>
                           @endif
@@ -121,10 +118,10 @@
                       <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Giới tính</label>
                       <div class="col-lg-6">
                           <label class="radio-inline">
-                              <input type="radio" id="cdv_gioitinh" value="{{old('cdv_gioitinh')}}" name="cdv_gioitinh" value="1"> Nam
+                              <input type="radio" id="cdv_gioitinh" name="cdv_gioitinh" value="1"> Nam
                           </label>
                           <label class="radio-inline">
-                              <input type="radio" id="cdv_gioitinh" value="{{old('cdv_gioitinh')}}" name="cdv_gioitinh" value="0"> Nữ
+                              <input type="radio" id="cdv_gioitinh" name="cdv_gioitinh" value="0"> Nữ
                           </label>
                           @if($errors->has('cdv_gioitinh'))
                           <div style="color:red">{{ $errors->first('cdv_gioitinh')}}</div>
@@ -139,7 +136,7 @@
                     <div class="form-group ">
                       <label for="firstname" class="control-label col-lg-3">CMND</label>
                       <div class="col-lg-6">
-                          <input class=" form-control" id="cdv_cmnd" value="{{old('cdv_cmnd')}}" name="cdv_cmnd" type="text">
+                          <input class=" form-control" id="cdv_cmnd"  name="cdv_cmnd" type="text">
                           @if($errors->has('cdv_cmnd'))
                           <div style="color:red">{{ $errors->first('cdv_cmnd')}}</div>
                           @endif
@@ -152,7 +149,7 @@
                     <div class="form-group ">
                       <label for="firstname" class="control-label col-lg-3">Nguyên quán</label>
                       <div class="col-lg-6">
-                          <input class=" form-control" id="cdv_nguyenquan" value="{{old('cdv_nguyenquan')}}" name="cdv_nguyenquan" type="text">
+                          <input class=" form-control" id="cdv_nguyenquan"  name="cdv_nguyenquan" type="text">
                           @if($errors->has('cdv_nguyenquan'))
                           <div style="color:red">{{ $errors->first('cdv_nguyenquan')}}</div>
                           @endif
@@ -166,7 +163,7 @@
                     <div class="form-group ">
                       <label for="firstname" class="control-label col-lg-3">Địa Chỉ</label>
                       <div class="col-lg-6">
-                          <input class=" form-control" id="cdv_diachi"  value="{{old('cdv_diachi')}}" name="cdv_diachi" type="text">
+                          <input class=" form-control" id="cdv_diachi"   name="cdv_diachi" type="text">
                           @if($errors->has('cdv_diachi'))
                           <div style="color:red">{{ $errors->first('cdv_diachi')}}</div>
                           @endif
@@ -178,7 +175,7 @@
                     <div class="form-group ">
                       <label for="firstname" class="control-label col-lg-3">SĐT</label>
                       <div class="col-lg-6">
-                          <input class=" form-control" id="cdv_sdt" value="{{old('cdv_sdt')}}" name="cdv_sdt" type="text">
+                          <input class=" form-control" id="cdv_sdt"  name="cdv_sdt" type="text">
                           @if($errors->has('cdv_sdt'))
                           <div style="color:red">{{ $errors->first('cdv_sdt')}}</div>
                           @endif
@@ -191,7 +188,7 @@
                   <div class="form-group ">
                     <label for="email" class="control-label col-lg-3">Email</label>
                     <div class="col-lg-6">
-                        <input class="form-control " id="cdv_email" value="{{old('cdv_email')}}" name="cdv_email" type="email">
+                        <input class="form-control " id="cdv_email"  name="cdv_email" type="email">
                         @if($errors->has('cdv_email'))
                         <div style="color:red">{{ $errors->first('cdv_email')}}</div>
                         @endif
@@ -204,7 +201,7 @@
                   <div class="form-group ">
                     <label for="firstname" class="control-label col-lg-3">Dân Tộc</label>
                     <div class="col-lg-6">
-                        <input class=" form-control" id="cdv_dantoc" value="{{old('cdv_dantoc')}}" name="cdv_dantoc" type="text">
+                        <input class=" form-control" id="cdv_dantoc"  name="cdv_dantoc" type="text">
                         @if($errors->has('cdv_dantoc'))
                         <div style="color:red">{{ $errors->first('cdv_dantoc')}}</div>
                         @endif
@@ -217,7 +214,7 @@
                   <div class="form-group ">
                     <label for="firstname" class="control-label col-lg-3">Trình Độ</label>
                     <div class="col-lg-6">
-                        <input class=" form-control" id="cdv_trinhdo" value="{{old('cdv_trinhdo')}}" name="cdv_trinhdo" type="text">
+                        <input class=" form-control" id="cdv_trinhdo"  name="cdv_trinhdo" type="text">
                         @if($errors->has('cdv_trinhdo'))
                         <div style="color:red">{{ $errors->first('cdv_trinhdo')}}</div>
                         @endif
@@ -230,7 +227,7 @@
                   <div class="form-group ">
                     <label for="firstname" class="control-label col-lg-3">Tôn Giáo</label>
                     <div class="col-lg-6">
-                        <input class=" form-control" id="cdv_tongiao" value="{{old('cdv_tongiao')}}" name="cdv_tongiao" type="text">
+                        <input class=" form-control" id="cdv_tongiao"  name="cdv_tongiao" type="text">
                         @if($errors->has('cdv_tongiao'))
                         <div style="color:red">{{ $errors->first('cdv_tongiao')}}</div>
                         @endif
@@ -243,7 +240,7 @@
                   <div class="form-group ">
                     <label for="firstname" class="control-label col-lg-3">Ngày Vào Thử Việc</label>
                     <div class="col-lg-6">
-                        <input class=" form-control" id="cdv_ngaythuviec" value="{{old('cdv_ngaythuviec')}}" name="cdv_ngaythuviec" type="date">
+                        <input class=" form-control" id="cdv_ngaythuviec"  name="cdv_ngaythuviec" type="date">
                         @if($errors->has('cdv_ngaythuviec'))
                         <div style="color:red">{{ $errors->first('cdv_ngaythuviec')}}</div>
                         @endif
@@ -255,7 +252,7 @@
                   <div class="form-group ">
                     <label for="firstname" class="control-label col-lg-3">Ngày Vào Ngành</label>
                     <div class="col-lg-6">
-                        <input class=" form-control" id="cdv_ngayvaonganh" value="{{old('cdv_ngayvaonganh')}}" name="cdv_ngayvaonganh" type="date">
+                        <input class=" form-control" id="cdv_ngayvaonganh"  name="cdv_ngayvaonganh" type="date">
                         @if($errors->has('cdv_ngayvaonganh'))
                         <div style="color:red">{{ $errors->first('cdv_ngayvaonganh')}}</div>
                         @endif
@@ -281,7 +278,7 @@
                       <div class="form-group ">
                           <label for="username" class="control-label col-lg-3">Username</label>
                           <div class="col-lg-6">
-                              <input class="form-control " id="cdv_username" value="{{old('cdv_username')}}" name="cdv_username" type="text">
+                              <input class="form-control " id="cdv_username"  name="cdv_username" type="text">
 
                               @if($errors->has('cdv_username'))
                               <div style="color:red">{{ $errors->first('cdv_username')}}</div>
@@ -322,10 +319,10 @@
                       <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Quyền</label>
                       <div class="col-lg-6">
                           <label class="radio-inline">
-                              <input type="radio" id="cdv_quyen" value="{{old('cdv_quyen')}}" name="cdv_quyen" value="1"> Admin
+                              <input type="radio" id="cdv_quyen" name="cdv_quyen" value="1"> Admin
                           </label>
                           <label class="radio-inline">
-                              <input type="radio" id="cdv_quyen" value="{{old('cdv_quyen')}}" name="cdv_quyen" value="0"> Bình Thường
+                              <input type="radio" id="cdv_quyen" name="cdv_quyen" value="0"> Bình Thường
                           </label>
                           @if($errors->has('cdv_quyen'))
                           <div style="color:red">{{ $errors->first('cdv_quyen')}}</div>
@@ -450,91 +447,7 @@
         }
     });
 
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-        //xử lý khi có sự kiện click
-        $('#formDemo1').on('submit', function (e) {
-            //Lấy ra files
-            e.preventDefault();
-            var dv_id = $('#dv_id').val();
-            var  cv_id = $('#cv_id').val();
-            var lnv_id = $('#lnv_id').val();
-            var cdv_ten = $('#cdv_ten').val();
 
-            var cdv_ngaysinh = $('#cdv_ngaysinh').val();
-            var cdv_gioitinh = $('#cdv_gioitinh').val();
-            var cdv_cmnd = $('#cdv_cmnd ').val();
-            var cdv_nguyenquan = $('#cdv_nguyenquan').val();
-            var cdv_diachi = $('#cdv_diachi').val();
-            var cdv_sdt = $('#cdv_sdt ').val();
-            var cdv_email = $('#cdv_email ').val();
-            var cdv_dantoc = $('#cdv_dantoc').val();
-
-            var cdv_trinhdo = $('#cdv_trinhdo').val();
-            var cdv_tongiao = $('#cdv_tongiao ').val();
-            var cdv_ngaythuviec = $('#cdv_ngaythuviec').val();
-            var cdv_ngayvaonganh = $('#cdv_ngayvaonganh').val();
-            var cdv_username = $('#cdv_username').val();
-            var cdv_password = $('#cdv_password').val();
-            var cdv_quyen = $('#cdv_quyen').val();
-
-            var file_data = $('#cdv_hinhanh').prop('files')[0];
-
-            //lấy ra kiểu file
-            var type = file_data.type;
-            //Xét kiểu file được upload
-            var match = ["image/gif", "image/png", "image/jpg",];
-            //kiểm tra kiểu file
-            if (type == match[0] || type == match[1] || type == match[2]) {
-                //khởi tạo đối tượng form data
-                var form_data = new FormData();
-
-                form_data.append(' dv_id',  dv_id);
-                form_data.append('cv_id', cv_id);
-                form_data.append('lnv_id', lnv_id);
-                form_data.append('cdv_ten', cdv_ten);
-                form_data.append('cdv_ngaysinh', cdv_ngaysinh);
-                form_data.append('cdv_gioitinh', cdv_gioitinh);
-                form_data.append('cdv_cmnd', cdv_cmnd);
-                form_data.append('cdv_nguyenquan', cdv_nguyenquan);
-                form_data.append('cdv_diachi', cdv_diachi);
-                form_data.append('cdv_sdt', cdv_sdt);
-                form_data.append('cdv_email', cdv_email);
-                form_data.append('cdv_dantoc', cdv_dantoc);
-                form_data.append('cdv_trinhdo', cdv_trinhdo);
-                form_data.append('cdv_tongiao', cdv_tongiao);
-                form_data.append('cdv_ngaythuviec', cdv_ngaythuviec);
-                form_data.append('cdv_ngayvaonganh', cdv_ngayvaonganh);
-                form_data.append('cdv_username', cdv_username);
-                form_data.append('cdv_password', cdv_password);
-                form_data.append('cdv_quyen', cdv_quyen);
-
-                form_data.append('cdv_hinhanh', file_data);
-
-                //sử dụng ajax post
-                $.ajax({
-                    url: "{{route('CDV_XLThem')}}", // gửi đến file upload.php
-                    dataType: 'text',
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    data:form_data,
-                    type: 'post',
-                    success: function (res) {
-                        $('.status').text(res);
-                        $('#cdv_hinhanh').val('');
-                    window.location =" {{route('CDV_DanhSach')}}";
-
-
-                    }
-                });
-            }
-
-            return false;
-        });
     </script>
 
 @endsection
