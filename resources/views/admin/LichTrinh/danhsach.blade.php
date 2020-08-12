@@ -2,12 +2,17 @@
 @section('admin_content')
 <!--main content start-->
 
-@if(session('message'))
-    <div class="alert alert-success">
-        {{session('message')}}
-    </div>
 
-@endif
+
+  <div class="flash-message">
+      @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+      @if(Session::has('alert-' . $msg))
+      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
+      ata-dismiss="alert" aria-label="close">&times;</a></p>
+      @endif
+      @endforeach
+  </div>
+
  <div class="panel panel-default">
     <div class="panel-heading">
     Danh Sách Lịch Trình
@@ -44,16 +49,7 @@
             <th>Thao Tác</th>
           </tr>
         </thead>
-        <div class="form-group" style="mt-3">
-            <div class="flash-message">
-                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                @if(Session::has('alert-' . $msg))
-                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
-                ata-dismiss="alert" aria-label="close">&times;</a></p>
-                @endif
-                @endforeach
-            </div>
-        </div>
+        
             @foreach ($LichTrinh as $key => $lt)
             @if ($lt->lt_trangthai == 1)
                 <tr data-expanded="true">

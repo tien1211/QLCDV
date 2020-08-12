@@ -60,10 +60,10 @@ class LichTrinhController extends Controller
             $LichTrinh->lt_file = $fileName;
             $LichTrinh->lt_trangthai = 1;
             $LichTrinh->save();
-            Session::put('message', 'Thêm thành công!!!');
+            Session::flash('alert-info', 'Thêm thành công!!!');
             return redirect()->route('LT_DanhSach');
         }else{
-            Session::out('message', 'Bạn chưa chọn file');
+            Session::flash('alert-danger', 'Bạn chưa chọn file!!!');
             return redirect()->back();
         }
 
@@ -102,12 +102,12 @@ class LichTrinhController extends Controller
             $lt_file->move($savePath,$fileName);
             $LichTrinh->lt_file = $fileName;
             $LichTrinh->save();
-            Session::put('message', 'Sửa thành công!!!');
+            Session::flash('alert-info', 'Sửa thành công!!!');
             return redirect()->route('LT_DanhSach');
         }else{
             $LichTrinh->lt_file = $LichTrinh->lt_file;
             $LichTrinh->save();
-            Session::put('message', 'Sửa thành công!!!');
+            Session::flash('alert-info', 'Sửa thành công!!!');
             return redirect()->route('LT_DanhSach');
         }
     }
@@ -187,10 +187,10 @@ class LichTrinhController extends Controller
             $data['at_hinhanh'] = $fileName;
             DB::table('anh_tour')->where('at_id',$id)->update(['at_hinhanh'=>$fileName]);
         }
-            Session::flash('message', 'Thêm thành công!!!');
+        Session::flash('alert-info', 'Thêm thành công!!!');
             return redirect()->back();
         }else{
-            Session::flash('message', 'Chưa chọn file!!!');
+            Session::flash('alert-danger', 'Chưa chọn file!!!');
             return redirect()->back();
         }
     }
@@ -202,7 +202,7 @@ class LichTrinhController extends Controller
             //dd($anh);
             DB::table('anh_tour')->where('at_id',$anh)->update(['at_trangthai'=>0]);
         }
-        Session::put('message','Xóa thành công!!!');
+        Session::flash('alert-info', 'Xóa Thành Công!!!');
         return Redirect::back();
     }
 }

@@ -267,7 +267,7 @@
                   <div class="form-group ">
                     <label for="confirm_password" class="control-label col-lg-3">Ảnh Đại Diện</label>
                     <div class="col-lg-6">
-                        <input class="form-control " id="cdv_hinhanh" name="cdv_hinhanh" type="file">
+                        <input class="form-control " id="cdv_hinhanh" name="cdv_hinhanh" type="file" accept="image/*">
 
                         @if($errors->has('cdv_hinhanh'))
                         <div style="color:red">{{ $errors->first('cdv_hinhanh')}}</div>
