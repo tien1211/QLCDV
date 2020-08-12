@@ -20,12 +20,12 @@ label.error {
         {{session('thongbao')}}
     </div>
 @endif --}}
-@if(session('message'))
+{{-- @if(session('message'))
     <div class="alert alert-success">
         {{session('message')}}
     </div>
 
-@endif
+@endif --}}
 
     @csrf
 
