@@ -23,7 +23,7 @@
             <li class="dropdown">
                 @if (isset($auth))
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <img alt="" src="backend/images/2.png">
+                <img alt="" src="upload/cdv/{{$auth->cdv_hinhanh}}">
                 <span class="username">{{$auth->cdv_username}}</span>
                     <b class="caret"></b>
                 </a>

@@ -146,7 +146,7 @@ class TourController extends Controller
         $Tour = Tour::find($id);
         $Tour->tour_trangthai = 0;
         $Tour->save();
-        Session::flash('alert-info', 'Xóa thành công!!!');
+        Session::put('message','Xóa thành công!!!');
         return Redirect::back();
     }
 
@@ -245,14 +245,17 @@ class TourController extends Controller
 
     public function getDKT($id){
         $nguoithamgia = DB::table('thongtinnguoidk')
-        ->join('dk_tour','dk_tour.dkt_id','=','thongtinnguoidk.dkt_id')
-        ->join('congdoanvien','congdoanvien.cdv_id','=','dk_tour.cdv_id')
-        ->join('tinhtrangthuphi','tinhtrangthuphi.tttp_id','=','dk_tour.tttp_id')
-        ->where([['dk_tour.tour_id',$id],['congdoanvien.cdv_trangthai','<>',0],])
-        ->orderBy('dk_tour.cdv_id','asc')
-        ->orderBy('dk_tour.tttp_id','asc')
-        ->get();
-        return view('admin.Tour.FormDK')->with('nguoithamgia',$nguoithamgia)->with('tour_id',$id);
+            ->join('dk_tour','dk_tour.dkt_id','=','thongtinnguoidk.dkt_id')
+            ->join('congdoanvien','congdoanvien.cdv_id','=','dk_tour.cdv_id')
+            ->join('tinhtrangthuphi','tinhtrangthuphi.tttp_id','=','dk_tour.tttp_id')
+            ->where([['dk_tour.tour_id',$id],['congdoanvien.cdv_trangthai','<>',0],])
+            ->orderBy('dk_tour.cdv_id','asc')
+            ->orderBy('dk_tour.tttp_id','asc')
+            ->get();
+        $tour = DB::table('tour')
+            ->where('tour_id',$id)
+            ->first();
+        return view('admin.Tour.FormDK')->with('nguoithamgia',$nguoithamgia)->with('tour_id',$id)->with('tour',$tour);
     }
 
     function getSearchAjax(Request $request){
@@ -262,18 +265,18 @@ class TourController extends Controller
             $data = DB::table('congdoanvien')
                 ->where('cdv_ten','LIKE', "%{$query}%")
                 ->get();
-            $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+            $output = '<select class="form-control m-bot15" name="cdv_id">';
             foreach($data as $row)
             {
-                $output .= '<li>'.$row->cdv_ten.'</li></br>';
+                $output .= '<option value="'.$row->cdv_id.'">'.$row->cdv_ten.' sinh ngày: '.date('d-m-Y ',strtotime($row->cdv_ngaysinh)).'</option>';
             }
-            $output .= '</ul>';
+            $output .= '</select>';
             echo $output;
         }
     }
 
     public function postDKT(Request $request, $id){
-        $cdvdk = DB::table('congdoanvien')->where('cdv_ten',$request->cdv_ten)->first();
+        $cdvdk = DB::table('congdoanvien')->where('cdv_id',$request->cdv_id)->first();
         if($cdvdk != null){
             $temp = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',$cdvdk->cdv_id],['tttp_id','<>',2],])->first();
             if($temp == null){

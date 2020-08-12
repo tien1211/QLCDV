@@ -31,9 +31,9 @@
         <thead>
           <tr>
             <th data-breakpoints="xs">ID</th>
-            <th>Đơn vị</th>
-            <th>Mô tả</th>
-            <th>Trực thuộc</th>
+            <th>Đơn Vị</th>
+            <th>Mô Tả</th>
+            <th>Trực Thuộc</th>
             <th>Chi Tiết</th>
             <th>Cập Nhật</th>
           </tr>

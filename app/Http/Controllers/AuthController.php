@@ -49,13 +49,13 @@ class AuthController extends Controller
 
     public function postChangePass(Request $request, $id){
         $usr = CongDoanVien::find($id);
-        
+
 
                 $arrr = [
                         'cdv_username'  => $usr->cdv_username,
                         'password'      => $request->old_password
                 ];
-           
+
            if (Auth::attempt($arrr)) {
                     $this->validate($request, [
                         'new_password'=>'min:8|max:50',
@@ -77,8 +77,8 @@ class AuthController extends Controller
                     Session::flash('alert-warning', 'Đổi Mật Khẩu Thất Bại!!');
                     return redirect::back();
            }
-            
-            
+
+
 
 
     }

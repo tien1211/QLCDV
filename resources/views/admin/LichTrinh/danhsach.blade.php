@@ -40,8 +40,8 @@
             <th data-breakpoints="xs">STT</th>
             <th>Lịch Trình Tên</th>
             <th>Lịch Trình File</th>
-            <th>Hình ảnh liên quan</th>
-            <th>Thao tác</th>
+            <th>Hình Ảnh Liên Quan</th>
+            <th>Thao Tác</th>
           </tr>
         </thead>
         <div class="form-group" style="mt-3">

@@ -109,7 +109,7 @@
                                     <h4>{{$datail->LichTrinh->lt_ten}} {{date('Y ',strtotime($datail->tour_handk))}}</h4>
                                 </div>
                                 <div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="100ms">
-                                    <!-- Room Thumbnail -->
+                                
                                     <!-- Room Content -->
                                     <div class="room-content">
                                     <h2>{{$datail->lt_ten}}</h2>

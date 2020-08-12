@@ -119,29 +119,27 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
     });
     Route::group(['prefix' => 'LichTrinh'], function () {
     //Danh sách lịch trình
-    Route::get('LT_DanhSach','LichTrinhController@getDanhSach')->name('LT_DanhSach');
-    //Form thêm lịch trình
-    Route::get('/LT_ThemLT','LichTrinhController@getThem')->name('LT_Them');
-    Route::post('/LT_ThemLT','LichTrinhController@postThem')->name('LT_XLThem');
-    //Form sửa lịch trình
-    Route::get('/LT_SuaLT/{id}','LichTrinhController@getSua')->name('LT_Sua');
-    Route::post('/LT_SuaLT/{id}','LichTrinhController@postSua')->name('LT_XLSua');
-    //Xóa lịch trình
-    Route::get('/LT_XoaLT/{id}', 'LichTrinhController@getXoa')->name('LT_Xoa');
-    //Tìm kiếm lịch trình
-    Route::get('/LT_Timkiem', 'LichTrinhController@getTimkiem')->name('LT_Timkiem');
-    //Hình ảnh liên quan
-    Route::get('/LT_HinhAnh/{id}','LichTrinhController@getHinh')->name('LT_HinhAnh');
-    //Thêm hình liên quan
-    Route::post('/LT_ThemHinhAnh/{id}','LichTrinhController@postHinh')->name('LT_ThemHinh');
-    //Sua hình ảnh
-    Route::post('/LT_SuaHinhAnh/{id}','LichTrinhController@postSuaHinh')->name('LT_SuaHinh');
-    //Xoa hình ảnh
-    Route::get('/LT_XoaHinhAnh','LichTrinhController@getXoaHinh')->name('LT_XoaHinh');
+        Route::get('LT_DanhSach','LichTrinhController@getDanhSach')->name('LT_DanhSach');
+        //Form thêm lịch trình
+        Route::get('/LT_ThemLT','LichTrinhController@getThem')->name('LT_Them');
+        Route::post('/LT_ThemLT','LichTrinhController@postThem')->name('LT_XLThem');
+        //Form sửa lịch trình
+        Route::get('/LT_SuaLT/{id}','LichTrinhController@getSua')->name('LT_Sua');
+        Route::post('/LT_SuaLT/{id}','LichTrinhController@postSua')->name('LT_XLSua');
+        //Xóa lịch trình
+        Route::get('/LT_XoaLT/{id}', 'LichTrinhController@getXoa')->name('LT_Xoa');
+        //Tìm kiếm lịch trình
+        Route::get('/LT_Timkiem', 'LichTrinhController@getTimkiem')->name('LT_Timkiem');
+        //Hình ảnh liên quan
+        Route::get('/LT_HinhAnh/{id}','LichTrinhController@getHinh')->name('LT_HinhAnh');
+        //Thêm hình liên quan
+        Route::post('/LT_ThemHinhAnh/{id}','LichTrinhController@postHinh')->name('LT_ThemHinh');
+        //Sua hình ảnh
+        Route::post('/LT_SuaHinhAnh/{id}','LichTrinhController@postSuaHinh')->name('LT_SuaHinh');
+        //Xoa hình ảnh
+        Route::get('/LT_XoaHinhAnh','LichTrinhController@getXoaHinh')->name('LT_XoaHinh');
     });
 });
-
-
 
 
 
