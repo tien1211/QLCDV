@@ -10,7 +10,7 @@
           <form class="form-inline" role="form" action="{{route('DV_Timkiem')}}" method="get">
             {{ csrf_field() }}
             <div class="form-group">
-                <input type="text" class="form-control" id="tukhoa" placeholder="từ khóa tìm kiếm" name="tukhoa" value="{{$tukhoa}}">
+                <input type="text" class="form-control" id="tukhoa" placeholder="từ khóa tìm kiếm" name="tukhoa" value="{{$tukhoa}}" style="font-size: 40px;">
             </div>
             <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
             <a href="{{route('DV_Them')}}"><button title="Thêm" type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
@@ -49,7 +49,7 @@
         </div>
         </div>
         <tbody>
-            @foreach ($DonVi as $dv)         
+            @foreach ($DonVi as $dv)
               @if ($dv->dv_trangthai == 1)
                 <tr data-expanded="true">
                     <td>{{$dv->dv_id}}</td>
