@@ -8,12 +8,15 @@ label.error {
         width: 200px;
     }
 </style>
-@if(count($errors) > 0)
-    <div class="alert alert-danger">
-        @foreach ($errors->all() as $err)
-            {{$err}}
+
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
         @endforeach
-    </div>
+    </ul>
+</div>
 @endif
 {{-- @if(session('thongbao'))
     <div class="alert alert-success">

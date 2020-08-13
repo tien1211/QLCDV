@@ -12,7 +12,8 @@ use Validate;
 use Session;
 use DB;
 use Image;
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DSNTGExport;
 
 
 
@@ -53,6 +54,18 @@ class TourController extends Controller
     }
 
     public function postThem(Request $request){
+        $validation = $this->validate($request,
+        [
+             'tour_handk' => 'required|date|after:now',
+            'tour_ngaybd' => 'required|date|after:tour_handk',
+            'tour_ngaykt' => 'required|date|after:tour_ngaybd',
+        ],
+        [
+            'require' => 'Bạn chưa chọn ngày!',
+            'tour_handk.after' => 'Hạn đăng ký phải nhỏ hơn ngày bắt đầu!',
+            'tour_ngaybd.after' => 'Ngày bắt đầu phải lớn hơn hạn đăng ký!',
+            'tour_ngaykt.after' => 'Ngày kết thúc phải lớn hơn ngày bắt đầu!'
+        ]);
 
             $Tour = new Tour();
             $Tour->lt_id = $request->lt_id;
@@ -151,21 +164,6 @@ class TourController extends Controller
     }
 
 
-    // public function getDat($id){
-    //     $Tour = Tour::find($id);
-
-    //    return view('',compact('Tour'));
-    // }
-
-    // public function postDat(){
-    //     $Tour = Tour::find($id);
-    //     $Tour->DK_Tour->dkt_id = $request->dkt_id;
-    //     $Tour->CongDoanVien->cdv_id = $request->cdv_id;
-    //     $Tour->save();
-    //     Session::put('message','Đăng ký tour thành công!!!');
-    //     return redirect()->route('TOUR_DanhSach');
-    // }
-
     public function postTimkiem(Request $request){
         $gd_id = $request->gd_id;
         $ngaybd = $request->tour_ngaybd;
@@ -232,6 +230,7 @@ class TourController extends Controller
             ->orderBy('dk_tour.cdv_id','asc')
             ->orderBy('dk_tour.tttp_id','asc')
             ->get();
+        // dd($nguoithamgia);
         $cdv_dk = DB::table('dk_tour')
             ->join('Tour','Tour.tour_id','=','dk_tour.tour_id')
             ->join('congdoanvien','congdoanvien.cdv_id','=','dk_tour.cdv_id')
@@ -372,4 +371,13 @@ class TourController extends Controller
             return redirect()->back();
         }
     }
+
+
+    // public function Export($id){
+    //     $dataTime = date('Ymd_His');
+    //     $name = $dataTime. '-' . 'DS_NguoiThamGia.xlsx';
+    //     return Excel::download(new DSNTGExport, $name);
+    // }
+
+
 }
