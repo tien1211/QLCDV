@@ -28,6 +28,7 @@
         <th>Tôn Giáo</th>
         <th>Ngày Thử Việc</th>
         <th>Ngày Vào Ngành</th>
+        <th>Trạng Thái</th>
         <th>Tên Đăng Nhập</th>
         
         <th>Quyền</th>
@@ -60,6 +61,14 @@
                 <td>{{$cdv->cdv_tongiao}}</td>
                 <td>{{date('d/m/Y',strtotime($cdv->cdv_ngaythuviec))}}</td>
                 <td>{{date('d/m/Y',strtotime($cdv->cdv_ngayvaonganh))}}</td>
+                <th>
+                  @if ($cdv->cdv_trangthai==1)
+                      Công đoàn viên hệ thống
+                  @else
+                      Công đoàn viên không còn trong hệ thống
+                  @endif
+                  
+                </th>
                 <td>{{$cdv->cdv_username}}</td>
                 
                 @if($cdv->cdv_quyen == 1)
