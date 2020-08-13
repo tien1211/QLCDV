@@ -5,13 +5,6 @@
     <div class="panel-heading">
     Thông Tin Tour {{$chitietTour->lt_ten}}  {{date('Y ',strtotime($chitietTour->tour_handk))}}
     </div>
-    <?php
-    $message = Session::get('message');
-    if($message){
-        echo '<span class="text-alert">'.$message.'</span>';
-        Session::put('message',null);
-    }
-    ?>
     <table style="width: 100%;
     max-width: 100%;
     margin-bottom: 20px;

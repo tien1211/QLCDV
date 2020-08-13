@@ -1,24 +1,18 @@
 @extends('admin.layout.master')
 @section('admin_content')
 <!--main content start-->
-
- <div class="panel panel-default">
+<div class="flash-message">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+    @if(Session::has('alert-' . $msg))
+    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
+    ata-dismiss="alert" aria-label="close">&times;</a></p>
+    @endif
+    @endforeach
+</div>
+<div class="panel panel-default">
     <div class="panel-heading">
     Hình ảnh liên quan
     </div>
-    <?php
-    $message = Session::get('message');
-    if($message){
-        echo '<span class="text-alert">'.$message.'</span>';
-        Session::put('message',null);
-    }
-    ?>
-    <?php
-    foreach($hinh as $h)
-    {
-        $lt_id = $h->lt_id;
-    }
-    ?>
     <div class="panel-body">
         <div class="position-left">
             <form class="form-inline" role="form" enctype="multipart/form-data" action="{{route('LT_ThemHinh',['id'=>$lt_id])}}" method="post" >
@@ -52,16 +46,6 @@
           </tr>
         </thead>
         <tbody>
-          <div class="form-group" style="mt-6">
-            <div class="flash-message">
-              @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                @if(Session::has('alert-' . $msg))
-                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="" class="close" d
-                ata-dismiss="alert" aria-label="close">&times;</a></p>
-                @endif
-              @endforeach
-            </div>
-          </div>
               @foreach ($hinh as $key => $hinh)
               @if ($hinh->at_trangthai == 1)
                   <tr data-expanded="true">

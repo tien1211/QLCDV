@@ -1,16 +1,19 @@
 @extends('admin.layout.master')
 @section('admin_content')
+<div class="form-group" style="mt-6">
+    <div class="flash-message">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+        @if(Session::has('alert-' . $msg))
+        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a class="close" d
+        ata-dismiss="alert" aria-label="close">&times;</a></p>
+        @endif
+    @endforeach
+</div>
+</div>
 <div class="panel panel-default">
     <header class="panel-heading">
         Thêm Người Tham gia Tour
     </header>
-    <?php
-    $message = Session::get('message');
-    if($message){
-        echo '<span class="text-alert">'.$message.'</span>';
-        Session::put('message',null);
-    }
-    ?>
     <div class="panel-body print-error-msg " >
         <ul></ul>
         <div class="form" id="message">

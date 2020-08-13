@@ -56,7 +56,7 @@ class TourController extends Controller
     public function postThem(Request $request){
         $validation = $this->validate($request,
         [
-             'tour_handk' => 'required|date|after:now',
+            'tour_handk' => 'required|date|after:now',
             'tour_ngaybd' => 'required|date|after:tour_handk',
             'tour_ngaykt' => 'required|date|after:tour_ngaybd',
         ],
@@ -102,7 +102,6 @@ class TourController extends Controller
             }
             $Tour->tour_trangthai = 1;
             $Tour->save();
-            // Session::put('message','Thêm thành công!!!');
             Session::flash('alert-info', 'Thêm thành công!!!');
            return Redirect()->route('TOUR_DanhSach');
 }
@@ -362,12 +361,12 @@ class TourController extends Controller
                 DB::table('thongtinnguoidk')->insert($data);
                 // cập nhật lại số lượng tour
                 $tour = DB::table('tour')->where('tour_id',$id)->first();
-                Session::flash('message', 'Đăng ký thành công!!!');
+                Session::flash('alert-info', 'Đăng ký thành công!!!');
                 DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $tour->tour_soluong - 1]);
                 return redirect()->back();
             }
         }else{
-            Session::flash('message', 'Công đoàn viên không tồn tại');
+            Session::flash('alert-info', 'Công đoàn viên không tồn tại');
             return redirect()->back();
         }
     }

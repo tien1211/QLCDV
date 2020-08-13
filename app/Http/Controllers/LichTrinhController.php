@@ -132,7 +132,7 @@ class LichTrinhController extends Controller
             ->join('lichtrinh','lichtrinh.lt_id','=','anh_tour.lt_id')
             ->where('anh_tour.lt_id',$id)->get();
         //dd($hinh);
-        return view('admin.LichTrinh.danhsachhinh')->with('hinh',$hinh);
+        return view('admin.LichTrinh.danhsachhinh')->with('hinh',$hinh)->with('lt_id',$id);
     }
 
     public function postHinh(Request $request, $id){
@@ -142,7 +142,7 @@ class LichTrinhController extends Controller
             $duoi = $file->getClientOriginalExtension();
             if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
                 Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
-                return redirect()->route('CDV_Them');
+                return redirect()->back();
             }
             $fileName = $dataTime . '-' . $file->getClientOriginalName();
             //resize ảnh
@@ -158,10 +158,10 @@ class LichTrinhController extends Controller
             $data['at_trangthai'] = 1;
             DB::table('anh_tour')->insert($data);
         }
-            Session::flash('message', 'Thêm thành công!!!');
+            Session::flash('alert-info', 'Thêm thành công!!!');
             return redirect()->back();
         }else{
-            Session::flash('message', 'Chưa chọn file!!!');
+            Session::flash('alert-warning', 'Chưa chọn file!!!');
             return redirect()->back();
         }
     }
