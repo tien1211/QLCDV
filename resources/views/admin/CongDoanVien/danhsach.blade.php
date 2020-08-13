@@ -12,7 +12,7 @@
 </div>
 </div>
 
- <div class="panel panel-default">
+<div class="panel panel-default">
   {{-- <div id = demo> --}}
     <div class="panel-heading">
       Danh Sách Công Đoàn Viên

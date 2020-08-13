@@ -23,7 +23,6 @@ class DonViController extends Controller
             ->leftjoin('DonVi as DonVitt','DonVitt.dv_id','=','DonVi.dv_tructhuoc_id')
             ->select('DonVi.*','DonVitt.dv_ten as dv_tt')
             ->get();
-        //dd($DonVi);
         return view('admin.DonVi.danhsach')->with('DonVi',$DonVi);
     }
 
@@ -46,7 +45,7 @@ class DonViController extends Controller
         $data['dv_tructhuoc_id'] = $request->dv_tructhuoc_id;
         $data['dv_trangthai'] = 1;
         DB::table('DonVi')->insert($data);
-    	Session::put('message','Thêm đơn vị thành công!!!');
+    	Session::flash('alert-info','Thêm đơn vị thành công!!!');
         return redirect()->route('DV_DanhSach');
     }
     public function getSua($id)
@@ -70,7 +69,7 @@ class DonViController extends Controller
         $DonVi = DonVi::find($id);
         $DonVi->dv_trangthai = 0;
         $DonVi->save();
-        Session::put('message', 'Xóa thành công!!!');
+        Session::flash('alert-info', 'Xóa thành công!!!');
         return redirect()->route('DV_DanhSach');
     }
     public function getDSDV($id){
