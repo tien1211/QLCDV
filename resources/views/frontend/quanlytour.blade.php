@@ -36,15 +36,19 @@
             <td>{{$tour->tour_chiphi}}</td>
             <td>
                 @if($now > $tour->tour_handk)
-                Hết hạn
+                <a style="color:red">Hết hạn</a>
+                </td>
+                <td>
+                    <a href="{{route('DS_NTG',['id'=>$tour->tour_id])}}" class="post-author"><li class="fas fa-list" style="font-size: 20px"></li></a>&nbsp;&nbsp;&nbsp;
+                </td>
                 @else
-                Đang diễn ra
+                Còn hạn
+                </td>
+                <td>
+                    <a href="{{route('DS_NTG',['id'=>$tour->tour_id])}}" class="post-author"><li class="fas fa-list" style="font-size: 20px"></li></a>&nbsp;&nbsp;&nbsp;
+                    <a href="{{route('HUY_TOUR',['id'=>$tour->dkt_id])}}" class="post-author"><li class="fas fa-trash-alt" style="font-size: 20px;"></li></a>
+                </td>
                 @endif
-            </td>
-            <td>
-                <a href="{{route('DS_NTG',['id'=>$tour->tour_id])}}" class="post-author"><li class="fas fa-list" style="font-size: 20px"></li></a>&nbsp;&nbsp;&nbsp;
-                <a href="{{route('HUY_TOUR',['id'=>$tour->dkt_id])}}" class="post-author"><li class="fas fa-trash-alt" style="font-size: 20px;"></li></a>
-            </td>
             </tr>
             @endforeach
         </tbody>

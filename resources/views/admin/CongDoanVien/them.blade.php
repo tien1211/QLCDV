@@ -285,10 +285,8 @@
                               @endif
                             </div>
                       </div>
-
-                   {{-- Tên Đăng nhập    --}}
-
-                   {{-- Mật khẩu --}}
+                  {{-- Tên Đăng nhập    --}}
+                  {{-- Mật khẩu --}}
                       <div class="form-group ">
                           <label for="password" class="control-label col-lg-3">Password</label>
                           <div class="col-lg-6">
@@ -299,7 +297,6 @@
                             </div>
                       </div>
                       {{-- Mật khẩu --}}
-
                       {{-- Xác nhận mật khảu --}}
                       <div class="form-group ">
                           <label for="confirm_password" class="control-label col-lg-3">Confirm Password</label>
