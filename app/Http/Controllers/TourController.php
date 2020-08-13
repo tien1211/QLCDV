@@ -12,7 +12,8 @@ use Validate;
 use Session;
 use DB;
 use Image;
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DSNTGExport;
 
 
 
@@ -151,21 +152,6 @@ class TourController extends Controller
     }
 
 
-    // public function getDat($id){
-    //     $Tour = Tour::find($id);
-
-    //    return view('',compact('Tour'));
-    // }
-
-    // public function postDat(){
-    //     $Tour = Tour::find($id);
-    //     $Tour->DK_Tour->dkt_id = $request->dkt_id;
-    //     $Tour->CongDoanVien->cdv_id = $request->cdv_id;
-    //     $Tour->save();
-    //     Session::put('message','Đăng ký tour thành công!!!');
-    //     return redirect()->route('TOUR_DanhSach');
-    // }
-
     public function postTimkiem(Request $request){
         $gd_id = $request->gd_id;
         $ngaybd = $request->tour_ngaybd;
@@ -232,6 +218,7 @@ class TourController extends Controller
             ->orderBy('dk_tour.cdv_id','asc')
             ->orderBy('dk_tour.tttp_id','asc')
             ->get();
+        // dd($nguoithamgia);
         $cdv_dk = DB::table('dk_tour')
             ->join('Tour','Tour.tour_id','=','dk_tour.tour_id')
             ->join('congdoanvien','congdoanvien.cdv_id','=','dk_tour.cdv_id')
@@ -370,4 +357,13 @@ class TourController extends Controller
             return redirect()->back();
         }
     }
+
+
+    // public function Export($id){
+    //     $dataTime = date('Ymd_His');
+    //     $name = $dataTime. '-' . 'DS_NguoiThamGia.xlsx';
+    //     return Excel::download(new DSNTGExport, $name);
+    // }
+
+
 }

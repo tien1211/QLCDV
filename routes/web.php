@@ -83,6 +83,10 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
         Route::get('/CDV_CNMHT','CongDoanVienController@updateCDV')->name('CDV_CNMHT');
     });
     Route::group(['prefix' => 'DonVi'], function () {
+
+        
+
+
         // Danh sách đơn vị
         Route::get('/DonVi', 'DonViController@getDonVi')->name('DV_DanhSach');
         // Form thêm đơn vị
@@ -97,6 +101,10 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
         Route::get('/DV_Timkiem', 'DonViController@postTimkiem')->name('DV_Timkiem');
     });
     Route::group(['prefix' => 'Tour'], function () {
+        
+        //Export
+        // Route::get('/Tour_Export/Export/{id}','TourController@Export')->name('Tour_Export');
+        
         //Danh sach tour
         Route::get('TOUR_DS','TourController@getDanhSach')->name('TOUR_DanhSach');
         //Form thêm tour

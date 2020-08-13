@@ -39,7 +39,7 @@ class CongDoanVienController extends Controller
 	}
 
     public function getDanhSach(){
-        $CongDoanVien = CongDoanVien::paginate(5);
+        $CongDoanVien = CongDoanVien::where('cdv_trangthai','=',1)->paginate(5);
         return view('admin.CongDoanVien.danhsach')->with('CongDoanVien',$CongDoanVien);
 
     }
