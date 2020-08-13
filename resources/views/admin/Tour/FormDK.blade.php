@@ -43,19 +43,44 @@
                     </div>
                 </div>
                 <div class="form-group ">
-                    <label for="firstname" class="control-label col-lg-3">Công đoàn viên đăng ký:</label>
+                    <label for="firstname" class="control-label col-lg-3">Tìm công đoàn viên:</label>
                     <div class="col-lg-6">
                     <input type="text" name="cdv_ten" id="cdv_ten" class="form-control input-lg"/>
-                        <div id="countryList"></div>   
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="col-lg-offset-3 col-lg-6">
+                        <div id="countryList"></div>
                     </div>
                 </div>
                 {{ csrf_field() }}
+                @if($tour->tour_soluong == 0)
+                <div class="form-group ">
+                    <label for="firstname" class="control-label col-lg-3">Số lượng còn lại: </label>
+                    <div class="col-lg-6">
+                    <input style="color: red;" type="text" class="form-control input-lg" value="{{$tour->tour_soluong}}" disabled/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-3 col-lg-6">
+                        <button class="btn btn-primary btn-submit" disabled id="submit" type="submit">Hết chổ</button>
+                        <a href="{{route('TOUR_ChiTiet',['id'=>$tour_id])}}"><button class="btn btn-default" type="button">Thoát</button></a>
+                    </div>
+                </div>
+                @else
+                <div class="form-group ">
+                    <label for="firstname" class="control-label col-lg-3">Số lượng còn lại: </label>
+                    <div class="col-lg-6">
+                    <input type="text" class="form-control input-lg" value="{{$tour->tour_soluong}}" disabled/>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-lg-offset-3 col-lg-6">
                         <button class="btn btn-primary btn-submit" id="submit" type="submit">Lưu</button>
-                        <button class="btn btn-default" type="button">Thoát</button>
+                        <a href="{{route('TOUR_ChiTiet',['id'=>$tour_id])}}"><button class="btn btn-default" type="button">Thoát</button></a>
                     </div>
                 </div>
+                @endif
             </form>
             <br>
         </div>

@@ -275,6 +275,7 @@ class IndexController extends Controller
                 ->join('giaidoan','giaidoan.gd_id','=','tour.gd_id')
                 ->join('lichtrinh','lichtrinh.lt_id','=','tour.lt_id')
                 ->where([['dk_tour.cdv_id','=',Auth::user()->cdv_id],['dk_tour.tttp_id','<>',2]])
+                ->orderBy('tour.tour_handk','desc')
                 ->get();
             return view('frontend.quanlytour')->with('tourdk',$tourdk);
         }
