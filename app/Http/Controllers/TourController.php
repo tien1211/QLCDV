@@ -53,6 +53,18 @@ class TourController extends Controller
     }
 
     public function postThem(Request $request){
+        $validation = $this->validate($request,
+        [
+             'tour_handk' => 'required|date|after:now',
+            'tour_ngaybd' => 'required|date|after:tour_handk',
+            'tour_ngaykt' => 'required|date|after:tour_ngaybd',
+        ],
+        [
+            'require' => 'Bạn chưa chọn ngày!',
+            'tour_handk.after' => 'Hạn đăng ký phải nhỏ hơn ngày bắt đầu!',
+            'tour_ngaybd.after' => 'Ngày bắt đầu phải lớn hơn hạn đăng ký!',
+            'tour_ngaykt.after' => 'Ngày kết thúc phải lớn hơn ngày bắt đầu!'
+        ]);
 
             $Tour = new Tour();
             $Tour->lt_id = $request->lt_id;
