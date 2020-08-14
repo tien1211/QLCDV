@@ -139,7 +139,7 @@
                                     </div>
                                        
                                         <div class="form-group">
-                                            <h6><li style="color: #1cc3b2"><i class="fa fa-download" ></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}" style="color: #1cc3b2"> DownLoad Lịch Trình</a></li></h6>
+                                            <h6><li style="color: #1cc3b2"><i class="fa fa-download" ></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}" style="color: #1cc3b2"> &nbsp; <u> DownLoad Lịch Trình</u></a></li></h6>
                                         </div>
                                         <div class="form-group">
                                                 @if ($now > $datail->tour_handk)
