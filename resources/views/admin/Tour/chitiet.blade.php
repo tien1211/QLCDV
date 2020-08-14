@@ -126,7 +126,7 @@
     </table>
     {{-- <div class="panel-body">
         <div class="position-right">
-            <a href="{{route('Tour_Export',['id'=>'tour_id'])}}" class="btn btn-sm btn-primary float-right">Export</a>
+            <a href="{{route('Tour_Export',['id'=> $tour_id])}}" class="btn btn-sm btn-primary float-right">Export</a>
           </div>
       </div>
     </div> --}}

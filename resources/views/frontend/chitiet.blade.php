@@ -135,7 +135,9 @@
                                                 @endif
                                             </h6>
                                         <h6>Số chỗ còn lại: <span>{{$datail->tour_soluong}}</span></h6>
-                                        </div>
+                                            
+                                    </div>
+                                       
                                         <div class="form-group">
                                                 @if ($now > $datail->tour_handk)
                                                 <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button disabled class="btn roberto-btn w-100 check_quantity">Đã Hết Hạn</button></a>
