@@ -46,7 +46,6 @@
           </tr>
         </thead>
           @foreach ($LichTrinh as $key => $lt)
-            @if ($lt->lt_trangthai == 1)
                 <tr data-expanded="true">
                     <td>{{$key + 1}}</td>
                     <td>{{$lt->lt_ten}}</td>
@@ -57,7 +56,6 @@
                         <a class="glyphicon glyphicon-trash" title="Xóa" href="{{route('LT_Xoa',['id'=>$lt->lt_id])}} "></a>
                     </td>
                 </tr>
-            @endif
           @endforeach
         </tbody>
     </div>

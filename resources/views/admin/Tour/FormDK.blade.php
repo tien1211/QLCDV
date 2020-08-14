@@ -164,9 +164,9 @@ $(document).ready(function(){
         });
         }
     });
-    $(document).on('click', 'li', function(){  
-    $('#cdv_ten').val($(this).text());  
-    $('#countryList').fadeOut();  
-    });  
+    // $(document).on('click', 'li', function(){  
+    // $('#cdv_ten').val($(this).text());  
+    // $('#countryList').fadeOut();  
+    // });  
 });
 </script>

@@ -47,13 +47,11 @@
         </thead>
         <tbody>
               @foreach ($hinh as $key => $hinh)
-              @if ($hinh->at_trangthai == 1)
                   <tr data-expanded="true">
                       <td>{{$key + 1}}</td>
                       <td><img src="upload/tour/{{$hinh->at_hinhanh}}" width="200px" height="100px"></td>
                       <td><input type="checkbox" name="at_id[]" value="{{$hinh->at_id}}"/></td>
                   </tr>
-              @endif
               @endforeach
         </tbody>
       </table>

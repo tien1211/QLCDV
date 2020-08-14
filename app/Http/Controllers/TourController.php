@@ -21,7 +21,7 @@ class TourController extends Controller
 {
 
     function __construct(){
-        $LichTrinh = LichTrinh::all();
+        $LichTrinh = DB::table('LichTrinh')->where('lt_trangthai',1)->get();
         $GiaiDoan = GiaiDoan::all();
         $TinhTrangThuPhi = DB::table('tinhtrangthuphi')->get();
         $ngaybd = "";
@@ -41,15 +41,14 @@ class TourController extends Controller
     public function getDanhSach(){
         $ngaybd = "";
         $ngaykt = "";
-        $Tour = Tour::all();
+        $Tour = Tour::where('tour_trangthai','=',1)->get();
         return view('admin.Tour.danhsach')->with('Tour',$Tour);
     }
 
 // Thêm
 
     public function getThem(){
-
-        $LichTrinh = LichTrinh::all();
+        $LichTrinh = DB::table('LichTrinh')->where('lt_trangthai',1)->get();
         return view('admin.Tour.them')->with('LichTrinh',$LichTrinh);
     }
 
@@ -103,18 +102,14 @@ class TourController extends Controller
             $Tour->tour_trangthai = 1;
             $Tour->save();
             Session::flash('alert-info', 'Thêm thành công!!!');
-           return Redirect()->route('TOUR_DanhSach');
+            return Redirect()->route('TOUR_DanhSach');
 }
-
-
 
     public function getSua($id){
         $Tour = Tour::find($id);
         return view('admin.Tour.sua')->with('Tour',$Tour);
     }
-
 // Sửa
-
     public function postSua(Request $request, $id){
         $Tour = Tour::find($id);
         $Tour->lt_id = $request->lt_id;
@@ -150,8 +145,8 @@ class TourController extends Controller
         $Tour->tour_trangthai = 1;
         $Tour->save();
 
-         Session::flash('alert-info', 'Sửa thành công!!!');
-         return Redirect()->route('TOUR_DanhSach');
+        Session::flash('alert-info', 'Sửa thành công!!!');
+        return Redirect()->route('TOUR_DanhSach');
     }
 
     public function getXoa($id){
