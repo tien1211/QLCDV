@@ -21,7 +21,7 @@ class TourController extends Controller
 {
 
     function __construct(){
-        $LichTrinh = LichTrinh::all();
+        $LichTrinh = DB::table('LichTrinh')->where('lt_trangthai',1)->get();
         $GiaiDoan = GiaiDoan::all();
         $TinhTrangThuPhi = DB::table('tinhtrangthuphi')->get();
         $ngaybd = "";
@@ -41,22 +41,21 @@ class TourController extends Controller
     public function getDanhSach(){
         $ngaybd = "";
         $ngaykt = "";
-        $Tour = Tour::all();
+        $Tour = Tour::where('tour_trangthai','=',1)->get();
         return view('admin.Tour.danhsach')->with('Tour',$Tour);
     }
 
 // Thêm
 
     public function getThem(){
-
-        $LichTrinh = LichTrinh::all();
+        $LichTrinh = DB::table('LichTrinh')->where('lt_trangthai',1)->get();
         return view('admin.Tour.them')->with('LichTrinh',$LichTrinh);
     }
 
     public function postThem(Request $request){
         $validation = $this->validate($request,
         [
-             'tour_handk' => 'required|date|after:now',
+            'tour_handk' => 'required|date|after:now',
             'tour_ngaybd' => 'required|date|after:tour_handk',
             'tour_ngaykt' => 'required|date|after:tour_ngaybd',
         ],
@@ -102,20 +101,15 @@ class TourController extends Controller
             }
             $Tour->tour_trangthai = 1;
             $Tour->save();
-            // Session::put('message','Thêm thành công!!!');
             Session::flash('alert-info', 'Thêm thành công!!!');
-           return Redirect()->route('TOUR_DanhSach');
+            return Redirect()->route('TOUR_DanhSach');
 }
-
-
 
     public function getSua($id){
         $Tour = Tour::find($id);
         return view('admin.Tour.sua')->with('Tour',$Tour);
     }
-
 // Sửa
-
     public function postSua(Request $request, $id){
         $Tour = Tour::find($id);
         $Tour->lt_id = $request->lt_id;
@@ -151,8 +145,8 @@ class TourController extends Controller
         $Tour->tour_trangthai = 1;
         $Tour->save();
 
-         Session::flash('alert-info', 'Sửa thành công!!!');
-         return Redirect()->route('TOUR_DanhSach');
+        Session::flash('alert-info', 'Sửa thành công!!!');
+        return Redirect()->route('TOUR_DanhSach');
     }
 
     public function getXoa($id){
@@ -364,12 +358,12 @@ class TourController extends Controller
                 DB::table('thongtinnguoidk')->insert($data);
                 // cập nhật lại số lượng tour
                 $tour = DB::table('tour')->where('tour_id',$id)->first();
-                Session::flash('message', 'Đăng ký thành công!!!');
+                Session::flash('alert-info', 'Đăng ký thành công!!!');
                 DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $tour->tour_soluong - 1]);
                 return redirect()->back();
             }
         }else{
-            Session::flash('message', 'Công đoàn viên không tồn tại');
+            Session::flash('alert-info', 'Công đoàn viên không tồn tại');
             return redirect()->back();
         }
     }

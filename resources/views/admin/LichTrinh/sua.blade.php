@@ -2,12 +2,11 @@
 @section('admin_content')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <style>
-  label.error {
+label.error {
         display: inline-block;
         color:red;
         width: 200px;
     }
-
 </style>
     <div class="row">
         <div class="col-lg-12">
