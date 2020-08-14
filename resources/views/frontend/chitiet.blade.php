@@ -139,6 +139,9 @@
                                     </div>
                                        
                                         <div class="form-group">
+                                            <h6><li style="color: #1cc3b2"><i class="fa fa-download" ></i><a href="{{url('upload/lichtrinh/'.$datail->LichTrinh->lt_file)}}" style="color: #1cc3b2"> DownLoad Lịch Trình</a></li></h6>
+                                        </div>
+                                        <div class="form-group">
                                                 @if ($now > $datail->tour_handk)
                                                 <a href="{{route('dktour',['id'=>$datail->tour_id])}}" ><button disabled class="btn roberto-btn w-100 check_quantity">Đã Hết Hạn</button></a>
                                                 @else
