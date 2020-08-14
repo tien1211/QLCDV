@@ -233,7 +233,9 @@ class TourController extends Controller
             ->get();
         return view('admin.Tour.chitiet')->with('chitietTour',$chitietTour)
             ->with('nguoithamgia',$nguoithamgia)
-            ->with('cdv_dk',$cdv_dk);
+            ->with('cdv_dk',$cdv_dk)
+            ->with('tour_id',$id);
+
     }
 
     public function getDKT($id){
@@ -366,12 +368,22 @@ class TourController extends Controller
         }
     }
 
-
-    // public function Export($id){
-    //     $dataTime = date('Ymd_His');
-    //     $name = $dataTime. '-' . 'DS_NguoiThamGia.xlsx';
-    //     return Excel::download(new DSNTGExport, $name);
-    // }
-
-
+    public function viewExport($id){
+        $info = DB::table('thongtinnguoidk')
+        ->join('dk_tour','dk_tour.dkt_id','=','thongtinnguoidk.dkt_id')
+        ->join('congdoanvien','congdoanvien.cdv_id','=','dk_tour.cdv_id')
+        ->join('tinhtrangthuphi','tinhtrangthuphi.tttp_id','=','dk_tour.tttp_id')
+        ->where([['dk_tour.tour_id',$id],['congdoanvien.cdv_trangthai','<>',0],])
+        ->orderBy('dk_tour.cdv_id','asc')
+        ->orderBy('dk_tour.tttp_id','asc')
+        ->get();
+        return view('admin.Tour.Tour-Excel')->with('info',$info);
+    }
+    
+    public function Export($id)
+    {
+        $dataTime = date('Ymd_His');
+        $name = $dataTime. '-' . 'DSNTG.xlsx';
+        return Excel::download(new DSNTGExport, $name);
+    }
 }

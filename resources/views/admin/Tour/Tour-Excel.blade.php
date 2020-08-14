@@ -9,7 +9,7 @@
       "enabled": true
     }}'>
     @php
-        $i = 1;
+        $a = 1;
     @endphp
     <thead>
       <tr>
@@ -22,9 +22,9 @@
       </tr>
     </thead>
     <tbody>
-        @foreach ($thongtin as $key => $info)
+        @foreach ($info as $key => $info)
             <tr data-expanded="true">
-            <td>{{$i}}</td>
+            <td>{{$a}}</td>
             <td>{{$info->ttndk_ten}}</td>
             <td>
                 @if ($info->ttndk_gt == 1)
@@ -43,7 +43,9 @@
         </td>
         <td>{{$info->cdv_ten}}</td>
         </tr>
-        $i = $i+1;
+       @php
+           $a = $a+1;
+       @endphp
       @endforeach
     </tbody>
   </table>

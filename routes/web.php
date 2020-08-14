@@ -103,8 +103,8 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
     Route::group(['prefix' => 'Tour'], function () {
         
         //Export
-        // Route::get('/Tour_Export/Export/{id}','TourController@Export')->name('Tour_Export');
-        
+        Route::get('/Tour_Export/Export/{id}','TourController@Export')->name('Tour_Export');
+        Route::get('/Tour_Export/{id}','TourController@viewExport')->name('Tour_ViewExport');
         //Danh sach tour
         Route::get('TOUR_DS','TourController@getDanhSach')->name('TOUR_DanhSach');
         //Form thêm tour
