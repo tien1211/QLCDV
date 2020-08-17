@@ -121,7 +121,7 @@
                                             @if ($now> $datail->tour_ngaykt)
                                             <h6>Ngày Kết Thúc: <span style="color:red"> <b>{{date('d-m-Y ',strtotime($datail->tour_ngaykt))}}</b></span></h6>
                                             @else
-                                            <h6>Ngày Kết Thúc: <span style="color:red">{{date('d-m-Y ',strtotime($datail->tour_ngaykt))}}</span></h6>
+                                            <h6>Ngày Kết Thúc: <span>{{date('d-m-Y ',strtotime($datail->tour_ngaykt))}}</span></h6>
                                                 
                                             @endif
 
