@@ -1,49 +1,13 @@
 @extends('frontend.layout.master')
 @section('frontend_content')
 <div class="col-12">
-    <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
+    <div class="section-heading text-center " data-wow-delay="100ms">
         <h2>Đăng Ký Tour</h2>
     </div>
 </div>
-{{-- @foreach ($tour1 as $t)
-<div class="single-blog-post d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="100ms">
 
-    <div class="post-thumbnail">
-    <a href="{{route('chitiettour',['id'=>$t->tour_id])}}"><img src="upload/tour/{{$t->tour_hinhanh}}" alt=""></a>
-    </div>
-
-    <div class="post-content" style="">
-
-        <a href="{{route('chitiettour',['id'=>$t->tour_id])}}" class="post-title">{{$t->lt_ten}} {{date('Y ',strtotime($t->tour_handk))}}</a>
-
-        @if ($now > $t->tour_handk)
-        <div class="post-meta" >
-            <a href="#" class="post-author" style="color: red">Hết hạn đăng kí</a>
-        <a href="#" class="post-tutorial">Giá: {{number_format($t->tour_chiphi)}} VND</a>
-        </div>
-        @elseif($t->tour_soluong == 0 && $now < $t->tour_handk)
-        <div class="post-meta" >
-            <a href="#" class="post-author" style="color: red">Hết chổ</a>
-        <a href="#" class="post-tutorial">Giá: {{number_format($t->tour_chiphi)}} VND</a>
-        </div>
-        @else
-        <div class="post-meta">
-            <a href="#" class="post-author">Hạn ĐK: {{date('d-m-Y ',strtotime($t->tour_handk))}}</a>
-        <a href="#" class="post-tutorial">Giá: {{number_format($t->tour_chiphi)}} VND</a>
-        </div>
-        @endif
-
-        <div class="post-meta">
-            <a href="#" class="post-author">Ngày BĐ: {{date('d-m-Y ',strtotime($t->tour_ngaybd))}}</a>
-        <a href="#" class="post-tutorial">Ngày KT: {{date('d-m-Y ',strtotime($t->tour_ngaykt))}}</a>
-        </div>
-        <a href="{{route('chitiettour',['id'=>$t->tour_id])}}"class="btn continue-btn" ><button class="btn btn-info">Chi Tiết</button></a>
-
-    </div>
-</div>
-    @endforeach --}}
     @foreach ($tour1 as $t)
-    <div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="100ms">
+    <div loading="lazy" class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="100ms">
         <!-- Room Thumbnail -->
 
         <div class="room-thumbnail">
@@ -76,21 +40,32 @@
                     @endif
                 </h6>
 
-
-
-
-
-
-
-
             <h6>Số chỗ còn lại: <span>{{$t->tour_soluong}}</span></h6>
             </div>
             <a href="{{route('chitiettour',['id'=>$t->tour_id])}}" class="btn btn-info btn-sm">Chi Tiết</a>
         </div>
 
     </div>
-
+    
     @endforeach
+    
+        <div class="mb-5" style="margin-left: 60%">{!! $tour1->links() !!}</div>
+    
 
+@endsection
 
+@section('script')
+<script>
+    //Infinite Scroll
+$(window).on("scroll", function() {
+ //page height
+ var scrollHeight = $(document).height();
+ //scroll position
+ var scrollPos = $(window).height() + $(window).scrollTop();
+ // fire if the scroll position is 300 pixels above the bottom of the page
+ if(((scrollHeight - 500) >= scrollPos) / scrollHeight == 0){
+   $('.load-more-days-button').click();
+  }
+});
+</script>
 @endsection

@@ -71,7 +71,7 @@ class IndexController extends Controller
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
             ->where('Tour.tour_ngaykt','>',$moment)
             ->orderBy('tour.tour_handk','desc')
-            ->limit(5)->get();
+            ->paginate(5);
            
         return view('frontend.index')->with('tour1',$tour1);
     }
