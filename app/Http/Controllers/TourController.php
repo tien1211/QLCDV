@@ -21,7 +21,7 @@ class TourController extends Controller
 {
 
     function __construct(){
-        $LichTrinh = LichTrinh::all();
+        $LichTrinh = DB::table('LichTrinh')->where('lt_trangthai',1)->get();
         $GiaiDoan = GiaiDoan::all();
         $TinhTrangThuPhi = DB::table('tinhtrangthuphi')->get();
         $ngaybd = "";
@@ -41,22 +41,21 @@ class TourController extends Controller
     public function getDanhSach(){
         $ngaybd = "";
         $ngaykt = "";
-        $Tour = Tour::all();
+        $Tour = Tour::where('tour_trangthai','=',1)->paginate(10);
         return view('admin.Tour.danhsach')->with('Tour',$Tour);
     }
 
 // Thêm
 
     public function getThem(){
-
-        $LichTrinh = LichTrinh::all();
+        $LichTrinh = DB::table('LichTrinh')->where('lt_trangthai',1)->get();
         return view('admin.Tour.them')->with('LichTrinh',$LichTrinh);
     }
 
     public function postThem(Request $request){
         $validation = $this->validate($request,
         [
-             'tour_handk' => 'required|date|after:now',
+            'tour_handk' => 'required|date|after:now',
             'tour_ngaybd' => 'required|date|after:tour_handk',
             'tour_ngaykt' => 'required|date|after:tour_ngaybd',
         ],
@@ -102,20 +101,15 @@ class TourController extends Controller
             }
             $Tour->tour_trangthai = 1;
             $Tour->save();
-            // Session::put('message','Thêm thành công!!!');
             Session::flash('alert-info', 'Thêm thành công!!!');
-           return Redirect()->route('TOUR_DanhSach');
+            return Redirect()->route('TOUR_DanhSach');
 }
-
-
 
     public function getSua($id){
         $Tour = Tour::find($id);
         return view('admin.Tour.sua')->with('Tour',$Tour);
     }
-
 // Sửa
-
     public function postSua(Request $request, $id){
         $Tour = Tour::find($id);
         $Tour->lt_id = $request->lt_id;
@@ -151,8 +145,8 @@ class TourController extends Controller
         $Tour->tour_trangthai = 1;
         $Tour->save();
 
-         Session::flash('alert-info', 'Sửa thành công!!!');
-         return Redirect()->route('TOUR_DanhSach');
+        Session::flash('alert-info', 'Sửa thành công!!!');
+        return Redirect()->route('TOUR_DanhSach');
     }
 
     public function getXoa($id){
@@ -171,48 +165,48 @@ class TourController extends Controller
         $lt_id = $request->lt_id;
         //dd($ngaybd);
         if((!empty($gd_id)) && (!empty($ngaybd)) && (!empty($ngaykt)) && (!empty($lt_id))){
-            $Tour = Tour::where([['lt_id','=',$lt_id],['gd_id','=', $gd_id],['tour_ngaybd','>',$ngaybd],['tour_ngaykt','<=',$ngaykt],])->get();
+            $Tour = Tour::where([['lt_id','=',$lt_id],['gd_id','=', $gd_id],['tour_ngaybd','>',$ngaybd],['tour_ngaykt','<=',$ngaykt],])->paginate(10);;
         }
         else if((empty($gd_id)) && (!empty($ngaybd)) && (!empty($ngaykt)) && (!empty($lt_id))){
-            $Tour = Tour::where([['lt_id','=',$lt_id],['tour_ngaybd','>',$ngaybd],['tour_ngaykt','<=',$ngaykt],])->get();
+            $Tour = Tour::where([['lt_id','=',$lt_id],['tour_ngaybd','>',$ngaybd],['tour_ngaykt','<=',$ngaykt],['tour_trangthai','=',1],])->paginate(10);;
         }
         else if((!empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt)) && (!empty($lt_id))){
-            $Tour = Tour::where([['lt_id','=',$lt_id],['gd_id','=', $gd_id],['tour_ngaykt','<=',$ngaykt],])->get();
+            $Tour = Tour::where([['lt_id','=',$lt_id],['gd_id','=', $gd_id],['tour_ngaykt','<=',$ngaykt],['tour_trangthai','=',1],])->paginate(10);;
         }
         else if((!empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt)) && (!empty($lt_id))){
-            $Tour = Tour::where([['lt_id','=',$lt_id],['gd_id','=', $gd_id],['tour_ngaybd','>',$ngaybd],])->get();
+            $Tour = Tour::where([['lt_id','=',$lt_id],['gd_id','=', $gd_id],['tour_ngaybd','>',$ngaybd],['tour_trangthai','=',1],])->paginate(10);;
         }
         else if((!empty($gd_id)) && (empty($ngaybd)) && (empty($ngaykt)) && (!empty($lt_id))){
-            $Tour = Tour::where([['lt_id','=',$lt_id],['gd_id','=', $gd_id],])->get();
+            $Tour = Tour::where([['lt_id','=',$lt_id],['gd_id','=', $gd_id],['tour_trangthai','=',1],])->paginate(10);
         }
         else if((empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt)) && (!empty($lt_id))){
-            $Tour = Tour::where([['lt_id','=',$lt_id],['tour_ngaybd','>',$ngaybd],])->get();
+            $Tour = Tour::where([['lt_id','=',$lt_id],['tour_ngaybd','>',$ngaybd],['tour_trangthai','=',1],])->paginate(10);
         }
         else if((empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt)) && (!empty($lt_id))){
-            $Tour = Tour::where([['lt_id','=',$lt_id],['tour_ngaykt','<=',$ngaykt],])->get();
+            $Tour = Tour::where([['lt_id','=',$lt_id],['tour_ngaykt','<=',$ngaykt],['tour_trangthai','=',1],])->paginate(10);
         }
         else if((empty($gd_id)) && (empty($ngaybd)) && (empty($ngaykt)) && (!empty($lt_id))){
-            $Tour = Tour::where('lt_id','=',$lt_id)->get();
+            $Tour = Tour::where([['lt_id','=',$lt_id],['tour_trangthai','=',1],])->paginate(10);
         }
         else if((empty($gd_id)) && (!empty($ngaybd)) && (!empty($ngaykt)) && (empty($lt_id))){
-            $Tour = Tour::where([['tour_ngaybd','>=',$ngaybd],['tour_ngaykt','<=',$ngaykt],])->get();
+            $Tour = Tour::where([['tour_ngaybd','>=',$ngaybd],['tour_ngaykt','<=',$ngaykt],['tour_trangthai','=',1],])->paginate(10);
         }
         else if((!empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt)) && (empty($lt_id))){
-                $Tour = Tour::where([['gd_id','=', $gd_id],['tour_ngaykt','<=',$ngaykt],])->get();
+                $Tour = Tour::where([['gd_id','=', $gd_id],['tour_ngaykt','<=',$ngaykt],['tour_trangthai','=',1],])->paginate(10);
         }
         else if((!empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt)) && (empty($lt_id))){
-            $Tour = Tour::where([['gd_id','=', $gd_id],['tour_ngaybd','>',$ngaybd],])->get();
+            $Tour = Tour::where([['gd_id','=', $gd_id],['tour_ngaybd','>',$ngaybd],['tour_trangthai','=',1],])->paginate(10);
         }
         else if((!empty($gd_id)) && (empty($ngaybd)) && (empty($ngaykt)) && (empty($lt_id))){
-            $Tour = Tour::where('gd_id','=', $gd_id)->get();
+            $Tour = Tour::where([['gd_id','=', $gd_id],['tour_trangthai','=',1],])->paginate(10);
         }
         else if((empty($gd_id)) && (!empty($ngaybd)) && (empty($ngaykt)) && (empty($lt_id))){
-            $Tour = Tour::where('tour_ngaybd','>',$ngaybd)->get();
+            $Tour = Tour::where([['tour_ngaybd','>',$ngaybd],['tour_trangthai','=',1],])->paginate(10);
         }
         else if((empty($gd_id)) && (empty($ngaybd)) && (!empty($ngaykt)) && (empty($lt_id))){
-            $Tour = Tour::where('tour_ngaykt','<=',$ngaykt)->get();
+            $Tour = Tour::where([['tour_ngaykt','<=',$ngaykt],['tour_trangthai','=',1],])->paginate(10);
         }else{
-            $Tour = Tour::all();
+            $Tour = Tour::where('tour_trangthai','=',1)->paginate(10);;
         }
         return view('admin.Tour.danhsach')->with('Tour', $Tour)->with('ngaybd',$ngaybd)->with('ngaykt',$ngaykt)->with('gd_id',$gd_id)->with('lt_id',$lt_id);
     }
@@ -239,7 +233,9 @@ class TourController extends Controller
             ->get();
         return view('admin.Tour.chitiet')->with('chitietTour',$chitietTour)
             ->with('nguoithamgia',$nguoithamgia)
-            ->with('cdv_dk',$cdv_dk);
+            ->with('cdv_dk',$cdv_dk)
+            ->with('tour_id',$id);
+
     }
 
     public function getDKT($id){
@@ -362,22 +358,32 @@ class TourController extends Controller
                 DB::table('thongtinnguoidk')->insert($data);
                 // cập nhật lại số lượng tour
                 $tour = DB::table('tour')->where('tour_id',$id)->first();
-                Session::flash('message', 'Đăng ký thành công!!!');
+                Session::flash('alert-info', 'Đăng ký thành công!!!');
                 DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $tour->tour_soluong - 1]);
                 return redirect()->back();
             }
         }else{
-            Session::flash('message', 'Công đoàn viên không tồn tại');
+            Session::flash('alert-info', 'Công đoàn viên không tồn tại');
             return redirect()->back();
         }
     }
 
-
-    // public function Export($id){
-    //     $dataTime = date('Ymd_His');
-    //     $name = $dataTime. '-' . 'DS_NguoiThamGia.xlsx';
-    //     return Excel::download(new DSNTGExport, $name);
-    // }
-
-
+    public function viewExport($id){
+        $info = DB::table('thongtinnguoidk')
+        ->join('dk_tour','dk_tour.dkt_id','=','thongtinnguoidk.dkt_id')
+        ->join('congdoanvien','congdoanvien.cdv_id','=','dk_tour.cdv_id')
+        ->join('tinhtrangthuphi','tinhtrangthuphi.tttp_id','=','dk_tour.tttp_id')
+        ->where([['dk_tour.tour_id',$id],['congdoanvien.cdv_trangthai','<>',0],])
+        ->orderBy('dk_tour.cdv_id','asc')
+        ->orderBy('dk_tour.tttp_id','asc')
+        ->get();
+        return view('admin.Tour.Tour-Excel')->with('info',$info);
+    }
+    
+    public function Export($id)
+    {
+        $dataTime = date('Ymd_His');
+        $name = $dataTime. '-' . 'DSNTG.xlsx';
+        return Excel::download(new DSNTGExport, $name);
+    }
 }

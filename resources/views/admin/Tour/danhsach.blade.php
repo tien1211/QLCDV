@@ -93,25 +93,22 @@
 
         <tbody>
             @foreach ($Tour as $key => $t)
-            @if ($t->tour_trangthai == 1)
                 <tr data-expanded="true">
                     <td>{{$key + 1}}</td>
-                <td>{{$t->LichTrinh->lt_ten}}  {{date('Y ',strtotime($t->tour_handk))}}</td>
-                <td>{{$t->GiaiDoan->giai_doan}}</td>
+                    <td>{{$t->LichTrinh->lt_ten}}  {{date('Y ',strtotime($t->tour_handk))}}</td>
+                    <td>{{$t->GiaiDoan->giai_doan}}</td>
                     <td>{{date('d/m/Y ',strtotime($t->tour_handk))}}</td>
                     <td>{{date('d/m/Y ',strtotime($t->tour_ngaybd))}}</td>
                     <td>{{date('d/m/Y ',strtotime($t->tour_ngaykt))}}</td>
-                <td>{{number_format($t->tour_chiphi)}}</td>
+                    <td>{{number_format($t->tour_chiphi)}}</td>
                     <td>{{$t->tour_soluong}}</td>
                     <td>{{$t->tour_daily}}</td>
-                    {{-- <td>{{$t->tour_hinhanh}}</td> --}}
                     <td><a class="glyphicon glyphicon-eye-open" title="Chi Tiết" href="{{route('TOUR_ChiTiet',['id'=>$t->tour_id])}}"></a></td>
                     <td>
-                      <a class="glyphicon glyphicon-edit" title="Sửa" href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}"></a>
-                      <a class="glyphicon glyphicon-trash" title="Xóa" href="{{route('TOUR_Xoa',['id'=>$t->tour_id])}}"></a>
-                      </td>
+                    <a class="glyphicon glyphicon-edit" title="Sửa" href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}"></a>
+                    <a class="glyphicon glyphicon-trash" title="Xóa" href="{{route('TOUR_Xoa',['id'=>$t->tour_id])}}"></a>
+                    </td>
                 </tr>
-            @endif
           @endforeach
         </tbody>
     </div>

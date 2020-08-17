@@ -20,7 +20,7 @@ class LichTrinhController extends Controller
 
     // Hien thi lich trinh
     public function getDanhSach(){
-        $LichTrinh = LichTrinh::all();
+        $LichTrinh = LichTrinh::where('lt_trangthai',1)->get();
         return view('admin.LichTrinh.danhsach',compact('LichTrinh'));
     }
 
@@ -112,7 +112,6 @@ class LichTrinhController extends Controller
         }
     }
 
-
     public function getXoa($id){
         $LichTrinh = LichTrinh::find($id);
         $LichTrinh->lt_trangthai = 0;
@@ -130,9 +129,8 @@ class LichTrinhController extends Controller
     public function getHinh($id){
         $hinh = DB::table('anh_tour')
             ->join('lichtrinh','lichtrinh.lt_id','=','anh_tour.lt_id')
-            ->where('anh_tour.lt_id',$id)->get();
-        //dd($hinh);
-        return view('admin.LichTrinh.danhsachhinh')->with('hinh',$hinh);
+            ->where([['anh_tour.lt_id',$id],['at_trangthai',1]])->get();
+        return view('admin.LichTrinh.danhsachhinh')->with('hinh',$hinh)->with('lt_id',$id);
     }
 
     public function postHinh(Request $request, $id){
@@ -142,7 +140,7 @@ class LichTrinhController extends Controller
             $duoi = $file->getClientOriginalExtension();
             if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
                 Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
-                return redirect()->route('CDV_Them');
+                return redirect()->back();
             }
             $fileName = $dataTime . '-' . $file->getClientOriginalName();
             //resize ảnh
@@ -158,10 +156,10 @@ class LichTrinhController extends Controller
             $data['at_trangthai'] = 1;
             DB::table('anh_tour')->insert($data);
         }
-            Session::flash('message', 'Thêm thành công!!!');
+            Session::flash('alert-info', 'Thêm thành công!!!');
             return redirect()->back();
         }else{
-            Session::flash('message', 'Chưa chọn file!!!');
+            Session::flash('alert-warning', 'Chưa chọn file!!!');
             return redirect()->back();
         }
     }
@@ -197,9 +195,7 @@ class LichTrinhController extends Controller
 
     public function getXoaHinh(Request $request){
         $at_id = $request->at_id;
-        //dd($at_id);
         foreach($at_id as $anh){
-            //dd($anh);
             DB::table('anh_tour')->where('at_id',$anh)->update(['at_trangthai'=>0]);
         }
         Session::flash('alert-info', 'Xóa Thành Công!!!');

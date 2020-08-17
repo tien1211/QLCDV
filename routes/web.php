@@ -37,6 +37,8 @@ Route::get('/danhsachnguoithamgia{id}','IndexController@getDSNTG')->name('DS_NTG
 Route::post('/xoanguoithamgia/{id}','IndexController@postXNTG')->name('XL_XNTTDK');
 // Hủy đăng ký tour
 Route::get('/huytour/{id}','IndexController@postDelete')->name('HUY_TOUR');
+// Tìm kiếm tour
+Route::get('/timkiemtour','IndexController@getSearch')->name('TK_TOUR');
 
 Route::get('/profile/{id}','IndexController@getProfile')->name('proFile');
 
@@ -103,8 +105,8 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
     Route::group(['prefix' => 'Tour'], function () {
         
         //Export
-        // Route::get('/Tour_Export/Export/{id}','TourController@Export')->name('Tour_Export');
-        
+        Route::get('/Tour_Export/Export/{id}','TourController@Export')->name('Tour_Export');
+        Route::get('/Tour_Export/{id}','TourController@viewExport')->name('Tour_ViewExport');
         //Danh sach tour
         Route::get('TOUR_DS','TourController@getDanhSach')->name('TOUR_DanhSach');
         //Form thêm tour
