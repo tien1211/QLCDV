@@ -2,18 +2,16 @@
     <!-- Search Form -->
     <div class="search-form d-flex align-items-center">
         <div class="container">
-            <form action="index.html" method="get">
-                <input type="search" name="search-form-input" id="searchFormInput" placeholder="Type your keyword ...">
+            <form action="{{route('TK_TOUR')}}" method="get">
+                <input type="text" name="tu_khoa" id="searchFormInput" placeholder="Điền từ khóa...">
                 <button type="submit"><i class="icon_search"></i></button>
             </form>
         </div>
     </div>
-
     <!-- Top Header Area Start -->
     <div class="top-header-area">
         <div class="container">
             <div class="row">
-
                 <div class="col-6">
                     <div class="top-header-content">
                         <a href="#"><i class="icon_phone"></i> <span>(123) 456-789-1230</span></a>
@@ -64,12 +62,10 @@
                                 </li>
                                 @endif
                             </ul>
-
                             <!-- Search -->
                             <div class="search-btn ml-4">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </div>
-
                             <!-- Book Now -->
 
                         </div>

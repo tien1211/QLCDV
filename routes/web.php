@@ -37,6 +37,8 @@ Route::get('/danhsachnguoithamgia{id}','IndexController@getDSNTG')->name('DS_NTG
 Route::post('/xoanguoithamgia/{id}','IndexController@postXNTG')->name('XL_XNTTDK');
 // Hủy đăng ký tour
 Route::get('/huytour/{id}','IndexController@postDelete')->name('HUY_TOUR');
+// Tìm kiếm tour
+Route::get('/timkiemtour','IndexController@getSearch')->name('TK_TOUR');
 
 Route::get('/profile/{id}','IndexController@getProfile')->name('proFile');
 
