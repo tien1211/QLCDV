@@ -69,13 +69,14 @@ class IndexController extends Controller
         $tour1 = DB::table('Tour')
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
-            ->where('Tour.tour_ngaykt','>',$moment)
+            ->where([['Tour.tour_ngaykt','>',$moment],['tour_trangthai',1],])
             ->orderBy('tour.tour_handk','desc')
-            ->limit(5)->get();
+            ->paginate(5);
         return view('frontend.index')->with('tour1',$tour1);
     }
 
     public function getChiTiet($id){
+            $now=  Carbon::now('Asia/Ho_Chi_Minh');
             $datail=Tour::find($id);
             $a = DB::table('LichTrinh')->join('Tour','LichTrinh.lt_id','=','Tour.lt_id')
                 ->join('Anh_Tour','Anh_Tour.lt_id','=','LichTrinh.lt_id')
@@ -92,9 +93,10 @@ class IndexController extends Controller
             $tourkhac = DB::table('Tour')
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
-            ->where('tour.tour_id','<>',$id)
+            ->where([['tour.tour_id','<>',$id],['tour.tour_handk','>',$now]])
             ->orderBy('tour.tour_handk','desc')
             ->limit(4)->get();
+            
         if(!Auth::check()){
             $temp = [];
             return view('frontend.chitiet')->with('a',$a)->with('b',$b)
@@ -372,7 +374,7 @@ class IndexController extends Controller
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
             ->whereRaw('tour_trangthai = 1 and lower(lt_ten) LIKE (?)',["%{$tu_khoa}%"])
             ->orderBy('tour.tour_handk','desc')
-            ->get();
+            ->paginate(5);
     return view('frontend.index')->with('tour1',$tour1);
     }
 

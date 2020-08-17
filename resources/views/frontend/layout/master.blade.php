@@ -83,6 +83,8 @@
     <script src="frontend/js/default-assets/active.js"></script>
 
 
+
+        
     @yield('script')
 </body>
 
