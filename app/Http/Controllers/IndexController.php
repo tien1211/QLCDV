@@ -69,10 +69,9 @@ class IndexController extends Controller
         $tour1 = DB::table('Tour')
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
-            ->where('Tour.tour_ngaykt','>',$moment)
+            ->where([['Tour.tour_ngaykt','>',$moment],['tour_trangthai',1],])
             ->orderBy('tour.tour_handk','desc')
             ->paginate(5);
-           
         return view('frontend.index')->with('tour1',$tour1);
     }
 
@@ -365,5 +364,18 @@ class IndexController extends Controller
         return view('frontend.tourdadienra')->with('deadline',$deadline);
     }
 
+    // Tìm kiếm
+    public function getSearch(Request $request){
+        $tu_khoa = vn_to_str($request->tu_khoa);
+        //dd($tu_khoa);
+        $moment=  Carbon::now('Asia/Ho_Chi_Minh');
+        $tour1 = DB::table('tour')
+            ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
+            ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
+            ->whereRaw('tour_trangthai = 1 and lower(lt_ten) LIKE (?)',["%{$tu_khoa}%"])
+            ->orderBy('tour.tour_handk','desc')
+            ->paginate(5);
+    return view('frontend.index')->with('tour1',$tour1);
+    }
 
 }
