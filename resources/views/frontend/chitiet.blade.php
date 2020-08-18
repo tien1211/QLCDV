@@ -117,16 +117,24 @@
                                         <div class="room-feature">
                                             <h6>Ngày Bắt Đầu: <span>{{date('d-m-Y ',strtotime($datail->tour_ngaybd))}}</span></h6>
                                             <br>
+
+                                            @if ($now> $datail->tour_ngaykt)
+                                            <h6>Ngày Kết Thúc: <span style="color:red"> <b>{{date('d-m-Y ',strtotime($datail->tour_ngaykt))}}</b></span></h6>
+                                            @else
                                             <h6>Ngày Kết Thúc: <span>{{date('d-m-Y ',strtotime($datail->tour_ngaykt))}}</span></h6>
+                                                
+                                            @endif
+
+                                            
                                             <br>
                                             <h6>Hạn Đăng ký:
                                                 @if ($now > $datail->tour_handk)
                                                     <div class="post-meta" >
-                                                        <a href="#" class="post-author mt-20" style="color: red">Hết hạn đăng kí</a>
+                                                        <a href="#" class="post-author mt-20" style="color: red"> <b> Hết hạn đăng kí </b></a>
                                                     </div>
                                                 @elseif($datail->tour_soluong == 0 && $now < $datail->tour_handk)
                                                     <div class="post-meta" >
-                                                        <a href="#" class="post-author mt-10" style="color: red">Hết chổ</a>
+                                                        <a href="#" class="post-author mt-10" style="color: red"> <b> Hết chổ </b></a>
                                                     </div>
                                                 @else
                                                     <div class="post-meta">
