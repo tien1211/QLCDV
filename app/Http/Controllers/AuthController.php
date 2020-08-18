@@ -27,10 +27,8 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($arr)) {
-            return redirect()->route("admin");#chuyển về trang chủ
-
+            return redirect()->route("DV_DanhSach"); #chuyển về trang chủ
         } else {
-
             return redirect()->back()
             ->withInput()->with("error", "Sai tài khoản hoặc mật khẩu");
         }

@@ -4,65 +4,32 @@
         <div class="container">
             <div class="row align-items-baseline justify-content-between">
                 <!-- Single Footer Widget Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
+                <div class="col-12 col-sm-6 col-lg-7">
                     <div class="single-footer-widget mb-80">
                         <!-- Footer Logo -->
-                        <a href="#" class="footer-logo"><img src="frontend/img/core-img/logo2.png" alt=""></a>
-
-                        <h4>+12 345-678-9999</h4>
-                        <span>Info.colorlib@gmail.com</span>
-                        <span>856 Cordia Extension Apt. 356, Lake Deangeloburgh, South Africa</span>
+                        <h4>(84+) 18001260</h4>
+                        <span>cskh@vnpt.com</span>
+                        <span>Công viên phần mềm Mekong, quốc lộ 50, xã Tân Mỹ Chánh, Mỹ Tho, Tiền Giang</span>
                     </div>
                 </div>
 
                 <!-- Single Footer Widget Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
+                <div class="col-12 col-sm-6 col-lg-5">
                     <div class="single-footer-widget mb-80">
                         <!-- Widget Title -->
-                        <h5 class="widget-title">Our Blog</h5>
+                        <h5 class="widget-title">Đơn Vị</h5>
 
                         <!-- Single Blog Area -->
                         <div class="latest-blog-area">
-                            <a href="#" class="post-title">Freelance Design Tricks How</a>
-                            <span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Jan 02, 2019</span>
+                            <a href="#" class="post-title">Trung Tâm CNTT Tiền Giang</a>
+                            <span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i> 18 tháng 8, 2020</span>
                         </div>
 
                         <!-- Single Blog Area -->
                         <div class="latest-blog-area">
-                            <a href="#" class="post-title">Free Advertising For Your Online</a>
-                            <span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Jan 02, 2019</span>
+                            <a href="#" class="post-title">Viễn Thông Tiền Giang</a>
+                            <span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i> 18 tháng 8, 2020</span>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Single Footer Widget Area -->
-                <div class="col-12 col-sm-4 col-lg-2">
-                    <div class="single-footer-widget mb-80">
-                        <!-- Widget Title -->
-                        <h5 class="widget-title">Links</h5>
-
-                        <!-- Footer Nav -->
-                        <ul class="footer-nav">
-                            <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> About Us</a></li>
-                            <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Our Room</a></li>
-                            <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Career</a></li>
-                            <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> FAQs</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Single Footer Widget Area -->
-                <div class="col-12 col-sm-8 col-lg-4">
-                    <div class="single-footer-widget mb-80">
-                        <!-- Widget Title -->
-                        <h5 class="widget-title">Subscribe Newsletter</h5>
-                        <span>Subscribe our newsletter gor get notification about new updates.</span>
-
-                        <!-- Newsletter Form -->
-                        <form action="index.html" class="nl-form">
-                            <input type="email" class="form-control" placeholder="Enter your email...">
-                            <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                        </form>
                     </div>
                 </div>
             </div>

@@ -14,8 +14,8 @@
             <div class="row">
                 <div class="col-6">
                     <div class="top-header-content">
-                        <a href="#"><i class="icon_phone"></i> <span>(123) 456-789-1230</span></a>
-                        <a href="#"><i class="icon_mail"></i> <span>info.colorlib@gmail.com</span></a>
+                        <a href="#"><i class="icon_phone"></i> <span>(84+) 18001260</span></a>
+                        <a href="#"><i class="icon_mail"></i> <span>cskh@vnpt.com</span></a>
                     </div>
                 </div>
             </div>
