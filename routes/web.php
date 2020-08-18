@@ -85,10 +85,6 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
         Route::get('/CDV_CNMHT','CongDoanVienController@updateCDV')->name('CDV_CNMHT');
     });
     Route::group(['prefix' => 'DonVi'], function () {
-
-        
-
-
         // Danh sách đơn vị
         Route::get('/DonVi', 'DonViController@getDonVi')->name('DV_DanhSach');
         // Form thêm đơn vị
