@@ -106,7 +106,7 @@
                     <td><a class="glyphicon glyphicon-eye-open" title="Chi Tiết" href="{{route('TOUR_ChiTiet',['id'=>$t->tour_id])}}"></a></td>
                     <td>
                     <a class="glyphicon glyphicon-edit" title="Sửa" href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}"></a>
-                    <a class="glyphicon glyphicon-trash" title="Xóa" href="{{route('TOUR_Xoa',['id'=>$t->tour_id])}}"></a>
+                    <a class="glyphicon glyphicon-trash" title="Xóa" href="{{route('TOUR_Xoa',['id'=>$t->tour_id])}}" onclick="return confirm('Bạn có chắc muốn xóa không?');"></a>
                     </td>
                 </tr>
           @endforeach
