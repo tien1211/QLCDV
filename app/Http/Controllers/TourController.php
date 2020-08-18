@@ -386,4 +386,62 @@ class TourController extends Controller
         $name = $dataTime. '-' . 'DSNTG.xlsx';
         return Excel::download(new DSNTGExport, $name);
     }
+
+    public function postXNDK(Request $request, $id){
+        $ntg = $request->ttndk_id;
+        foreach($ntg as $t){
+            DB::table('thongtinnguoidk')
+                ->where('ttndk_id',$t)
+                ->update(['ttndk_trangthai'=>0]);
+            //cập nhật lại số lượng đăng ký tour
+            $dkt = DB::table('thongtinnguoidk')
+                ->where('ttndk_id',$t)
+                ->first();
+            $tourdk = DB::table('dk_tour')
+                ->where([['dkt_id',$dkt->dkt_id],['tttp_id','<>',2],])
+                ->first();
+            $soluongconlai = $tourdk->dkt_soluong - 1;
+            DB::table('dk_tour')
+                ->where([['dkt_id',$dkt->dkt_id],['tttp_id','<>',2],])
+                ->update(['dkt_soluong' => $soluongconlai]);
+            // cập nhật lại hủy tour
+            if($soluongconlai == 0){
+                DB::table('dk_tour')
+                ->where([['dkt_id',$dkt->dkt_id],['tttp_id','<>',2],])
+                ->update(['tttp_id' => 2]);
+                //Cập nhật mức hổ trợ cho tour khác
+                if($tourdk->phihotro == 0){
+                    continue;
+                }else{
+                    $tourgd = DB::table('tour')
+                        ->where([['tour_id',$id],['tour_trangthai',1],])
+                        ->first();
+                    $cdv_id = $tourdk->cdv_id;
+                    // lấy mức hổ trợ
+                    $phihotro = DB::table('congdoanvien')
+                    ->join('muchotro','muchotro.mht_id','=','congdoanvien.mht_id')
+                    ->where('cdv_id',$cdv_id)->first();
+                    $tourtrc = DB::table('dk_tour')
+                        ->join('Tour','Tour.tour_id','=','dk_tour.tour_id')
+                        ->where([['tour.gd_id',$tourgd->gd_id],['cdv_id',$cdv_id],['tttp_id','<>',2]])
+                        ->orderBy('dk_tour.created_at','asc')
+                        ->limit(1)
+                        ->update(['dk_tour.phihotro'=>$phihotro->mht_phihotro]);
+                    continue;
+                }
+            }else{
+                continue;
+            }
+        }
+        //cập nhật lại số lượng tour
+        $tour = DB::table('tour')
+            ->where([['tour_id',$id],['tour_trangthai',1],])
+            ->first();
+        $soluongmoi = $tour->tour_soluong + count($ntg);
+        DB::table('tour')
+            ->where('tour_id',$id)
+            ->update(['tour_soluong' => $soluongmoi]);
+        Session::flash('alert-info', 'Xóa thành công!!!');
+        return redirect()->route('TOUR_ChiTiet',['id'=>$id]);
+    }
 }

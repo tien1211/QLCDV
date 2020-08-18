@@ -2,7 +2,7 @@
 @section('frontend_content')
 <div class="col-12">
     <div class="section-heading text-center " data-wow-delay="100ms">
-        <h2>Đăng Ký Tour</h2>
+        <h2>Danh Sách Tour</h2>
     </div>
 </div>
 
