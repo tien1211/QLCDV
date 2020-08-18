@@ -8,14 +8,16 @@ use Carbon;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Illuminate\Validation\Rule;
 
-class CongDoanVienImport implements ToCollection,WithValidation
+class CongDoanVienImport implements ToCollection
 {
     /**
     * @param Collection $collection
     */
     public function collection(Collection $collection)
     {
+        
         foreach($collection as $key => $value){
+           
             #Định dạng ngày;
             if($key>0){
                 
@@ -51,12 +53,13 @@ class CongDoanVienImport implements ToCollection,WithValidation
             '0'       =>  'required',
             '1'       =>  'required',
             '2'       =>  'required',
+            '3'       =>  'required',
             '4'       =>  'required',
             '5'       =>  'required',
             '6'       =>  'required',
             '7'       =>  'required',
             '8'       =>  'required',
-            '9'       =>  'required',
+            '9'       =>   'required',
             '10'      =>  ['required',Rule::unique('CongDoanVien', 'cdv_email')],
             '11'      =>  'required',
             '12'      =>  'required',
@@ -64,8 +67,7 @@ class CongDoanVienImport implements ToCollection,WithValidation
             '14'      =>  'required',
             '15'      =>  'required',
             '16'      =>  ['required',Rule::unique('CongDoanVien', 'cdv_username')],
-            '17'      =>  'required',
-           
+            '17'      =>  'required'
         ];
     }
 
@@ -89,10 +91,7 @@ class CongDoanVienImport implements ToCollection,WithValidation
                 '14.required'   => trans('Không được để trống tôn giáo'),
                 '15.required'   => trans('Không được để trống ngày thử việc'),
                 '16.required'   => trans('Không được để trống ngày vào ngành'),
-                '18.required'   => trans('Không được để trống tên đăng nhập'),
-                '18.unique'     => trans('Tên đăng nhập đã được tồn tại'),
-                '19.required'   => trans('Vui lòng không được để trống mật khẩu'),
-             
+                '17.required'   => trans('Không được để trống tên đăng nhập'),
             ];
         }
 }
