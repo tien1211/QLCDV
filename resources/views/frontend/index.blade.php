@@ -11,7 +11,7 @@
         <!-- Room Thumbnail -->
 
         <div class="room-thumbnail">
-           <a href="{{route('chitiettour',['id'=>$t->tour_id])}}"><img src="upload/tour/{{$t->tour_hinhanh}}" alt=""></a>
+            <a href="{{route('chitiettour',['id'=>$t->tour_id])}}"><img src="upload/tour/{{$t->tour_hinhanh}}" alt=""></a>
         </div>
         <!-- Room Content -->
         <div class="room-content">
@@ -39,17 +39,11 @@
                         </div>
                     @endif
                 </h6>
-
             <h6>Số chỗ còn lại: <span>{{$t->tour_soluong}}</span></h6>
             </div>
             <a href="{{route('chitiettour',['id'=>$t->tour_id])}}" class="btn btn-info btn-sm">Chi Tiết</a>
         </div>
-
     </div>
-    
     @endforeach
-    
         <div class="mb-5" style="margin-left: 60%">{!! $tour1->links() !!}</div>
-    
-
 @endsection
