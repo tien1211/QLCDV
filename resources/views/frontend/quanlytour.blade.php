@@ -7,21 +7,17 @@
         @endif
     @endforeach
 </div>
-<div class="row">
-    <div class="col-12">
-        <!-- Section Heading -->
-        <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
-            <h3>Các Tour bạn đã đăng ký</h3>
-        </div>
-    </div>
-</div>
+@if(count($tourdk) == 0)
+    <h2>Bạn chưa đăng ký tour nào...!!!</h2><hr>
+@else
 <div class="room-service mb-50">
+    <h2>Danh Sách Tour đã đăng ký</h2><hr>
+    {{-- {{$ifo1}} --}}
     <table class="table">
         <thead class="thead-light">
             <tr>
                 <th>STT</th>
                 <th>Tên tour</th>
-                <th>Giai đoạn</th>
                 <th>Chi phí</th>
                 <th>Trạng thái</th>
                 <th>Thao Tác</th>
@@ -32,8 +28,7 @@
             <tr>
             <td>{{$key + 1}}</td>
             <td><a href="{{route('chitiettour',['id'=>$tour->tour_id])}}">{{$tour->lt_ten}} {{date('Y ',strtotime($tour->tour_handk))}}</a></td>
-            <td>{{$tour->giai_doan}}</td>
-            <td>{{$tour->tour_chiphi}}</td>
+            <td>{{number_format($tour->tour_chiphi * $tour->dkt_soluong)}} VNĐ</td>
             <td>
                 @if($now > $tour->tour_handk)
                 <a style="color:red">Hết hạn</a>
@@ -54,4 +49,5 @@
         </tbody>
     </table>
 </div>
+@endif
 @endsection
