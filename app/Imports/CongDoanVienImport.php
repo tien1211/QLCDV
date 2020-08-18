@@ -24,22 +24,22 @@ class CongDoanVienImport implements ToCollection,WithValidation
                     'cv_id' => $value[1],
                     'lnv_id' => $value[2],
                     'mht_id' => 1,
-                    'cdv_ten' => $value[4],
-                    'cdv_ngaysinh' => Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value[5]))->format('Y-m-d'),
-                    'cdv_gioitinh' => $value[6],#1 là nam 0 là nữ
-                    'cdv_cmnd' => $value[7],
-                    'cdv_nguyenquan' => $value[8],
-                    'cdv_diachi' => $value[9],
-                    'cdv_sdt' => $value[10],
-                    'cdv_email' => $value[11],
-                    'cdv_dantoc' => $value[12],
-                    'cdv_trinhdo' => $value[13],
-                    'cdv_tongiao' => $value[14],
-                    'cdv_ngaythuviec' => Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value[15]))->format('Y-m-d'),
-                    'cdv_ngayvaonganh' => Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value[16]))->format('Y-m-d'),
+                    'cdv_ten' => $value[3],
+                    'cdv_ngaysinh' => Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value[4]))->format('Y-m-d'),
+                    'cdv_gioitinh' => $value[5],#1 là nam 0 là nữ
+                    'cdv_cmnd' => $value[6],
+                    'cdv_nguyenquan' => $value[7],
+                    'cdv_diachi' => $value[8],
+                    'cdv_sdt' => $value[9],
+                    'cdv_email' => $value[10],
+                    'cdv_dantoc' => $value[11],
+                    'cdv_trinhdo' => $value[12],
+                    'cdv_tongiao' => $value[13],
+                    'cdv_ngaythuviec' => Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value[14]))->format('Y-m-d'),
+                    'cdv_ngayvaonganh' => Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value[15]))->format('Y-m-d'),
                     'cdv_trangthai' => 1,
-                    'cdv_username' => $value[18],
-                    'password' => bcrypt($value[19]),
+                    'cdv_username' => $value[16],
+                    'password' => bcrypt($value[17]),
                     'cdv_quyen' => 0
                 ]);
             }
@@ -57,15 +57,15 @@ class CongDoanVienImport implements ToCollection,WithValidation
             '7'       =>  'required',
             '8'       =>  'required',
             '9'       =>  'required',
-            '10'      =>  'required',
-            '11'      =>  ['required', Rule::unique('CongDoanVien', 'cdv_email')],
+            '10'      =>  ['required',Rule::unique('CongDoanVien', 'cdv_email')],
+            '11'      =>  'required',
             '12'      =>  'required',
             '13'      =>  'required',
             '14'      =>  'required',
             '15'      =>  'required',
-            '16'      =>  'required',
-            '18'      =>  ['required',Rule::unique('CongDoanVien', 'cdv_email')],
-            '19'      =>  'required',
+            '16'      =>  ['required',Rule::unique('CongDoanVien', 'cdv_username')],
+            '17'      =>  'required',
+           
         ];
     }
 
