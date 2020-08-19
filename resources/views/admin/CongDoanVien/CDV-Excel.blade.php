@@ -30,7 +30,6 @@
         <th>Ngày Vào Ngành</th>
         <th>Trạng Thái</th>
         <th>Tên Đăng Nhập</th>
-        
         <th>Quyền</th>
       </tr>
     </thead>
@@ -44,13 +43,11 @@
                 <td>{{number_format($cdv->MucHoTro->mht_phihotro)}} VNĐ</td>
                 <td>{{$cdv->cdv_ten}}</td>
                 <td>{{date('d/m/Y',strtotime($cdv->cdv_ngaysinh))}}</td>
-                
                 @if($cdv->cdv_gioitinh == 1)
                 <td>Nam</td>
                 @else
                 <td>Nữ</td>
                 @endif
-
                 <td>{{$cdv->cdv_cmnd}}</td>
                 <td>{{$cdv->cdv_nguyenquan}}</td>
                 <td>{{$cdv->cdv_diachi}}</td>

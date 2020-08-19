@@ -1,16 +1,16 @@
 @extends('frontend.layout.master')
 @section('frontend_content')
 <div class="room-service mb-50">
-    <h2>Danh Sách Tour đã hết hạn</h2><hr>
-    {{-- {{$ifo1}} --}}
+    <h2>Danh Sách Tour Đã Hết Hạn</h2><hr>
+    
     <table class="table" >
         <thead class="thead-light">
             <tr>
                 <th>STT</th>
-                <th>Tên tour</th>
-                <th>Giai đoạn</th>
-                <th>Chi phí</th>
-                <th>Chi tiết</th>
+                <th>Tên Tour</th>
+                <th>Giai Đoạn</th>
+                <th>Chi Phí</th>
+                <th>Chi Tiết</th>
             </tr>
         </thead>
         <tbody>
