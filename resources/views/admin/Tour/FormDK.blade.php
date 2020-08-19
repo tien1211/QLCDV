@@ -57,11 +57,11 @@
                     </div>
                 </div>
                 {{ csrf_field() }}
-                @if($tour->tour_soluong == 0)
+                @if($tour->tour_soluong <= 0)
                 <div class="form-group ">
                     <label for="firstname" class="control-label col-lg-3">Số lượng còn lại: </label>
                     <div class="col-lg-6">
-                    <input style="color: red;" type="text" class="form-control input-lg" value="{{$tour->tour_soluong}}" disabled/>
+                    <input style="color: red;" type="text" class="form-control input-lg" value="0" disabled/>
                     </div>
                 </div>
                 <div class="form-group">

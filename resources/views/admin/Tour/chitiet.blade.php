@@ -135,10 +135,10 @@
                         <td>{{$ntg->cdv_ten}}</td>
                         @if($ntg->ttndk_trangthai == 1)
                             <td>Đã đăng ký</td>
+                            <td><input type="checkbox" name="ttndk_id[]" value="{{$ntg->ttndk_id}}"/></td>
                         @else
                             <td><a style="color:red">Hủy đăng ký</a></td>
                         @endif
-                        <td><input type="checkbox" name="ttndk_id[]" value="{{$ntg->ttndk_id}}"/></td>
                     </tr>
                 @endforeach
             </tbody>
