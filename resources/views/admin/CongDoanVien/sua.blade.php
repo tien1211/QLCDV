@@ -381,9 +381,6 @@
             }
         });
     });
-
-
-
     $("#formDemo1").validate({
         rules: {
             dv_id: "required",
@@ -436,10 +433,5 @@
             cdv_quyen: "Vui lòng chọn quyền",
         }
     });
-
-
-
 </script>
-
-
 @endsection

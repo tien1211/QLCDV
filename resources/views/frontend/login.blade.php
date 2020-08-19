@@ -115,21 +115,7 @@
 
     <script src="login/js/main.js"></script>
 
-    @section('script')
-
-        {{-- //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
-        <script type="text/javascript">
-    function confirmed_pass(){
-        var password = document.getElementById("password").value;
-        var confirmed_password = document.getElementById("confirmed").value;
-        if(password != confirmed_password){
-          document.getElementById("check").innerHTML= "Mật khẩu không khớp";
-          document.getElementById("check").style.color = "red";
-        }
-    }
-
-    </script> --}}
-@endsection
+    
 
 </body>
 

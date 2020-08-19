@@ -255,8 +255,6 @@
                   </div>
                   {{-- Ngày vào ngành --}}
 
-
-
                   {{-- ảnh đại diện --}}
 
                   <div class="form-group ">

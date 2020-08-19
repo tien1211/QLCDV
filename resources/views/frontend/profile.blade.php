@@ -34,9 +34,6 @@
                                 Nữ
                                 @endif
                             </div>
-
-                            
-
                             <div class="col-5 mt-3">
                                 <label for=""><h5>Đơn Vị:</h5></label>
                             </div>
@@ -81,85 +78,54 @@
                                 {{date('d-m-Y',strtotime($profile->cdv_ngaysinh))}}
                                 
                             </div>
-                            
-
-
                             <div class="col-5 mt-3">
                                 <label for=""><h5>Nguyên Quán:</h5></label>
                             </div>
                             <div class="col-7 mt-3">
                             {{$profile->cdv_nguyenquan}}
                             </div>
-
-
                             <div class="col-5 mt-3">
                                 <label for=""><h5>Địa Chỉ:</h5></label>
                             </div>
                             <div class="col-7 mt-3">
                             {{$profile->cdv_diachi}}
                             </div>
-                            
                             <div class="col-5 mt-3">
                                 <label for=""><h5>Email:</h5></label>
                             </div>
                             <div class="col-7 mt-3">
                             {{$profile->cdv_email}}
                             </div>
-
-
-
-
                             <div class="col-5 mt-3">
                                 <label for=""><h5>Dân Tộc:</h5></label>
                             </div>
                             <div class="col-7 mt-3">
                             {{$profile->cdv_dantoc}}
                             </div>
-
-
-
-
                             <div class="col-5 mt-3">
                                 <label for=""><h5>Trình Độ:</h5></label>
                             </div>
                             <div class="col-7 mt-3">
                             {{$profile->cdv_trinhdo}}
                             </div>
-
-
-
-
                             <div class="col-5 mt-3">
                                 <label for=""><h5>Tôn Giáo:</h5></label>
                             </div>
                             <div class="col-7 mt-3">
                             {{$profile->cdv_tongiao}}
                             </div>
-
-
-
-
                             <div class="col-5 mt-3">
                                 <label for=""><h5>Ngày Thử Việc:</h5></label>
                             </div>
                             <div class="col-7 mt-3">
                             {{date('d-m-Y',strtotime($profile->cdv_ngaythuviec))}}
                             </div>
-
-
-
-
                             <div class="col-5 mt-3">
                             <label for=""><h5>Ngày Vào Ngành:</h5></label>
                             </div>
                             <div class="col-7 mt-3">
                                 {{date('d-m-Y',strtotime($profile->cdv_ngayvaonganh))}}
-                            
                             </div>
-
-
-
-
                             <div class="col-5 mt-3">
                                 <label for=""><h5>Vai Trò:</h5></label>
                             </div>
