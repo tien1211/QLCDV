@@ -16,13 +16,13 @@ class DK_TourSeeder extends Seeder
                 'cdv_id' => 1,
                 'tour_id'=> 1,
                 'tttp_id' => 1,
-                'dkt_soluong'=> 5,
+                'dkt_soluong'=> 2,
                 'phihotro'=> 1000000
             ],[
                 'cdv_id' => 2,
                 'tour_id'=> 1,
                 'tttp_id' => 1,
-                'dkt_soluong'=> 3,
+                'dkt_soluong'=> 2,
                 'phihotro'=> 1000000
             ],[
                 'cdv_id' => 3,

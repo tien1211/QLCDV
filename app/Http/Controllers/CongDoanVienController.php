@@ -158,12 +158,9 @@ class CongDoanVienController extends Controller
         $CongDoanVien->cdv_quyen = $request->cdv_quyen;
         if($request->changepassword == "on"){
             $this->validate($request, [
-
-
                 'password'=>'required|min:8|max:50',
                 'confirm_password'=>'required|same:password',
                 ],[
-
                     'password.required'=>'Vui lòng không được để trống mật khẩu',
                     'password.min'=>'Mật khẩu phải ít nhất 8 kí tự',
                     'password.max' => 'Mật khẩu không được quá 50 kí tự',

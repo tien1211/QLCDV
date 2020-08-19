@@ -378,7 +378,6 @@
             cdv_tongiao: "required",
             cdv_ngaythuviec: "required",
             cdv_ngayvaonganh: "required",
-            // cdv_trangthai: "required",
             cdv_hinhanh: "required",
             cdv_username: {
                 required: true,
