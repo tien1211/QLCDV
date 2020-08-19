@@ -85,10 +85,6 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
         Route::get('/CDV_CNMHT','CongDoanVienController@updateCDV')->name('CDV_CNMHT');
     });
     Route::group(['prefix' => 'DonVi'], function () {
-
-        
-
-
         // Danh sách đơn vị
         Route::get('/DonVi', 'DonViController@getDonVi')->name('DV_DanhSach');
         // Form thêm đơn vị
@@ -103,7 +99,6 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
         Route::get('/DV_Timkiem', 'DonViController@postTimkiem')->name('DV_Timkiem');
     });
     Route::group(['prefix' => 'Tour'], function () {
-        
         //Export
         Route::get('/Tour_Export/Export/{id}','TourController@Export')->name('Tour_Export');
         Route::get('/Tour_Export/{id}','TourController@viewExport')->name('Tour_ViewExport');
@@ -115,7 +110,6 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
         //Form sửa tour
         Route::get('/TOUR_SuaTour/{id}','TourController@getSua')->name('TOUR_Sua');
         Route::post('/TOUR_SuaTour/{id}','TourController@postSua')->name('TOUR_XLSua');
-
         //Form xóa tour
         Route::get('/TOUR_XoaTour/{id}', 'TourController@getXoa')->name('TOUR_Xoa');
         // Chi tiết tour
@@ -126,6 +120,8 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
         Route::get('/TOUR_DKT/{id}','TourController@getDKT')->name('TOUR_DKT');
         Route::post('/TOUR_DKT/{id}','TourController@postDKT')->name('XLTOUR_DKT');
         Route::post('search/name','TourController@getSearchAjax')->name('search');
+        // Xóa người đăng ký tham gia
+        Route::post('/TOUR_XNDK/{id}','TourController@postXNDK')->name('XLTOUR_XNDK');
     });
     Route::group(['prefix' => 'LichTrinh'], function () {
     //Danh sách lịch trình

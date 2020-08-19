@@ -2,7 +2,11 @@
 @section('frontend_content')
 <div class="col-12">
     <div class="section-heading text-center " data-wow-delay="100ms">
+<<<<<<< HEAD
         <h2>Danh Sách Tour</h2>
+=======
+        <h2>Danh Sách Tour</h2>
+>>>>>>> 37b34bbeb5d774b254c87e3f85119eaed45bdfdd
     </div>
 </div>
 

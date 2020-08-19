@@ -1,6 +1,15 @@
 @extends('admin.layout.master')
 @section('admin_content')
-<!--main content start-->
+<div class="form-group" style="mt-6">
+    <div class="flash-message">
+        @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+            @if(Session::has('alert-' . $msg))
+            <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a class="close" d
+            ata-dismiss="alert" aria-label="close">&times;</a></p>
+            @endif
+        @endforeach
+    </div>
+</div>
 <div class="panel panel-default">
     <div class="panel-heading">
     Thông Tin Tour {{$chitietTour->lt_ten}}  {{date('Y ',strtotime($chitietTour->tour_handk))}}
@@ -30,6 +39,13 @@
         </tr>
     </table>
 </div>
+@if(count($cdv_dk) == 0)
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Chưa có công đoàn viên đăng ký
+    </div>
+</div>
+@else
 <div class="panel panel-default">
     <div class="panel-heading">
     Danh sách Công đoàn viên đăng ký
@@ -66,62 +82,81 @@
     </table>
     </div>
 </div>
+@endif
+@if(count($nguoithamgia) == 0)
+
+@else
 <div class="panel panel-default">
     <div class="panel-heading">
-    Danh sách người đăng ký tham gia
+    Danh sách người đã đăng ký tham gia
     </div>
     <div>
-    <table class="table" ui-jq="footable" ui-options='{
-        "paging": {
-        "enabled": true
-        },
-        "filtering": {
-        "enabled": true
-        },
-        "sorting": {
-        "enabled": true
-        }}'>
-        <thead>
-        <tr>
-            <th>STT</th>
-            <th>Họ và tên</th>
-            <th>Giới tính</th>
-            <th>Tuổi</th>
-            <th>Quan hệ</th>
-            <th>Công đoàn viên đăng ký</th>
-            <th>Trạng thái</th>
-        </tr>
-        </thead>
-            @foreach ($nguoithamgia as $key => $ntg)
-                <tr data-expanded="true">
-                    <td>{{$key + 1}}</td>
-                    <td>{{$ntg->ttndk_ten}}</td>
-                    @if($ntg->ttndk_gt == 1)
-                        <td>Nam</td>
-                    @else
-                        <td>Nữ</td>
-                    @endif
-                    <td>{{$ntg->ttndk_tuoi}}</td>
-                    @if($ntg->ttndk_cv == 1)
-                        <td>Ngươi thân</td>
-                    @else
-                        <td>Công đoàn viên</td>
-                    @endif
-                    <td>{{$ntg->cdv_ten}}</td>
-                    @if($ntg->ttndk_trangthai == 1)
-                        <td>Đã đăng ký</td>
-                    @else
-                        <td><a style="color:red">Hủy đăng ký</a></td>
-                    @endif
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {{-- <div class="panel-body">
-        <div class="position-right">
-            <a href="{{route('Tour_Export',['id'=> $tour_id])}}" class="btn btn-sm btn-primary float-right">Export</a>
-          </div>
-      </div>
-    </div> --}}
+    <form class="form-inline" role="form" enctype="multipart/form-data" action="{{route('XLTOUR_XNDK',['id'=>$tour_id])}}" method="post" >
+        {{ csrf_field() }}
+        <table class="table" ui-jq="footable" ui-options='{
+            "paging": {
+            "enabled": true
+            },
+            "filtering": {
+            "enabled": true
+            },
+            "sorting": {
+            "enabled": true
+            }}'>
+            <thead>
+            <tr>
+                <th>STT</th>
+                <th>Họ và tên</th>
+                <th>Giới tính</th>
+                <th>Tuổi</th>
+                <th>Quan hệ</th>
+                <th>Công đoàn viên đăng ký</th>
+                <th>Trạng thái</th>
+                <th><input type="checkbox" id="checkall" onClick="check()" /></th>
+            </tr>
+            </thead>
+                @foreach ($nguoithamgia as $key => $ntg)
+                    <tr data-expanded="true">
+                        <td>{{$key + 1}}</td>
+                        <td>{{$ntg->ttndk_ten}}</td>
+                        @if($ntg->ttndk_gt == 1)
+                            <td>Nam</td>
+                        @else
+                            <td>Nữ</td>
+                        @endif
+                        <td>{{$ntg->ttndk_tuoi}}</td>
+                        @if($ntg->ttndk_cv == 1)
+                            <td>Ngươi thân</td>
+                        @else
+                            <td>Công đoàn viên</td>
+                        @endif
+                        <td>{{$ntg->cdv_ten}}</td>
+                        @if($ntg->ttndk_trangthai == 1)
+                            <td>Đã đăng ký</td>
+                        @else
+                            <td><a style="color:red">Hủy đăng ký</a></td>
+                        @endif
+                        <td><input type="checkbox" name="ttndk_id[]" value="{{$ntg->ttndk_id}}"/></td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
 </div>
+<div class="panel-body">
+    <div class="position-right">
+        <a><button type="submit" class="btn btn-outline-info">Hủy đăng ký</button></a>
+    </div>
+</div>
+    </from>
+@endif
+
+<script>
+function check(){
+    checkboxes = document.getElementsByName('ttndk_id[]');
+    var t = document.getElementById('checkall').checked;
+    for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = t;
+    }
+}
+</script>
 @endsection
