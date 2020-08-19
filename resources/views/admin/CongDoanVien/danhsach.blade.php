@@ -13,7 +13,6 @@
 </div>
 
 <div class="panel panel-default">
-  {{-- <div id = demo> --}}
     <div class="panel-heading">
       Danh Sách Công Đoàn Viên
     </div>
@@ -69,10 +68,11 @@
             </div>
                   <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
                   <a href="{{route('CDV_Them')}}"><button title="Thêm" type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
+                  <a href="{{route('CDV_CNMHT')}}"><button type="button" class="btn btn-outline-info">Cập nhật mức hổ trợ</button></a>
+                  <a href="{{route('CDV_Export')}}" class="btn btn-sm btn-primary float-right">Export</a>
         </form>
       </div>
-        </div>
-
+    </div>
     <div>
       <table class="table" ui-jq="footable" ui-options='{
         "paging": {
@@ -97,14 +97,11 @@
             <th>Chi Tiết</th>
             <th>Thao tác</th>
           </tr>
-        </thead>
-        
+        </thead> 
         <tbody>
             @foreach ($CongDoanVien as $key => $cdv)
-
             @if ($cdv->cdv_trangthai == 1)
                 <tr data-expanded="true">
-
                     <td>{{$key + 1}}</td>
                     <td>{{$cdv->DonVi->dv_ten}}</td>
                     <td>{{$cdv->ChucVu->cv_ten}}</td>
@@ -128,24 +125,16 @@
         </tbody>
       </table>
       <div class="panel-body">
-        <div class="position-right">
           <div class="form-group">
             <center>{!! $CongDoanVien->links() !!}</center>
-          </div>
-            <a href="{{route('CDV_CNMHT')}}"><button type="button" class="btn btn-outline-info">Cập nhật mức hổ trợ</button></a>
-            <a href="{{route('CDV_Export')}}" class="btn btn-sm btn-primary float-right">Export</a>
-          </div>
+        </div>
       </div>
     </div>
-  {{-- </div> --}}
-</div>
-<!--main content end-->
+  </div>
 </div>
 @endsection
-
 @section('script')
     <script>
-
         $(document).ready(function(){
             $('#js').click(function(event){
           event.preventDefault();
@@ -158,7 +147,6 @@
     	    $.ajax({
 				url : url,
 				data: {
-
 						//url:url,
 						 _token: '{!! csrf_token() !!}',
 					}
@@ -168,15 +156,11 @@
 					//$("#product").html(data);
 				//}
 			});
-
-
     });
         });
-
         function timkiem(){
           document.getElementById('search').click();
         }
-
   // function loadAdd() {
   //   var xhttp = new XMLHttpRequest();
   //   xhttp.onreadystatechange = function() {

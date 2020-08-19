@@ -3,7 +3,7 @@
             <ul class="sidebar-menu" id="nav-accordion">
                 <li class="sub-menu">
                     <a class="" href="index.html">
-                        <i class="fa fa-dashboard"></i>
+                        <i class="icon-sitemap"></i>
                         <span >Đơn Vị</span>
                     </a>
                         <ul class="sub">
@@ -12,18 +12,17 @@
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-book"></i>
+                        <i class="icon-user"></i>
                         <span>Quản lý công đoàn viên</span>
                     </a>
                     <ul class="sub">
 						<li><a href="{{route('CDV_DanhSach')}}">Danh Sách Công Đoàn Viên</a></li>
-                    <li><a href="{{route('CDV_Them')}}">Thêm Công Đoàn Viên</a></li>
-                    <li><a href="{{route('CDV_formImp')}}">Import File Danh Sách</a></li>
+                        <li><a href="{{route('CDV_formImp')}}">Import File Danh Sách</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-th"></i>
+                        <i class="fa fa-car"></i>
                         <span>Quản lý Tour</span>
                     </a>
                     <ul class="sub">
@@ -32,7 +31,7 @@
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-th"></i>
+                        <i class="fa fa-calendar-o"></i>
                         <span>Quản lý Lịch Trình</span>
                     </a>
                     <ul class="sub">
