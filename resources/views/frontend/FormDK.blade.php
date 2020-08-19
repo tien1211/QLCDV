@@ -22,24 +22,30 @@
     <div class="roberto-contact-form">
             <div class="row">
                 <div class="col-12 col-lg-9 wow fadeInUp" data-wow-delay="100ms">
-                    <input type="text" required name="ttndk_ten"  class="form-control mb-30" placeholder="Tên người tham gia thứ ">
+                    <input type="text" name="ttndk_ten"  class="form-control mb-30" placeholder="Tên người tham gia" required>
                 </div>
                 <div class="col-12 col-lg-3 wow fadeInUp" data-wow-delay="100ms" style="color: black">
-                <select class="form-control" name="ttndk_gt" required>
+                <select class="form-control" name="ttndk_gt">
                     <option value="">Chọn giới tính</option>
                     <option value="1">Nam</option>
                     <option value="0">Nữ</option>
                     </select>
+                    @if($errors->has('ttndk_gt'))
+                        <div style="color:red">{{ $errors->first('ttndk_gt')}}</div>
+                    @endif
                 </div>
                 <div class="col-12 col-lg-9 wow fadeInUp" data-wow-delay="100ms">
-                    <input type="text" required name="ttndk_tuoi"  class="form-control mb-30" placeholder="Tuổi">
+                    <input type="number" required name="ttndk_tuoi"  class="form-control mb-30" placeholder="Tuổi">
                 </div>
                 <div class="col-12 col-lg-3 wow fadeInUp" data-wow-delay="100ms" style="color: #000000;">
-                    <select class="form-control" name="ttndk_cv" required>
+                    <select class="form-control" name="ttndk_cv">
                     <option value="">Chọn quan hệ</option>
                     <option value="1">Người thân</option>
                     <option value="0">Công đoàn viên</option>
                     </select>
+                    @if($errors->has('ttndk_cv'))
+                        <div style="color:red">{{ $errors->first('ttndk_cv')}}</div>
+                    @endif
                 </div>
             </div>
             @if($tour->tour_soluong == 0)
