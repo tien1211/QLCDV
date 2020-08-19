@@ -50,6 +50,14 @@ class CongDoanVienController extends Controller
 
     public function postThem(Request $request){
 
+        $this->validate($request, [
+            'cdv_email' => 'unique:CongDoanVien',
+
+
+            ],[
+                'cdv_email.unique' => "Email đã tồn tại"
+
+            ]);
             $CongDoanVien = new CongDoanVien();
             $CongDoanVien->dv_id = $request->dv_id;
             $CongDoanVien->cv_id = $request->cv_id;
@@ -95,7 +103,7 @@ class CongDoanVienController extends Controller
             $CongDoanVien->password =bcrypt($request->password);
             $CongDoanVien->cdv_quyen = $request->cdv_quyen;
             $CongDoanVien->save();
-            Session::flash('alert-info', 'Thêm thành công!!!');
+            Session::flash('alert-1', 'Thêm thành công!!!');
             return redirect()->route('CDV_DanhSach');
 
     }
@@ -151,6 +159,7 @@ class CongDoanVienController extends Controller
         if($request->changepassword == "on"){
             $this->validate($request, [
 
+
                 'password'=>'required|min:8|max:50',
                 'confirm_password'=>'required|same:password',
                 ],[
@@ -167,7 +176,7 @@ class CongDoanVienController extends Controller
 
         $CongDoanVien->save();
 
-        Session::flash('alert-info', 'Cập Nhật thành công!!!');
+        Session::flash('alert-2', 'Cập Nhật thành công!!!');
         return redirect()->route('CDV_DanhSach');
     }
 
@@ -175,7 +184,7 @@ class CongDoanVienController extends Controller
         $CongDoanVien = CongDoanVien::find($id);
         $CongDoanVien->cdv_trangthai = 0;
         $CongDoanVien->save();
-        Session::flash('alert-info', 'Xóa thành công!!!');
+        Session::flash('alert-3', 'Xóa thành công!!!');
         return redirect()->route('CDV_DanhSach');
     }
 

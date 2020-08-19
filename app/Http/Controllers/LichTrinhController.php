@@ -60,7 +60,7 @@ class LichTrinhController extends Controller
             $LichTrinh->lt_file = $fileName;
             $LichTrinh->lt_trangthai = 1;
             $LichTrinh->save();
-            Session::flash('alert-info', 'Thêm thành công!!!');
+            Session::flash('alert-1', 'Thêm thành công!!!');
             return redirect()->route('LT_DanhSach');
         }else{
             Session::flash('alert-danger', 'Bạn chưa chọn file!!!');
@@ -107,7 +107,7 @@ class LichTrinhController extends Controller
         }else{
             $LichTrinh->lt_file = $LichTrinh->lt_file;
             $LichTrinh->save();
-            Session::flash('alert-info', 'Sửa thành công!!!');
+            Session::flash('alert-2', 'Sửa thành công!!!');
             return redirect()->route('LT_DanhSach');
         }
     }
@@ -116,7 +116,7 @@ class LichTrinhController extends Controller
         $LichTrinh = LichTrinh::find($id);
         $LichTrinh->lt_trangthai = 0;
         $LichTrinh->save();
-        Session::flash('alert-info', 'Xóa thành công!!!');
+        Session::flash('alert-3', 'Xóa thành công!!!');
         return Redirect::back();
     }
 
