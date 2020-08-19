@@ -2,7 +2,7 @@
 @section('admin_content')
 <!--main content start-->
 
-<div class="form-group" style="mt-6">
+{{-- <div class="form-group" style="mt-6">
     <div class="flash-message">
       @foreach (['danger', 'warning', 'success', 'info'] as $msg)
         @if(Session::has('alert-' . $msg))
@@ -11,7 +11,40 @@
         @endif
       @endforeach
     </div>
-</div>
+</div> --}}
+
+@if(Session::has('alert-1'))
+  @section('script')
+  <script>
+    window.onload =  function()
+      {
+      alert('Thêm thành công');
+      };
+</script>
+  @endsection
+  @endif
+  @if(Session::has('alert-2'))
+  @section('script')
+  <script>
+    window.onload =  function()
+      {
+      alert('Sửa thành công');
+      };
+</script>
+  @endsection
+    <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+  @endif
+  @if(Session::has('alert-3'))
+  @section('script')
+  <script>
+    window.onload =  function()
+      {
+      alert('Xóa thành công');
+      };
+</script>
+  @endsection
+    <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+  @endif
 
  <div class="panel panel-default">
     <div class="panel-heading">
@@ -58,8 +91,8 @@
               Đến:
               <input onchange="timkiem()" class="form-control "  name="tour_ngaykt" type="date" value="{{$ngaykt}}">
             </div>
-            <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
-            <a href="{{route('TOUR_Them')}}"><button title="Thêm" type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
+            <button type="submit" class="btn btn-primary" id="search"><i class=" glyphicon glyphicon-search" style="color: aliceblue" ></i></button>
+            <a href="{{route('TOUR_Them')}}"><button title="Thêm" type="button"  class="btn btn-primary"><i class="glyphicon glyphicon-plus" style="color: aliceblue"></i></button></a>
         </form>
         </div>
     </div>
@@ -92,6 +125,7 @@
         </thead>
 
         <tbody>
+
             @foreach ($Tour as $key => $t)
                 <tr data-expanded="true">
                     <td>{{$key + 1}}</td>
@@ -103,14 +137,17 @@
                     <td>{{number_format($t->tour_chiphi)}}</td>
                     <td>{{$t->tour_soluong}}</td>
                     <td>{{$t->tour_daily}}</td>
-                    <td><a class="glyphicon glyphicon-eye-open" title="Chi Tiết" href="{{route('TOUR_ChiTiet',['id'=>$t->tour_id])}}"></a></td>
+                    <td><a  class="glyphicon glyphicon-eye-open" title="Chi Tiết" href="{{route('TOUR_ChiTiet',['id'=>$t->tour_id])}}"></a></td>
                     <td>
-                    <a class="glyphicon glyphicon-edit" title="Sửa" href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}"></a>
-                    <a class="glyphicon glyphicon-trash" title="Xóa" href="{{route('TOUR_Xoa',['id'=>$t->tour_id])}}" onclick="return confirm('Bạn có chắc muốn xóa không?');"></a>
+                    <a  class="glyphicon glyphicon-edit" title="Sửa" href="{{route('TOUR_Sua',['id'=>$t->tour_id])}}"></a>
+                    <a  class="glyphicon glyphicon-trash" title="Xóa" href="{{route('TOUR_Xoa',['id'=>$t->tour_id])}}" onclick="return confirm('Bạn có chắc muốn xóa không?');"></a>
                     </td>
                 </tr>
           @endforeach
         </tbody>
+
+      </table>
+      <center>{!!$Tour->links()!!}</center>
     </div>
   </div>
 </div>

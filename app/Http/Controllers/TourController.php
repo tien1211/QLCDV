@@ -101,7 +101,7 @@ class TourController extends Controller
             }
             $Tour->tour_trangthai = 1;
             $Tour->save();
-            Session::flash('alert-info', 'Thêm thành công!!!');
+            Session::flash('alert-1', 'Thêm thành công!!!');
             return Redirect()->route('TOUR_DanhSach');
 }
 
@@ -145,7 +145,7 @@ class TourController extends Controller
         $Tour->tour_trangthai = 1;
         $Tour->save();
 
-        Session::flash('alert-info', 'Sửa thành công!!!');
+        Session::flash('alert-2', 'Sửa thành công!!!');
         return Redirect()->route('TOUR_DanhSach');
     }
 
@@ -153,7 +153,7 @@ class TourController extends Controller
         $Tour = Tour::find($id);
         $Tour->tour_trangthai = 0;
         $Tour->save();
-        Session::flash('alert-info', 'Xóa thành công!!!');
+        Session::flash('alert-3', 'Xóa thành công!!!');
         return Redirect::back();
     }
 
@@ -379,7 +379,7 @@ class TourController extends Controller
         ->get();
         return view('admin.Tour.Tour-Excel')->with('info',$info);
     }
-    
+
     public function Export($id)
     {
         $dataTime = date('Ymd_His');

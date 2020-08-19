@@ -1,22 +1,57 @@
 @extends('admin.layout.master')
 @section('admin_content')
 <!--main content start-->
-<div class="form-group" style="mt-6">
-  <div class="flash-message">
-    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-      @if(Session::has('alert-' . $msg))
-      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a class="close" d
-      ata-dismiss="alert" aria-label="close">&times;</a></p>
-      @endif
-    @endforeach
-</div>
-</div>
 
-<div class="panel panel-default">
+{{-- <div class="form-group" style="mt-3">
+    <div class="flash-message">
+      @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+        @if(Session::has('alert-' . $msg))
+        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
+        ata-dismiss="alert" aria-label="close">&times;</a></p>
+        @endif
+      @endforeach
+  </div>
+  </div> --}}
+
+  @if(Session::has('alert-1'))
+  @section('script')
+  <script>
+    window.onload =  function()
+      {
+      alert('Thêm thành công');
+      };
+</script>
+  @endsection
+  @endif
+  @if(Session::has('alert-2'))
+  @section('script')
+  <script>
+    window.onload =  function()
+      {
+      alert('Sửa thành công');
+      };
+</script>
+  @endsection
+    <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+  @endif
+  @if(Session::has('alert-3'))
+  @section('script')
+  <script>
+    window.onload =  function()
+      {
+      alert('Xóa thành công');
+      };
+</script>
+  @endsection
+    <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+  @endif
+
+ <div class="panel panel-default">
   {{-- <div id = demo> --}}
     <div class="panel-heading">
       Danh Sách Công Đoàn Viên
     </div>
+    @extends('admin.layout.partials.error-message')
     <div class="panel-body">
         <div class="position-left">
             <form  id="content-form" class="form-inline" role="form" action="{{route('CDV_Timkiem')}}" method="get">
@@ -32,7 +67,7 @@
                   <option value='{{$dv->dv_id}}'>{{$dv->dv_ten}}</option>
                   @endif
                 @endif
-                
+
                 @endforeach
               </select>
             </div>
@@ -67,8 +102,8 @@
             <div class="form-group">
                 <input type="text" class="form-control" id="tukhoa" name="tukhoa">
             </div>
-                  <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
-                  <a href="{{route('CDV_Them')}}"><button title="Thêm" type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
+                  <button type="submit" class="btn btn-primary" id="search"><i class=" glyphicon glyphicon-search" style="color: aliceblue"></i></button>
+                  <a href="{{route('CDV_Them')}}"><button title="Thêm" type="button"  class="btn btn-primary"><i class="glyphicon glyphicon-plus" style="color: aliceblue"></i></button></a>
         </form>
       </div>
         </div>
@@ -98,7 +133,16 @@
             <th>Thao tác</th>
           </tr>
         </thead>
-        
+        {{-- <div class="form-group" style="mt-6">
+          <div class="flash-message">
+            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+              @if(Session::has('alert-' . $msg))
+              <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a class="close" d
+              ata-dismiss="alert" aria-label="close">&times;</a></p>
+              @endif
+            @endforeach
+        </div>
+        </div> --}}
         <tbody>
             @foreach ($CongDoanVien as $key => $cdv)
 
@@ -117,10 +161,10 @@
                     <td>Nữ</td>
                     @endif
                 <td>{{number_format($cdv->MucHoTro->mht_phihotro)}} VNĐ</td>
-                <td><a title="Chi tiết" class="glyphicon glyphicon-eye-open" href="{{route('CDV_ChiTiet',['id'=>$cdv->cdv_id])}}"></a></td>
+                <td><a  title="Chi tiết" class="glyphicon glyphicon-eye-open" href="{{route('CDV_ChiTiet',['id'=>$cdv->cdv_id])}}"></a></td>
                 <td>
-                  <i class='fas fa-pencil-alt'></i><a title="Sửa" class="glyphicon glyphicon-edit" href="{{route('CDV_Sua',['id'=>$cdv->cdv_id])}}"></a>
-                  <i class='fas fa-trash-alt'></i><a title="Xóa" class="glyphicon glyphicon-trash" href="{{route('CDV_Xoa',['id'=>$cdv->cdv_id])}}" onclick="return confirm('Bạn có chắc muốn xóa không?');"></a>
+                  <i class='fas fa-pencil-alt'></i><a  title="Sửa" class="glyphicon glyphicon-edit" href="{{route('CDV_Sua',['id'=>$cdv->cdv_id])}}"></a>
+                  <i class='fas fa-trash-alt'></i><a   title="Xóa" class="glyphicon glyphicon-trash" href="{{route('CDV_Xoa',['id'=>$cdv->cdv_id])}}" onclick="return confirm('Bạn có chắc muốn xóa không?');"></a>
                 </td>
             </tr>
             @endif
@@ -143,55 +187,4 @@
 </div>
 @endsection
 
-@section('script')
-    <script>
 
-        $(document).ready(function(){
-            $('#js').click(function(event){
-          event.preventDefault();
-          //alert('hihi');
-    	//   let $this = $(this);
-		   let url = "{{route('CDV_Them')}}";
-		//   let number = $('.id1').val();
-		  // $(".js_money").text($this.attr('data-price'));
-		    console.log(url);
-    	    $.ajax({
-				url : url,
-				data: {
-
-						//url:url,
-						 _token: '{!! csrf_token() !!}',
-					}
-			}).done(function(data) {
-				//if (data) {
-					//$("#product").html('').append(data);
-					//$("#product").html(data);
-				//}
-			});
-
-
-    });
-        });
-
-        function timkiem(){
-          document.getElementById('search').click();
-        }
-
-  // function loadAdd() {
-  //   var xhttp = new XMLHttpRequest();
-  //   xhttp.onreadystatechange = function() {
-  //     if (this.readyState == 4 && this.status == 200) {
-  //       document.getElementById("demo").innerHTML =
-  //       this.responseText;
-  //     }
-  //   };
-  //   xhttp.open("GET", "{{route('CDV_Them')}}", true);
-  //   xhttp.send();
-  // }
-//   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-
-
-
-
-
-@endsection

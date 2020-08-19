@@ -1,14 +1,31 @@
 @extends('admin.layout.master')
 @section('admin_content')
 <div class="form-group" style="mt-6">
-  <div class="flash-message">
-    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-      @if(Session::has('alert-' . $msg))
-      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a class="close" d
-      ata-dismiss="alert" aria-label="close">&times;</a></p>
+
+
+      @if(Session::has('alert-1'))
+      @section('script')
+      <script>
+        window.onload =  function()
+          {
+          alert('Thêm thành công');
+          };
+    </script>
+      @endsection
       @endif
-    @endforeach
-</div>
+      @if(Session::has('alert-2'))
+      @section('script')
+      <script>
+        window.onload =  function()
+          {
+          alert('Sửa thành công');
+          };
+    </script>
+      @endsection
+        <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+      @endif
+
+
 </div>
 <div class="table-agile-info">
     <div class="panel panel-default">
@@ -22,8 +39,8 @@
             <div class="form-group">
                 <input type="text" class="form-control" id="tukhoa" placeholder="từ khóa tìm kiếm" name="tukhoa" value="{{$tukhoa}}" style="width: 550px;">
             </div>
-            <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
-            <a href="{{route('DV_Them')}}"><button title="Thêm" type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
+            <button type="submit" class="btn btn-primary" id="search"><i class=" glyphicon glyphicon-search" style="color: aliceblue"></i></button>
+            <a href="{{route('DV_Them')}}"><button title="Thêm" type="button"  class="btn btn-primary"><i class="glyphicon glyphicon-plus" style="color: aliceblue"></i></button></a>
         </form>
           </div>
         </div>
@@ -48,16 +65,6 @@
             <th>Cập Nhật</th>
           </tr>
         </thead>
-        <div class="form-group" style="mt-6">
-          <div class="flash-message">
-            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-              @if(Session::has('alert-' . $msg))
-              <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
-              ata-dismiss="alert" aria-label="close">&times;</a></p>
-              @endif
-            @endforeach
-        </div>
-        </div>
         <tbody>
             @foreach ($DonVi as $dv)
               @if ($dv->dv_trangthai == 1)
@@ -68,8 +75,8 @@
                     <td>{{$dv->dv_tt}}</td>
                 <td><a title="Danh Sách Công Đoàn Viên" href="{{route('CDV_DSDV',['id'=>$dv->dv_id])}}"><button type="button" class="btn btn-outline-info">Dang sách công đoàn viên</button></a></td>
                 <td>
-                  <a class="glyphicon glyphicon-edit" title="Sửa" href="{{route('DV_Sua',['id'=>$dv->dv_id])}}"></a>
-                  <a class="glyphicon glyphicon-trash" title="Xóa" href="{{route('DV_Xoa',['id'=>$dv->dv_id])}}" onclick="return confirm('Bạn có chắc muốn xóa không?');"></a>
+                  <a class="glyphicon glyphicon-edit"  title="Sửa" href="{{route('DV_Sua',['id'=>$dv->dv_id])}}"></a>
+                  <a class="glyphicon glyphicon-trash"  title="Xóa" href="{{route('DV_Xoa',['id'=>$dv->dv_id])}}" onclick="return confirm('Bạn có chắc muốn xóa không?');"></a>
                 </td>
             </tr>
             @endif
@@ -80,3 +87,5 @@
 	</div>
 </div>
 @endsection
+
+
