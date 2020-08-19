@@ -7,6 +7,11 @@
         @endif
     @endforeach
 </div>
+<div class="col-12">
+@if($errors->has('ttndk_id'))
+    <p class="alert alert-danger">{{ $errors->first('ttndk_id')}}</p>
+@endif
+</div>
 <div class="row">
     <div class="col-12">
         <!-- Section Heading -->
