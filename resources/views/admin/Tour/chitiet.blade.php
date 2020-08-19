@@ -84,7 +84,9 @@
 </div>
 @endif
 @if(count($nguoithamgia) == 0)
-
+<div class="panel-heading">
+   CHƯA CÓ NGƯỜI ĐĂNG KÝ
+    </div>
 @else
 <div class="panel panel-default">
     <div class="panel-heading">
