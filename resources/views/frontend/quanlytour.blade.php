@@ -41,7 +41,7 @@
                 </td>
                 <td>
                     <a href="{{route('DS_NTG',['id'=>$tour->tour_id])}}" class="post-author"><li class="fas fa-list" style="font-size: 20px"></li></a>&nbsp;&nbsp;&nbsp;
-                    <a href="{{route('HUY_TOUR',['id'=>$tour->dkt_id])}}" class="post-author"><li class="fas fa-trash-alt" style="font-size: 20px;"></li></a>
+                    <a href="{{route('HUY_TOUR',['id'=>$tour->dkt_id])}}" class="post-author" onclick="return confirm('Bạn có chắc muốn xóa không?');"><li class="fas fa-trash-alt" style="font-size: 20px;"></li></a>
                 </td>
                 @endif
             </tr>
