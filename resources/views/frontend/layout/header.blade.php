@@ -53,12 +53,17 @@
                             <li><a href="{{route('formLogin')}}">Đăng Nhập</a></li>
                                 @else
                                 <li><a href="#">{{$auth->cdv_username}}</a>
+                                    
                                     <ul class="dropdown">
                                         <li><a href="{{route('proFile',['id'=>$auth->cdv_id])}}">Thông tin cá nhân</a></li>
+                                        @if ($auth->cdv_quyen == 1)
+                                        <li><a href="{{route('admin')}}">Về trang admin</a></li>
+                                        @endif
                                         <li><a href="{{route('quanlytour')}}">Quản Lý Tour</a></li>
                                         <li><a href="{{route('formChange',['id'=>$auth->cdv_id])}}">Đổi Mật Khẩu</a></li>
                                         <li><a href="{{route('logout')}}">Đăng xuất</a></li>
                                     </ul>
+                                    
                                 </li>
                                 @endif
                             </ul>
