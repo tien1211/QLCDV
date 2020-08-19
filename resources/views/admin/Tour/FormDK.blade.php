@@ -79,7 +79,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-lg-offset-3 col-lg-6">
-                        <button class="btn btn-primary btn-submit" id="submit" type="submit">Lưu</button>
+                        <button class="btn btn-primary btn-submit" onclick="return confirm('Bạn có muốn đăng ký không??')" id="submit" type="submit">Lưu</button>
                         <a href="{{route('TOUR_ChiTiet',['id'=>$tour_id])}}"><button class="btn btn-default" type="button">Thoát</button></a>
                     </div>
                 </div>
