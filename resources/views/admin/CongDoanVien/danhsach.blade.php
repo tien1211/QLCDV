@@ -104,8 +104,8 @@
             </div>
                   <button type="submit" class="btn btn-primary" id="search"><i class=" glyphicon glyphicon-search" style="color: aliceblue"></i></button>
                   <a href="{{route('CDV_Them')}}"><button title="Thêm" type="button"  class="btn btn-primary"><i class="glyphicon glyphicon-plus" style="color: aliceblue"></i></button></a>
-                  <a href="{{route('CDV_CNMHT')}}"><button type="button" class="btn btn-outline-info">Cập nhật mức hổ trợ</button></a>
                   <a href="{{route('CDV_Export')}}" class="btn btn-sm btn-primary float-right">Export</a>
+                  <a href="{{route('CDV_CNMHT')}}" class="btn btn-sm btn-primary float-right">Cập nhật mức hổ trợ</a>
         </form>
       </div>
     </div>
