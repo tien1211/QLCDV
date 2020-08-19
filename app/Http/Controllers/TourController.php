@@ -441,7 +441,7 @@ class TourController extends Controller
         DB::table('tour')
             ->where('tour_id',$id)
             ->update(['tour_soluong' => $soluongmoi]);
-        Session::flash('alert-info', 'Xóa thành công!!!');
+        Session::flash('alert-info', 'Hủy đăng ký thành công!!!');
         return redirect()->route('TOUR_ChiTiet',['id'=>$id]);
     }
 }
