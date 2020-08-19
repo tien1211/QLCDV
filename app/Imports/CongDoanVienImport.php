@@ -43,6 +43,7 @@ class CongDoanVienImport implements ToCollection
                     'cdv_username' => $value[16],
                     'password' => bcrypt($value[17]),
                     'cdv_quyen' => 0
+
                 ]);
             }
         }
@@ -50,6 +51,8 @@ class CongDoanVienImport implements ToCollection
 
     public function rules(): array{
         return [
+            
+
             '0'       =>  'required',
             '1'       =>  'required',
             '2'       =>  'required',
@@ -59,15 +62,18 @@ class CongDoanVienImport implements ToCollection
             '6'       =>  'required',
             '7'       =>  'required',
             '8'       =>  'required',
-            '9'       =>   'required',
-            '10'      =>  ['required',Rule::unique('CongDoanVien', 'cdv_email')],
+            '9'      =>  'required',
+            '10'      =>  ['required', Rule::unique('CongDoanVien', 'cdv_email')],
             '11'      =>  'required',
             '12'      =>  'required',
             '13'      =>  'required',
             '14'      =>  'required',
             '15'      =>  'required',
-            '16'      =>  ['required',Rule::unique('CongDoanVien', 'cdv_username')],
-            '17'      =>  'required'
+            '16'      =>  ['required',Rule::unique('CongDoanVien', 'cdv_email')],
+            // '19'      =>  ['required','min:8','max:50'],
+            '17'      =>  'required',
+            // '20'      =>  'required',
+            
         ];
     }
 
@@ -77,21 +83,31 @@ class CongDoanVienImport implements ToCollection
                 '0.required'    => trans('Không được để trống đơn vị'),
                 '1.required'    => trans('Không được để trống chức vụ'),
                 '2.required'    => trans('Không được để trống loại nhân viên'),
-                '4.required'    => trans('Không được để trống tên công đoàn viên'),
-                '5.required'    => trans('Không được để trống ngày sinh'),
-                '6.required'    => trans('Không được để trống giới tính'),
-                '7.required'    => trans('Không được để trống CMND'),
-                '8.required'    => trans('Không được để trống nguyên quán'),
-                '9.required'    => trans('Không được để trống địa chỉ'),
-                '10.required'   => trans('Không được để trống số điện thoại'),
-                '11.required'   => 'Không được để trống email',
-                '11.unique'     => 'Email đã được tồn tại vui lòng nhập lại email',
-                '12.required'   => trans('Không được để trống dân tộc'),
-                '13.required'   => trans('Không được để trống trình độ'),
-                '14.required'   => trans('Không được để trống tôn giáo'),
-                '15.required'   => trans('Không được để trống ngày thử việc'),
-                '16.required'   => trans('Không được để trống ngày vào ngành'),
-                '17.required'   => trans('Không được để trống tên đăng nhập'),
+                '3.required'    => trans('Không được để trống tên công đoàn viên'),
+                '4.required'    => trans('Không được để trống ngày sinh'),
+                // '5.date'        => trans('Vui lòng nhập đúng định dạng ngày sinh'),
+                '5.required'    => trans('Không được để trống giới tính'),
+                '6.required'    => trans('Không được để trống CMND'),
+                // '7.min'         => trans('Vui lòng nhập đủ 9 kí tự cmnd'),
+                // '7.max'         => trans('Vui lòng nhập đủ 9 kí tự cmnd'),
+                '7.required'    => trans('Không được để trống nguyên quán'),
+                '8.required'    => trans('Không được để trống địa chỉ'),
+                '9.required'   => trans('Không được để trống số điện thoại'),
+                // '10.min'        => trans('Vui lòng nhập đủ 9 kí tự sdt'),
+                // '10.max'        => trans('Vui lòng nhập đủ 9 kí tự sdt'),
+                '10.required'   => 'Không được để trống email',
+                '10.unique'     => 'Email đã được tồn tại vui lòng nhập lại email',
+                '11.required'   => trans('Không được để trống dân tộc'),
+                '12.required'   => trans('Không được để trống trình độ'),
+                '13.required'   => trans('Không được để trống tôn giáo'),
+                '14.required'   => trans('Không được để trống ngày thử việc'),
+                '15.required'   => trans('Không được để trống ngày vào ngành'),
+                '16.required'   => trans('Không được để trống tên đăng nhập'),
+                '16.unique'     => trans('Tên đăng nhập đã được tồn tại'),
+                '17.required'   => trans('Vui lòng không được để trống mật khẩu'),
+                // '19.min'        => 'Mật khẩu phải ít nhất 8 kí tự',
+                // '19.max'        => 'Mật khẩu phải tối đa 50 kí tự',
+                // '20.required'   => trans('Vui lòng không được để trống quyền')
             ];
         }
 }
