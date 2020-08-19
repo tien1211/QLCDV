@@ -307,6 +307,13 @@ class IndexController extends Controller
     }
     // Xóa người đăng ký
     public function postXNTG(Request $request, $id){
+        $validation = $this->validate($request,
+        [
+            'ttndk_id' => 'required',
+        ],
+        [
+            'ttndk_id.required' => 'Bạn chưa chọn người tham gia!',
+        ]);
         $ntg = $request->ttndk_id;
         foreach($ntg as $t){
             DB::table('thongtinnguoidk')
