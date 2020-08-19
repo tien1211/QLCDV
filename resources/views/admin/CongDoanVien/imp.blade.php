@@ -61,11 +61,8 @@
                           </div>
                           </div>
                         <div class="form-group ">
-                            <div class="col-lg-12">
-                            <a href="samp/Samp.xlsx"><label for="username" class="control-label col-lg-3">DOWNLOAD MẪU EXCEL</label></a>
-                            </div>
                             
-                            <br><br>
+                           
                             <label for="username" class="control-label col-lg-3">FILE IMPORT</label>
                                 <div class="col-lg-6">
                                     <input class="form-control" name="file" type="file">
@@ -95,12 +92,33 @@
                                     @endif
                                 </div>
                 {{------------------- SHOW ERROR ------------------}}           
-                        </div>
+                        
+            
+            </div>
             
                         <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-6">
                                 <button class="btn btn-primary" type="submit">SUBMIT</button>
                                 <a href="{{route('LT_DanhSach')}}"><button class="btn btn-default" type="button">Thoát</button></a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                            <label for="username" class="control-label col-lg-3">DOWNLOAD FILE EXCEL:</label>
+                                <div class="col-lg-2">
+                                    <a href="samp/FormImport.xlsx"><label for="username" class="control-label col-lg-3"> TẠI ĐÂY </label></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">  
+                            <div class="col-lg-12">
+                                <label for="username" class="control-label col-lg-3" >DOWNLOAD FILE MẪU:</label>
+                                <div class="col-lg-2">
+                                
+                                    <a href="samp/ExampleForm.xlsx" ><label for="username" class="control-label col-lg-6">TẠI ĐÂY </label></a>
+
+                                </div>
                             </div>
                         </div>
                     </form>
