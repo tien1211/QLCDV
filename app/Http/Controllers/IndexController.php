@@ -138,6 +138,18 @@ class IndexController extends Controller
     }
     // xác nhận đăng ký tour
     public function postDKT(Request $request, $id){
+        $validation = $this->validate($request,
+        [
+            'ttndk_ten' => 'required',
+            'ttndk_gt' => 'required',
+            'ttndk_tuoi' => 'required|numeric',
+            'ttndk_cv' => 'required',
+        ],
+        [
+            'ttndk_gt.required' => 'Bạn chưa chọn giới tính!',
+            'ttndk_tuoi.numeric' => 'Vui lòng nhập số!',
+            'ttndk_cv.required' => 'Bạn chưa chọn quan hệ!'
+        ]);
         $temp = DB::table('DK_Tour')->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],['tttp_id','<>',2],])->first();
         if($temp == null){
             // kiểm tra cdv có tham gia tour cùng giai đoạn

@@ -185,9 +185,4 @@
       document.getElementById('search').click();
     }
 </script>
-
-
-
-
-
 @endsection
