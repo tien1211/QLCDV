@@ -35,7 +35,7 @@
                 <div class="form-group ">
                     <label for="lastname" class="control-label col-lg-3">Tuổi:</label>
                     <div class="col-lg-4">
-                        <input class="form-control" name="ttndk_tuoi" type="text">
+                        <input class="form-control" name="ttndk_tuoi" type="number">
                     </div>
                     <div class="col-lg-2">
                         <select class="form-control" name="ttndk_cv" required>

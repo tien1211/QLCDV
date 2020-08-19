@@ -8,18 +8,18 @@
     @endforeach
 </div>
 @if(count($tourdk) == 0)
-    <h2>Bạn chưa đăng ký tour nào...!!!</h2><hr>
+    <h2>Bạn Chưa Đăng Ký Tour Nào...!!!</h2><hr>
 @else
 <div class="room-service mb-50">
-    <h2>Danh Sách Tour đã đăng ký</h2><hr>
+    <h2>Danh Sách Tour Đã Đăng Ký</h2><hr>
     {{-- {{$ifo1}} --}}
     <table class="table">
         <thead class="thead-light">
             <tr>
                 <th>STT</th>
-                <th>Tên tour</th>
-                <th>Chi phí</th>
-                <th>Trạng thái</th>
+                <th>Tên Tour</th>
+                <th>Chi Phí</th>
+                <th>Trạng Thái</th>
                 <th>Thao Tác</th>
             </tr>
         </thead>
@@ -41,7 +41,7 @@
                 </td>
                 <td>
                     <a href="{{route('DS_NTG',['id'=>$tour->tour_id])}}" class="post-author"><li class="fas fa-list" style="font-size: 20px"></li></a>&nbsp;&nbsp;&nbsp;
-                    <a href="{{route('HUY_TOUR',['id'=>$tour->dkt_id])}}" class="post-author"><li class="fas fa-trash-alt" style="font-size: 20px;"></li></a>
+                    <a href="{{route('HUY_TOUR',['id'=>$tour->dkt_id])}}" class="post-author" onclick="return confirm('Bạn có chắc muốn xóa không?');"><li class="fas fa-trash-alt" style="font-size: 20px;"></li></a>
                 </td>
                 @endif
             </tr>

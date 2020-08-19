@@ -35,7 +35,7 @@
                     @endif
                 </div>
                 <div class="col-12 col-lg-9 wow fadeInUp" data-wow-delay="100ms">
-                    <input type="text" required name="ttndk_tuoi"  class="form-control mb-30" placeholder="Tuổi">
+                    <input type="number" required name="ttndk_tuoi"  class="form-control mb-30" placeholder="Tuổi">
                 </div>
                 <div class="col-12 col-lg-3 wow fadeInUp" data-wow-delay="100ms" style="color: #000000;">
                     <select class="form-control" name="ttndk_cv">
