@@ -1,14 +1,46 @@
 @extends('admin.layout.master')
 @section('admin_content')
 <!--main content start-->
-<div class="flash-message">
+{{-- <div class="flash-message">
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
     @if(Session::has('alert-' . $msg))
     <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
     ata-dismiss="alert" aria-label="close">&times;</a></p>
     @endif
     @endforeach
-</div>
+</div> --}}
+@if(Session::has('alert-1'))
+  @section('script')
+  <script>
+    window.onload =  function()
+      {
+      alert('Thêm thành công');
+      };
+</script>
+  @endsection
+  @endif
+  @if(Session::has('alert-2'))
+  @section('script')
+  <script>
+    window.onload =  function()
+      {
+      alert('Sửa thành công');
+      };
+</script>
+  @endsection
+    <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+  @endif
+  @if(Session::has('alert-3'))
+  @section('script')
+  <script>
+    window.onload =  function()
+      {
+      alert('Xóa thành công');
+      };
+</script>
+  @endsection
+    <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+  @endif
 <div class="panel panel-default">
   <div class="panel-heading">
     Danh Sách Lịch Trình
@@ -20,8 +52,8 @@
         <div class="form-group">
             <input type="text" class="form-control" id="tukhoa" placeholder="từ khóa tìm kiếm" name="tukhoa" style="font-size: 45px;">
         </div>
-        <button type="submit" class="btn btn-outline-info" id="search"><i class=" glyphicon glyphicon-search"></i></button>
-        <a href="{{route('LT_Them')}}"><button title="Thêm" type="button"  class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button></a>
+        <button type="submit" class="btn btn-primary" id="search"><i class=" glyphicon glyphicon-search" style="color: aliceblue"></i></button>
+        <a href="{{route('LT_Them')}}"><button title="Thêm" type="button"  class="btn btn-primary"><i class="glyphicon glyphicon-plus" style="color: aliceblue" ></i></button></a>
     </form>
     </div>
     </div>

@@ -2,7 +2,11 @@
 @section('frontend_content')
 <div class="col-12">
     <div class="section-heading text-center " data-wow-delay="100ms">
+<<<<<<< HEAD
+        <h2>Danh Sách Tour</h2>
+=======
         <h2>Danh Sách Tour</h2>
+>>>>>>> 37b34bbeb5d774b254c87e3f85119eaed45bdfdd
     </div>
 </div>
 
@@ -41,7 +45,7 @@
                 </h6>
             <h6>Số chỗ còn lại: <span>{{$t->tour_soluong}}</span></h6>
             </div>
-            <a href="{{route('chitiettour',['id'=>$t->tour_id])}}" class="btn btn-info btn-sm">Chi Tiết</a>
+            <a href="{{route('chitiettour',['id'=>$t->tour_id])}}" class="btn btn-info">Chi Tiết-></a>
         </div>
     </div>
     @endforeach

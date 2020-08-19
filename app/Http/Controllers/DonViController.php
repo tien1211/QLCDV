@@ -16,9 +16,9 @@ class DonViController extends Controller
         view()->share('DonVi',$DonVi);
         view()->share('tukhoa',$tukhoa);
     }
-    
+
     public function getDonVi()
-    {   
+    {
         $DonVi = DB::table('DonVi')
             ->leftjoin('DonVi as DonVitt','DonVitt.dv_id','=','DonVi.dv_tructhuoc_id')
             ->select('DonVi.*','DonVitt.dv_ten as dv_tt')
@@ -32,36 +32,36 @@ class DonViController extends Controller
     }
     public function postThem(Request $request)
     {
-        $this->validate($request, [
-            'dv_ten' => 'required',
-            'dv_mota' => 'required',
-            ],[
-                'dv_ten.required' => 'Vui lòng không được để trống tên đơn vị',
-                'dv_mota.required' => 'Vui lòng không được để trống mô tả đơn vị',
-            ]);
+        // $this->validate($request, [
+        //     'dv_ten' => 'required',
+        //     'dv_mota' => 'required',
+        //     ],[
+        //         'dv_ten.required' => 'Vui lòng không được để trống tên đơn vị',
+        //         'dv_mota.required' => 'Vui lòng không được để trống mô tả đơn vị',
+        //     ]);
         $data = array();
         $data['dv_ten'] = $request->dv_ten;
         $data['dv_mota'] = $request->dv_mota;
         $data['dv_tructhuoc_id'] = $request->dv_tructhuoc_id;
         $data['dv_trangthai'] = 1;
         DB::table('DonVi')->insert($data);
-    	Session::flash('alert-info','Thêm đơn vị thành công!!!');
+    	 Session::flash('alert-1','Thêm đơn vị thành công!!!');
         return redirect()->route('DV_DanhSach');
     }
     public function getSua($id)
-    {   
+    {
         $DonVi = DonVi::find($id);
         //dd($DonVi);
         return view('admin.DonVi.sua')->with('DonVisua',$DonVi);
     }
     public function postSua(Request $request, $id)
-    {   
+    {
         $data = array();
         $data['dv_ten'] = $request->dv_ten;
         $data['dv_mota'] = $request->dv_mota;
         $data['dv_tructhuoc_id'] = $request->dv_tructhuoc_id;
         DB::table('DonVi')->where('dv_id',$id)->update($data);
-    	Session::flash('alert-info', 'Sửa đơn vị thành công!!!');
+    	Session::flash('alert-2', 'Sửa đơn vị thành công!!!');
         return redirect()->route('DV_DanhSach');
     }
 

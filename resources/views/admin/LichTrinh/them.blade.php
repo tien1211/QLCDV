@@ -19,7 +19,7 @@
                     <div class="form">
                         <form class="cmxform form-horizontal " enctype="multipart/form-data" action="{{route('LT_XLThem')}}" id="formDemo1" method="post"  novalidate="novalidate">
                             {{csrf_field()}}
-                            <div class="form-group" style="mt-3">
+                            {{-- <div class="form-group" style="mt-3">
                                 <div class="flash-message">
                                     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                                     @if(Session::has('alert-' . $msg))
@@ -28,7 +28,7 @@
                                     @endif
                                     @endforeach
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="form-group ">
                                 <label for="lastname" class="control-label col-lg-3"> Lịch Trình Tên</label>
                                 <div class="col-lg-6">
