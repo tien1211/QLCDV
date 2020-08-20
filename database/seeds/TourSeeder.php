@@ -35,7 +35,6 @@ class TourSeeder extends Seeder
                 'tour_daily' => 'ivivu',
                 'tour_hinhanh' => 'ivivu-binh-ba.jpg',
                 'tour_trangthai' => 1,
-
             ],
             [
                 'lt_id' => '3',
