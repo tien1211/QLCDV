@@ -82,7 +82,7 @@
               Đến:
               <input onchange="timkiem()" class="form-control "  name="tour_ngaykt" type="date" value="{{$ngaykt}}">
             </div>
-            <button type="submit" class="btn btn-primary" id="search"><i class=" glyphicon glyphicon-search" style="color: aliceblue" ></i></button>
+            <button type="submit" class="btn btn-primary" title="Tìm" id="search"><i class=" glyphicon glyphicon-search" style="color: aliceblue" ></i></button>
             <a href="{{route('TOUR_Them')}}"><button title="Thêm" type="button"  class="btn btn-primary"><i class="glyphicon glyphicon-plus" style="color: aliceblue"></i></button></a>
         </form>
         </div>
