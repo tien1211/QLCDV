@@ -77,7 +77,6 @@ class TourController extends Controller
             $Tour->tour_daily = $request->tour_daily;
             $Tour->tour_hinhanh = $request->tour_hinhanh;
             $file = $request->tour_hinhanh;
-
             if($request->hasFile('tour_hinhanh')){
                 $dataTime = date('Ymd_His');
                 $file = $request->file('tour_hinhanh');
@@ -90,7 +89,7 @@ class TourController extends Controller
                 //resize ảnh
                 $destinationPath = public_path('upload/tour');
                 $resize_image = Image::make($file->getRealPath());
-                $resize_image->resize(300, 300, function($constraint)
+                $resize_image->resize(710, 399, function($constraint)
                 {
                     $constraint->aspectRatio();
                 })->save($destinationPath . '/' . $fileName);
@@ -133,7 +132,7 @@ class TourController extends Controller
             //resize ảnh
             $destinationPath = public_path('upload/tour');
             $resize_image = Image::make($file->getRealPath());
-            $resize_image->resize(300, 300, function($constraint)
+            $resize_image->resize(710, 399, function($constraint)
             {
                 $constraint->aspectRatio();
             })->save($destinationPath . '/' . $fileName);

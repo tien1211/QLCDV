@@ -116,10 +116,40 @@ class AnhTourSeeder extends Seeder
                 'lt_id' => 6,
                 'at_hinhanh' => 'DL-5.png',
                 'at_trangthai' => 1
+            ],[
+                'lt_id' => 7,
+                'at_hinhanh' => 'VT-1.png',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 7,
+                'at_hinhanh' => 'VT-2.png',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 7,
+                'at_hinhanh' => 'VT-3.png',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 7,
+                'at_hinhanh' => 'VT-4.png',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 8,
+                'at_hinhanh' => 'NT-1.png',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 8,
+                'at_hinhanh' => 'NT-2.png',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 8,
+                'at_hinhanh' => 'NT-3.png',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 8,
+                'at_hinhanh' => 'NT-4.png',
+                'at_trangthai' => 1
             ]
         ];
-
-
         DB::table('Anh_Tour')->insert($arr);
     }
 }

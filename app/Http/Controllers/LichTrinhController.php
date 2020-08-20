@@ -31,18 +31,6 @@ class LichTrinhController extends Controller
 
     }
     public function postThem(Request $request){
-        // Validator::make($request->all(),
-        // [
-        //     'lt_ten' => 'required',
-        //     'lt_file' => 'required|max:5000',
-        //     'lt_mota' => 'required',
-        // ],
-        // [
-        //     'lt_ten.required' => 'Bạn chưa nhập tên lịch trình!',
-        //     'lt_file.required' => 'Bạn chưa thêm file lịch trình!',
-        //     'lt_mota' => 'Bạn chưa nhập mô tả!',
-        // ])->validate();
-        /////////////////////////////////////////////////////////////
         $LichTrinh = new LichTrinh();
         $LichTrinh->lt_ten = $request->lt_ten;
         $LichTrinh->lt_mota= $request->lt_mota;
@@ -74,17 +62,6 @@ class LichTrinhController extends Controller
         return view('admin.LichTrinh.sua',compact('LichTrinh'));
     }
     public function postSua(Request $request,$id){
-        // $this->validate($request,
-        // [
-        //     'lt_ten' => 'required',
-        //     'lt_file' => 'max:5000',
-        //     'lt_mota' => 'required',
-        // ],
-        // [
-        //     'lt_ten.required' => 'Bạn chưa nhập tên lịch trình!',
-        //     'lt_file.max' => 'File có dung lượng quá lớn!',
-        //     'lt_mota' => 'Bạn chưa nhập mô tả!',
-        // ]);
         $LichTrinh = LichTrinh::find($id);
         $LichTrinh->lt_ten = $request->lt_ten;
         $LichTrinh->lt_mota= $request->lt_mota;
@@ -146,7 +123,7 @@ class LichTrinhController extends Controller
             //resize ảnh
             $destinationPath = public_path('upload/tour');
             $resize_image = Image::make($file->getRealPath());
-            $resize_image->resize(1200, 780, function($constraint)
+            $resize_image->resize(710, 399, function($constraint)
             {
                 $constraint->aspectRatio();
             })->save($destinationPath . '/' . $fileName);
@@ -177,7 +154,7 @@ class LichTrinhController extends Controller
             //resize ảnh
             $destinationPath = public_path('upload/tour');
             $resize_image = Image::make($file->getRealPath());
-            $resize_image->resize(1200, 780, function($constraint)
+            $resize_image->resize(710, 399, function($constraint)
             {
                 $constraint->aspectRatio();
             })->save($destinationPath . '/' . $fileName);
