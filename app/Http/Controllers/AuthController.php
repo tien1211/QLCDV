@@ -27,7 +27,7 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($arr)) {
-            return redirect()->route("DV_DanhSach"); #chuyển về trang chủ
+            return redirect()->route("DV_DanhSach"); 
         } else {
             return redirect()->back()
             ->withInput()->with("error", "Sai tài khoản hoặc mật khẩu");
@@ -36,7 +36,7 @@ class AuthController extends Controller
 
     public function logOut(){
         Auth::logout();
-        return redirect()->route("trangchu");#chuyển về đăng nhập
+        return redirect()->route("trangchu");
     }
 
 
