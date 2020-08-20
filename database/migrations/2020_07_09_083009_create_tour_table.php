@@ -20,7 +20,7 @@ class CreateTourTable extends Migration
             $table->date('tour_ngaybd');
             $table->date('tour_ngaykt');
             $table->double('tour_chiphi', 15,2);
-            $table->integer('tour_soluong');
+            $table->unsignedInteger('tour_soluong');
             $table->unsignedInteger('gd_id');
             $table->string('tour_daily');
             $table->string('tour_hinhanh');

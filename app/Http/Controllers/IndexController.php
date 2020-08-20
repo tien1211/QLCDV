@@ -138,6 +138,11 @@ class IndexController extends Controller
     }
     // xác nhận đăng ký tour
     public function postDKT(Request $request, $id){
+        $sl = DB::table('Tour')->where([['tour_id',$id],['tour_trangthai',1]])->first();
+        if($sl->tour_soluong < 1){
+            Session::flash('alert-danger', 'Vượt quá số lượng!!!');
+            return redirect()->route('dktour',['id'=>$id]);
+        }
         $validation = $this->validate($request,
         [
             'ttndk_ten' => 'required',
@@ -314,17 +319,39 @@ class IndexController extends Controller
         [
             'ttndk_id.required' => 'Bạn chưa chọn người tham gia!',
         ]);
+        $info_ntg = DB::table('thongtinnguoidk')
+        ->join('dk_tour','dk_tour.dkt_id','=','thongtinnguoidk.dkt_id')
+        ->join('congdoanvien','congdoanvien.cdv_id','=','dk_tour.cdv_id')
+        ->where([['dk_tour.tour_id',$id],['dk_tour.cdv_id',Auth::user()->cdv_id],['thongtinnguoidk.ttndk_trangthai','<>',0],])
+        ->select('ttndk_id')->get();
+        //    dd($info_ntg);
         $ntg = $request->ttndk_id;
+        $ex = [];
         foreach($ntg as $t){
+            foreach($info_ntg as $id_ndk => $value)
+            {
+                if($value->ttndk_id == $t){
+                    array_push($ex,$t); 
+                }
+            }
+
+        }
+
+        if(sizeof($ex) <= 0){
+            Session::flash('alert-danger', 'Bạn chưa chọn người tham gia!');
+            return redirect()->route('DS_NTG',['id'=>$id]);
+        }
+
+        foreach($ex as $t){
             DB::table('thongtinnguoidk')
-                ->where('ttndk_id',$t)
+                ->where([['ttndk_id',$t],['ttndk_trangthai',1]])
                 ->update(['ttndk_trangthai'=>0]);
         }
         //cập nhật lại số lượng tour
         $tour = DB::table('tour')
             ->where('tour_id',$id)
             ->first();
-        $soluongmoi = $tour->tour_soluong + count($ntg);
+        $soluongmoi = $tour->tour_soluong + count($ex);
         DB::table('tour')
             ->where('tour_id',$id)
             ->update(['tour_soluong' => $soluongmoi]);
@@ -332,7 +359,7 @@ class IndexController extends Controller
         $tourdk = DB::table('dk_tour')
             ->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],['tttp_id','<>',2],])
             ->first();
-        $soluongconlai = $tourdk->dkt_soluong - count($ntg);
+        $soluongconlai = $tourdk->dkt_soluong - count($ex);
         DB::table('dk_tour')
             ->where([['tour_id',$id],['cdv_id',Auth::user()->cdv_id],])
             ->update(['dkt_soluong' => $soluongconlai]);

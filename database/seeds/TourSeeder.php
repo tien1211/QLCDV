@@ -23,12 +23,9 @@ class TourSeeder extends Seeder
                 'tour_daily' => 'abc',
                 'tour_hinhanh' => 'tour-vungtau.png',
                 'tour_trangthai' => 1,
-
-
             ],
             [
                 'lt_id' => '2',
-
                 'tour_handk' => '2020-08-21',
                 'tour_ngaybd' => '2020-08-22',
                 'tour_ngaykt' => '2020-08-23',
@@ -38,7 +35,6 @@ class TourSeeder extends Seeder
                 'tour_daily' => 'xyz',
                 'tour_hinhanh' => 'tour-cantho.png',
                 'tour_trangthai' => 1,
-
             ],
             [
                 'lt_id' => '3',
@@ -51,7 +47,6 @@ class TourSeeder extends Seeder
                 'tour_daily' => 'MyThoTravel',
                 'tour_hinhanh' => 'tour-dalat.png',
                 'tour_trangthai' => 1,
-
             ],
             [
                 'lt_id' => '4',
@@ -64,7 +59,6 @@ class TourSeeder extends Seeder
                 'tour_daily' => 'MyThoTravel',
                 'tour_hinhanh' => 'tour-danang.png',
                 'tour_trangthai' => 1,
-
             ],
             [
                 'lt_id' => '4',
