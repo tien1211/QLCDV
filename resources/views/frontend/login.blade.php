@@ -75,15 +75,7 @@
 						</button>
 					</div>
 
-					<div class="text-center p-t-45 p-b-4">
-						<span class="txt1">
-							Forgot
-						</span>
-
-						<a href="#" class="txt2 hov1">
-							Username / Password?
-						</a>
-					</div>
+					
 
 					<div class="text-center">
 					<a href="{{route('trangchu')}}" class="txt2 hov1">

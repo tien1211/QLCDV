@@ -74,6 +74,7 @@
                 @endforeach
               </select>
             </div>
+            
             <div class="form-group">
               Từ ngày:
               <input onchange="timkiem()" class="form-control "  name="tour_ngaybd" type="date" value="{{$ngaybd}}">
@@ -84,6 +85,7 @@
             </div>
             <button type="submit" class="btn btn-primary" title="Tìm" id="search"><i class=" glyphicon glyphicon-search" style="color: aliceblue" ></i></button>
             <a href="{{route('TOUR_Them')}}"><button title="Thêm" type="button"  class="btn btn-primary"><i class="glyphicon glyphicon-plus" style="color: aliceblue"></i></button></a>
+            
         </form>
         </div>
     </div>

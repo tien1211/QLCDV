@@ -14,9 +14,9 @@ class TourSeeder extends Seeder
         $arr=[
             [
                 'lt_id' => '1',
-                'tour_handk' => '2020-01-21',
-                'tour_ngaybd' => '2020-08-21',
-                'tour_ngaykt' => '2020-08-23',
+                'tour_handk' => '2020-08-10',
+                'tour_ngaybd' => '2020-08-17',
+                'tour_ngaykt' => '2020-08-19',
                 'tour_chiphi' => '1900000',
                 'tour_soluong' => '20',
                 'gd_id' => '1',

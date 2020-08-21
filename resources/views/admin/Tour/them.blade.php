@@ -44,15 +44,26 @@ label.error {
                                     </select>
                                 </div>
                                 <div id="ltid"></div>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-2">
                                         <select class="form-control m-bot15" name="gd_id" id="gd_id">
                                             <option value="">Giai Đoạn</option>
                                             @foreach ($GiaiDoan as $gd)
                                             <option value="{{$gd->gd_id}}">{{$gd->giai_doan}}</option>
+                                            
                                             @endforeach
+                                           
                                         </select>
+                                        
+                                    </div>
+                                    <div class="col-lg-2">
+                                        
+                                            <button title="Thêm giai đoạn" type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                                                <i class="glyphicon glyphicon-plus" style="color: aliceblue"></i>
+                                            </button>
+                                        
                                     </div>
                                 </div>
+
                                 <div class="form-group ">
                                     <label for="lastname" class="control-label col-lg-3">Hạn đăng ký</label>
                                     <div class="col-lg-6">
@@ -105,6 +116,42 @@ label.error {
                                 </div>
                             </div>
                         </form>
+                         <!-- The Modal -->
+                         <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <form class="cmxform form-horizontal" enctype="multipart/form-data" method="post" action="{{route('GD_Them')}}">
+                                    @csrf
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Thêm Giai Đoạn</h4>
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                          
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                
+                                    <div class="form-group ">
+                                        <label for="username" class="control-label col-lg-3">Giai Đoạn</label>
+                                        <div class="col-lg-3">
+                                            <input class="form-control" placeholder="Giai đoạn từ.." required  name="giai_doan1" type="number" min="2010">
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <input class="form-control" placeholder="Giai đoạn đến.." required name="giai_doan2" type="number" min="2011">
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                          
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Thêm</button>
+                                  <button type="close" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                              </div>
+                            </div>
+                          </div>
                         <br>
                     </div>
                 </div>
@@ -141,5 +188,14 @@ label.error {
     });
     
     </script>
+@if(Session::has('alert-1'))
 
+<script>
+  window.onload =  function()
+    {
+    alert('Thêm thành công');
+    };
+</script>
+
+@endif
 @endsection

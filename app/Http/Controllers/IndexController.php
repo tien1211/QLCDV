@@ -35,17 +35,20 @@ class IndexController extends Controller
         $ThongTinNguoiDK = ThongTinNguoiDK::all();
         $TinhTrangThuPhi = TinhTrangThuPhi::all();
         $now=  Carbon::now('Asia/Ho_Chi_Minh');
-        $ifo= DB::table('Tour')//tour mới
+
+        ///////////// Tour mới /////////////////
+        $ifo= DB::table('Tour')
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
             ->orderBy('tour.tour_handk','desc')
-            ->limit(3)->get();
-        $ifo1= DB::table('Tour')//hết hạn
+            ->limit(5)->get();
+        ///////////// Tour hết hạn/////////////////
+        $ifo1= DB::table('Tour')
         ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
         ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
         ->where('Tour.tour_ngaykt','<',$now)
         ->orderBy('tour.tour_handk','desc')
-        ->limit(3)->get();
+        ->limit(5)->get();
 
 
         view() ->share('ifo',$ifo);
@@ -81,15 +84,18 @@ class IndexController extends Controller
             $a = DB::table('LichTrinh')->join('Tour','LichTrinh.lt_id','=','Tour.lt_id')
                 ->join('Anh_Tour','Anh_Tour.lt_id','=','LichTrinh.lt_id')
                 ->where('Tour.tour_id','=',$id)
-                ->select('*')->get();
+                ->select('*')->get();//Ảnh liên quan
+
             $b = DB::table('Tour')->join('LichTrinh','LichTrinh.lt_id','=','Tour.lt_id')
                 ->where('Tour.tour_id','=',$id)
-                ->select('*')->get();
+                ->select('*')->get();//Ảnh tour
+
             $nguoithamgia = DB::table('thongtinnguoidk')
             ->join('dk_tour','dk_tour.dkt_id','=','thongtinnguoidk.dkt_id')
             ->join('congdoanvien','congdoanvien.cdv_id','=','dk_tour.cdv_id')
             ->where([['dk_tour.tour_id',$id],['thongtinnguoidk.ttndk_trangthai','<>',0],])
             ->get();
+
             $tourkhac = DB::table('Tour')
             ->join('lichtrinh','lichtrinh.lt_id','=','Tour.lt_id')
             ->join('giaidoan','giaidoan.gd_id','=','Tour.gd_id')
@@ -321,10 +327,9 @@ class IndexController extends Controller
         ]);
         $info_ntg = DB::table('thongtinnguoidk')
         ->join('dk_tour','dk_tour.dkt_id','=','thongtinnguoidk.dkt_id')
-        ->join('congdoanvien','congdoanvien.cdv_id','=','dk_tour.cdv_id')
         ->where([['dk_tour.tour_id',$id],['dk_tour.cdv_id',Auth::user()->cdv_id],['thongtinnguoidk.ttndk_trangthai','<>',0],])
         ->select('ttndk_id')->get();
-        //    dd($info_ntg);
+            dd($info_ntg);
         $ntg = $request->ttndk_id;
         $ex = [];
         foreach($ntg as $t){
