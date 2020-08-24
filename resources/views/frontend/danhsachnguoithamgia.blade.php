@@ -16,7 +16,7 @@
     <div class="col-12">
         <!-- Section Heading -->
         <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
-            <h3>Danh Sách người bạn đã đăng ký tour</h3>
+            <h3>Danh Sách Người Bạn Đã Đăng Ký Tour</h3>
             <h3>{{$tour->lt_ten}} {{date('Y ',strtotime($tour->tour_handk))}}</h3>
         </div>
     </div>
