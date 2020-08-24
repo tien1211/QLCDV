@@ -426,7 +426,16 @@ class IndexController extends Controller
             ->whereRaw('tour_trangthai = 1 and lower(lt_ten) LIKE (?)',["%{$tu_khoa}%"])
             ->orderBy('tour.tour_handk','desc')
             ->paginate(5);
-    return view('frontend.index')->with('tour1',$tour1);
+        return view('frontend.index')->with('tour1',$tour1);
     }
+
+
+    //export
+
+    // public function exportTTNDK($id){
+    //     $ttndk = ThongTinNguoiDK::findOrFail($id);
+    //     $file = Excel::download(new TTNDKExport($id), $ttndk->ttndk_ten.'.xlsx');
+    //     return $file;
+    // }
 
 }

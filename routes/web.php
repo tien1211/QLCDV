@@ -39,13 +39,12 @@ Route::post('/xoanguoithamgia/{id}','IndexController@postXNTG')->name('XL_XNTTDK
 Route::get('/huytour/{id}','IndexController@postDelete')->name('HUY_TOUR');
 // Tìm kiếm tour
 Route::get('/timkiemtour','IndexController@getSearch')->name('TK_TOUR');
-
+//thông tin cá nhân
 Route::get('/profile/{id}','IndexController@getProfile')->name('proFile');
-
+//xác thực tài khoảng
 Route::get('/dangnhap','AuthController@getLogin')->name('formLogin');
 Route::post('/dangnhap-xl','AuthController@postLogin')->name('login');
 Route::get('/dangxuat','AuthController@logOut')->name('logout');
-
 Route::get('/doimatkhau/{id}','AuthController@getChangePass')->name('formChange');
 Route::post('/changpass/{id}','AuthController@postChangePass')->name('changePass');
 

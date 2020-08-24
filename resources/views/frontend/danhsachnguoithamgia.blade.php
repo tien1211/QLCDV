@@ -64,6 +64,7 @@
     <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa?');" class="btn roberto-btn mt-15" style="margin-left: 390px;">Hủy đăng ký</button>
     <a href="{{route('quanlytour')}}" class="btn roberto-btn mt-15"  >Quay lại</a>
 @endif
+<a href="{{route('export_ttndk')}}" title="Export Danh Sách CĐV" class="btn btn-sm btn-primary float-right">Export</a>
 </form>
 <script>
 function check(){
