@@ -99,9 +99,7 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
         Route::get('/DV_Timkiem', 'DonViController@postTimkiem')->name('DV_Timkiem');
     });
     Route::group(['prefix' => 'Tour'], function () {
-        //Export
-        Route::get('/Tour_Export/Export/{id}','TourController@Export')->name('Tour_Export');
-        Route::get('/Tour_Export/{id}','TourController@viewExport')->name('Tour_ViewExport');
+       
         //Danh sach tour
         Route::get('TOUR_DS','TourController@getDanhSach')->name('TOUR_DanhSach');
         //Form thêm tour
@@ -122,6 +120,10 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
         Route::post('search/name','TourController@getSearchAjax')->name('search');
         // Xóa người đăng ký tham gia
         Route::post('/TOUR_XNDK/{id}','TourController@postXNDK')->name('XLTOUR_XNDK');
+
+        // Thêm giai đoạn
+
+        Route::post('/ThemGD','TourController@postThemGD')->name('GD_Them');
     });
     Route::group(['prefix' => 'LichTrinh'], function () {
     //Danh sách lịch trình

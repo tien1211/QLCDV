@@ -17,6 +17,7 @@ class CreateGiaidoanTable extends Migration
             $table->increments('gd_id');
             $table->string('giai_doan');
             $table->tinyInteger('gd_trangthai')->comment('1 la hien thi 0 la an thong tin');
+            $table->timestamps();
         });
     }
 

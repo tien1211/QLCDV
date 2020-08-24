@@ -99,7 +99,7 @@
                         <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-6">
                                 <button class="btn btn-primary" type="submit">SUBMIT</button>
-                                <a href="{{route('LT_DanhSach')}}"><button class="btn btn-default" type="button">Thoát</button></a>
+                                <a href="{{route('CDV_DanhSach')}}"><button class="btn btn-default" type="button">Trở Về</button></a>
                             </div>
                         </div>
                         <div class="form-group">

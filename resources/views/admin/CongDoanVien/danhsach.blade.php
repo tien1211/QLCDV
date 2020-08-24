@@ -91,10 +91,10 @@
             <div class="form-group">
                 <input type="text" class="form-control" id="tukhoa" name="tukhoa">
             </div>
-                  <button type="submit" class="btn btn-primary" id="search"><i class=" glyphicon glyphicon-search" style="color: aliceblue"></i></button>
+                  <button type="submit" class="btn btn-primary" title="Tìm" id="search"><i class=" glyphicon glyphicon-search" style="color: aliceblue"></i></button>
                   <a href="{{route('CDV_Them')}}"><button title="Thêm" type="button"  class="btn btn-primary"><i class="glyphicon glyphicon-plus" style="color: aliceblue"></i></button></a>
-                  <a href="{{route('CDV_Export')}}" class="btn btn-sm btn-primary float-right">Export</a>
-                  <a href="{{route('CDV_CNMHT')}}" class="btn btn-sm btn-primary float-right">Cập nhật mức hổ trợ</a>
+                  <a href="{{route('CDV_Export')}}" title="Export Danh Sách CĐV" class="btn btn-sm btn-primary float-right">Export</a>
+                  <a href="{{route('CDV_CNMHT')}}" title="Cập Nhật Mức Hổ Trợ" class="btn btn-sm btn-primary float-right">Cập nhật mức hổ trợ</a>
         </form>
       </div>
     </div>
