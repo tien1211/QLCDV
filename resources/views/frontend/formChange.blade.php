@@ -83,7 +83,7 @@
 
 
 						<div class="container-login100-form-btn m-t-20">
-							<button type="submit" class="login100-form-btn" >
+							<button type="submit" onclick="return confirm('Bạn có thật sự muốn đổi mật khẩu	 không??')" class="login100-form-btn" >
 								Đổi Mật Khẩu
 							</button>
 						</div>
