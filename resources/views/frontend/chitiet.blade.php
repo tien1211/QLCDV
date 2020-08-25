@@ -57,9 +57,6 @@
                     </div>
                     <!-- Room Service -->
 
-                    
-
-
                     <div class="room-service mb-50">
                         <h4>Danh Sách Người Tham gia Tham Gia</h4>
                         <table class="table">
@@ -126,10 +123,7 @@
                                             <h6>Ngày Kết Thúc: <span style="color:red"> <b>{{date('d-m-Y ',strtotime($datail->tour_ngaykt))}}</b></span></h6>
                                             @else
                                             <h6>Ngày Kết Thúc: <span>{{date('d-m-Y ',strtotime($datail->tour_ngaykt))}}</span></h6>
-                                                
                                             @endif
-
-                                            
                                             <br>
                                             <h6>Hạn Đăng ký:
                                                 @if ($now > $datail->tour_handk)

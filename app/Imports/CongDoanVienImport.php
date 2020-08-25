@@ -15,12 +15,12 @@ class CongDoanVienImport implements ToCollection
     */
     public function collection(Collection $collection)
     {
-        
+
         foreach($collection as $key => $value){
-           
+
             #Định dạng ngày;
             if($key>0){
-                
+
                 DB::table('CongDoanVien')->insert([
                     'dv_id' => $value[0],
                     'cv_id' => $value[1],
@@ -51,7 +51,7 @@ class CongDoanVienImport implements ToCollection
 
     public function rules(): array{
         return [
-            
+
 
             '0'       =>  'required',
             '1'       =>  'required',
@@ -62,7 +62,7 @@ class CongDoanVienImport implements ToCollection
             '6'       =>  'required',
             '7'       =>  'required',
             '8'       =>  'required',
-            '9'      =>  'required',
+            '9'       =>  'required',
             '10'      =>  ['required', Rule::unique('CongDoanVien', 'cdv_email')],
             '11'      =>  'required',
             '12'      =>  'required',
@@ -73,7 +73,7 @@ class CongDoanVienImport implements ToCollection
             // '19'      =>  ['required','min:8','max:50'],
             '17'      =>  'required',
             // '20'      =>  'required',
-            
+
         ];
     }
 

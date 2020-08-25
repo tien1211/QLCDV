@@ -35,8 +35,6 @@
 
    @yield('frontend_content')
 
-
-
     <!-- Footer Area Start -->
         @include('frontend.layout.footer')
     <!-- Footer Area End -->

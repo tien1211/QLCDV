@@ -2,17 +2,6 @@
 @section('admin_content')
 <!--main content start-->
 
-{{-- <div class="form-group" style="mt-3">
-    <div class="flash-message">
-      @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-        @if(Session::has('alert-' . $msg))
-        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
-        ata-dismiss="alert" aria-label="close">&times;</a></p>
-        @endif
-      @endforeach
-  </div>
-  </div> --}}
-
   @if(Session::has('alert-1'))
   @section('script')
   <script>
@@ -102,10 +91,10 @@
             <div class="form-group">
                 <input type="text" class="form-control" id="tukhoa" name="tukhoa">
             </div>
-                  <button type="submit" class="btn btn-primary" id="search"><i class=" glyphicon glyphicon-search" style="color: aliceblue"></i></button>
+                  <button type="submit" class="btn btn-primary" title="Tìm" id="search"><i class=" glyphicon glyphicon-search" style="color: aliceblue"></i></button>
                   <a href="{{route('CDV_Them')}}"><button title="Thêm" type="button"  class="btn btn-primary"><i class="glyphicon glyphicon-plus" style="color: aliceblue"></i></button></a>
-                  <a href="{{route('CDV_Export')}}" class="btn btn-sm btn-primary float-right">Export</a>
-                  <a href="{{route('CDV_CNMHT')}}" class="btn btn-sm btn-primary float-right">Cập nhật mức hổ trợ</a>
+                  <a href="{{route('CDV_Export')}}" title="Export Danh Sách CĐV" class="btn btn-sm btn-primary float-right">Export</a>
+                  <a href="{{route('CDV_CNMHT')}}" title="Cập Nhật Mức Hổ Trợ" class="btn btn-sm btn-primary float-right">Cập nhật mức hổ trợ</a>
         </form>
       </div>
     </div>
@@ -134,16 +123,7 @@
             <th>Thao tác</th>
           </tr>
         </thead>
-        {{-- <div class="form-group" style="mt-6">
-          <div class="flash-message">
-            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-              @if(Session::has('alert-' . $msg))
-              <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a class="close" d
-              ata-dismiss="alert" aria-label="close">&times;</a></p>
-              @endif
-            @endforeach
-        </div>
-        </div> --}}
+        
         <tbody>
             @foreach ($CongDoanVien as $key => $cdv)
             @if ($cdv->cdv_trangthai == 1)

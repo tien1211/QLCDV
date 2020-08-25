@@ -28,7 +28,6 @@
 
     <!-- Header Area Start -->
 
-
     @include('frontend.layout.header')
     <!-- Header Area End -->
 
@@ -36,8 +35,6 @@
     @include('frontend.layout.poster')
 
     <!-- Breadcrumb Area End -->
-
-
 
     <!-- Blog Area Start -->
     <div class="roberto-news-area section-padding-100-0">
@@ -59,16 +56,9 @@
     <!-- Blog Area End -->
 
 
-
-
-
-
     <!-- Footer Area Start -->
     @include('frontend.layout.footer')
     <!-- Footer Area End -->
-
-
-
 
     <!-- **** All JS Files ***** -->
     <!-- jQuery 2.2.4 -->
@@ -81,10 +71,7 @@
     <script src="frontend/js/roberto.bundle.js"></script>
     <!-- Active -->
     <script src="frontend/js/default-assets/active.js"></script>
-
-
-
-        
+ 
     @yield('script')
 </body>
 

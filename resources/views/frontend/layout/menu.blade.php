@@ -27,10 +27,8 @@
             @endforeach
         </div>
 
-
         <div class="single-widget-area mb-100">
         <a href="{{route('tourdadienra')}}"><h4 class="widget-title mb-30">Tour Đã Diễn Ra</h4></a>
-
 
             @foreach($ifo1 as $info1)
 
@@ -50,7 +48,6 @@
             @endforeach
 
         </div>
-
 
     </div>
 </div>

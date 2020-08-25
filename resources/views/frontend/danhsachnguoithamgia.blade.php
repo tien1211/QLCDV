@@ -28,10 +28,10 @@
         <thead class="thead-light">
             <tr>
                 <th>STT</th>
-                <th>Tên người tham gia</th>
-                <th>Giới tính</th>
+                <th>Tên Người Tham Gia</th>
+                <th>Giới Tính</th>
                 <th>Tuổi</th>
-                <th>Quan hệ</th>
+                <th>Quan Hệ</th>
                 <th><input type="checkbox" id="checkall" onClick="check()" /></th>
             </tr>
         </thead>

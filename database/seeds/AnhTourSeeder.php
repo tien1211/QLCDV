@@ -14,59 +14,51 @@ class AnhTourSeeder extends Seeder
         $arr = [
             [
                 'lt_id' => 1,
-                'at_hinhanh' => 'VT-1.png',
+                'at_hinhanh' => 'namdu1.jpg',
                 'at_trangthai' => 1
             ],[
                 'lt_id' => 1,
-                'at_hinhanh' => 'VT-2.png',
+                'at_hinhanh' => 'namdu2.jpg',
                 'at_trangthai' => 1
             ],[
                 'lt_id' => 1,
-                'at_hinhanh' => 'VT-3.png',
+                'at_hinhanh' => 'namdu3.jpg',
                 'at_trangthai' => 1
             ],[
                 'lt_id' => 1,
-                'at_hinhanh' => 'VT-4.png',
+                'at_hinhanh' => 'namdu4.jpg',
                 'at_trangthai' => 1
             ],[
                 'lt_id' => 2,
-                'at_hinhanh' => 'CT-1.png',
+                'at_hinhanh' => 'binhba1.jpg',
                 'at_trangthai' => 1
             ],[
                 'lt_id' => 2,
-                'at_hinhanh' => 'CT-2.png',
+                'at_hinhanh' => 'binhba2.jpg',
                 'at_trangthai' => 1
             ],[
                 'lt_id' => 2,
-                'at_hinhanh' => 'CT-3.png',
+                'at_hinhanh' => 'binhba3.jpg',
                 'at_trangthai' => 1
             ],[
                 'lt_id' => 2,
-                'at_hinhanh' => 'CT-4.png',
-                'at_trangthai' => 1
-            ],[
-                'lt_id' => 2,
-                'at_hinhanh' => 'CT-5.png',
+                'at_hinhanh' => 'binhba4.jpg',
                 'at_trangthai' => 1
             ],[
                 'lt_id' => 3,
-                'at_hinhanh' => 'DL-1.png',
+                'at_hinhanh' => 'binhhung1.jpg',
                 'at_trangthai' => 1
             ],[
                 'lt_id' => 3,
-                'at_hinhanh' => 'DL-2.png',
+                'at_hinhanh' => 'binhhung2.jpg',
                 'at_trangthai' => 1
             ],[
                 'lt_id' => 3,
-                'at_hinhanh' => 'DL-3.png',
+                'at_hinhanh' => 'binhhung3.jpg',
                 'at_trangthai' => 1
             ],[
                 'lt_id' => 3,
-                'at_hinhanh' => 'DL-4.png',
-                'at_trangthai' => 1
-            ],[
-                'lt_id' => 3,
-                'at_hinhanh' => 'DL-5.png',
+                'at_hinhanh' => 'binhhung4.jpg',
                 'at_trangthai' => 1
             ],[
                 'lt_id' => 4,
@@ -90,24 +82,74 @@ class AnhTourSeeder extends Seeder
                 'at_trangthai' => 1
             ],[
                 'lt_id' => 5,
+                'at_hinhanh' => 'hoian1.jpg',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 5,
+                'at_hinhanh' => 'hoian2.jpg',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 5,
+                'at_hinhanh' => 'hoian3.jpg',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 5,
+                'at_hinhanh' => 'hoian4.jpg',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 6,
+                'at_hinhanh' => 'DL-1.png',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 6,
+                'at_hinhanh' => 'DL-2.png',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 6,
+                'at_hinhanh' => 'DL-3.png',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 6,
+                'at_hinhanh' => 'DL-4.png',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 6,
+                'at_hinhanh' => 'DL-5.png',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 7,
+                'at_hinhanh' => 'VT-1.png',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 7,
+                'at_hinhanh' => 'VT-2.png',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 7,
+                'at_hinhanh' => 'VT-3.png',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 7,
+                'at_hinhanh' => 'VT-4.png',
+                'at_trangthai' => 1
+            ],[
+                'lt_id' => 8,
                 'at_hinhanh' => 'NT-1.png',
                 'at_trangthai' => 1
             ],[
-                'lt_id' => 5,
+                'lt_id' => 8,
                 'at_hinhanh' => 'NT-2.png',
                 'at_trangthai' => 1
             ],[
-                'lt_id' => 5,
+                'lt_id' => 8,
                 'at_hinhanh' => 'NT-3.png',
                 'at_trangthai' => 1
             ],[
-                'lt_id' => 5,
+                'lt_id' => 8,
                 'at_hinhanh' => 'NT-4.png',
                 'at_trangthai' => 1
             ]
         ];
-
-
-       DB::table('Anh_Tour')->insert($arr);
+        DB::table('Anh_Tour')->insert($arr);
     }
 }

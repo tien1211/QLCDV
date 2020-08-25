@@ -57,11 +57,11 @@
                     </div>
                 </div>
                 {{ csrf_field() }}
-                @if($tour->tour_soluong == 0)
+                @if($tour->tour_soluong <= 0)
                 <div class="form-group ">
                     <label for="firstname" class="control-label col-lg-3">Số lượng còn lại: </label>
                     <div class="col-lg-6">
-                    <input style="color: red;" type="text" class="form-control input-lg" value="{{$tour->tour_soluong}}" disabled/>
+                    <input style="color: red;" type="text" class="form-control input-lg" value="0" disabled/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -79,7 +79,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-lg-offset-3 col-lg-6">
-                        <button class="btn btn-primary btn-submit" id="submit" type="submit">Lưu</button>
+                        <button class="btn btn-primary btn-submit" onclick="return confirm('Bạn có muốn đăng ký không??')" id="submit" type="submit">Lưu</button>
                         <a href="{{route('TOUR_ChiTiet',['id'=>$tour_id])}}"><button class="btn btn-default" type="button">Thoát</button></a>
                     </div>
                 </div>
@@ -164,9 +164,6 @@ $(document).ready(function(){
         });
         }
     });
-    // $(document).on('click', 'li', function(){  
-    // $('#cdv_ten').val($(this).text());  
-    // $('#countryList').fadeOut();  
-    // });  
+    
 });
 </script>

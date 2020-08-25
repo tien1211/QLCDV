@@ -8,6 +8,9 @@
             ata-dismiss="alert" aria-label="close">&times;</a></p>
             @endif
         @endforeach
+        @if($errors->has('ttndk_id'))
+        <p class="alert alert-danger">{{ $errors->first('ttndk_id')}}</p>
+        @endif
     </div>
 </div>
 <div class="panel panel-default">
@@ -85,7 +88,7 @@
 @endif
 @if(count($nguoithamgia) == 0)
 <div class="panel-heading">
-   CHƯA CÓ NGƯỜI ĐĂNG KÝ
+    CHƯA CÓ NGƯỜI ĐĂNG KÝ
     </div>
 @else
 <div class="panel panel-default">
@@ -135,10 +138,10 @@
                         <td>{{$ntg->cdv_ten}}</td>
                         @if($ntg->ttndk_trangthai == 1)
                             <td>Đã đăng ký</td>
+                            <td><input type="checkbox" name="ttndk_id[]" value="{{$ntg->ttndk_id}}"/></td>
                         @else
                             <td><a style="color:red">Hủy đăng ký</a></td>
                         @endif
-                        <td><input type="checkbox" name="ttndk_id[]" value="{{$ntg->ttndk_id}}"/></td>
                     </tr>
                 @endforeach
             </tbody>

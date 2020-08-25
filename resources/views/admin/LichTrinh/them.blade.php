@@ -19,16 +19,7 @@
                     <div class="form">
                         <form class="cmxform form-horizontal " enctype="multipart/form-data" action="{{route('LT_XLThem')}}" id="formDemo1" method="post"  novalidate="novalidate">
                             {{csrf_field()}}
-                            {{-- <div class="form-group" style="mt-3">
-                                <div class="flash-message">
-                                    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                                    @if(Session::has('alert-' . $msg))
-                                    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
-                                    ata-dismiss="alert" aria-label="close">&times;</a></p>
-                                    @endif
-                                    @endforeach
-                                </div>
-                            </div> --}}
+                            
                             <div class="form-group ">
                                 <label for="lastname" class="control-label col-lg-3"> Lịch Trình Tên</label>
                                 <div class="col-lg-6">
@@ -91,43 +82,7 @@
         }
     });
 
-//     $.ajaxSetup({
-//       headers: {
-//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//       }
-//     });
-//         //xử lý khi có sự kiện click
-//         $('#formDemo1').on('submit', function (e) {
-//             //Lấy ra files
-//             e.preventDefault();
-//             var lt_ten = $('#lt_ten').val();
-//             var lt_mota = $('#lt_mota').val();
-//             var lt_file = $("#lt_file").val();
-//             var form_data = new FormData();
 
-//             form_data.append('lt_ten', lt_ten);
-//             form_data.append('lt_mota', lt_mota);
-//             form_data.append('lt_file', lt_file);
-
-//                 //sử dụng ajax post
-//             $.ajax({
-//                 url: "{{route('LT_XLThem')}}", // gửi đến file upload.php
-//                 dataType: 'text',
-//                 cache: false,
-//                 contentType: false,
-//                 processData: false,
-//                 data:form_data,
-//                 type: 'post',
-//                 success: function (res) {
-//                     $('.status').text(res);
-//                     $('#lt_file').val('');
-//                     window.location =" {{route('LT_DanhSach')}}";
-//                  }
-//                 });
-//     }
-
-//          return false;
-// });
     </script>
 
 @endsection
