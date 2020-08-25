@@ -301,7 +301,7 @@ class CongDoanVienController extends Controller
                 $file = $request->file;
 
                 Excel::import(new CongDoanVienImport, $file);
-                Session::flash('alert-info', 'Import thành công!!!');
+                Session::flash('alert-1', 'Import thành công!!!');
                 return redirect()->route('CDV_DanhSach');
             } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
                 $f  = $e->failures();
