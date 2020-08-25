@@ -129,7 +129,7 @@
 
                             <div class="form-group">
                                 <div class="col-lg-offset-3 col-lg-6">
-                                    <button class="btn btn-primary" type="submit">Lưu</button>
+                                    <button class="btn btn-primary" onclick="return confirm('Bạn có thật sự muốn cập nhật không??')" type="submit">Lưu</button>
                                     <button class="btn btn-default" type="button">Thoát</button>
                                 </div>
                             </div>

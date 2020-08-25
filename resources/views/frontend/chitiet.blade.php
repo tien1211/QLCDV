@@ -58,7 +58,11 @@
                     <!-- Room Service -->
 
                     <div class="room-service mb-50">
-                        <h4>Danh Sách Người Tham gia Tham Gia</h4>
+                        @if (sizeof($nguoithamgia)<1)
+                        <h4>Chưa Có Người Tham Gia</h4>
+                        @else
+                        
+                        <h4>Danh Sách Người Tham Gia</h4>
                         <table class="table">
                             <thead class="thead-light">
                                 <tr>
@@ -85,6 +89,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        @endif
                     </div>
 
                     <!-- Room Review -->

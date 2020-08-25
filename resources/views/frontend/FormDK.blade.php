@@ -76,6 +76,7 @@
         <div class="section-heading text-center wow fadeInUp" style="margin-top: 30px;" data-wow-delay="100ms">
             <h3>Danh sách người đã đăng ký</h3>
         </div>
+        {{-- <a href="{{route('export_ttndk',['id'=>$id])}}" title="Export Danh Sách CĐV" class="btn btn-sm btn-primary float-right">Export</a> --}}
     </div>
 </div>
 <div class="room-service mb-50">

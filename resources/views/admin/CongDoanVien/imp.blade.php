@@ -75,6 +75,7 @@
 
                                     </div>
                                    @endif
+
                                     @if (isset($f))
                                         <div class="alert alert-warning mt-10" style="color: red;">ERROR FILE IMPORT:
                                             @foreach ($f as $f1)
@@ -89,7 +90,12 @@
                                                 @break
                                             @endforeach
                                         </div>
+
+
+
                                     @endif
+
+
                                 </div>
                 {{------------------- SHOW ERROR ------------------}}
 
@@ -103,11 +109,11 @@
                             </div>
                             <div class="form-group">
                             <label for="username" style="margin-left:205px ">DOWNLOAD FILE EXCEL:</label>
-                            <a href="samp/FormImport.xlsx"><label for="username" > TẠI ĐÂY </label></a>
+                            <a href="samp/Form.xlsx"><label for="username" > TẠI ĐÂY </label></a>
                             </div>
                             <div class="form-group">
                             <label for="username"  style="margin-left:205px ">DOWNLOAD FILE MẪU:</label>
-                            <a href="samp/ExampleForm.xlsx" ><label for="username" >TẠI ĐÂY </label></a>
+                            <a href="samp/Example.xlsx" ><label for="username" >TẠI ĐÂY </label></a>
                             </div>
                         </div>
 

@@ -39,13 +39,12 @@ Route::post('/xoanguoithamgia/{id}','IndexController@postXNTG')->name('XL_XNTTDK
 Route::get('/huytour/{id}','IndexController@postDelete')->name('HUY_TOUR');
 // Tìm kiếm tour
 Route::get('/timkiemtour','IndexController@getSearch')->name('TK_TOUR');
-
+//thông tin cá nhân
 Route::get('/profile/{id}','IndexController@getProfile')->name('proFile');
-
+//xác thực tài khoảng
 Route::get('/dangnhap','AuthController@getLogin')->name('formLogin');
 Route::post('/dangnhap-xl','AuthController@postLogin')->name('login');
 Route::get('/dangxuat','AuthController@logOut')->name('logout');
-
 Route::get('/doimatkhau/{id}','AuthController@getChangePass')->name('formChange');
 Route::post('/changpass/{id}','AuthController@postChangePass')->name('changePass');
 
@@ -99,9 +98,7 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
         Route::get('/DV_Timkiem', 'DonViController@postTimkiem')->name('DV_Timkiem');
     });
     Route::group(['prefix' => 'Tour'], function () {
-        //Export
-        Route::get('/Tour_Export/Export/{id}','TourController@Export')->name('Tour_Export');
-        Route::get('/Tour_Export/{id}','TourController@viewExport')->name('Tour_ViewExport');
+       
         //Danh sach tour
         Route::get('TOUR_DS','TourController@getDanhSach')->name('TOUR_DanhSach');
         //Form thêm tour
@@ -122,6 +119,10 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
         Route::post('search/name','TourController@getSearchAjax')->name('search');
         // Xóa người đăng ký tham gia
         Route::post('/TOUR_XNDK/{id}','TourController@postXNDK')->name('XLTOUR_XNDK');
+
+        // Thêm giai đoạn
+
+        Route::post('/ThemGD','TourController@postThemGD')->name('GD_Them');
     });
     Route::group(['prefix' => 'LichTrinh'], function () {
     //Danh sách lịch trình

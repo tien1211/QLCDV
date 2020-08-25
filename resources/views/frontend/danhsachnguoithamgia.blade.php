@@ -16,7 +16,7 @@
     <div class="col-12">
         <!-- Section Heading -->
         <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
-            <h3>Danh Sách người bạn đã đăng ký tour</h3>
+            <h3>Danh Sách Người Bạn Đã Đăng Ký Tour</h3>
             <h3>{{$tour->lt_ten}} {{date('Y ',strtotime($tour->tour_handk))}}</h3>
         </div>
     </div>
@@ -64,6 +64,7 @@
     <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa?');" class="btn roberto-btn mt-15" style="margin-left: 390px;">Hủy đăng ký</button>
     <a href="{{route('quanlytour')}}" class="btn roberto-btn mt-15"  >Quay lại</a>
 @endif
+
 </form>
 <script>
 function check(){

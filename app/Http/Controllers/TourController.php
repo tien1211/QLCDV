@@ -450,4 +450,20 @@ class TourController extends Controller
         Session::flash('alert-info', 'Hủy đăng ký thành công!!!');
         return redirect()->route('TOUR_ChiTiet',['id'=>$id]);
     }
+
+
+    public function postThemGD(Request $request)
+    {
+        $GiaiDoan = new GiaiDoan();
+
+        $name = $request->giai_doan1. " - " .$request->giai_doan2;
+        $GiaiDoan->giai_doan = $name;
+        $GiaiDoan->gd_trangthai = 1;
+        $GiaiDoan->save();
+        Session::flash('alert-1', 'Thêm thành công!!!');
+        return redirect()->route('TOUR_Them');
+
+    }
+
+
 }
