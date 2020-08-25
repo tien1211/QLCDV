@@ -98,7 +98,7 @@
             
                         <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-6">
-                                <button class="btn btn-primary" type="submit">SUBMIT</button>
+                                <button class="btn btn-primary" onclick="return confirm('Bạn có thật sự muốn thêm không??')" type="submit">SUBMIT</button>
                                 <a href="{{route('CDV_DanhSach')}}"><button class="btn btn-default" type="button">Trở Về</button></a>
                             </div>
                         </div>

@@ -21,7 +21,7 @@
                 <a style="color: #777; font-weight: bold;">Thêm hình mới: </a>
                 <input type="file" class="form-control" name="hinh[]" multiple="true">
             </div>
-                <button type="submit" class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button>
+                <button type="submit" onclick="return confirm('Bạn có thật sự muốn thêm không??')" class="btn btn-outline-info"><i class="glyphicon glyphicon-plus"></i></button>
             </form>
         </div>
     </div>
@@ -57,7 +57,7 @@
       </table>
       <div class="panel-body">
         <div class="position-right">
-          <button type="submit" class="btn btn-outline-info"><i class=" glyphicon glyphicon-trash"></i></button>
+          <button type="submit" onclick="return confirm('Bạn có thật sự muốn xóa không??')" class="btn btn-outline-info"><i class=" glyphicon glyphicon-trash"></i></button>
         </div>
       </div>
     </from>

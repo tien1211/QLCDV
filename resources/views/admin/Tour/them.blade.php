@@ -110,8 +110,8 @@ label.error {
                                 <div class="class"></div>
                                 <div class="form-group">
                                     <div class="col-lg-offset-3 col-lg-6">
-                                        <button class="btn btn-primary btn-submit" id="submit" type="submit">Lưu</button>
-                                        <button class="btn btn-default" type="button">Thoát</button>
+                                        <button class="btn btn-primary btn-submit" id="submit" onclick="return confirm('Bạn có thật sự muốn thêm không??')" type="submit">Thêm</button>
+                                        <button class="btn btn-default" type="button">Trở về</button>
                                     </div>
                                 </div>
                             </div>

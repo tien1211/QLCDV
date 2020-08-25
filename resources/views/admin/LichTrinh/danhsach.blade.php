@@ -82,7 +82,7 @@
                     </button></a></td>
                     <td>
                         <a class="glyphicon glyphicon-edit" title="Sửa" href="{{route('LT_Sua',['id'=>$lt->lt_id])}}"></a>
-                        <a class="glyphicon glyphicon-trash" title="Xóa" href="{{route('LT_Xoa',['id'=>$lt->lt_id])}} "></a>
+                        <a class="glyphicon glyphicon-trash" title="Xóa" onclick="return confirm('Bạn có thật sự muốn xóa không??')" href="{{route('LT_Xoa',['id'=>$lt->lt_id])}} "></a>
                     </td>
                 </tr>
 

@@ -60,7 +60,7 @@ label.error {
                             {{-- Mô tả--}}
                             <div class="form-group">
                                 <div class="col-lg-offset-3 col-lg-6">
-                                    <button class="btn btn-primary" id="submit" type="submit">Lưu</button>
+                                    <button class="btn btn-primary" onclick="return confirm('Bạn có thật sự muốn cập nhật không??')" id="submit" type="submit">Lưu</button>
                                 <a href="{{route('LT_DanhSach')}}"><button class="btn btn-default" type="button">Thoát</button></a>
                                 </div>
                             </div>

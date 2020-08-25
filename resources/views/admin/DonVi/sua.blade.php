@@ -63,8 +63,8 @@
                         {{-- Đơn vị trực thuộc --}}
                         <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-6">
-                                <button class="btn btn-primary" type="submit">Save</button>
-                                <a href="{{route('DV_DanhSach')}}"><button class="btn btn-default" type="button">Cancel</button></a>
+                                <button class="btn btn-primary" onclick="return confirm('Bạn có thật sự muốn cập nhật không??')" type="submit">Save</button>
+                                <a href="{{route('DV_DanhSach')}}"><button class="btn btn-default" type="button">Trở về</button></a>
                             </div>
                         </div>
                     </form>
