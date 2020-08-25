@@ -42,7 +42,7 @@
                         <div class="form-group ">
                             <label for="firstname" class="control-label col-lg-3">Mô tả đơn vị</label>
                             <div class="col-lg-6">
-                                <textarea class="form-control" id="dv_mota" name="dv_mota"  type="text" style="resize: none" rows="8"> </textarea>
+                                <textarea class="form-control" id="dv_mota" name="dv_mota" type="text" style="resize: none" rows="8">{{old('dv_mota')}}</textarea>
                                     @if($errors->has('dv_mota'))
                                         <div style="color:red">{{ $errors->first('dv_ten')}}</div>
                                     @endif
@@ -85,14 +85,14 @@
         rules: {
             dv_ten: "required",
             dv_mota: "required",
-            dv_tructhuoc_id: "required",
+
 
 
         },
         messages: {
             dv_ten: "Vui lòng nhập tên đơn vị",
             dv_mota: "Vui lòng nhập mô tả",
-            dv_tructhuoc_id: "Vui lòng chọn trực thuộc",
+
         }
     });
 
