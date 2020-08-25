@@ -2,43 +2,6 @@
 @section('admin_content')
 <!-- page start-->
 
-{{-- <div class="row">
-    <div class="col-sm-12">
-        <section class="panel">
-            <header class="panel-heading">
-                Dropzone
-                <span class="tools pull-right">
-                    <a href="javascript:;" class="fa fa-chevron-down"></a>
-                    <a href="javascript:;" class="fa fa-cog"></a>
-                    <a href="javascript:;" class="fa fa-times"></a>
-                </span>
-            </header>
-            <div class="panel-body">
-
-                <form method="post" action="{{route('Import')}}" enctype="multipart/form-data">
-                    @csrf
-
-                    <div class="form-group ">
-                        <a href="samp/Samp.xlsx"><label for="username" class="control-label col-lg-3">DOWNLOAD MẪU EXCEL</label></a>
-                    </div>
-
-                    <div class="form-group ">
-                        <label for="username" class="control-label col-lg-12">Chèn File:</label>
-
-                        <div class="col-sm-6 col-lg-12">
-                            <input class="form-control "  name="file" type="file">
-                            @if($errors->has('file'))
-                            <div style="color:red">{{ $errors->first('file')}}</div>
-                            @endif
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-        </section>
-    </div>
-</div> --}}
-<!-- page end-->
 
 <div class="row">
     <div class="col-lg-12">

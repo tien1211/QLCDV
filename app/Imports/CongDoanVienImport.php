@@ -17,7 +17,6 @@ class CongDoanVienImport implements ToCollection,WithValidation
     {
 
         foreach($collection as $key => $value){
-<<<<<<< HEAD
 
             #Định dạng ngày;
             if($key>0){
@@ -45,33 +44,6 @@ class CongDoanVienImport implements ToCollection,WithValidation
                     'password' => bcrypt($value[17]),
                     'cdv_quyen' => 0
 
-=======
-        
-            #Định dạng ngày;
-            if($key>0){
-                    DB::table('CongDoanVien')->insert([
-                        'dv_id' => $value[0],
-                        'cv_id' => $value[1],
-                        'lnv_id' => $value[2],
-                        'mht_id' => 1,
-                        'cdv_ten' => $value[3],
-                        'cdv_ngaysinh' => Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value[4]))->format('Y-m-d'),
-                        'cdv_gioitinh' => $value[5],#1 là nam 0 là nữ
-                        'cdv_cmnd' => $value[6],
-                        'cdv_nguyenquan' => $value[7],
-                        'cdv_diachi' => $value[8],
-                        'cdv_sdt' => $value[9],
-                        'cdv_email' => $value[10],
-                        'cdv_dantoc' => $value[11],
-                        'cdv_trinhdo' => $value[12],
-                        'cdv_tongiao' => $value[13],
-                        'cdv_ngaythuviec' => Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value[14]))->format('Y-m-d'),
-                        'cdv_ngayvaonganh' => Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value[15]))->format('Y-m-d'),
-                        'cdv_trangthai' => 1,
-                        'cdv_username' => $value[16],
-                        'password' => bcrypt($value[17]),
-                        'cdv_quyen' => 0
->>>>>>> 69d1ae60be593651d16319b2cd4339219c483be0
                 ]);
             }
         }
@@ -79,11 +51,8 @@ class CongDoanVienImport implements ToCollection,WithValidation
 
     public function rules(): array{
         return [
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 69d1ae60be593651d16319b2cd4339219c483be0
             '0'       =>  'required',
             '1'       =>  'required',
             '2'       =>  'required',
@@ -93,11 +62,7 @@ class CongDoanVienImport implements ToCollection,WithValidation
             '7'       =>  'required',
             '8'       =>  'required',
             '9'       =>  'required',
-<<<<<<< HEAD
             '10'      =>  ['required', Rule::unique('CongDoanVien', 'cdv_email')],
-=======
-            '10'      =>  ['required',Rule::unique('CongDoanVien', 'cdv_email')],
->>>>>>> 69d1ae60be593651d16319b2cd4339219c483be0
             '11'      =>  'required',
             '12'      =>  'required',
             '13'      =>  'required',
@@ -105,14 +70,8 @@ class CongDoanVienImport implements ToCollection,WithValidation
             '15'      =>  'required',
             '16'      =>  ['required',Rule::unique('CongDoanVien', 'cdv_username')],
             '17'      =>  'required',
-<<<<<<< HEAD
-            // '20'      =>  'required',
-
-=======
->>>>>>> 69d1ae60be593651d16319b2cd4339219c483be0
         ];
     }
-
 
     public function customValidationMessages(){
         return [
