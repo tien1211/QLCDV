@@ -83,14 +83,14 @@ class CongDoanVienImport implements ToCollection,WithValidation
                 '8.required'    => trans('Không được để trống địa chỉ'),
                 '9.required'   => trans('Không được để trống số điện thoại'),
                 '10.required'   => 'Không được để trống email',
-                '10.unique'     => 'Email đã được tồn tại vui lòng nhập lại email',
+                '10.unique'     => 'Email đã được tồn tại. Vui lòng nhập lại email',
                 '11.required'   => trans('Không được để trống dân tộc'),
                 '12.required'   => trans('Không được để trống trình độ'),
                 '13.required'   => trans('Không được để trống tôn giáo'),
                 '14.required'   => trans('Không được để trống ngày thử việc'),
                 '15.required'   => trans('Không được để trống ngày vào ngành'),
                 '16.required'   => 'Không được để trống tên đăng nhập',
-                 '16.unique'     => 'Tên đăng nhập đã được tồn tại',
+                 '16.unique'     => 'Tên đăng nhập đã được tồn tại.Vui lòng nhập lại tên đăng nhập',
                 '17.required'   => trans('Vui lòng không được để trống mật khẩu'),
 
             ];
