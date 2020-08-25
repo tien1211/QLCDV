@@ -20,7 +20,6 @@ class CongDoanVienImport implements ToCollection
            
             #Định dạng ngày;
             if($key>0){
-                
                 DB::table('CongDoanVien')->insert([
                     'dv_id' => $value[0],
                     'cv_id' => $value[1],
@@ -51,8 +50,6 @@ class CongDoanVienImport implements ToCollection
 
     public function rules(): array{
         return [
-            
-
             '0'       =>  'required',
             '1'       =>  'required',
             '2'       =>  'required',
