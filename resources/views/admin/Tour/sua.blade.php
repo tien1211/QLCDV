@@ -130,7 +130,11 @@
                             <div class="form-group">
                                 <div class="col-lg-offset-3 col-lg-6">
                                     <button class="btn btn-primary" onclick="return confirm('Bạn có thật sự muốn cập nhật không??')" type="submit">Lưu</button>
+<<<<<<< HEAD
                                     <a href="{{route('TOUR_DanhSach')}}"><button class="btn btn-default" type="button">Thoát</button></a>
+=======
+                                <a href="{{route('TOUR_DanhSach')}}"  class="btn btn-default" >Thoát</a>
+>>>>>>> 26e59b446c0c39e19fed22108b01a5a5991db05b
                                 </div>
                             </div>
                         </form>
