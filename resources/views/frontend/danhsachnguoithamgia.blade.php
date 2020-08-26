@@ -62,8 +62,13 @@
     <button type="submit" disabled class="btn roberto-btn mt-15" style="margin-left: 360px;" >Tour đã diễn ra</button>
     <a href="{{route('quanlytour')}}" class="btn roberto-btn mt-15"  >Quay lại</a>
 @else
-    <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa?');" class="btn roberto-btn mt-15" style="margin-left: 390px;">Hủy đăng ký</button>
+    
+    <a href="{{route('dktour',['id'=>$tour->tour_id])}}" type="submit" onclick="return confirm('Bạn có chắc muốn xóa?');" class="btn roberto-btn mt-15">Thêm</a>
+    
+    <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa?');" class="btn roberto-btn mt-15" style="margin-left: 200px;">Hủy đăng ký</button>
+    
     <a href="{{route('quanlytour')}}" class="btn roberto-btn mt-15"  >Quay lại</a>
+
 @endif
 
 </form>

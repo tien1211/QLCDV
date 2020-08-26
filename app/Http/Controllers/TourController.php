@@ -53,6 +53,7 @@ class TourController extends Controller
     }
 
     public function postThem(Request $request){
+
         $validation = $this->validate($request,
         [
             'tour_handk' => 'required|date|after:now',
@@ -61,7 +62,7 @@ class TourController extends Controller
         ],
         [
             'require' => 'Bạn chưa chọn ngày!',
-            'tour_handk.after' => 'Hạn đăng ký phải nhỏ hơn ngày bắt đầu!',
+            'tour_handk.after' => 'Hạn đăng ký phải lớn hơn ngày hiện tại!',
             'tour_ngaybd.after' => 'Ngày bắt đầu phải lớn hơn hạn đăng ký!',
             'tour_ngaykt.after' => 'Ngày kết thúc phải lớn hơn ngày bắt đầu!'
         ]);
