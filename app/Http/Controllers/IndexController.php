@@ -329,7 +329,6 @@ class IndexController extends Controller
         ->join('dk_tour','dk_tour.dkt_id','=','thongtinnguoidk.dkt_id')
         ->where([['dk_tour.tour_id',$id],['dk_tour.cdv_id',Auth::user()->cdv_id],['thongtinnguoidk.ttndk_trangthai','<>',0],])
         ->select('ttndk_id')->get();
-           
         $ntg = $request->ttndk_id;
         $ex = [];
         foreach($ntg as $t){
@@ -339,14 +338,11 @@ class IndexController extends Controller
                     array_push($ex,$t); 
                 }
             }
-
         }
-
         if(sizeof($ex) <= 0){
             Session::flash('alert-danger', 'Bạn chưa chọn người tham gia!');
             return redirect()->route('DS_NTG',['id'=>$id]);
         }
-
         foreach($ex as $t){
             DB::table('thongtinnguoidk')
                 ->where([['ttndk_id',$t],['ttndk_trangthai',1]])

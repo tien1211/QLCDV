@@ -15,40 +15,32 @@
                         @csrf
                         <div class="form-group" style="mt-6">
                             <div class="flash-message">
-                              @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                                 @if(Session::has('alert-' . $msg))
                                 <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="" class="close" d
                                 ata-dismiss="alert" aria-label="close">&times;</a></p>
                                 @endif
-                              @endforeach
-                          </div>
-                          </div>
+                            @endforeach
+                        </div>
+                        </div>
                         <div class="form-group ">
-
-
                             <label for="username" class="control-label col-lg-3">FILE IMPORT</label>
                                 <div class="col-lg-6">
-                                    <input class="form-control" name="file" type="file">
-
+                                    <input class="form-control" name="file" type="file">                 
                 {{------------------- SHOW ERROR ------------------}}
                                     @if($errors->has('file'))
                                     <div class="alert alert-warning" style="color: red">
                                         <ul>ERROR FILE IMPORT:</ul>
-                                            <li style="color: red">{{ $errors->first('file')}}</li>
-
+                                            <li style="color: red">{{ $errors->first('file')}}</li>    
                                     </div>
-                                   @endif
-
+                                @endif
                                     @if (isset($f))
                                         <div class="alert alert-warning mt-10" style="color: red;">ERROR FILE IMPORT:
                                             @foreach ($f as $f1)
                                                 <ul>
                                                     @foreach ($f1->errors() as $error)
-
                                                     <li style="color: red; margin-left:5%">{{ $error }}</li>
-
                                                     @endforeach
-
                                                 </ul>
                                                 @break
                                             @endforeach
@@ -60,11 +52,8 @@
 
 
                                 </div>
-                {{------------------- SHOW ERROR ------------------}}
-
-
+                {{------------------- SHOW ERROR ------------------}}           
             </div>
-
                         <div class="form-group">
                             {{-- <div class="col-lg-offset-3 col-lg-6"> --}}
                                 <button class="btn btn-primary" style="margin-left:332px " type="submit">SUBMIT</button>
@@ -86,7 +75,4 @@
         </section>
     </div>
 </div>
-
-
-
 @endsection
