@@ -49,16 +49,13 @@ Route::get('/doimatkhau/{id}','AuthController@getChangePass')->name('formChange'
 Route::post('/changpass/{id}','AuthController@postChangePass')->name('changePass');
 
 
-
 Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
 
     Route::get('/admin', function () {
         return view('admin.layout.master');
     })->name('admin');
 
-    Route::group(['prefix' => 'CongDoanVien'], function () {
-        //download sample
-        Route::get('/download', 'CongDoanVienController@getDownload')->name('download');
+    Route::group(['prefix' => 'CongDoanVien'], function () {        
         //Import Excel
         Route::get('/CDV_Import','CongDoanVienController@getImport')->name('CDV_formImp');
         Route::post('/CDV_Import/Import','CongDoanVienController@Import')->name('Import');

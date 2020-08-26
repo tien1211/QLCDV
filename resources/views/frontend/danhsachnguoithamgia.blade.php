@@ -21,6 +21,7 @@
         </div>
     </div>
 </div>
+
 <div class="room-service mb-50" style="margin-bottom: 10px;">
     <form class="form-inline" role="form" enctype="multipart/form-data" action="{{route('XL_XNTTDK',['id'=>$tour->tour_id])}}" method="post" >
         {{ csrf_field() }}
@@ -61,12 +62,14 @@
     <button type="submit" disabled class="btn roberto-btn mt-15" style="margin-left: 360px;" >Tour đã diễn ra</button>
     <a href="{{route('quanlytour')}}" class="btn roberto-btn mt-15"  >Quay lại</a>
 @else
-    
-    <a href="{{route('dktour',['id'=>$tour->tour_id])}}" type="submit" onclick="return confirm('Bạn có chắc muốn xóa?');" class="btn roberto-btn mt-15">Thêm</a>
-    
-    <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa?');" class="btn roberto-btn mt-15" style="margin-left: 200px;">Hủy đăng ký</button>
-    
-    <a href="{{route('quanlytour')}}" class="btn roberto-btn mt-15"  >Quay lại</a>
+
+
+
+    <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa?');" class="btn roberto-btn mt-15" style="margin-left:235px;">Hủy đăng ký</button>
+
+    <a href="{{route('quanlytour')}}" class="btn roberto-btn mt-15" >Quay lại</a>
+
+    <a href="{{route('dktour',['id'=>$tour->tour_id])}}" class="btn roberto-btn mt-15" >Thêm</a>
 
 @endif
 

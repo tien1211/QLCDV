@@ -150,6 +150,7 @@
 <div class="panel-body">
     <div class="position-right">
         <a><button type="submit" class="btn btn-outline-info">Hủy đăng ký</button></a>
+
     </div>
 </div>
     </from>
