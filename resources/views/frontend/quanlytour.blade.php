@@ -27,7 +27,7 @@
             @foreach ($tourdk as $key => $tour)
             <tr>
             <td>{{$key + 1}}</td>
-            <td><a href="{{route('chitiettour',['id'=>$tour->tour_id])}}">{{$tour->lt_ten}} {{date('Y ',strtotime($tour->tour_handk))}}</a></td>
+            <td><u><a style="color: steelblue" href="{{route('chitiettour',['id'=>$tour->tour_id])}}">{{$tour->lt_ten}} {{date('Y ',strtotime($tour->tour_handk))}}</a></u></td>
             <td>{{number_format($tour->tour_chiphi * $tour->dkt_soluong)}} VNĐ</td>
             <td>
                 @if($now > $tour->tour_handk)
