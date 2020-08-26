@@ -49,18 +49,18 @@ label.error {
                                             <option value="">Giai Đoạn</option>
                                             @foreach ($GiaiDoan as $gd)
                                             <option value="{{$gd->gd_id}}">{{$gd->giai_doan}}</option>
-                                            
+
                                             @endforeach
-                                           
+
                                         </select>
-                                        
+
                                     </div>
                                     <div class="col-lg-2">
-                                        
+
                                             <button title="Thêm giai đoạn" type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal">
                                                 <i class="glyphicon glyphicon-plus" style="color: aliceblue"></i>
                                             </button>
-                                        
+
                                     </div>
                                 </div>
 
@@ -111,7 +111,7 @@ label.error {
                                 <div class="form-group">
                                     <div class="col-lg-offset-3 col-lg-6">
                                         <button class="btn btn-primary btn-submit" id="submit" onclick="return confirm('Bạn có thật sự muốn thêm không??')" type="submit">Thêm</button>
-                                        <button class="btn btn-default" type="button">Trở về</button>
+                                        <a href="{{route('TOUR_DanhSach')}}"><button class="btn btn-default" type="button">Trở về</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -125,12 +125,12 @@ label.error {
                                 <!-- Modal Header -->
                                 <div class="modal-header">
                                   <h4 class="modal-title">Thêm Giai Đoạn</h4>
-                                  
+
                                 </div>
-                          
+
                                 <!-- Modal body -->
                                 <div class="modal-body">
-                                
+
                                     <div class="form-group ">
                                         <label for="username" class="control-label col-lg-3">Giai Đoạn</label>
                                         <div class="col-lg-3">
@@ -140,9 +140,9 @@ label.error {
                                             <input class="form-control" placeholder="Giai đoạn đến.." required name="giai_doan2" type="number" min="2011">
                                         </div>
                                     </div>
-                                
+
                                 </div>
-                          
+
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-primary">Thêm</button>
@@ -186,7 +186,7 @@ label.error {
             tour_hinhanh: "Vui lòng chọn hình ảnh",
         }
     });
-    
+
     </script>
 @if(Session::has('alert-1'))
 
