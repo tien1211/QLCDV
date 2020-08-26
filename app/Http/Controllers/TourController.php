@@ -41,7 +41,7 @@ class TourController extends Controller
     public function getDanhSach(){
         $ngaybd = "";
         $ngaykt = "";
-        $Tour = Tour::where('tour_trangthai','=',1)->paginate(10);
+        $Tour = Tour::where('tour_trangthai','=',1)->orderBy('tour.tour_handk','desc')->paginate(10);
         return view('admin.Tour.danhsach')->with('Tour',$Tour);
     }
 

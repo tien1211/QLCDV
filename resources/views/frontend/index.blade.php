@@ -35,7 +35,7 @@
                 </h6>
             <h6>Số chỗ còn lại: <span>{{$t->tour_soluong}}</span></h6>
             </div>
-            <a href="{{route('chitiettour',['id'=>$t->tour_id])}}" class="btn btn-info">Chi Tiết -></a>
+            <a href="{{route('chitiettour',['id'=>$t->tour_id])}}" class="btn btn-info">Chi Tiết ⇾</a>
         </div>
     </div>
     @endforeach
