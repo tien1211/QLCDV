@@ -23,7 +23,7 @@
 @endif
 
 
-    
+
 
     <div class="row">
         <div class="col-lg-12">
@@ -112,7 +112,7 @@
                                 <input class="form-control" value="{{$Tour->tour_daily}}"  name="tour_daily" type="text" id="tour_daily">
                                 </div>
                             </div>
-                        
+
 
                             <div class="form-group ">
                                 <label for="email" class="control-label col-lg-3">Ảnh tour</label>
@@ -130,7 +130,7 @@
                             <div class="form-group">
                                 <div class="col-lg-offset-3 col-lg-6">
                                     <button class="btn btn-primary" onclick="return confirm('Bạn có thật sự muốn cập nhật không??')" type="submit">Lưu</button>
-                                    <button class="btn btn-default" type="button">Thoát</button>
+                                    <a href="{{route('TOUR_DanhSach')}}"><button class="btn btn-default" type="button">Thoát</button></a>
                                 </div>
                             </div>
                         </form>
@@ -175,7 +175,7 @@
     });
 
 
-    
+
     </script>
 
 @endsection

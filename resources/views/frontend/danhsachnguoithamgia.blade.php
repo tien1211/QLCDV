@@ -21,6 +21,7 @@
         </div>
     </div>
 </div>
+
 <div class="room-service mb-50" style="margin-bottom: 10px;">
     <form class="form-inline" role="form" enctype="multipart/form-data" action="{{route('XL_XNTTDK',['id'=>$tour->tour_id])}}" method="post" >
         {{ csrf_field() }}
