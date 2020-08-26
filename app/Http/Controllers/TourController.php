@@ -61,7 +61,7 @@ class TourController extends Controller
         ],
         [
             'require' => 'Bạn chưa chọn ngày!',
-            'tour_handk.after' => 'Hạn đăng ký phải nhỏ hơn ngày bắt đầu!',
+            'tour_handk.after' => 'Hạn đăng ký phải lớn hơn ngày hiện tại!',
             'tour_ngaybd.after' => 'Ngày bắt đầu phải lớn hơn hạn đăng ký!',
             'tour_ngaykt.after' => 'Ngày kết thúc phải lớn hơn ngày bắt đầu!'
         ]);
@@ -103,12 +103,12 @@ class TourController extends Controller
             Session::flash('alert-1', 'Thêm thành công!!!');
             return Redirect()->route('TOUR_DanhSach');
 }
-
+// Sửa
     public function getSua($id){
         $Tour = Tour::find($id);
         return view('admin.Tour.sua')->with('Tour',$Tour);
     }
-// Sửa
+
     public function postSua(Request $request, $id){
         $Tour = Tour::find($id);
         $Tour->lt_id = $request->lt_id;
@@ -119,7 +119,6 @@ class TourController extends Controller
         $Tour->tour_soluong = $request->tour_soluong;
         $Tour->gd_id = $request->gd_id;
         $Tour->tour_daily = $request->tour_daily;
-
         if($request->hasFile('tour_hinhanh')){
             $dataTime = date('Ymd_His');
             $file = $request->file('tour_hinhanh');
