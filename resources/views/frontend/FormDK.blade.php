@@ -35,7 +35,7 @@
                     @endif
                 </div>
                 <div class="col-12 col-lg-9 wow fadeInUp" data-wow-delay="100ms">
-                    <input type="number" required name="ttndk_tuoi"  class="form-control mb-30" placeholder="Tuổi">
+                    <input type="number" required name="ttndk_tuoi" min="1"  class="form-control mb-30" placeholder="Tuổi">
                 </div>
                 <div class="col-12 col-lg-3 wow fadeInUp" data-wow-delay="100ms" style="color: #000000;">
                     <select class="form-control" name="ttndk_cv">
@@ -50,7 +50,7 @@
             </div>
             @if($tour->tour_soluong <= 0)
             <input style="color: red;" type="text" class="input-small form-control" value="Số lượng còn lại: {{$tour->tour_soluong}}" disabled>
-            <button disabled class="btn roberto-btn mt-15" style="margin-left: 390px;">Hết chổ</button>         
+            <button disabled class="btn roberto-btn mt-15" style="margin-left: 390px;">Hết chổ</button>
             <a href="{{route('chitiettour',['id'=>$tour_id])}}" class="btn roberto-btn mt-15"  >Quay lại</a>
             @else
             <input style="color: #000000;" type="text" class="input-small form-control" value="Số lượng còn lại: {{$tour->tour_soluong}}" disabled>
