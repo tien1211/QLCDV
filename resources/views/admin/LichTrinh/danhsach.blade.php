@@ -66,7 +66,6 @@
             <th data-breakpoints="xs">STT</th>
             <th>Lịch Trình Tên</th>
             <th>Lịch Trình File</th>
-            <th>Hình Ảnh Liên Quan</th>
             <th>Mô Tả</th>
             <th>Thao Tác</th>
           </tr>
@@ -76,7 +75,6 @@
                     <td>{{$key + 1}}</td>
                     <td>{{$lt->lt_ten}}</td>
                     <td><a href="{{url('upload/lichtrinh/'.$lt->lt_file)}}">{{$lt->lt_file}}</a></td>
-                    <td><a href="{{route('LT_HinhAnh',['id'=>$lt->lt_id])}}"><button title="Danh Sách Hình" type="button" class="btn btn-outline-info">Danh Sách Hình</button></a></td>
                     <td><a ><button  type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#myModal{{$key + 1}}">
                       Mô Tả
                     </button></a></td>

@@ -36,9 +36,8 @@
             <td><a style="color: #999; font-weight: bolder;">Số lượng: </a><a style="color: #999;">{{$chitietTour->tour_soluong}}</a></td>
         </tr>
         <tr>
-            <td colspan="2">
-            <a href="{{route('TOUR_DKT',['id'=>$chitietTour->tour_id])}}"><button type="button"  class="btn btn-outline-info" style="width: 100%">Thêm người tham gia</button></a>
-            </td>
+            <td><a href="{{route('TOUR_DKT',['id'=>$chitietTour->tour_id])}}"><button type="button"  class="btn btn-outline-info" style="width:90%">Thêm người tham gia</button></a></td>
+            <td><a href="{{route('Tour_HinhAnh',['id'=>$chitietTour->tour_id])}}"><button type="button"  class="btn btn-outline-info" style="width:90%">Danh sách hình</button></a></td>
         </tr>
     </table>
 </div>
@@ -149,7 +148,9 @@
 </div>
 <div class="panel-body">
     <div class="position-right">
-        <a><button type="submit" class="btn btn-outline-info">Hủy đăng ký</button></a>
+        <button type="submit" class="btn btn-outline-info">Hủy đăng ký</button>
+        <a href="{{route('TOUR_DanhSach')}}" class="btn btn-info"> Trở về</a>
+
     </div>
 </div>
     </from>

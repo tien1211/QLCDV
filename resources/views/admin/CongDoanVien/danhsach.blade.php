@@ -94,6 +94,7 @@
                   <button type="submit" class="btn btn-primary" title="Tìm" id="search"><i class=" glyphicon glyphicon-search" style="color: aliceblue"></i></button>
                   <a href="{{route('CDV_Them')}}"><button title="Thêm" type="button"  class="btn btn-primary"><i class="glyphicon glyphicon-plus" style="color: aliceblue"></i></button></a>
                   <a href="{{route('CDV_Export')}}" title="Export Danh Sách CĐV" class="btn btn-sm btn-primary float-right">Export</a>
+                  <a href="{{route('CDV_formImp')}}" title="Import Danh Sách CĐV" class="btn btn-sm btn-primary float-right">Import</a>
                   <a href="{{route('CDV_CNMHT')}}" title="Cập Nhật Mức Hổ Trợ" class="btn btn-sm btn-primary float-right">Cập nhật mức hổ trợ</a>
         </form>
       </div>

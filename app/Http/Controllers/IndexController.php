@@ -82,7 +82,7 @@ class IndexController extends Controller
             $now=  Carbon::now('Asia/Ho_Chi_Minh');
             $datail=Tour::find($id);
             $a = DB::table('LichTrinh')->join('Tour','LichTrinh.lt_id','=','Tour.lt_id')
-                ->join('Anh_Tour','Anh_Tour.lt_id','=','LichTrinh.lt_id')
+                ->join('Anh_Tour','Anh_Tour.tour_id','=','Tour.tour_id')
                 ->where('Tour.tour_id','=',$id)
                 ->select('*')->get();//Ảnh liên quan
 

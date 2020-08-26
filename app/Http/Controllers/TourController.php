@@ -53,6 +53,7 @@ class TourController extends Controller
     }
 
     public function postThem(Request $request){
+
         $validation = $this->validate($request,
         [
             'tour_handk' => 'required|date|after:now',
@@ -450,7 +451,6 @@ class TourController extends Controller
         return redirect()->route('TOUR_ChiTiet',['id'=>$id]);
     }
 
-
     public function postThemGD(Request $request)
     {
         $GiaiDoan = new GiaiDoan();
@@ -461,8 +461,53 @@ class TourController extends Controller
         $GiaiDoan->save();
         Session::flash('alert-1', 'Thêm thành công!!!');
         return redirect()->route('TOUR_Them');
-
     }
 
+    public function getHinh($id){
+        $hinh = DB::table('anh_tour')
+            ->join('tour','tour.tour_id','=','anh_tour.tour_id')
+            ->where([['anh_tour.tour_id',$id],['at_trangthai',1]])->get();
+        return view('admin.Tour.danhsachhinh')->with('hinh',$hinh)->with('tour_id',$id);
+    }
+
+    public function postHinh(Request $request, $id){
+        if($request->hasFile('hinh')){
+            $dataTime = date('Ymd_His');
+            foreach($request->hinh as $file){
+            $duoi = $file->getClientOriginalExtension();
+            if($duoi != 'jpg' && $duoi != 'jpeg' && $duoi != 'png'){
+                Session::flash('alert-warning', 'Bạn chỉ được chọn file ảnh có đuôi png, jpg, jpeg!!!');
+                return redirect()->back();
+            }
+            $fileName = $dataTime . '-' . $file->getClientOriginalName();
+            //resize ảnh
+            $destinationPath = public_path('upload/tour');
+            $resize_image = Image::make($file->getRealPath());
+            $resize_image->resize(710, 399, function($constraint)
+            {
+                $constraint->aspectRatio();
+            })->save($destinationPath . '/' . $fileName);
+            //
+            $data['at_hinhanh'] = $fileName;
+            $data['tour_id'] = $id;
+            $data['at_trangthai'] = 1;
+            DB::table('anh_tour')->insert($data);
+        }
+            Session::flash('alert-info', 'Thêm thành công!!!');
+            return redirect()->back();
+        }else{
+            Session::flash('alert-warning', 'Chưa chọn file!!!');
+            return redirect()->back();
+        }
+    }
+
+    public function getXoaHinh(Request $request){
+        $at_id = $request->at_id;
+        foreach($at_id as $anh){
+            DB::table('anh_tour')->where('at_id',$anh)->update(['at_trangthai'=>0]);
+        }
+        Session::flash('alert-info', 'Xóa Thành Công!!!');
+        return Redirect::back();
+    }
 
 }
