@@ -55,7 +55,7 @@
             @else
             <input style="color: #000000;" type="text" class="input-small form-control" value="Số lượng còn lại: {{$tour->tour_soluong}}" disabled>
             <button type="submit" class="btn roberto-btn mt-15" onclick="return confirm('Bạn có muốn đăng ký không??')" style="margin-left: 390px;">Ghi danh</button>
-            <a href="{{route('chitiettour',['id'=>$tour_id])}}" class="btn roberto-btn mt-15"  >Quay lại</a>
+            <a href="{{route('DS_NTG',['id'=>$tour_id])}}" class="btn roberto-btn mt-15"  >Quay lại</a>
             @endif
             </form>
     </div>
