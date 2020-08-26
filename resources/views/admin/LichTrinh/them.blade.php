@@ -2,7 +2,7 @@
 @section('admin_content')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <style>
-  label.error {
+label.error {
         display: inline-block;
         color:red;
         width: 200px;
@@ -19,7 +19,7 @@
                     <div class="form">
                         <form class="cmxform form-horizontal " enctype="multipart/form-data" action="{{route('LT_XLThem')}}" id="formDemo1" method="post"  novalidate="novalidate">
                             {{csrf_field()}}
-                            
+
                             <div class="form-group ">
                                 <label for="lastname" class="control-label col-lg-3"> Lịch Trình Tên</label>
                                 <div class="col-lg-6">
@@ -51,8 +51,8 @@
                             {{-- Mô tả--}}
                             <div class="form-group">
                                 <div class="col-lg-offset-3 col-lg-6">
-                                    <a href=""><button class="btn btn-primary" onclick="return confirm('Bạn có thật sự muốn thêm không??')" id="submit" type="submit">Lưu</button></a>
-                                    <a href=""><button class="btn btn-default" type="button">Thoát</button></a>
+                                    <a href=""> <button class="btn btn-primary" onclick="return confirm('Bạn có thật sự muốn thêm không??')" id="submit" type="submit">Lưu</button></a>
+                                    <a href="{{route('LT_DanhSach')}}"><button class="btn btn-default" type="button">Trở về</button></a>
                                 </div>
                             </div>
                         </form>
