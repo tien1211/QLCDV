@@ -329,7 +329,7 @@ class IndexController extends Controller
         ->join('dk_tour','dk_tour.dkt_id','=','thongtinnguoidk.dkt_id')
         ->where([['dk_tour.tour_id',$id],['dk_tour.cdv_id',Auth::user()->cdv_id],['thongtinnguoidk.ttndk_trangthai','<>',0],])
         ->select('ttndk_id')->get();
-            dd($info_ntg);
+           
         $ntg = $request->ttndk_id;
         $ex = [];
         foreach($ntg as $t){
