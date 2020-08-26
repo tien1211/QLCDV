@@ -149,7 +149,8 @@
 </div>
 <div class="panel-body">
     <div class="position-right">
-        <a><button type="submit" class="btn btn-outline-info">Hủy đăng ký</button></a>
+        <button type="submit" class="btn btn-outline-info">Hủy đăng ký</button>
+        <a href="{{route('TOUR_DanhSach')}}" class="btn btn-info"> Trở về</a>
 
     </div>
 </div>
