@@ -1,15 +1,57 @@
 @extends('admin.layout.master')
 @section('admin_content')
+{{-- message errorr --}}
+@if(Session::has('alert-add'))
+  @section('script')
+  <script>
+    window.onload =  function()
+      {
+      alert('Thêm thành công');
+      };
+</script>
+  @endsection
+  @endif
+  @if(Session::has('alert-up'))
+  @section('script')
+  <script>
+    window.onload =  function()
+      {
+      alert('Sửa thành công');
+      };
+</script>
+  @endsection
+    <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+  @endif
+  @if(Session::has('alert-del'))
+  @section('script')
+  <script>
+    window.onload =  function()
+      {
+      alert('Xóa thành công');
+      };
+</script>
+  @endsection
+    <a class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+  @endif
 <div class="form-group" style="mt-6">
     <div class="flash-message">
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
         @if(Session::has('alert-' . $msg))
-        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a class="close" d
-        ata-dismiss="alert" aria-label="close">&times;</a></p>
+        {{-- <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a class="close" d
+        ata-dismiss="alert" aria-label="close">&times;</a></p> --}}
+            <script>
+                window.onload = function(){
+                    alert('{{Session::get('alert-' . $msg)}}');
+                }
+            </script>
+
+
         @endif
     @endforeach
 </div>
 </div>
+{{-- message errorr --}}
+
 <div class="panel panel-default">
     <header class="panel-heading">
         Thêm Người Tham gia Tour
@@ -90,10 +132,18 @@
     </div>
 </div>
 <div class="panel panel-default">
+
+    @if (sizeof($nguoithamgia)<1)
     <div class="panel-heading">
-    Danh sách người đăng ký tham gia
-    </div>
-    <div>
+        Chưa có người đăng ký tham gia
+        </div>
+        <div>
+    @else    
+    
+    <div class="panel-heading">
+        Danh sách người đăng ký tham gia
+        </div>
+        <div>
     <table class="table" ui-jq="footable" ui-options='{
         "paging": {
         "enabled": true
@@ -140,6 +190,7 @@
             @endforeach
         </tbody>
     </table>
+    @endif
     </div>
 </div>
 @endsection

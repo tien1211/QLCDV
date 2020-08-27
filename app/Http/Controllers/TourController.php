@@ -338,7 +338,7 @@ class TourController extends Controller
                 DB::table('thongtinnguoidk')->insert($data);
                 // cập nhật lại số lượng tour
                 DB::table('tour')->where('tour_id',$id)->update(['tour_soluong' => $tour->tour_soluong - 1]);
-                Session::flash('alert-info', 'Đăng ký thành công!!!');
+                Session::flash('alert-success', 'Đăng ký thành công!!!');
                 return redirect()->back();
             }else{
                 //Cập nhật số lượng tour
@@ -362,29 +362,11 @@ class TourController extends Controller
                 return redirect()->back();
             }
         }else{
-            Session::flash('alert-info', 'Công đoàn viên không tồn tại');
+            Session::flash('alert-danger', 'Chưa chọn công đoàn viên!!');
             return redirect()->back();
         }
     }
 
-    public function viewExport($id){
-        $info = DB::table('thongtinnguoidk')
-        ->join('dk_tour','dk_tour.dkt_id','=','thongtinnguoidk.dkt_id')
-        ->join('congdoanvien','congdoanvien.cdv_id','=','dk_tour.cdv_id')
-        ->join('tinhtrangthuphi','tinhtrangthuphi.tttp_id','=','dk_tour.tttp_id')
-        ->where([['dk_tour.tour_id',$id],['congdoanvien.cdv_trangthai','<>',0],])
-        ->orderBy('dk_tour.cdv_id','asc')
-        ->orderBy('dk_tour.tttp_id','asc')
-        ->get();
-        return view('admin.Tour.Tour-Excel')->with('info',$info);
-    }
-
-    public function Export($id)
-    {
-        $dataTime = date('Ymd_His');
-        $name = $dataTime. '-' . 'DSNTG.xlsx';
-        return Excel::download(new DSNTGExport, $name);
-    }
 
     public function postXNDK(Request $request, $id){
         $validation = $this->validate($request,
