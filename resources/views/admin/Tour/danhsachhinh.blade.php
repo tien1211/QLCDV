@@ -1,14 +1,24 @@
 @extends('admin.layout.master')
 @section('admin_content')
 <!--main content start-->
-<div class="flash-message">
+{{-- message errorr --}}
+<div class="form-group" style="mt-6">
+    <div class="flash-message">
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-    @if(Session::has('alert-' . $msg))
-    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" d
-    ata-dismiss="alert" aria-label="close">&times;</a></p>
-    @endif
+        @if(Session::has('alert-' . $msg))
+            <script>
+                window.onload = function(){
+                    alert('{{Session::get('alert-' . $msg)}}');
+                }
+            </script>
+        @endif
     @endforeach
 </div>
+</div>
+{{-- message errorr --}}
+
+
+
 <div class="panel panel-default">
     <div class="panel-heading">
     Hình ảnh liên quan
