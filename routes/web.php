@@ -116,10 +116,16 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
         Route::post('search/name','TourController@getSearchAjax')->name('search');
         // Xóa người đăng ký tham gia
         Route::post('/TOUR_XNDK/{id}','TourController@postXNDK')->name('XLTOUR_XNDK');
-
         // Thêm giai đoạn
-
         Route::post('/ThemGD','TourController@postThemGD')->name('GD_Them');
+        //Hình ảnh liên quan
+        Route::get('/Tour_HinhAnh/{id}','TourController@getHinh')->name('Tour_HinhAnh');
+        //Thêm hình liên quan
+        Route::post('/Tour_ThemHinhAnh/{id}','TourController@postHinh')->name('Tour_ThemHinh');
+        //Sua hình ảnh
+        Route::post('/Tour_SuaHinhAnh/{id}','TourController@postSuaHinh')->name('Tour_SuaHinh');
+        //Xoa hình ảnh
+        Route::get('/Tour_XoaHinhAnh','TourController@getXoaHinh')->name('Tour_XoaHinh');
     });
     Route::group(['prefix' => 'LichTrinh'], function () {
     //Danh sách lịch trình
@@ -134,14 +140,6 @@ Route::group(['prefix' => 'admin','middleware'=>'adminLogin'], function () {
         Route::get('/LT_XoaLT/{id}', 'LichTrinhController@getXoa')->name('LT_Xoa');
         //Tìm kiếm lịch trình
         Route::get('/LT_Timkiem', 'LichTrinhController@getTimkiem')->name('LT_Timkiem');
-        //Hình ảnh liên quan
-        Route::get('/LT_HinhAnh/{id}','LichTrinhController@getHinh')->name('LT_HinhAnh');
-        //Thêm hình liên quan
-        Route::post('/LT_ThemHinhAnh/{id}','LichTrinhController@postHinh')->name('LT_ThemHinh');
-        //Sua hình ảnh
-        Route::post('/LT_SuaHinhAnh/{id}','LichTrinhController@postSuaHinh')->name('LT_SuaHinh');
-        //Xoa hình ảnh
-        Route::get('/LT_XoaHinhAnh','LichTrinhController@getXoaHinh')->name('LT_XoaHinh');
     });
 });
 

@@ -15,11 +15,11 @@ class CreateAnhtourTable extends Migration
     {
         Schema::create('Anh_Tour', function (Blueprint $table) {
             $table->increments('at_id');
-            $table->unsignedInteger('lt_id');
+            $table->unsignedInteger('tour_id');
             $table->string('at_hinhanh');
             $table->tinyInteger('at_trangthai');
             $table->timestamps();
-            $table->foreign('lt_id')->references('lt_id')->on('LichTrinh')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('tour_id')->references('tour_id')->on('tour')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 

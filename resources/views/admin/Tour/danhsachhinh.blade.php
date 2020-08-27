@@ -15,7 +15,7 @@
     </div>
     <div class="panel-body">
         <div class="position-left">
-            <form class="form-inline" role="form" enctype="multipart/form-data" action="{{route('LT_ThemHinh',['id'=>$lt_id])}}" method="post" >
+            <form class="form-inline" role="form" enctype="multipart/form-data" action="{{route('Tour_ThemHinh',['id'=>$tour_id])}}" method="post" >
             {{ csrf_field() }}
             <div class="form-group">
                 <a style="color: #777; font-weight: bold;">Thêm hình mới: </a>
@@ -26,7 +26,7 @@
         </div>
     </div>
     <div>
-    <form class="form-inline" role="form" enctype="multipart/form-data" action="{{route('LT_XoaHinh')}}" method="get" >
+    <form class="form-inline" role="form" enctype="multipart/form-data" action="{{route('Tour_XoaHinh')}}" method="get" >
             {{ csrf_field() }}
       <table class="table" ui-jq="footable" ui-options='{
         "paging": {
