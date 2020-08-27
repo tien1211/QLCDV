@@ -22,15 +22,6 @@
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-car"></i>
-                        <span>Quản lý Tour</span>
-                    </a>
-                    <ul class="sub">
-                    <li><a href="{{route('TOUR_DanhSach')}}">Danh Sách Tour</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
                         <i class="fa fa-calendar-o"></i>
                         <span>Quản lý Lịch Trình</span>
                     </a>
@@ -38,6 +29,16 @@
                     <li><a href="{{route('LT_DanhSach')}}">Danh Sách Lịch Trình</a></li>
                     </ul>
                 </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-car"></i>
+                        <span>Quản lý Tour</span>
+                    </a>
+                    <ul class="sub">
+                    <li><a href="{{route('TOUR_DanhSach')}}">Danh Sách Tour</a></li>
+                    </ul>
+                </li>
+                
             </ul>
         </div>
         <!-- sidebar menu end-->
